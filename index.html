@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta name="description" content="Pellet premium z dostawą na terenie całej Polski. Zamów wygodnie przez WhatsApp – szybka wycena dla Twojego województwa."/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Sosnowe Chwile – Pellet Premium</title>
-<meta name="description" content="Pellet premium dla domów i firm w Polsce. Dostawa w kazde kiejsce Polski."/>
+<meta name="description" content="Pellet premium z dostawą na terenie całej Polski. Zamów wygodnie przez WhatsApp – szybka wycena dla Twojego województwa."/>
 <style>
 :root{--bg:#f7f2e8;--wh:#fff;--gr:#214f3b;--go:#c98b2f;--tx:#1f2724;--mu:#6b716d;--rlg:18px;--rmd:12px;--sh:0 8px 24px rgba(0,0,0,.05);--shl:0 14px 40px rgba(0,0,0,.08);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -14,12 +13,15 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--tx);b
 section{padding:3.5rem 1.5rem;}
 @media(min-width:768px){section{padding:4.5rem 2.5rem;}}
 h1,h2,h3{color:var(--gr);margin-top:0;}
+
+/* PRZYCISKI */
 .btn,.btn2{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.4rem;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;border:none;cursor:pointer;transition:transform .12s,box-shadow .12s,background .12s;}
 .btn{background:linear-gradient(135deg,var(--gr),#163329);color:#fff;box-shadow:var(--shl);}
 .btn:hover{transform:translateY(-1px);box-shadow:0 18px 40px rgba(0,0,0,.12);}
 .btn2{background:rgba(255,255,255,.5);color:var(--gr);border:1px solid rgba(33,79,59,.18);backdrop-filter:blur(6px);}
 .btn2:hover{background:rgba(255,255,255,.85);}
-/* NAV */
+
+/* NAVBAR */
 #nav{position:sticky;top:0;z-index:999;width:100%;background:rgba(247,242,232,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(33,79,59,.1);transition:box-shadow .2s,background .2s;}
 #nav.sc{background:rgba(247,242,232,.97);box-shadow:0 4px 24px rgba(0,0,0,.08);}
 .ni{max-width:1120px;margin:0 auto;padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:relative;}
@@ -43,6 +45,7 @@ h1,h2,h3{color:var(--gr);margin-top:0;}
 .nl.op a{padding:.6rem .8rem;font-size:1rem;border-radius:10px;color:var(--gr)!important;}
 .nl.op .nw{margin-left:0;margin-top:.4rem;text-align:center;color:#fff!important;}
 @media(min-width:768px){.nl{display:flex;}.hb{display:none;}}
+
 /* HERO */
 #hero{max-width:960px;margin:0 auto;padding-top:3rem;padding-bottom:2rem;}
 .ey{display:block;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:.7rem;}
@@ -50,241 +53,21 @@ h1,h2,h3{color:var(--gr);margin-top:0;}
 .hl{font-size:1rem;color:var(--mu);max-width:40rem;margin-bottom:1.8rem;line-height:1.65;}
 .hb2{display:flex;flex-wrap:wrap;gap:.8rem;}
 @media(max-width:640px){#hero h1{font-size:1.6rem;}.hb2{flex-direction:column;}.btn,.btn2{width:100%;justify-content:center;}}
+
 /* BANER */
 .baner{margin:0 1.5rem;border-radius:var(--rlg);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18);position:relative;max-height:460px;}
 .baner img{width:100%;height:100%;object-fit:cover;display:block;}
 .baner-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.06) 0,rgba(0,0,0,.42) 100%);}
 @media(min-width:768px){.baner{margin:0 2.5rem;max-height:520px;}}
+
 /* KORZYŚCI */
 #ben{max-width:960px;margin:0 auto;padding-top:2rem;padding-bottom:2.5rem;display:grid;grid-template-columns:1fr;gap:1rem;}
 .bc{background:rgba(255,255,255,.85);border-radius:var(--rmd);padding:1.1rem 1.2rem;box-shadow:var(--sh);border:1px solid rgba(201,139,47,.08);}
 .bc h3{font-size:.95rem;margin-bottom:.35rem;}
 .bc p{font-size:.88rem;color:var(--mu);line-height:1.55;}
 @media(min-width:768px){#ben{grid-template-columns:repeat(3,1fr);gap:1.1rem;}}
-</style>
-</head>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.woj-tab').forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      var woj = tab.getAttribute('data-woj');
 
-      document.querySelectorAll('.woj-tab').forEach(function(t) {
-        t.classList.remove('active');
-      });
-      document.querySelectorAll('.woj-panel').forEach(function(p) {
-        p.classList.remove('active');
-      });
-
-      tab.classList.add('active');
-      var panel = document.getElementById('woj-' + woj);
-      if (panel) panel.classList.add('active');
-    });
-  });
-});
-</script>
-<script>
-document.querySelectorAll('.faq-q').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var item = btn.closest('.faq-item');
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(i) {
-      i.classList.remove('open');
-    });
-    if (!isOpen) item.classList.add('open');
-  });
-});
-<    <!-- 1. Hamburger nawigacji + sticky shadow -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var hb  = document.getElementById('hb');
-      var nl  = document.getElementById('nl');
-      var nav = document.getElementById('nav');
-      if (hb && nl) {
-        hb.addEventListener('click', function() {
-          var op = nl.classList.toggle('op');
-          hb.classList.toggle('op', op);
-          hb.setAttribute('aria-expanded', op);
-        });
-        nl.querySelectorAll('a').forEach(function(a) {
-          a.addEventListener('click', function() {
-            nl.classList.remove('op');
-            hb.classList.remove('op');
-            hb.setAttribute('aria-expanded', false);
-          });
-        });
-      }
-      if (nav) {
-        window.addEventListener('scroll', function() {
-          nav.classList.toggle('sc', window.scrollY > 12);
-        });
-      }
-    });
-    </script>
-
-    <!-- 2. Zakładki województw -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.woj-tab').forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          var woj = tab.getAttribute('data-woj');
-          document.querySelectorAll('.woj-tab').forEach(function(t) { t.classList.remove('active'); });
-          document.querySelectorAll('.woj-panel').forEach(function(p) { p.classList.remove('active'); });
-          tab.classList.add('active');
-          var panel = document.getElementById('woj-' + woj);
-          if (panel) panel.classList.add('active');
-        });
-      });
-    });
-    </script>
-
-    <!-- 3. FAQ accordion -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.faq-q').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var item = btn.closest('.faq-item');
-          var isOpen = item.classList.contains('open');
-          document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
-          if (!isOpen) item.classList.add('open');
-        });
-      });
-    });
-    </script>
-
-    <!-- 4. Formularz faktury -->
-    <script>
-    (function() {
-      function init() {
-        var ftypeBtns   = document.querySelectorAll('.ftype-btn');
-        var firmaFields = document.getElementById('firmaFields');
-        var currentType = 'osoba';
-        if (ftypeBtns.length && firmaFields) {
-          ftypeBtns.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-              ftypeBtns.forEach(function(b) { b.classList.remove('active'); });
-              btn.classList.add('active');
-              currentType = btn.getAttribute('data-type');
-              firmaFields.style.display = currentType === 'firma' ? 'grid' : 'none';
-            });
-          });
-        }
-        var kodInput = document.getElementById('f-kod');
-        if (kodInput) {
-          kodInput.addEventListener('input', function() {
-            var v = this.value.replace(/\D/g,'');
-            if (v.length > 2) v = v.slice(0,2) + '-' + v.slice(2,5);
-            this.value = v;
-          });
-        }
-        var nipInput = document.getElementById('f-nip');
-        if (nipInput) {
-          nipInput.addEventListener('input', function() {
-            this.value = this.value.replace(/\D/g,'').slice(0,10);
-          });
-        }
-        function validate(inputId, groupId, condition) {
-          var input = document.getElementById(inputId);
-          var group = document.getElementById(groupId);
-          if (!input || !group) return true;
-          var err = group.querySelector('.ferror');
-          if (!condition) {
-            input.style.borderColor = '#c0392b';
-            input.style.boxShadow   = '0 0 0 3px rgba(192,57,43,.12)';
-            if (err) err.style.display = 'block';
-            return false;
-          }
-          input.style.borderColor = '';
-          input.style.boxShadow   = '';
-          if (err) err.style.display = 'none';
-          return true;
-        }
-        ['f-imie','f-nazwisko','f-ulica','f-kod','f-miasto',
-         'f-email','f-tel','f-produkt','f-ilosc','f-nazwa','f-nip'
-        ].forEach(function(id) {
-          var el = document.getElementById(id);
-          if (el) {
-            el.addEventListener('input',  function() { el.style.borderColor=''; el.style.boxShadow=''; });
-            el.addEventListener('change', function() { el.style.borderColor=''; el.style.boxShadow=''; });
-          }
-        });
-        var form = document.getElementById('fakturaFormEl');
-        if (!form) return;
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          var g = function(id) { return ((document.getElementById(id)||{}).value||'').trim(); };
-          var imie=g('f-imie'), nazwisko=g('f-nazwisko'), ulica=g('f-ulica');
-          var kod=g('f-kod'), miasto=g('f-miasto'), email=g('f-email');
-          var tel=g('f-tel'), produkt=g('f-produkt'), ilosc=g('f-ilosc');
-          var nazwa=g('f-nazwa'), nip=g('f-nip');
-          var woj=g('f-woj'), uwagi=g('f-uwagi');
-          var ok = true;
-          ok = validate('f-imie',    'g-imie',    imie.length>1)                          && ok;
-          ok = validate('f-nazwisko','g-nazwisko',nazwisko.length>1)                      && ok;
-          ok = validate('f-ulica',   'g-ulica',   ulica.length>2)                          && ok;
-          ok = validate('f-kod',     'g-kod',     /^\d{2}-\d{3}$/.test(kod))              && ok;
-          ok = validate('f-miasto',  'g-miasto',  miasto.length>1)                         && ok;
-          ok = validate('f-email',   'g-email',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))&& ok;
-          ok = validate('f-tel',     'g-tel',     tel.length>6)                            && ok;
-          ok = validate('f-produkt', 'g-produkt', produkt!=='')                            && ok;
-          ok = validate('f-ilosc',   'g-ilosc',   Number(ilosc)>=1)                        && ok;
-          if (currentType==='firma') {
-            ok = validate('f-nazwa','g-nazwa', nazwa.length>2)     && ok;
-            ok = validate('f-nip',  'g-nip',   /^\d{10}$/.test(nip))&& ok;
-          }
-          if (!ok) {
-            var firstErr = form.querySelector('input[style*="c0392b"]');
-            if (firstErr) firstErr.scrollIntoView({behavior:'smooth',block:'center'});
-            return;
-          }
-          var lines = ['Dzień dobry, przesyłam dane do faktury:',''];
-          if (currentType==='firma') { lines.push('Firma: '+nazwa); lines.push('NIP: '+nip); }
-          lines.push('Imię i nazwisko: '+imie+' '+nazwisko);
-          lines.push('Adres: '+ulica+', '+kod+' '+miasto);
-          if (woj) lines.push('Województwo: '+woj);
-          lines.push('E-mail: '+email);
-          lines.push('Tel: '+tel);
-          lines.push('');
-          lines.push('Produkt: '+produkt);
-          lines.push('Ilość: '+ilosc+' t');
-          if (uwagi) lines.push('Uwagi: '+uwagi);
-          window.open('https://wa.me/48793573900?text='+encodeURIComponent(lines.join('\n')),'_blank');
-          form.style.display = 'none';
-          var sukces = document.getElementById('fakturaSuccess');
-          if (sukces) { sukces.style.display='block'; sukces.scrollIntoView({behavior:'smooth',block:'center'}); }
-        });
-      }
-      if (document.readyState==='loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
-    })();
-    </script>
-
-    <!-- tutaj reszta sekcji strony -->
-
-    <script>
-    (function() {
-      // ... cały kod JS ...
-    })();
-    </script>
-
-</body>
-</html>
-
-  </div>
-</section>
-<div class="baner">
-  <img src="baner.jpg" alt="Sosnowe Chwile – pellet premium"/>
-  <div class="baner-overlay"></div>
-</div>
-
-<section id="ben">
- <div class="bc"><h3>Dostawa cała Polska</h3><p>Dowozimy pellet do wszystkich województw. Sprawdź ceny dla swojego regionu w sekcji poniżej.</p></div>
-<div class="bc"><h3>Szybki kontakt</h3><p>Napisz na WhatsApp – w jednej wiadomości ustalimy cenę, termin i szczegóły dostawy.</p></div>
-<div class="bc"><h3>Bezpieczna rezerwacja</h3><p>Zaliczka potwierdza zamówienie i dostępność towaru – pellet będzie na czas.</p></div>
-  <div class="bc"><h3>Bezpieczna rezerwacja</h3><p>Zaliczka potwierdza zamówienie i dostępność towaru – pellet będzie na czas.</p></div>
-</section>
-
-<section id="oferta">
-<style>
+/* OFERTA */
 #oferta{max-width:1120px;margin:0 auto;}
 #oferta h2{font-size:1.5rem;margin-bottom:.5rem;}
 #oferta>p{max-width:44rem;color:var(--mu);font-size:.96rem;line-height:1.6;}
@@ -299,263 +82,8 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
 .pl li{font-size:.88rem;padding-left:1.2rem;position:relative;margin-bottom:.4rem;line-height:1.55;}
 .pl li::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--go);position:absolute;left:.25rem;top:.5rem;}
 @media(min-width:768px){.pg{grid-template-columns:repeat(3,1fr);gap:1.5rem;}}
-</style>
-  <h2>Oferta</h2>
-<p>Dostarczamy pellet drzewny dla domów jednorodzinnych, wspólnot i firm na terenie całej Polski. Dobierz wariant do swoich potrzeb – od codziennego ogrzewania po hurtowe dostawy dla biznesu.</p>
-  <div class="pg">
-    <article class="pc ft">
-      <span class="pt">Najpopularniejszy</span>
-      <h3>Pellet Premium 6 mm</h3>
-      <p class="ps">Idealny dla nowoczesnych kotłów i wymagających użytkowników, którzy chcą mieć święty spokój z opałem.</p>
-      <p class="pp">1 250 zł / tona</p>
-      <ul class="pl">
-        >Wysoka kaloryczność – więcej ciepła z każdej tony, mniej dosypywania do kotła.</li>
-        >Niska wilgotność – szybkie rozpalanie i stabilna praca pieca przez cały sezon.</li>
-        >Czyste spalanie – mniej popiołu i rzadsze czyszczenie kotła oraz komina.</li>
-      </ul>
-    </article>
-    <article class="pc">
-      <span class="pt">Do domu</span>
-      <h3>Pellet Standard</h3>
-      <p class="ps">Dobry wybór, jeśli szukasz rozsądnej ceny przy zachowaniu pewnego ogrzewania.</p>
-      <p class="pp">1 090 zł / tona</p>
-      <ul class="pl">
-        >Solidna wydajność do codziennego ogrzewania domu.</li>
-        >Stała jakość – ten sam pellet w całym sezonie.</li>
-        >Odbiór własny lub dostawa pod wskazany adres na Mazowszu.</li>
-      </ul>
-    </article>
-    <article class="pc">
-      <span class="pt">Dla firm</span>
-      <h3>Dostawy hurtowe (od 24 ton)</h3>
-      <p class="ps">Rozwiązanie dla biznesu, który potrzebuje pewnego dostawcy pelletu na cały sezon.</p>
-      <p class="pp">1 050 zł / tona</p>
-      <ul class="pl">
-        >Stałe dostawy większych ilości – dla firm, wspólnot i składów opału.</li>
-        >Lepsze warunki cenowe przy cyklicznych zamówieniach.</li>
-        >Szybka wycena po wiadomości na WhatsApp.</li>
-      </ul>
-    </article>
-  </div>
-</section>
-<section id="cennik">
-<section id="wojewodztwa">
-<style>
-#wojewodztwa { max-width: 1120px; margin: 0 auto; }
-#wojewodztwa h2 { font-size: 1.5rem; margin-bottom: .5rem; }
-#wojewodztwa > p { max-width: 44rem; color: var(--mu); font-size: .96rem; margin-bottom: 2rem; line-height: 1.6; }
 
-.woj-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* PRZYCISKI BOCZNE */
-.woj-tabs {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: .5rem;
-}
-
-.woj-tab {
-  padding: .55rem 1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(33,79,59,.18);
-  background: rgba(255,255,255,.7);
-  color: var(--gr);
-  font-size: .88rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background .15s, border-color .15s, color .15s, box-shadow .15s;
-  white-space: nowrap;
-}
-
-.woj-tab:hover {
-  background: rgba(33,79,59,.06);
-  border-color: rgba(33,79,59,.3);
-}
-
-.woj-tab.active {
-  background: linear-gradient(135deg, var(--gr), #163329);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 6px 20px rgba(33,79,59,.25);
-}
-
-/* PANEL TREŚCI */
-.woj-panel {
-  display: none;
-  background: var(--wh);
-  border-radius: var(--rlg);
-  padding: 1.6rem;
-  box-shadow: var(--sh);
-  border: 1px solid rgba(33,79,59,.08);
-  animation: fadeIn .2s ease;
-}
-
-.woj-panel.active { display: block; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-.woj-panel h3 { font-size: 1.1rem; margin-bottom: .3rem; }
-.woj-panel .woj-sub { font-size: .88rem; color: var(--mu); margin-bottom: 1.2rem; line-height: 1.5; }
-
-.woj-prices {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: .7rem;
-  margin-bottom: 1.2rem;
-}
-
-.woj-price-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: .7rem 1rem;
-  background: var(--bg);
-  border-radius: var(--rmd);
-  border: 1px solid rgba(33,79,59,.07);
-}
-
-.woj-price-row span:first-child { font-size: .9rem; color: var(--tx); }
-.woj-price-row .wprice { font-weight: 700; color: var(--gr); font-size: .98rem; white-space: nowrap; }
-
-.woj-note {
-  font-size: .82rem;
-  color: var(--mu);
-  font-style: italic;
-  margin-bottom: 1.1rem;
-  line-height: 1.5;
-}
-
-.woj-panel .btn { font-size: .9rem; padding: .65rem 1.3rem; }
-
-/* DESKTOP – układ boczny */
-@media (min-width: 768px) {
-  .woj-layout {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-
-  .woj-tabs {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    width: 185px;
-    gap: .4rem;
-  }
-
-  .woj-tab {
-    border-radius: var(--rmd);
-    width: 100%;
-    text-align: left;
-    padding: .65rem 1rem;
-  }
-
-  .woj-prices { grid-template-columns: 1fr; }
-}
-
-@media (min-width: 1024px) {
-  .woj-prices { grid-template-columns: repeat(3, 1fr); }
-}
-</style>
-
-  <h2>Dostawa na terenie całej Polski</h2>
-<p>Wybierz swoje województwo i sprawdź aktualne ceny oraz warunki dostawy pelletu w Twoim regionie. Nie widzisz swojego województwa? Napisz na WhatsApp – wycenimy dostawę indywidualnie.</p>
-
-  <div class="woj-layout">
-
-    <!-- ZAKŁADKI -->
-    <div class="woj-tabs">
-      <button class="woj-tab active" data-woj="mazowieckie">Mazowieckie</button>
-      <button class="woj-tab" data-woj="lodzkie">Łódzkie</button>
-      <button class="woj-tab" data-woj="lubelskie">Lubelskie</button>
-      <button class="woj-tab" data-woj="swietokrzyskie">Świętokrzyskie</button>
-      <button class="woj-tab" data-woj="podlaskie">Podlaskie</button>
-      <button class="woj-tab" data-woj="kujawsko">Kujawsko-Pomorskie</button>
-    </div>
-
-    <!-- PANEL: MAZOWIECKIE -->
-    <div class="woj-panel active" id="woj-mazowieckie">
-      <h3>Mazowieckie – Warszawa i okolice</h3>
-      <p class="woj-sub">Podstawowy obszar dostaw. Realizujemy zamówienia do Warszawy i wszystkich powiatów województwa mazowieckiego. Czas dostawy 2–4 dni robocze od potwierdzenia zaliczki.</p>
-      <div class="woj-prices">
-        <div class="woj-price-row"><span>Pellet Premium 6 mm</span><span class="wprice">1 250 zł / t</span></div>
-        <div class="woj-price-row"><span>Pellet Standard</span><span class="wprice">1 090 zł / t</span></div>
-        <div class="woj-price-row"><span>Hurt (od 24 ton)</span><span class="wprice">1 050 zł / t</span></div>
-      </div>
-      <p class="woj-note">Ceny brutto z dostawą. Minimalne zamówienie 1 tona. Bezpłatna dostawa przy zamówieniu od 3 ton.</p>
-      <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20jestem%20z%20Mazowsza%20i%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">Zamów – Mazowieckie</a>
-    </div>
-
-    <!-- PANEL: ŁÓDZKIE -->
-    <div class="woj-panel" id="woj-lodzkie">
-      <h3>Łódzkie – Łódź i okolice</h3>
-      <p class="woj-sub">Dostarczamy pellet do województwa łódzkiego. Obsługujemy Łódź, Piotrków Trybunalski, Skierniewice i okoliczne powiaty. Czas dostawy 3–5 dni roboczych.</p>
-      <div class="woj-prices">
-        <div class="woj-price-row"><span>Pellet Premium 6 mm</span><span class="wprice">1 290 zł / t</span></div>
-        <div class="woj-price-row"><span>Pellet Standard</span><span class="wprice">1 130 zł / t</span></div>
-        <div class="woj-price-row"><span>Hurt (od 24 ton)</span><span class="wprice">1 090 zł / t</span></div>
-      </div>
-      <p class="woj-note">Ceny brutto z dostawą. Minimalne zamówienie 2 tony. Dopłata do dostawy poniżej 2 ton – 80 zł.</p>
-      <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20jestem%20z%20%C5%81%C3%B3dzkiego%20i%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">Zamów – Łódzkie</a>
-    </div>
-
-    <!-- PANEL: LUBELSKIE -->
-    <div class="woj-panel" id="woj-lubelskie">
-      <h3>Lubelskie – Lublin i okolice</h3>
-      <p class="woj-sub">Realizujemy dostawy do województwa lubelskiego. Obsługujemy Lublin, Zamość, Chełm, Biała Podlaska i okoliczne miejscowości. Czas dostawy 3–5 dni roboczych.</p>
-      <div class="woj-prices">
-        <div class="woj-price-row"><span>Pellet Premium 6 mm</span><span class="wprice">1 300 zł / t</span></div>
-        <div class="woj-price-row"><span>Pellet Standard</span><span class="wprice">1 140 zł / t</span></div>
-        <div class="woj-price-row"><span>Hurt (od 24 ton)</span><span class="wprice">1 100 zł / t</span></div>
-      </div>
-      <p class="woj-note">Ceny brutto z dostawą. Minimalne zamówienie 2 tony. Wycena indywidualna dla miejscowości powyżej 100 km od Warszawy.</p>
-      <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20jestem%20z%20Lubelskiego%20i%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">Zamów – Lubelskie</a>
-    </div>
-
-    <!-- PANEL: ŚWIĘTOKRZYSKIE -->
-    <div class="woj-panel" id="woj-swietokrzyskie">
-      <h3>Świętokrzyskie – Kielce i okolice</h3>
-      <p class="woj-sub">Dowozimy pellet do województwa świętokrzyskiego. Główne miasta: Kielce, Ostrowiec Świętokrzyski, Starachowice, Skarżysko-Kamienna. Czas dostawy 4–6 dni roboczych.</p>
-      <div class="woj-prices">
-        <div class="woj-price-row"><span>Pellet Premium 6 mm</span><span class="wprice">1 310 zł / t</span></div>
-        <div class="woj-price-row"><span>Pellet Standard</span><span class="wprice">1 150 zł / t</span></div>
-        <div class="woj-price-row"><span>Hurt (od 24 ton)</span><span class="wprice">1 110 zł / t</span></div>
-      </div>
-      <p class="woj-note">Ceny brutto z dostawą. Minimalne zamówienie 2 tony. Przy zamówieniu od 5 ton – cena do negocjacji.</p>
-      <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20jestem%20ze%20%C5%9Awi%C4%99tokrzyskiego%20i%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">Zamów – Świętokrzyskie</a>
-    </div>
-
-    <!-- PANEL: PODLASKIE -->
-    <div class="woj-panel" id="woj-podlaskie">
-      <h3>Podlaskie – Białystok i okolice</h3>
-      <p class="woj-sub">Obsługujemy województwo podlaskie. Dostarczamy do Białegostoku, Łomży, Suwałk i okolicznych powiatów. Czas dostawy 4–6 dni roboczych od potwierdzenia.</p>
-      <div class="woj-prices">
-        <div class="woj-price-row"><span>Pellet Premium 6 mm</span><span class="wprice">1 320 zł / t</span></div>
-        <div class="woj-price-row"><span>Pellet Standard</span><span class="wprice">1 160 zł / t</span></div>
-        <div class="woj-price-row"><span>Hurt (od 24 ton)</span><span class="wprice">1 120 zł / t</span></div>
-      </div>
-      <p class="woj-note">Ceny brutto z dostawą. Minimalne zamówienie 2 tony. Możliwa dostawa do granicy województwa – wycena indywidualna.</p>
-      <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20jestem%20z%20Podlaskiego%20i%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">Zamów – Podlaskie</a>
-    </div>
-
-    <!-- PANEL: KUJAWSKO-POMORSKIE -->
-    <div class="woj-panel" id="woj-kujawsko">
-      <h3>Kujawsko-Pomorskie – Bydgoszcz i Toruń</h3>
-      <p class="woj-sub">Realizujemy dostawy do województwa kujawsko-pomorskiego. Obsługujemy Bydgoszcz, Toruń, Włocławek, Grudziądz i okolice. Czas dostawy 4–6 dni roboczych.</p>
-      <div class="woj-prices">
-        <div class="woj-price-row"><span>Pellet Premium 6 mm</span><span class="wprice">1 330 zł / t</span></div>
-        <div class="woj-price-row"><span>Pellet Standard</span><span class="wprice">1 170 zł / t</span></div>
-        <div class="woj-price-row"><span>Hurt (od 24 ton)</span><span class="wprice">1 130 zł / t</span></div>
-      </div>
-      <p class="woj-note">Ceny brutto z dostawą. Minimalne zamówienie 2 tony. Wycena indywidualna dla dostaw na pełne naczepy (24+ ton).</p>
-      <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20jestem%20z%20Kujawsko-Pomorskiego%20i%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">Zamów – Kujawsko-Pomorskie</a> </div>
-</section>
-<style>
+/* CENNIK */
 #cennik{max-width:960px;margin:0 auto;}
 #cennik h2{font-size:1.5rem;margin-bottom:.5rem;}
 #cennik>p{max-width:40rem;color:var(--mu);font-size:.96rem;}
@@ -569,114 +97,79 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
 .pn{margin-top:1rem;font-size:.84rem;color:var(--mu);font-style:italic;}
 #cennik .btn{margin-top:1.4rem;}
 @media(min-width:768px){.prl{grid-template-columns:repeat(3,1fr);}}
-</style>
-  <h2>Cennik – Mazowsze</h2>
-  <p>Ceny brutto za tonę przy dostawie na terenie Mazowsza (Warszawa i okolice).</p>
-  <div class="prl">
-    <div class="prw"><h3>Pellet Premium 6 mm</h3><span class="p">1 250 zł / tona</span></div>
-    <div class="prw"><h3>Pellet Standard</h3><span class="p">1 090 zł / tona</span></div>
-    <div class="prw"><h3>Dostawy hurtowe (od 24 ton)</h3><span class="p">1 050 zł / tona</span></div>
-  </div>
-  <div class="hw">
-    <h3>Jak zamówić pellet?</h3>
-    <ol>
-      >Napisz na WhatsApp podając miejscowość na Mazowszu i ilość ton.</li>
-      >Odpowiemy z potwierdzeniem ceny oraz najbliższym terminem dostawy.</li>
-      >Po opłaceniu zaliczki rezerwujemy towar i termin transportu.</li>
-    </ol>
-  </div>
-  <p class="pn">Cennik aktualny na dzień publikacji. W razie dużych zmian cen rynkowych poinformujemy Cię o różnicy przed potwierdzeniem zamówienia.</p>
-  <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20prosz%C4%99%20o%20ofert%C4%99%20na%20pellet" target="_blank" rel="noopener">Napisz na WhatsApp</a>
-</section>
 
-<section id="kontakt">
-<style>
+/* WOJEWÓDZTWA */
+#wojewodztwa{max-width:1120px;margin:0 auto;}
+#wojewodztwa h2{font-size:1.5rem;margin-bottom:.5rem;}
+#wojewodztwa>p{max-width:44rem;color:var(--mu);font-size:.96rem;margin-bottom:2rem;line-height:1.6;}
+.woj-layout{display:flex;flex-direction:column;gap:1rem;}
+.woj-tabs{display:flex;flex-direction:row;flex-wrap:wrap;gap:.5rem;}
+.woj-tab{padding:.55rem 1rem;border-radius:999px;border:1px solid rgba(33,79,59,.18);background:rgba(255,255,255,.7);color:var(--gr);font-size:.88rem;font-weight:500;cursor:pointer;transition:background .15s,border-color .15s,color .15s,box-shadow .15s;white-space:nowrap;}
+.woj-tab:hover{background:rgba(33,79,59,.06);border-color:rgba(33,79,59,.3);}
+.woj-tab.active{background:linear-gradient(135deg,var(--gr),#163329);color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(33,79,59,.25);}
+.woj-panel{display:none;background:var(--wh);border-radius:var(--rlg);padding:1.6rem;box-shadow:var(--sh);border:1px solid rgba(33,79,59,.08);animation:fadeIn .2s ease;}
+.woj-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+.woj-panel h3{font-size:1.1rem;margin-bottom:.3rem;}
+.woj-sub{font-size:.88rem;color:var(--mu);margin-bottom:1.2rem;line-height:1.5;}
+.woj-prices{display:grid;grid-template-columns:1fr;gap:.7rem;margin-bottom:1.2rem;}
+.woj-price-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 1rem;background:var(--bg);border-radius:var(--rmd);border:1px solid rgba(33,79,59,.07);}
+.woj-price-row span:first-child{font-size:.9rem;color:var(--tx);}
+.wprice{font-weight:700;color:var(--gr);font-size:.98rem;white-space:nowrap;}
+.woj-note{font-size:.82rem;color:var(--mu);font-style:italic;margin-bottom:1.1rem;line-height:1.5;}
+.woj-panel .btn{font-size:.9rem;padding:.65rem 1.3rem;}
+@media(min-width:768px){.woj-layout{flex-direction:row;align-items:flex-start;gap:1.5rem;}.woj-tabs{flex-direction:column;flex-wrap:nowrap;flex-shrink:0;width:185px;gap:.4rem;}.woj-tab{border-radius:var(--rmd);width:100%;text-align:left;padding:.65rem 1rem;}}
+@media(min-width:1024px){.woj-prices{grid-template-columns:repeat(3,1fr);}}
+
+/* FAQ */
+#faq{max-width:860px;margin:0 auto;}
+#faq h2{font-size:1.5rem;margin-bottom:.5rem;}
+#faq>p{color:var(--mu);font-size:.96rem;margin-bottom:2rem;line-height:1.6;}
+.faq-item{border-bottom:1px solid rgba(33,79,59,.1);overflow:hidden;}
+.faq-item:first-of-type{border-top:1px solid rgba(33,79,59,.1);}
+.faq-q{width:100%;background:transparent;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:1rem 0;text-align:left;font-size:.96rem;font-weight:600;color:var(--gr);gap:1rem;}
+.faq-icon{flex-shrink:0;width:22px;height:22px;border-radius:999px;background:rgba(33,79,59,.08);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--gr);transition:background .15s,transform .25s;}
+.faq-item.open .faq-icon{background:var(--gr);color:#fff;transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;font-size:.9rem;color:var(--mu);line-height:1.7;}
+.faq-item.open .faq-a{max-height:400px;padding-bottom:1rem;}
+
+/* FAKTURA */
+#faktura{max-width:860px;margin:0 auto;}
+#faktura h2{font-size:1.5rem;margin-bottom:.5rem;}
+#faktura>p{color:var(--mu);font-size:.96rem;margin-bottom:2rem;line-height:1.6;}
+.fform{background:var(--wh);border-radius:var(--rlg);padding:1.8rem;box-shadow:var(--sh);border:1px solid rgba(33,79,59,.08);}
+.fform-toggle{display:flex;gap:.5rem;margin-bottom:1.5rem;}
+.ftype-btn{flex:1;padding:.6rem 1rem;border-radius:var(--rmd);border:1px solid rgba(33,79,59,.18);background:transparent;color:var(--gr);font-size:.9rem;font-weight:600;cursor:pointer;transition:all .15s;}
+.ftype-btn.active{background:linear-gradient(135deg,var(--gr),#163329);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(33,79,59,.2);}
+.frow{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem;}
+@media(min-width:600px){.frow.two{grid-template-columns:1fr 1fr;}.frow.three{grid-template-columns:1fr 1fr 1fr;}}
+.fgroup{display:flex;flex-direction:column;gap:.35rem;}
+.fgroup label{font-size:.82rem;font-weight:600;color:var(--gr);letter-spacing:.04em;text-transform:uppercase;}
+.fgroup input,.fgroup select{padding:.65rem .9rem;border-radius:var(--rmd);border:1px solid rgba(33,79,59,.18);background:var(--bg);color:var(--tx);font-size:.93rem;font-family:inherit;transition:border-color .15s,box-shadow .15s;width:100%;}
+.fgroup input:focus,.fgroup select:focus{outline:none;border-color:var(--gr);box-shadow:0 0 0 3px rgba(33,79,59,.1);}
+.ferror{font-size:.78rem;color:#c0392b;display:none;margin-top:.2rem;}
+.fdivider{border:none;border-top:1px solid rgba(33,79,59,.08);margin:1.2rem 0;}
+.fform-note{font-size:.82rem;color:var(--mu);line-height:1.6;margin-bottom:1.2rem;}
+.fsubmit-row{display:flex;flex-direction:column;gap:.8rem;align-items:flex-start;}
+@media(min-width:600px){.fsubmit-row{flex-direction:row;align-items:center;}}
+.fsuccess{display:none;background:rgba(33,79,59,.06);border:1px solid rgba(33,79,59,.2);border-radius:var(--rmd);padding:1.2rem 1.4rem;margin-top:1rem;font-size:.93rem;color:var(--gr);line-height:1.6;}
+.fsuccess strong{display:block;margin-bottom:.3rem;font-size:1rem;}
+
+/* KONTAKT */
 #kontakt{max-width:720px;margin:0 auto;}
 #kontakt h2{font-size:1.4rem;margin-bottom:.6rem;}
 #kontakt p{color:var(--mu);font-size:.96rem;margin-bottom:1rem;line-height:1.65;}
-</style>
-  <h2>Przedstawimy ofertę przez WhatsApp</h2>
-  <p>Napisz wiadomość, a przygotujemy ofertę, dostępność oraz szczegóły zakupu pelletu. Numer kontaktowy: <strong>+48 793 573 900</strong>.</p>
-  <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20otrzyma%C4%87%20ofert%C4%99%20pelletu" target="_blank" rel="noopener">Otwórz WhatsApp</a>
-</section>
-<footer id="footer">
-<style>
-#footer { margin-top: 3rem; padding: 2.5rem 1.5rem 0; background: radial-gradient(circle at top, #1f3c2f 0, #11251c 60%, #0b1712 100%); color: #f7f2e8; }
-.fi { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; padding-bottom: 2rem; }
-.fcol h3 { font-size: .82rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; color: rgba(247,242,232,.85); margin-bottom: .7rem; }
-.fcol p, .fcol address { font-size: .88rem; color: rgba(247,242,232,.65); line-height: 1.85; font-style: normal; }
-.fcol a { color: rgba(247,242,232,.8); text-decoration: none; position: relative; padding-bottom: 1px; }
-.fcol a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--go); transition: width .18s; }
-.fcol a:hover::after { width: 100%; }
-.fbrand-name { font-weight: 700; letter-spacing: .16em; text-transform: uppercase; font-size: .95rem; color: #f7f2e8; margin-bottom: .3rem; }
-.fbrand-sub { font-size: .85rem; color: rgba(247,242,232,.6); }
-.fbot { max-width: 1120px; margin: 0 auto; border-top: 1px solid rgba(247,242,232,.12); padding: 1rem 0 1.5rem; display: flex; flex-direction: column; gap: .4rem; }
-.fbot p { margin: 0; font-size: .78rem; color: rgba(247,242,232,.45); }
-.fbot a { color: rgba(247,242,232,.55); text-decoration: none; }
-.fbot a:hover { color: rgba(247,242,232,.85); }
-.fbot-links { display: flex; flex-wrap: wrap; gap: .3rem .8rem; }
-@media(min-width: 768px) {
-  #footer { padding: 3rem 2.5rem 0; }
-  .fi { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 2.5rem; }
-  .fbot { flex-direction: row; justify-content: space-between; align-items: center; }
-}
-</style>
 
-  <div class="fi">
-
-    <div class="fcol">
-      <p class="fbrand-name">Sosnowe Chwile</p>
-      <p class="fbrand-sub">Pellet premium • naturalne ciepło</p>
-      <br>
-      <address>
-        NORDIVA TRADE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ<br>
-        Rynek 17/2<br>
-        14-230 Starogard Gdański<br>
-        NIP: 592-230-81-05
-      </address>
-    </div>
-
-    <div class="fcol">
-      <h3>Kontakt</h3>
-      <p>
-        WhatsApp / telefon:<br>
-        <a href="tel:+48793573900">+48 793 573 900</a><br><br>
-        Godziny kontaktu:<br>
-        Pon–Pt 8:00–18:00<br>
-        Sob 9:00–14:00
-      </p>
-    </div>
-
-    <div class="fcol">
-      <h3>Nawigacja</h3>
-      <p>
-        <a href="#oferta">Oferta</a><br>
-        <a href="#cennik">Cennik</a><br>
-        <a href="#wojewodztwa">Województwa</a><br>
-        <a href="#faq">FAQ</a><br>
-        <a href="#kontakt">Kontakt</a>
-      </p>
-    </div>
-
-    <div class="fcol">
-      <h3>Napisz na WhatsApp</h3>
-      <p>Szybkie zamówienie i wycena dostawy przez WhatsApp – odpowiadamy w ciągu kilku minut.</p>
-      <br>
-      <a class="btn" style="font-size:.88rem;"
-         href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet"
-         target="_blank" rel="noopener">
-        Otwórz WhatsApp
-      </a>
-    </div>
-
-  </div>
-
-  <div class="fbot">
-    <p>© 2026 Sosnowe Chwile • Pellet Premium • Starogard Gdański</p>
-    <div class="fbot-links">
-      <a href="regulamin.html">Regulamin</a>
-      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
-    </div>
-  </div>
-
-</footer>>
+/* STOPKA */
+#footer{margin-top:3rem;padding:2.5rem 1.5rem 0;background:radial-gradient(circle at top,#1f3c2f 0,#11251c 60%,#0b1712 100%);color:#f7f2e8;}
+.fi{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:2rem;padding-bottom:2rem;}
+.fcol h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:rgba(247,242,232,.85);margin-bottom:.7rem;}
+.fcol p,.fcol address{font-size:.88rem;color:rgba(247,242,232,.65);line-height:1.85;font-style:normal;}
+.fcol a{color:rgba(247,242,232,.8);text-decoration:none;position:relative;padding-bottom:1px;}
+.fcol a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--go);transition:width .18s;}
+.fcol a:hover::after{width:100%;}
+.fbrand-name{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.95rem;color:#f7f2e8;margin-bottom:.3rem;}
+.fbrand-sub{font-size:.85rem;color:rgba(247,242,232,.6);}
+.fbot{max-width:1120px;margin:0 auto;border-top:1px solid rgba(247,242,232,.12);padding:1rem 0 1.5rem;display:flex;flex-direction:column;gap:.4rem;}
+.fbot p{margin:0;font-size:.78rem;color:rgba(247,242,232,.45);}
+.fbot a
