@@ -179,6 +179,30 @@ h1,h2,h3{color:var(--gr);margin-top:0;}
 @media(min-width:768px){#footer{padding:3rem 2.5rem 0;}.fi{flex-direction:row;justify-content:space-between;align-items:flex-start;gap:2.5rem;}.fbot{flex-direction:row;justify-content:space-between;align-items:center;}}
 </style>
 </head>
+// Formularz faktury
+document.addEventListener('DOMContentLoaded', function () {
+  const tabs = document.querySelectorAll('.ftab');
+  const poleNIP = document.getElementById('poleNIP');
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        t.style.background = '#fff';
+        t.style.color = '#4a7c2e';
+      });
+      tab.style.background = '#4a7c2e';
+      tab.style.color = '#fff';
+      if (poleNIP) poleNIP.style.display = tab.dataset.typ === 'firma' ? 'block' : 'none';
+    });
+  });
+
+  const form = document.getElementById('fakturaForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nip = (document.getElementById('nip') || {}).value || '';
+      const nazwaFirmy = (document.getElementById('nazwaFirmy') || {}).value || '';
+      const imie = (document.getElementById('imie') || {}).value
 <body>
 
 <!-- NAVBAR -->
