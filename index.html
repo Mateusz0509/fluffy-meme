@@ -563,38 +563,380 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
+
 <!-- FAQ -->
 <section id="faq">
   <h2>Często zadawane pytania</h2>
   <p>Masz wątpliwości? Poniżej znajdziesz odpowiedzi na najczęstsze pytania dotyczące zamówień i dostawy pelletu.</p>
+
   <div class="faq-item">
     <button class="faq-q">Jak złożyć zamówienie?<span class="faq-icon">+</span></button>
     <div class="faq-a">Wystarczy napisać na WhatsApp pod numer +48 793 573 900, podając miejscowość i ilość ton. Odpiszemy z potwierdzeniem ceny i terminem dostawy. Po opłaceniu zaliczki rezerwujemy towar i transport.</div>
   </div>
+
   <div class="faq-item">
     <button class="faq-q">Jaka jest minimalna ilość zamówienia?<span class="faq-icon">+</span></button>
     <div class="faq-a">Minimalne zamówienie to 1 tona dla województwa mazowieckiego. W pozostałych województwach minimalne zamówienie wynosi 2 tony ze względu na koszty transportu.</div>
   </div>
+
   <div class="faq-item">
     <button class="faq-q">Ile trwa dostawa?<span class="faq-icon">+</span></button>
     <div class="faq-a">Dla Mazowsza: 2–4 dni robocze. Dla pozostałych województw: 3–6 dni roboczych od momentu zaksięgowania zaliczki. W sezonie grzewczym (październik–luty) czas dostawy może się wydłużyć o 1–2 dni.</div>
   </div>
+
   <div class="faq-item">
     <button class="faq-q">Czy ceny zawierają dostawę?<span class="faq-icon">+</span></button>
     <div class="faq-a">Tak – wszystkie ceny są cenami brutto z dostawą pod wskazany adres. Nie ma ukrytych dopłat. Jedyny wyjątek to zamówienia poniżej minimalnej ilości, gdzie może pojawić się dopłata transportowa.</div>
   </div>
+
   <div class="faq-item">
     <button class="faq-q">Jak wygląda dostawa – worki czy luz?<span class="faq-icon">+</span></button>
     <div class="faq-a">Dostarczamy pellet w workach 15 kg na paletach lub w big bagach. Przy zamówieniach od 24 ton możliwa jest dostawa luzem – szczegóły ustalamy indywidualnie przez WhatsApp.</div>
   </div>
+
   <div class="faq-item">
     <button class="faq-q">Czy wystawiacie fakturę VAT?<span class="faq-icon">+</span></button>
     <div class="faq-a">Tak, wystawiamy faktury VAT zarówno dla klientów indywidualnych, jak i firm. Przy składaniu zamówienia prosimy o podanie danych do faktury lub wypełnienie formularza poniżej.</div>
   </div>
+
   <div class="faq-item">
     <button class="faq-q">Jak działa zaliczka i rezerwacja?<span class="faq-icon">+</span></button>
     <div class="faq-a">Po uzgodnieniu szczegółów prosimy o wpłatę zaliczki (zwykle 20–30% wartości zamówienia). Zaliczka potwierdza rezerwację towaru i terminu transportu. Resztę należności można uregulować przy dostawie lub przelewem przed realizacją.</div>
   </div>
+
   <div class="faq-item">
-    <button class="faq-q">Co jeśli cena się zmieni po złvaożeniu zamówienia?<span class="faq-icon">+</span></button>
-    <div class="faq-a">W przypadku znaczących zmian cen rynkowych informujemy Cię o różnicy
+    <button class="faq-q">Co jeśli cena się zmieni po złożeniu zamówienia?<span class="faq-icon">+</span></button>
+    <div class="faq-a">W przypadku znaczących zmian cen rynkowych informujemy Cię o różnicy przed potwierdzeniem zamówienia. Masz wtedy możliwość zaakceptowania nowej ceny lub rezygnacji.</div>
+  </div>
+</section>
+
+<!-- FAKTURA -->
+<section id="faktura">
+  <h2>Formularz do faktury VAT</h2>
+  <p>Wypełnij podstawowe dane – przygotujemy fakturę i wycenę dostawy. Po kliknięciu „Wyślij dane” otworzy się WhatsApp z gotową wiadomością.</p>
+
+  <form id="fakturaForm" class="fform">
+    <div class="fform-toggle">
+      <button type="button" class="ftype-btn active" data-typ="osoba">Osoba prywatna</button>
+      <button type="button" class="ftype-btn" data-typ="firma">Firma</button>
+    </div>
+
+    <!-- pola dla firmy -->
+    <div id="firmaFields" class="frow two" style="display:none;">
+      <div class="fgroup">
+        <label for="nazwaFirmy">Nazwa firmy</label>
+        <input type="text" id="nazwaFirmy" />
+        <div id="errNazwaFirmy" class="ferror">Podaj nazwę firmy</div>
+      </div>
+      <div class="fgroup">
+        <label for="nip">NIP</label>
+        <input type="text" id="nip" />
+        <div id="errNIP" class="ferror">Podaj prawidłowy NIP</div>
+      </div>
+    </div>
+
+    <!-- dane kontaktowe -->
+    <div class="frow two">
+      <div class="fgroup">
+        <label for="imie">Imię i nazwisko</label>
+        <input type="text" id="imie" />
+        <div id="errImie" class="ferror">To pole jest wymagane</div>
+      </div>
+      <div class="fgroup">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" />
+        <div id="errEmail" class="ferror">Podaj poprawny adres e-mail</div>
+      </div>
+    </div>
+
+    <div class="frow two">
+      <div class="fgroup">
+        <label for="telefon">Telefon (opcjonalnie)</label>
+        <input type="tel" id="telefon" />
+      </div>
+      <div class="fgroup">
+        <label for="miejscowosc">Miejscowość</label>
+        <input type="text" id="miejscowosc" />
+        <div id="errMiejscowosc" class="ferror">Podaj miejscowość dostawy</div>
+      </div>
+    </div>
+
+    <!-- zamówienie -->
+    <div class="frow two">
+      <div class="fgroup">
+        <label for="iloscTon">Ilość ton</label>
+        <input type="number" min="1" step="0.5" id="iloscTon" />
+        <div id="errIloscTon" class="ferror">Podaj ilość ton</div>
+      </div>
+      <div class="fgroup">
+        <label for="formaPlatnosci">Forma płatności</label>
+        <select id="formaPlatnosci">
+          <option value="">Wybierz</option>
+          <option value="przelew">Przelew przed dostawą</option>
+          <option value="gotowka">Gotówka przy dostawie</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="frow">
+      <div class="fgroup">
+        <label for="uwagi">Uwagi do zamówienia (opcjonalnie)</label>
+        <input type="text" id="uwagi" />
+      </div>
+    </div>
+
+    <hr class="fdivider" />
+
+    <p class="fform-note">
+      Po kliknięciu „Wyślij dane” otworzy się WhatsApp z podsumowaniem – tam potwierdzimy cenę i termin dostawy.
+    </p>
+
+    <div class="fsubmit-row">
+      <button type="submit" class="btn">Wyślij dane do faktury</button>
+    </div>
+
+    <div id="fakturaSuccess" class="fsuccess">
+      <strong>Dziękujemy!</strong>
+      Wiadomość z danymi została przygotowana w WhatsApp. Dokończ wysyłkę w aplikacji, a my odezwiemy się z potwierdzeniem.
+    </div>
+  </form>
+</section>
+
+<!-- KONTAKT (prosty przykład) -->
+<section id="kontakt">
+  <h2>Kontakt</h2>
+  <p>Masz pytania? Napisz na WhatsApp lub na e-mail – odpowiemy najszybciej jak to możliwe.</p>
+  <p>E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a></p>
+  <p>Telefon: +48 793 573 900</p>
+</section>
+
+<!-- STOPKA -->
+<footer id="footer">
+  <div class="fi">
+    <div class="fcol">
+      <div class="fbrand-name">Sosnowe Chwile</div>
+      <div class="fbrand-sub">Pellet premium z dostawą na terenie całej Polski</div>
+      <p>Ogrzewanie domu, firmy i wspólnot – stabilne dostawy pelletu przez cały sezon grzewczy.</p>
+    </div>
+    <div class="fcol">
+      <h3>Dane firmy</h3>
+      <address>
+        Sosnowe Chwile Sp. z o.o.<br/>
+        Rynek 17/2<br/>
+        14-230 Starogard Gdański<br/>
+        NIP: 000-000-00-00
+      </address>
+    </div>
+    <div class="fcol">
+      <h3>Kontakt</h3>
+      <p>
+        E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a><br/>
+        WhatsApp: <a href="https://wa.me/48793573900" target="_blank" rel="noopener">+48 793 573 900</a>
+      </p>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2025 Sosnowe Chwile. Wszelkie prawa zastrzeżone.</p>
+    <div class="fbot-links">
+      <a href="#oferta">Oferta</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#wojewodztwa">Województwa</a>
+      <a href="#faq">FAQ</a>
+      <a href="#faktura">Faktura</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// MENU MOBILNE (hamburger)
+document.addEventListener('DOMContentLoaded', function () {
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('hb');
+  const navList = document.getElementById('nl');
+
+  // sticky cień przy scrollu
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 10) {
+      nav.classList.add('sc');
+    } else {
+      nav.classList.remove('sc');
+    }
+  });
+
+  // otwieranie / zamykanie menu mobilnego
+  if (burger && navList) {
+    burger.addEventListener('click', function () {
+      const isOpen = navList.classList.toggle('op');
+      burger.classList.toggle('op', isOpen);
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // zamknij menu po kliknięciu w link
+    navList.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navList.classList.remove('op');
+        burger.classList.remove('op');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // FAQ – rozwijanie pytań
+  document.querySelectorAll('#faq .faq-item').forEach(function (item) {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+
+    if (!btn || !ans) return;
+
+    btn.addEventListener('click', function () {
+      const isOpen = item.classList.contains('open');
+
+      // zamknij wszystkie
+      document.querySelectorAll('#faq .faq-item').forEach(function (it) {
+        it.classList.remove('open');
+        const a = it.querySelector('.faq-a');
+        if (a) a.style.maxHeight = null;
+      });
+
+      // jeśli wcześniej było zamknięte – otwórz kliknięte
+      if (!isOpen) {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // WOJEWÓDZTWA – przełączanie zakładek
+  const tabs = document.querySelectorAll('.woj-tab');
+  const panels = document.querySelectorAll('.woj-panel');
+
+  if (tabs.length && panels.length) {
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        const target = tab.getAttribute('data-woj');
+
+        // aktywny przycisk
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+
+        // aktywny panel
+        panels.forEach(function (p) {
+          if (p.id === 'woj-' + target) {
+            p.classList.add('active');
+          } else {
+            p.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+
+  // FORMULARZ FAKTURY
+  const typeBtns = document.querySelectorAll('.ftype-btn');
+  const firmaFields = document.getElementById('firmaFields');
+  const form = document.getElementById('fakturaForm');
+  const successBox = document.getElementById('fakturaSuccess');
+
+  // przełącznik osoba / firma
+  if (typeBtns.length && firmaFields) {
+    typeBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const typ = btn.getAttribute('data-typ') || 'osoba';
+
+        typeBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        if (typ === 'firma') {
+          firmaFields.style.display = 'grid';
+        } else {
+          firmaFields.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // walidacja + WhatsApp
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // prosta walidacja
+      let ok = true;
+      form.querySelectorAll('.ferror').forEach(function (el) {
+        el.style.display = 'none';
+      });
+
+      function check(id, errId) {
+        const el = document.getElementById(id);
+        const err = document.getElementById(errId);
+        if (!el || !err) return true;
+        if (!el.value.trim()) {
+          err.style.display = 'block';
+          ok = false;
+          return false;
+        }
+        return true;
+      }
+
+      check('imie', 'errImie');
+      check('email', 'errEmail');
+      check('miejscowosc', 'errMiejscowosc');
+      check('iloscTon', 'errIloscTon');
+
+      const aktywnyTyp = document.querySelector('.ftype-btn.active');
+      const typ = aktywnyTyp ? aktywnyTyp.getAttribute('data-typ') : 'osoba';
+
+      if (typ === 'firma') {
+        check('nazwaFirmy', 'errNazwaFirmy');
+        check('nip', 'errNIP');
+      }
+
+      if (!ok) {
+        const firstErr = form.querySelector('.ferror[style*="block"]');
+        if (firstErr) {
+          const parent = firstErr.closest('.fgroup') || firstErr;
+          parent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      // budowa wiadomości WhatsApp
+      const imie = (document.getElementById('imie') || {}).value || '';
+      const email = (document.getElementById('email') || {}).value || '';
+      const tel = (document.getElementById('telefon') || {}).value || '';
+      const miejscowosc = (document.getElementById('miejscowosc') || {}).value || '';
+      const ilosc = (document.getElementById('iloscTon') || {}).value || '';
+      const formaPlatnosci = (document.getElementById('formaPlatnosci') || {}).value || '';
+      const uwagi = (document.getElementById('uwagi') || {}).value || '';
+
+      const nazwaFirmy = (document.getElementById('nazwaFirmy') || {}).value || '';
+      const nip = (document.getElementById('nip') || {}).value || '';
+
+      let msg = 'Nowe zapytanie o fakturę na pellet:%0A%0A';
+      msg += 'Typ klienta: ' + (typ === 'firma' ? 'Firma' : 'Osoba prywatna') + '%0A';
+      if (typ === 'firma') {
+        msg += 'Nazwa firmy: ' + nazwaFirmy + '%0A';
+        msg += 'NIP: ' + nip + '%0A';
+      }
+      msg += 'Imię i nazwisko: ' + imie + '%0A';
+      msg += 'E-mail: ' + email + '%0A';
+      if (tel) msg += 'Telefon: ' + tel + '%0A';
+      msg += 'Miejscowość: ' + miejscowosc + '%0A';
+      msg += 'Ilość ton: ' + ilosc + '%0A';
+      if (formaPlatnosci) msg += 'Forma płatności: ' + formaPlatnosci + '%0A';
+      if (uwagi) msg += '%0AUwagi: ' + uwagi + '%0A';
+
+      const url = 'https://wa.me/48793573900?text=' + encodeURIComponent(decodeURIComponent(msg));
+      window.open(url, '_blank');
+
+      if (successBox) {
+        successBox.style.display = 'block';
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>
