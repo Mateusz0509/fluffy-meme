@@ -1,162 +1,701 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sosnowe Chwile – Pellet Premium</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sosnowe Chwile – Pellet Premium</title>
+  <meta name="description" content="Pellet premium dla domów i firm na Mazowszu. Dostawa Warszawa i okolice. Zamów wygodnie przez WhatsApp." />
+  <style>
 
-    <!-- Główny arkusz stylów -->
-    <link rel="stylesheet" href="style.css">
+    /* ============================
+       ZMIENNE I BAZA
+       ============================ */
 
-    <!-- Opcjonalnie: favicon -->
-    <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
-  </head>
-  <body>
+    :root {
+      --color-bg: #f7f2e8;
+      --color-bg-light: #ffffff;
+      --color-primary: #214f3b;
+      --color-accent: #c98b2f;
+      --color-text: #1f2724;
+      --color-muted: #6b716d;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.08);
+      --shadow-subtle: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
 
-    <header class="topbar">
-      <div class="wrap topbar-inner">
-        <div class="brand">
-          <!-- Upewnij się, że plik istnieje w tym samym katalogu -->
-          <img src="logo-pellet.jpg" alt="Sosnowe Chwile logo">
-          <div class="brand-text">
-            <strong>Sosnowe Chwile</strong>
-            <span>Pellet premium • naturalne ciepło</span>
-          </div>
-        </div>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        <nav class="nav">
-          <a href="#oferta">Oferta</a>
-          <a href="#cennik">Cennik</a>
-          <a href="#zaliczka">Zaliczka</a>
-          <a href="#kontakt">Kontakt</a>
-          <a class="btn btn-primary"
-             href="https://wa.me/48793573900"
-             target="_blank"
-             rel="noopener">
-            WhatsApp: 48 793 573 900
-          </a>
-        </nav>
-      </div>
-    </header>
-    
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="hero-card">
-          <div class="hero-overlay"></div>
-          <div class="hero-content">
-            <div class="eyebrow">Pellet Premium • Ciepło klasy premium</div>
-            <h1>Pellet Premium</h1>
-            <p class="lead">Wysoka wydajność, czyste spalanie i elegancka obsługa zamówień. Oferta dla klientów, którzy oczekują stabilnej jakości i wygodnego kontaktu przez WhatsApp.</p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20otrzyma%C4%87%20ofert%C4%99%20pelletu" target="_blank" rel="noopener">Napisz na Wh[...]
-              <a class="btn btn-outline" href="#cennik">Zobacz cennik</a>
-            </div>
-            <div class="hero-mini">
-              <div class="mini"><strong>Jakość premium</strong><span>Starannie wyselekcjonowany pellet do domu i firmy.</span></div>
-              <div class="mini"><strong>Szybki kontakt</strong><span>Ofertę przedstawiamy przez WhatsApp.</span></div>
-              <div class="mini"><strong>Bezpieczna rezerwacja</strong><span>Zaliczka potwierdza zamówienie i dostępność towaru.</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    html {
+      scroll-behavior: smooth;
+    }
 
-    <section class="<section id="oferta">
-  <h2>Oferta</h2>
-  <p>Pellet premium dla domów i firm na terenie Mazowsza (Warszawa i okolice).</p>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--color-text);
+      background: radial-gradient(circle at top, #ffffff 0, var(--color-bg) 50%, #f1eadf 100%);
+      min-height: 100vh;
+    }
 
-  <div class="offer-list">
-    <div class="offer-item">
-      <div class="badge">Najpopularniejszy</div>
-      <h3>Pellet Premium 6 mm</h3>
-      <p class="offer-price">1 250 zł / tona</p>
-      <ul>
-        <li>Wysoka kaloryczność</li>
-        <li>Niska wilgotność</li>
-        <li>Czyste spalanie kotła</li>
-      </ul>
-    </div>
+    section {
+      padding: 3.5rem 1.5rem;
+    }
 
-    <div class="offer-item">
-      <div class="badge">Do domu</div>
-      <h3>Pellet Standard</h3>
-      <p class="offer-price">1 090 zł / tona</p>
-      <ul>
-        <li>Dobra wydajność do codziennego ogrzewania</li>
-        <li>Stabilna jakość</li>
-        <li>Możliwy odbiór lub dostawa</li>
-      </ul>
-    </div>
+    @media (min-width: 768px) {
+      section {
+        padding: 4.5rem 2.5rem;
+      }
+    }
 
-    <div class="offer-item">
-      <div class="badge">Dla firm</div>
-      <h3>Dostawy hurtowe (od 24 ton)</h3>
-      <p class="offer-price">1 050 zł / tona</p>
-      <ul>
-        <li>Większe ilości na stałe</li>
-        <li>Lepsze warunki dla stałej współpracy</li>
-        <li>Szybka wycena po kontakcie</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    h1, h2, h3 {
+      color: var(--color-primary);
+      margin-top: 0;
+    }
 
-    <section class=<section id="cennik">
-  <h2>Cennik – Mazowsze</h2>
-  <p>Ceny brutto za tonę przy dostawie na terenie Mazowsza (Warszawa i okolice).</p>
+    /* ============================
+       PRZYCISKI
+       ============================ */
 
-  <div class="price-list">
-    <div class="price-item">
-      <h3>Pellet Premium 6 mm</h3>
-      <p class="price">1 250 zł / tona</p>
-    </div>
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+    }
 
-    <div class="price-item">
-      <h3>Pellet Standard</h3>
-      <p class="price">1 090 zł / tona</p>
-    </div>
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary), #163329);
+      color: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
 
-    <div class="price-item">
-      <h3>Dostawy hurtowe (od 24 ton)</h3>
-      <p class="price">1 050 zł / tona</p>
-    </div>
-  </div>
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+      background: linear-gradient(135deg, #163329, #10241d);
+    }
 
-  <p>
-    <strong>Napisz na WhatsApp</strong>, podaj miejscowość w Mazowszu i ilość ton,
-    a potwierdzimy cenę oraz najbliższy termin dostawy.
-  </p>
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.5);
+      color: var(--color-primary);
+      border: 1px solid rgba(33, 79, 59, 0.18);
+      backdrop-filter: blur(6px);
+    }
 
-  <p class="price-note">
-    Cennik aktualny na dzień publikacji. W razie dużych zmian cen rynkowych
-    poinformujemy Cię o różnicy przed potwierdzeniem zamówienia.
-  </p>
-</section>
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.85);
+    }
 
-    <section class="section" id="kontakt">
-      <div class="wrap contact">
-        <div class="contact-box whatsapp">
-          <div>
-            <div class="eyebrow" style="background:rgba(255,255,255,.08)">Kontakt WhatsApp</div>
-            <h2 style="color:#fff;margin-top:16px">Przedstawimy ofertę przez WhatsApp</h2>
-            <p class="fine" style="color:rgba(255,255,255,.9)">Napisz wiadomość, a przygotujemy ofertę, dostępność oraz szczegóły zakupu pelletu. Numer kontaktowy: <strong>+48 793 573 900[...]
-          </div>
-          <a class="btn btn-primary" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20prosz%C4%99%20o%20ofert%C4%99%20pelletu" target="_blank" rel="noopener">Otwórz WhatsApp</a>
-        </div>
-        <div class="contact-box">
-          <h2>Dlaczego ten układ działa</h2>
-          <p class="fine">Jest elegancki, prosty i spójny z logo. Zieleń i złoto budują wrażenie jakości, a jasne tło sprawia, że treść jest czytelna również na telefonie.</p>
-          <div class="note">
-            <strong>Kolory strony:</strong> #214f3b, #c98b2f, #f7f2e8, #ffffff
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    /* ============================
+       NAVBAR
+       ============================ */
 
-  <footer>
-    © 2026 Sosnowe Chwile • Pellet Premium
-  </footer>
-</body>
-</html>
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      width: 100%;
+      background: rgba(247, 242, 232, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(33, 79, 59, 0.1);
+      transition: box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    #navbar.navbar--scrolled {
+      background: rgba(247, 242, 232, 0.97);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.7rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .nav-brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .nav-brand-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+
+    .nav-brand-sub {
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      text-decoration: none;
+      padding: 0.4rem 0.7rem;
+      border-radius: 8px;
+      transition: background 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(33, 79, 59, 0.07);
+    }
+
+    .nav-links .nav-cta {
+      margin-left: 0.6rem;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--color-primary), #163329);
+      color: #ffffff !important;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .nav-links .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+      background: linear-gradient(135deg, #163329, #0f2118) !important;
+    }
+
+    .nav-hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      padding: 6px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.15s ease;
+    }
+
+    .nav-hamburger:hover {
+      background: rgba(33, 79, 59, 0.07);
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      transform-origin: center;
+    }
+
+    .nav-hamburger--open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-hamburger--open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .nav-hamburger--open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-links--open {
+      display: flex !important;
+      flex-direction: column;
+      align-items: stretch;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(247, 242, 232, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(33, 79, 59, 0.1);
+      padding: 0.8rem 1.5rem 1rem;
+      gap: 0.2rem;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+      animation: navSlideIn 0.18s ease;
+    }
+
+    @keyframes navSlideIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-links--open a {
+      padding: 0.6rem 0.8rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      color: var(--color-primary) !important;
+    }
+
+    .nav-links--open .nav-cta {
+      margin-left: 0;
+      margin-top: 0.4rem;
+      text-align: center;
+      justify-content: center;
+      color: #ffffff !important;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .nav-hamburger { display: none; }
+    }
+
+    /* ============================
+       HERO
+       ============================ */
+
+    #hero {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
+      padding-top: 3rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+
+    #hero h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-lead {
+      font-size: 1rem;
+      color: var(--color-muted);
+      max-width: 40rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    @media (max-width: 640px) {
+      #hero h1 { font-size: 1.6rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    }
+
+    /* ============================
+       KORZYŚCI
+       ============================ */
+
+    #benefits {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding-top: 0;
+      padding-bottom: 2rem;
+    }
+
+    .benefit {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.2rem;
+      box-shadow: var(--shadow-subtle);
+      border: 1px solid rgba(201, 139, 47, 0.08);
+    }
+
+    .benefit h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .benefit p {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      line-height: 1.5;
+    }
+
+    @media (min-width: 768px) {
+      #benefits {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+    }
+
+    /* ============================
+       OFERTA
+       ============================ */
+
+    #oferta {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    #oferta h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #oferta > p {
+      max-width: 44rem;
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      line-height: 1.6;
+    }
+
+    .product-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .product {
+      background: var(--color-bg-light);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-subtle);
+      border: 1px solid rgba(33, 79, 59, 0.08);
+      position: relative;
+    }
+
+    .product-featured {
+      border: 1px solid rgba(201, 139, 47, 0.3);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+      background: radial-gradient(circle at top left, #fffaf2 0, #ffffff 42%, #f6efe3 100%);
+    }
+
+    .product-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(201, 139, 47, 0.1);
+      color: var(--color-accent);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.55rem;
+    }
+
+    .product h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-subtitle {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      margin-bottom: 0.7rem;
+      line-height: 1.5;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .product-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .product-list li {
+      font-size: 0.88rem;
+      color: var(--color-text);
+      padding-left: 1.2rem;
+      position: relative;
+      margin-bottom: 0.4rem;
+      line-height: 1.5;
+    }
+
+    .product-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--color-accent);
+      position: absolute;
+      left: 0.25rem;
+      top: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+    }
+
+    /* ============================
+       CENNIK
+       ============================ */
+
+    #cennik {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    #cennik h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #cennik > p {
+      max-width: 40rem;
+      color: var(--color-muted);
+      font-size: 0.96rem;
+    }
+
+    .price-list {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+
+    .price-item {
+      background: var(--color-bg-light);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.1rem;
+      border: 1px solid rgba(33, 79, 59, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .price-item h3 {
+      font-size: 0.96rem;
+      margin: 0;
+    }
+
+    .price-item .price {
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 1rem;
+    }
+
+    .how-to-order {
+      margin-top: 1.8rem;
+      background: rgba(33, 79, 59, 0.04);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.3rem;
+      border: 1px dashed rgba(33, 79, 59, 0.25);
+    }
+
+    .how-to-order h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .how-to-order ol {
+      padding-left: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--color-text);
+      line-height: 1.8;
+    }
+
+    .price-note {
+      margin-top: 1rem;
+      font-size: 0.84rem;
+      color: var(--color-muted);
+      font-style: italic;
+    }
+
+    #cennik .btn-primary {
+      margin-top: 1.4rem;
+    }
+
+    @media (min-width: 768px) {
+      .price-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* ============================
+       KONTAKT
+       ============================ */
+
+    #kontakt {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    #kontakt h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    #kontakt p {
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ============================
+       STOPKA
+       ============================ */
+
+    #footer {
+      margin-top: 3rem;
+      padding: 2.5rem 1.5rem 1.8rem;
+      background: radial-gradient(circle at top, #1f3c2f 0, #11251c 60%, #0b1712 100%);
+      color: #f7f2e8;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .footer-brand {
+      max-width: 20rem;
+    }
+
+    .footer-logo {
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.92rem;
+      color: #f7f2e8;
+    }
+
+    .footer-tagline {
+      margin-top: 0.3rem;
+      font-size: 0.88rem;
+      color: rgba(247, 242, 232, 0.7);
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer-column h3 {
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      color: rgba(247, 242, 232, 0.85);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-column p {
+      font-size: 0.88rem;
+      color: rgba(247, 242, 232, 0.7);
+      line-height: 1.7;
+    }
+
+    .footer-links a {
+      color: rgba(247, 242, 232, 0.85);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 1px;
+    }
+
+    .footer-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--color-accent);
+      transition: width 0.18s ease;
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    .footer-cta {
+      margin-top: 0.9rem;
+      font-size: 0.88rem;
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(247, 242, 232, 0.14);
+      padding-top: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 0.78rem;
+      color: rgba(247, 242, 232, 0.55);
+    }
+
+    .footer-note {
+      font-style: italic;
+    }
+
+    @media (min-width: 768px) {
+      #footer { padding: 3rem 2.5rem 2.2rem; }
+      .footer-inner { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+      .footer-columns { flex-direction: row; gap: 3rem; }
+      .footer-bottom {
