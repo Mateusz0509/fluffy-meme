@@ -123,7 +123,214 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
     <a class="btn2" href="#cennik">Zobacz cennik</a>
   </div>
 </section>
+<section id="faktura">
+<style>
+#faktura { max-width: 860px; margin: 0 auto; }
+#faktura h2 { font-size: 1.5rem; margin-bottom: .5rem; }
+#faktura > p { color: var(--mu); font-size: .96rem; margin-bottom: 2rem; line-height: 1.6; }
 
+.fform { background: var(--wh); border-radius: var(--rlg); padding: 1.8rem; box-shadow: var(--sh); border: 1px solid rgba(33,79,59,.08); }
+
+.fform-toggle { display: flex; gap: .5rem; margin-bottom: 1.5rem; }
+.ftype-btn {
+  flex: 1; padding: .6rem 1rem; border-radius: var(--rmd);
+  border: 1px solid rgba(33,79,59,.18); background: transparent;
+  color: var(--gr); font-size: .9rem; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+}
+.ftype-btn.active {
+  background: linear-gradient(135deg, var(--gr), #163329);
+  color: #fff; border-color: transparent;
+  box-shadow: 0 6px 18px rgba(33,79,59,.2);
+}
+
+.frow { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
+@media(min-width: 600px) { .frow.two { grid-template-columns: 1fr 1fr; } .frow.three { grid-template-columns: 1fr 1fr 1fr; } }
+
+.fgroup { display: flex; flex-direction: column; gap: .35rem; }
+.fgroup label { font-size: .82rem; font-weight: 600; color: var(--gr); letter-spacing: .04em; text-transform: uppercase; }
+.fgroup input, .fgroup select {
+  padding: .65rem .9rem; border-radius: var(--rmd);
+  border: 1px solid rgba(33,79,59,.18);
+  background: var(--bg); color: var(--tx);
+  font-size: .93rem; font-family: inherit;
+  transition: border-color .15s, box-shadow .15s;
+  width: 100%;
+}
+.fgroup input:focus, .fgroup select:focus {
+  outline: none;
+  border-color: var(--gr);
+  box-shadow: 0 0 0 3px rgba(33,79,59,.1);
+}
+.fgroup input.error { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192,57,43,.1); }
+.ferror { font-size: .78rem; color: #c0392b; display: none; }
+.fgroup.has-error .ferror { display: block; }
+
+.firma-fields { display: none; }
+.firma-fields.show { display: contents; }
+
+.fdivider { border: none; border-top: 1px solid rgba(33,79,59,.08); margin: 1.2rem 0; }
+
+.fform-note { font-size: .82rem; color: var(--mu); line-height: 1.6; margin-bottom: 1.2rem; }
+
+.fsubmit-row { display: flex; flex-direction: column; gap: .8rem; align-items: flex-start; }
+@media(min-width: 600px) { .fsubmit-row { flex-direction: row; align-items: center; } }
+
+.fsuccess {
+  display: none;
+  background: rgba(33,79,59,.06);
+  border: 1px solid rgba(33,79,59,.2);
+  border-radius: var(--rmd);
+  padding: 1.2rem 1.4rem;
+  margin-top: 1rem;
+  font-size: .93rem;
+  color: var(--gr);
+  line-height: 1.6;
+}
+.fsuccess.show { display: block; }
+.fsuccess strong { display: block; margin-bottom: .3rem; font-size: 1rem; }
+</style>
+
+  <h2>Dane do faktury</h2>
+  <p>Wypełnij formularz, a wystawimy fakturę VAT i wyślemy ją na podany adres e-mail. Możesz też podać dane przez WhatsApp przy składaniu zamówienia.</p>
+
+  <div class="fform" id="fakturaForm">
+
+    <!-- Typ: osoba / firma -->
+    <div class="fform-toggle">
+      <button class="ftype-btn active" data-type="osoba" type="button">Osoba prywatna</button>
+      <button class="ftype-btn" data-type="firma" type="button">Firma / działalność</button>
+    </div>
+
+    <form id="fakturaFormEl" novalidate>
+
+      <!-- FIRMA -->
+      <div class="frow two firma-fields" id="firmaFields">
+        <div class="fgroup" id="g-nazwa">
+          abel>Nazwa firmy *</label>
+          <input type="text" id="f-nazwa" placeholder="np. Firma Budowlana Kowalski Sp. z o.o."/>
+          <span class="ferror">Podaj nazwę firmy</span>
+        </div>
+        <div class="fgroup" id="g-nip">
+          abel>NIP *</label>
+          <input type="text" id="f-nip" placeholder="000-000-00-00" maxlength="13"/>
+          <span class="ferror">Podaj poprawny NIP (10 cyfr)</span>
+        </div>
+      </div>
+
+      <!-- IMIĘ I NAZWISKO -->
+      <div class="frow two">
+        <div class="fgroup" id="g-imie">
+          abel>Imię *</label>
+          <input type="text" id="f-imie" placeholder="Jan"/>
+          <span class="ferror">Podaj imię</span>
+        </div>
+        <div class="fgroup" id="g-nazwisko">
+          abel>Nazwisko *</label>
+          <input type="text" id="f-nazwisko" placeholder="Kowalski"/>
+          <span class="ferror">Podaj nazwisko</span>
+        </div>
+      </div>
+
+      <!-- ADRES -->
+      <div class="frow">
+        <div class="fgroup" id="g-ulica">
+          abel>Ulica i numer *</label>
+          <input type="text" id="f-ulica" placeholder="ul. Przykładowa 12/3"/>
+          <span class="ferror">Podaj ulicę i numer</span>
+        </div>
+      </div>
+
+      <div class="frow three">
+        <div class="fgroup" id="g-kod">
+          abel>Kod pocztowy *</label>
+          <input type="text" id="f-kod" placeholder="00-000" maxlength="6"/>
+          <span class="ferror">Podaj kod (00-000)</span>
+        </div>
+        <div class="fgroup" id="g-miasto">
+          abel>Miasto *</label>
+          <input type="text" id="f-miasto" placeholder="Warszawa"/>
+          <span class="ferror">Podaj miasto</span>
+        </div>
+        <div class="fgroup" id="g-woj">
+          abel>Województwo</label>
+          <select id="f-woj">
+            <option value="">– wybierz –</option>
+            <option>Mazowieckie</option>
+            <option>Łódzkie</option>
+            <option>Lubelskie</option>
+            <option>Świętokrzyskie</option>
+            <option>Podlaskie</option>
+            <option>Kujawsko-Pomorskie</option>
+            <option>Inne</option>
+          </select>
+        </div>
+      </div>
+
+      <hr class="fdivider"/>
+
+      <!-- KONTAKT -->
+      <div class="frow two">
+        <div class="fgroup" id="g-email">
+          abel>E-mail do faktury *</label>
+          <input type="email" id="f-email" placeholder="jan@example.com"/>
+          <span class="ferror">Podaj poprawny adres e-mail</span>
+        </div>
+        <div class="fgroup" id="g-tel">
+          abel>Telefon / WhatsApp *</label>
+          <input type="tel" id="f-tel" placeholder="+48 000 000 000"/>
+          <span class="ferror">Podaj numer telefonu</span>
+        </div>
+      </div>
+
+      <hr class="fdivider"/>
+
+      <!-- ZAMÓWIENIE -->
+      <div class="frow two">
+        <div class="fgroup" id="g-produkt">
+          abel>Produkt *</label>
+          <select id="f-produkt">
+            <option value="">– wybierz –</option>
+            <option>Pellet Premium 6 mm</option>
+            <option>Pellet Standard</option>
+            <option>Dostawy hurtowe (od 24 ton)</option>
+          </select>
+          <span class="ferror">Wybierz produkt</span>
+        </div>
+        <div class="fgroup" id="g-ilosc">
+          abel>Ilość (tony) *</label>
+          <input type="number" id="f-ilosc" placeholder="np. 3" min="1" max="100"/>
+          <span class="ferror">Podaj ilość ton (min. 1)</span>
+        </div>
+      </div>
+
+      <div class="frow">
+        <div class="fgroup">
+          abel>Uwagi do zamówienia</label>
+          <input type="text" id="f-uwagi" placeholder="np. dostawa na paletach, preferowany termin..."/>
+        </div>
+      </div>
+
+      <p class="fform-note">
+        Dane przekazywane są bezpośrednio do nas przez WhatsApp w celu wystawienia faktury VAT.
+        Nie przechowujemy danych w zewnętrznych bazach. Więcej w <a href="polityka-prywatnosci.html" style="color:var(--gr)">Polityce prywatności</a>.
+      </p>
+
+      <div class="fsubmit-row">
+        <button class="btn" type="submit">Wyślij dane do faktury</button>
+        <span style="font-size:.82rem;color:var(--mu);">Zostaniesz przekierowany do WhatsApp</span>
+      </div>
+
+    </form>
+
+    <!-- SUKCES -->
+    <div class="fsuccess" id="fakturaSuccess">
+      <strong>Dane wysłane – dziękujemy!</strong>
+      Twoje dane do faktury zostały przekazane przez WhatsApp. Odpiszemy z potwierdzeniem i fakturą na podany e-mail.
+    </div>
+
+  </div>
+</section>
 <div class="baner">
   <img src="baner.jpg" alt="Sosnowe Chwile – pellet premium"/>
   <div class="baner-overlay"></div>
