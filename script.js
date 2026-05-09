@@ -19,3 +19,17 @@ nl.querySelectorAll('a').forEach(a => {
 window.addEventListener('scroll', () => {
   nav.classList.toggle('sc', window.scrollY > 12);
 });
+</body>
+<script>
+document.querySelectorAll('.woj-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const woj = tab.dataset.woj;
+
+    document.querySelectorAll('.woj-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.woj-panel').forEach(p => p.classList.remove('active'));
+
+    tab.classList.add('active');
+    document.getElementById('woj-' + woj).classList.add('active');
+  });
+});
+</script>
