@@ -7,9 +7,9 @@
   <meta name="description" content="Pellet premium dla domów i firm na Mazowszu. Dostawa Warszawa i okolice. Zamów wygodnie przez WhatsApp." />
   <style>
 
-    /* =====================
-       ZMIENNE I RESET
-       ===================== */
+    /* ============================
+       ZMIENNE I BAZA
+       ============================ */
 
     :root {
       --color-bg: #f7f2e8;
@@ -20,8 +20,8 @@
       --color-muted: #6b716d;
       --radius-lg: 18px;
       --radius-md: 12px;
-      --shadow-soft: 0 14px 40px rgba(0,0,0,0.08);
-      --shadow-subtle: 0 8px 24px rgba(0,0,0,0.05);
+      --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.08);
+      --shadow-subtle: 0 8px 24px rgba(0, 0, 0, 0.05);
     }
 
     *, *::before, *::after {
@@ -30,7 +30,9 @@
       padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -39,17 +41,24 @@
       min-height: 100vh;
     }
 
-    section { padding: 3.5rem 1.5rem; }
-
-    @media (min-width: 768px) {
-      section { padding: 4.5rem 2.5rem; }
+    section {
+      padding: 3.5rem 1.5rem;
     }
 
-    h1, h2, h3 { color: var(--color-primary); margin-top: 0; }
+    @media (min-width: 768px) {
+      section {
+        padding: 4.5rem 2.5rem;
+      }
+    }
 
-    /* =====================
+    h1, h2, h3 {
+      color: var(--color-primary);
+      margin-top: 0;
+    }
+
+    /* ============================
        PRZYCISKI
-       ===================== */
+       ============================ */
 
     .btn-primary,
     .btn-secondary {
@@ -63,7 +72,7 @@
       text-decoration: none;
       cursor: pointer;
       border: none;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
     }
 
     .btn-primary {
@@ -74,40 +83,40 @@
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
       background: linear-gradient(135deg, #163329, #10241d);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.5);
+      background: rgba(255, 255, 255, 0.5);
       color: var(--color-primary);
-      border: 1px solid rgba(33,79,59,0.18);
+      border: 1px solid rgba(33, 79, 59, 0.18);
       backdrop-filter: blur(6px);
     }
 
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255, 255, 255, 0.85);
     }
 
-    /* =====================
+    /* ============================
        NAVBAR
-       ===================== */
+       ============================ */
 
     #navbar {
       position: sticky;
       top: 0;
       z-index: 999;
       width: 100%;
-      background: rgba(247,242,232,0.75);
+      background: rgba(247, 242, 232, 0.75);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(33,79,59,0.1);
+      border-bottom: 1px solid rgba(33, 79, 59, 0.1);
       transition: box-shadow 0.2s ease, background 0.2s ease;
     }
 
     #navbar.navbar--scrolled {
-      background: rgba(247,242,232,0.97);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      background: rgba(247, 242, 232, 0.97);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     }
 
     .nav-inner {
@@ -173,7 +182,7 @@
     }
 
     .nav-links a:hover {
-      background: rgba(33,79,59,0.07);
+      background: rgba(33, 79, 59, 0.07);
     }
 
     .nav-links .nav-cta {
@@ -183,13 +192,13 @@
       background: linear-gradient(135deg, var(--color-primary), #163329);
       color: #ffffff !important;
       font-weight: 600;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
       transition: transform 0.12s ease, box-shadow 0.12s ease;
     }
 
     .nav-links .nav-cta:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.16);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
       background: linear-gradient(135deg, #163329, #0f2118) !important;
     }
 
@@ -209,7 +218,7 @@
     }
 
     .nav-hamburger:hover {
-      background: rgba(33,79,59,0.07);
+      background: rgba(33, 79, 59, 0.07);
     }
 
     .nav-hamburger span {
@@ -222,9 +231,18 @@
       transform-origin: center;
     }
 
-    .nav-hamburger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .nav-hamburger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-hamburger--open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-hamburger--open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .nav-hamburger--open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
     .nav-links--open {
       display: flex !important;
@@ -234,13 +252,13 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: rgba(247,242,232,0.98);
+      background: rgba(247, 242, 232, 0.98);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(33,79,59,0.1);
+      border-bottom: 1px solid rgba(33, 79, 59, 0.1);
       padding: 0.8rem 1.5rem 1rem;
       gap: 0.2rem;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
       animation: navSlideIn 0.18s ease;
     }
 
@@ -269,24 +287,25 @@
       .nav-hamburger { display: none; }
     }
 
-    /* =====================
+    /* ============================
        HERO
-       ===================== */
+       ============================ */
 
     #hero {
       max-width: 960px;
       margin: 0 auto;
+      text-align: left;
       padding-top: 3rem;
-      padding-bottom: 2rem;
+      padding-bottom: 2.5rem;
     }
 
     .hero-eyebrow {
-      display: block;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--color-accent);
       margin-bottom: 0.7rem;
+      display: block;
     }
 
     #hero h1 {
@@ -300,7 +319,7 @@
       color: var(--color-muted);
       max-width: 40rem;
       margin-bottom: 1.8rem;
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
     .hero-actions {
@@ -315,9 +334,9 @@
       .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
     }
 
-    /* =====================
+    /* ============================
        KORZYŚCI
-       ===================== */
+       ============================ */
 
     #benefits {
       max-width: 960px;
@@ -326,36 +345,48 @@
       grid-template-columns: 1fr;
       gap: 1rem;
       padding-top: 0;
-      padding-bottom: 2.5rem;
+      padding-bottom: 2rem;
     }
 
     .benefit {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255, 255, 255, 0.85);
       border-radius: var(--radius-md);
       padding: 1.1rem 1.2rem;
       box-shadow: var(--shadow-subtle);
-      border: 1px solid rgba(201,139,47,0.08);
+      border: 1px solid rgba(201, 139, 47, 0.08);
     }
 
-    .benefit h3 { font-size: 0.95rem; margin-bottom: 0.35rem; }
+    .benefit h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
 
     .benefit p {
       font-size: 0.88rem;
       color: var(--color-muted);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     @media (min-width: 768px) {
-      #benefits { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; }
+      #benefits {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
     }
 
-    /* =====================
+    /* ============================
        OFERTA
-       ===================== */
+       ============================ */
 
-    #oferta { max-width: 1120px; margin: 0 auto; }
+    #oferta {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
 
-    #oferta h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    #oferta h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
 
     #oferta > p {
       max-width: 44rem;
@@ -376,20 +407,22 @@
       border-radius: var(--radius-lg);
       padding: 1.4rem;
       box-shadow: var(--shadow-subtle);
-      border: 1px solid rgba(33,79,59,0.08);
+      border: 1px solid rgba(33, 79, 59, 0.08);
+      position: relative;
     }
 
     .product-featured {
-      border: 1px solid rgba(201,139,47,0.3);
-      box-shadow: 0 18px 50px rgba(0,0,0,0.12);
+      border: 1px solid rgba(201, 139, 47, 0.3);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
       background: radial-gradient(circle at top left, #fffaf2 0, #ffffff 42%, #f6efe3 100%);
     }
 
     .product-tag {
       display: inline-flex;
+      align-items: center;
       padding: 0.18rem 0.65rem;
       border-radius: 999px;
-      background: rgba(201,139,47,0.1);
+      background: rgba(201, 139, 47, 0.1);
       color: var(--color-accent);
       font-size: 0.72rem;
       font-weight: 600;
@@ -398,7 +431,10 @@
       margin-bottom: 0.55rem;
     }
 
-    .product h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .product h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
 
     .product-subtitle {
       font-size: 0.88rem;
@@ -414,7 +450,10 @@
       margin-bottom: 0.8rem;
     }
 
-    .product-list { list-style: none; padding-left: 0; }
+    .product-list {
+      list-style: none;
+      padding-left: 0;
+    }
 
     .product-list li {
       font-size: 0.88rem;
@@ -422,7 +461,7 @@
       padding-left: 1.2rem;
       position: relative;
       margin-bottom: 0.4rem;
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     .product-list li::before {
@@ -437,16 +476,25 @@
     }
 
     @media (min-width: 768px) {
-      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
     }
 
-    /* =====================
+    /* ============================
        CENNIK
-       ===================== */
+       ============================ */
 
-    #cennik { max-width: 960px; margin: 0 auto; }
+    #cennik {
+      max-width: 960px;
+      margin: 0 auto;
+    }
 
-    #cennik h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    #cennik h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
 
     #cennik > p {
       max-width: 40rem;
@@ -465,38 +513,42 @@
       background: var(--color-bg-light);
       border-radius: var(--radius-md);
       padding: 0.9rem 1.1rem;
-      border: 1px solid rgba(33,79,59,0.08);
+      border: 1px solid rgba(33, 79, 59, 0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: var(--shadow-subtle);
     }
 
-    .price-item h3 { font-size: 0.96rem; margin: 0; }
+    .price-item h3 {
+      font-size: 0.96rem;
+      margin: 0;
+    }
 
     .price-item .price {
       font-weight: 700;
       color: var(--color-primary);
       font-size: 1rem;
-      white-space: nowrap;
-      margin-left: 1rem;
     }
 
     .how-to-order {
       margin-top: 1.8rem;
-      background: rgba(33,79,59,0.04);
+      background: rgba(33, 79, 59, 0.04);
       border-radius: var(--radius-md);
       padding: 1.1rem 1.3rem;
-      border: 1px dashed rgba(33,79,59,0.25);
+      border: 1px dashed rgba(33, 79, 59, 0.25);
     }
 
-    .how-to-order h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .how-to-order h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
 
     .how-to-order ol {
       padding-left: 1.2rem;
       font-size: 0.9rem;
       color: var(--color-text);
-      line-height: 1.85;
+      line-height: 1.8;
     }
 
     .price-note {
@@ -506,30 +558,40 @@
       font-style: italic;
     }
 
-    #cennik .btn-primary { margin-top: 1.4rem; }
-
-    @media (min-width: 768px) {
-      .price-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    #cennik .btn-primary {
+      margin-top: 1.4rem;
     }
 
-    /* =====================
+    @media (min-width: 768px) {
+      .price-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* ============================
        KONTAKT
-       ===================== */
+       ============================ */
 
-    #kontakt { max-width: 720px; margin: 0 auto; }
+    #kontakt {
+      max-width: 720px;
+      margin: 0 auto;
+    }
 
-    #kontakt h2 { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    #kontakt h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
 
     #kontakt p {
       color: var(--color-muted);
       font-size: 0.96rem;
       margin-bottom: 1rem;
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
-    /* =====================
+    /* ============================
        STOPKA
-       ===================== */
+       ============================ */
 
     #footer {
       margin-top: 3rem;
@@ -546,7 +608,9 @@
       gap: 1.8rem;
     }
 
-    .footer-brand { max-width: 20rem; }
+    .footer-brand {
+      max-width: 20rem;
+    }
 
     .footer-logo {
       font-weight: 700;
@@ -559,7 +623,7 @@
     .footer-tagline {
       margin-top: 0.3rem;
       font-size: 0.88rem;
-      color: rgba(247,242,232,0.65);
+      color: rgba(247, 242, 232, 0.7);
     }
 
     .footer-columns {
@@ -569,22 +633,22 @@
     }
 
     .footer-column h3 {
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       font-weight: 600;
-      color: rgba(247,242,232,0.85);
+      color: rgba(247, 242, 232, 0.85);
       margin-bottom: 0.5rem;
     }
 
     .footer-column p {
       font-size: 0.88rem;
-      color: rgba(247,242,232,0.65);
-      line-height: 1.75;
+      color: rgba(247, 242, 232, 0.7);
+      line-height: 1.7;
     }
 
     .footer-links a {
-      color: rgba(247,242,232,0.85);
+      color: rgba(247, 242, 232, 0.85);
       text-decoration: none;
       position: relative;
       padding-bottom: 1px;
@@ -593,21 +657,27 @@
     .footer-links a::after {
       content: "";
       position: absolute;
-      left: 0; bottom: 0;
+      left: 0;
+      bottom: 0;
       width: 0%;
       height: 1px;
       background: var(--color-accent);
       transition: width 0.18s ease;
     }
 
-    .footer-links a:hover::after { width: 100%; }
+    .footer-links a:hover::after {
+      width: 100%;
+    }
 
-    .footer-cta { margin-top: 0.9rem; font-size: 0.88rem; }
+    .footer-cta {
+      margin-top: 0.9rem;
+      font-size: 0.88rem;
+    }
 
     .footer-bottom {
       max-width: 1120px;
       margin: 0 auto;
-      border-top: 1px solid rgba(247,242,232,0.14);
+      border-top: 1px solid rgba(247, 242, 232, 0.14);
       padding-top: 0.9rem;
       display: flex;
       flex-direction: column;
@@ -615,6 +685,20 @@
     }
 
     .footer-bottom p {
+      margin: 0;
+      font-size: 0.78rem;
+      color: rgba(247, 242, 232, 0.55);
+    }
+
+    .footer-note {
+      font-style: italic;
+    }
+
+    @media (min-width: 768px) {
+      #footer { padding: 3rem 2.5rem 2.2rem; }
+      .footer-inner { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+      .footer-columns { flex-direction: row; gap: 3rem; }
+      .footer-bottom p {
       margin: 0;
       font-size: 0.78rem;
       color: rgba(247,242,232,0.5);
@@ -651,43 +735,7 @@
         <a href="#cennik">Cennik</a>
         <a href="#kontakt">Kontakt</a>
         <a class="nav-cta"
-           href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%
-<body>
-
-  <!-- NAVBAR -->
-  <header id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="nav-brand">
-        <img src="logo-pellet.jpg" alt="Sosnowe Chwile logo" class="nav-logo" />
-        <div class="nav-name">
-          <strong>Sosnowe Chwile</strong>
-          <span>Pellet premium • naturalne ciepło</span>
-        </div>
-      </a>
-      <nav class="nav-links" id="navLinks">
-        <a href="#oferta">Oferta</a>
-        <a href="#cennik">Cennik</a>
-        <a href="#kontakt">Kontakt</a>
-        <a class="nav-wa" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">
-          Napisz na WhatsApp
-        </a>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="hero">
-    <span class="eyebrow">Pellet premium • naturalne ciepło</span>
-    <h1>Pellet Premium dla domów i firm na Mazowszu</h1>
-    <p class="hero-lead">
-      Stabilne ciepło na cały sezon, bez niespodzianek w kotle.
-      Wybierasz jakość, a zamówienie ogarniasz wygodnie przez WhatsApp w kilka minut.
-    </p>
-    <div class="hero-btns">
-      <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">
+           href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">
         Napisz na WhatsApp
       </a>
       <a class="btn-o" href="#cennik">Zobacz cennik</a>
@@ -748,3 +796,4 @@
         <span class="ptag">Dla firm</span>
         <h3>Dostawy hurtowe (od 24 ton)</h3>
         <p class="psub">Rozwiązanie dla biznesu, który potrzebuje pewnego dostawcy pelletu na cały sezon grzewczy.</p>
+
