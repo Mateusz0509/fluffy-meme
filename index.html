@@ -442,121 +442,82 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 <footer id="footer">
 <style>
-#footer{margin-top:3rem;padding:2.5rem 1.5rem 1.8rem;background:radial-gradient(circle at top,#1f3c2f 0,#11251c 60%,#0b1712 100%);color:#f7f2e8;}
-.fi{max-width:1120px;margin:0 auto 1.5rem;display:flex;flex-direction:column;gap:1.8rem;}
-.fb p{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.92rem;}
-.fb span{display:block;margin-top:.3rem;font-size:.88rem;color:rgba(247,242,232,.65);}
-.fc{display:flex;flex-direction:column;gap:1.5rem;}
-.fcd h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:rgba(247,242,232,.85);margin-bottom:.5rem;}
-.fcd p{font-size:.88rem;color:rgba(247,242,232,.65);line-height:1.75;}
-.fl a{color:rgba(247,242,232,.85);text-decoration:none;position:relative;padding-bottom:1px;}
-.fl a::after{content:"";position:absolute;left:0;bottom:0
-<section id="faq">
-<style>
-#faq { max-width: 860px; margin: 0 auto; }
-#faq h2 { font-size: 1.5rem; margin-bottom: .5rem; }
-#faq > p { color: var(--mu); font-size: .96rem; margin-bottom: 2rem; line-height: 1.6; }
-
-.faq-item {
-  border-bottom: 1px solid rgba(33,79,59,.1);
-  overflow: hidden;
-}
-.faq-item:first-of-type { border-top: 1px solid rgba(33,79,59,.1); }
-
-.faq-q {
-  width: 100%;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  text-align: left;
-  font-size: .96rem;
-  font-weight: 600;
-  color: var(--gr);
-  gap: 1rem;
-}
-
-.faq-q .faq-icon {
-  flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  background: rgba(33,79,59,.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--gr);
-  transition: background .15s, transform .25s;
-}
-
-.faq-item.open .faq-icon {
-  background: var(--gr);
-  color: #fff;
-  transform: rotate(45deg);
-}
-
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .3s ease, padding .3s ease;
-  font-size: .9rem;
-  color: var(--mu);
-  line-height: 1.7;
-  padding: 0 0 0;
-}
-
-.faq-item.open .faq-a {
-  max-height: 400px;
-  padding-bottom: 1rem;
+#footer { margin-top: 3rem; padding: 2.5rem 1.5rem 0; background: radial-gradient(circle at top, #1f3c2f 0, #11251c 60%, #0b1712 100%); color: #f7f2e8; }
+.fi { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; padding-bottom: 2rem; }
+.fcol h3 { font-size: .82rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; color: rgba(247,242,232,.85); margin-bottom: .7rem; }
+.fcol p, .fcol address { font-size: .88rem; color: rgba(247,242,232,.65); line-height: 1.85; font-style: normal; }
+.fcol a { color: rgba(247,242,232,.8); text-decoration: none; position: relative; padding-bottom: 1px; }
+.fcol a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--go); transition: width .18s; }
+.fcol a:hover::after { width: 100%; }
+.fbrand-name { font-weight: 700; letter-spacing: .16em; text-transform: uppercase; font-size: .95rem; color: #f7f2e8; margin-bottom: .3rem; }
+.fbrand-sub { font-size: .85rem; color: rgba(247,242,232,.6); }
+.fbot { max-width: 1120px; margin: 0 auto; border-top: 1px solid rgba(247,242,232,.12); padding: 1rem 0 1.5rem; display: flex; flex-direction: column; gap: .4rem; }
+.fbot p { margin: 0; font-size: .78rem; color: rgba(247,242,232,.45); }
+.fbot a { color: rgba(247,242,232,.55); text-decoration: none; }
+.fbot a:hover { color: rgba(247,242,232,.85); }
+.fbot-links { display: flex; flex-wrap: wrap; gap: .3rem .8rem; }
+@media(min-width: 768px) {
+  #footer { padding: 3rem 2.5rem 0; }
+  .fi { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 2.5rem; }
+  .fbot { flex-direction: row; justify-content: space-between; align-items: center; }
 }
 </style>
 
-  <h2>Często zadawane pytania</h2>
-  <p>Masz wątpliwości? Poniżej znajdziesz odpowiedzi na najczęstsze pytania dotyczące zamówień i dostawy pelletu.</p>
+  <div class="fi">
 
-  <div class="faq-item">
-    <button class="faq-q">Jak złożyć zamówienie?<span class="faq-icon">+</span></button>
-    <div class="faq-a">Wystarczy napisać do nas na WhatsApp pod numer +48 793 573 900, podając miejscowość i ilość ton. Odpiszemy z potwierdzeniem ceny i najbliższym terminem dostawy. Po opłaceniu zaliczki rezerwujemy towar i transport.</div>
+    <div class="fcol">
+      <p class="fbrand-name">Sosnowe Chwile</p>
+      <p class="fbrand-sub">Pellet premium • naturalne ciepło</p>
+      <br>
+      <address>
+        Sosnowe Chwile<br>
+        Rynek 17/2<br>
+        14-230 Starogard Gdański<br>
+        NIP: 000-000-00-00
+      </address>
+    </div>
+
+    <div class="fcol">
+      <h3>Kontakt</h3>
+      <p>
+        WhatsApp / telefon:<br>
+        <a href="tel:+48793573900">+48 793 573 900</a><br><br>
+        Godziny kontaktu:<br>
+        Pon–Pt 8:00–18:00<br>
+        Sob 9:00–14:00
+      </p>
+    </div>
+
+    <div class="fcol">
+      <h3>Nawigacja</h3>
+      <p>
+        <a href="#oferta">Oferta</a><br>
+        <a href="#cennik">Cennik</a><br>
+        <a href="#wojewodztwa">Województwa</a><br>
+        <a href="#faq">FAQ</a><br>
+        <a href="#kontakt">Kontakt</a>
+      </p>
+    </div>
+
+    <div class="fcol">
+      <h3>Napisz na WhatsApp</h3>
+      <p>Szybkie zamówienie i wycena dostawy przez WhatsApp – odpowiadamy w ciągu kilku minut.</p>
+      <br>
+      <a class="btn" style="font-size:.88rem;"
+         href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet"
+         target="_blank" rel="noopener">
+        Otwórz WhatsApp
+      </a>
+    </div>
+
   </div>
 
-  <div class="faq-item">
-    <button class="faq-q">Jaka jest minimalna ilość zamówienia?<span class="faq-icon">+</span></button>
-    <div class="faq-a">Minimalne zamówienie to 1 tona dla województwa mazowieckiego. W pozostałych województwach minimalne zamówienie wynosi 2 tony ze względu na koszty transportu.</div>
+  <div class="fbot">
+    <p>© 2026 Sosnowe Chwile • Pellet Premium • Starogard Gdański</p>
+    <div class="fbot-links">
+      <a href="regulamin.html">Regulamin</a>
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+    </div>
   </div>
 
-  <div class="faq-item">
-    <button class="faq-q">Ile trwa dostawa?<span class="faq-icon">+</span></button>
-    <div class="faq-a">Dla Mazowsza: 2–4 dni robocze. Dla pozostałych województw: 3–6 dni roboczych od momentu zaksięgowania zaliczki. W sezonie grzewczym (październik–luty) czas dostawy może się wydłużyć o 1–2 dni.</div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q">Czy ceny zawierają dostawę?<span class="faq-icon">+</span></button>
-    <div class="faq-a">Tak – wszystkie ceny w cenniku są cenami brutto z dostawą pod wskazany adres. Nie ma ukrytych dopłat. Jedyny wyjątek to zamówienia poniżej minimalnej ilości, gdzie może pojawić się dopłata transportowa – informujemy o niej przed potwierdzeniem.</div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q">Jak wygląda dostawa – worki czy luz?<span class="faq-icon">+</span></button>
-    <div class="faq-a">Dostarczamy pellet w workach 15 kg na paletach lub w big bagach. Przy większych zamówieniach (od 24 ton) możliwa jest dostawa luzem – szczegóły ustalamy indywidualnie przez WhatsApp.</div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q">Czy wystawiacie fakturę VAT?<span class="faq-icon">+</span></button>
-    <div class="faq-a">Tak, wystawiamy faktury VAT zarówno dla klientów indywidualnych, jak i firm. Przy składaniu zamówienia przez WhatsApp prosimy o podanie danych do faktury.</div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q">Jak działa zaliczka i rezerwacja?<span class="faq-icon">+</span></button>
-    <div class="faq-a">Po uzgodnieniu szczegółów prosimy o wpłatę zaliczki (zwykle 20–30% wartości zamówienia). Zaliczka potwierdza rezerwację towaru i terminu transportu. Resztę należności można uregulować przy dostawie lub przelewem przed jej realizacją.</div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q">Co jeśli cena się zmieni po złożeniu zamówienia?<span class="faq-icon">+</span></button>
-    <div class="faq-a">W przypadku znaczących zmian cen rynkowych (np. gwałtowny wzrost cen pelletu u producenta) informujemy Cię o różnicy przed potwierdzeniem zamówienia. Masz wtedy możliwość rezygnacji bez żadnych kosztów.</div>
-  </div>
-
-</section>
+</footer>>
