@@ -94,345 +94,180 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
     if (!isOpen) item.classList.add('open');
   });
 });
-<script>
-/* ---- FAKTURA: przełącznik osoba/firma ---- */
-var ftypeBtns = document.querySelectorAll('.ftype-btn');
-var firmaFields = document.getElementById('firmaFields');
-var currentType = 'osoba';
+<    <!-- 1. Hamburger nawigacji + sticky shadow -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var hb  = document.getElementById('hb');
+      var nl  = document.getElementById('nl');
+      var nav = document.getElementById('nav');
+      if (hb && nl) {
+        hb.addEventListener('click', function() {
+          var op = nl.classList.toggle('op');
+          hb.classList.toggle('op', op);
+          hb.setAttribute('aria-expanded', op);
+        });
+        nl.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', function() {
+            nl.classList.remove('op');
+            hb.classList.remove('op');
+            hb.setAttribute('aria-expanded', false);
+          });
+        });
+      }
+      if (nav) {
+        window.addEventListener('scroll', function() {
+          nav.classList.toggle('sc', window.scrollY > 12);
+        });
+      }
+    });
+    </script>
 
-ftypeBtns.forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    ftypeBtns.forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    currentType = btn.getAttribute('data-type');
-    if (currentType === 'firma') {
-      firmaFields.classList.add('show');
-    } else {
-      firmaFields.classList.remove('show');
-    }
-  });
-});
+    <!-- 2. Zakładki województw -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.woj-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          var woj = tab.getAttribute('data-woj');
+          document.querySelectorAll('.woj-tab').forEach(function(t) { t.classList.remove('active'); });
+          document.querySelectorAll('.woj-panel').forEach(function(p) { p.classList.remove('active'); });
+          tab.classList.add('active');
+          var panel = document.getElementById('woj-' + woj);
+          if (panel) panel.classList.add('active');
+        });
+      });
+    });
+    </script>
 
-/* ---- FAKTURA: formatowanie pól ---- */
-document.getElementById('f-kod').addEventListener('input', function() {
-  var v = this.value.replace(/\D/g, '');
-  if (v.length > 2) v = v.slice(0,2) + '-' + v.slice(2,5);
-  this.value = v;
-});
+    <!-- 3. FAQ accordion -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.faq-q').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = btn.closest('.faq-item');
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+          if (!isOpen) item.classList.add('open');
+        });
+      });
+    });
+    </script>
 
-document.getElementById('f-nip').addEventListener('input', function() {
-  var v = this.value.replace(/\D/g, '').slice(0,10);
-  this.value = v;
-});
+    <!-- 4. Formularz faktury -->
+    <script>
+    (function() {
+      function init() {
+        var ftypeBtns   = document.querySelectorAll('.ftype-btn');
+        var firmaFields = document.getElementById('firmaFields');
+        var currentType = 'osoba';
+        if (ftypeBtns.length && firmaFields) {
+          ftypeBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              ftypeBtns.forEach(function(b) { b.classList.remove('active'); });
+              btn.classList.add('active');
+              currentType = btn.getAttribute('data-type');
+              firmaFields.style.display = currentType === 'firma' ? 'grid' : 'none';
+            });
+          });
+        }
+        var kodInput = document.getElementById('f-kod');
+        if (kodInput) {
+          kodInput.addEventListener('input', function() {
+            var v = this.value.replace(/\D/g,'');
+            if (v.length > 2) v = v.slice(0,2) + '-' + v.slice(2,5);
+            this.value = v;
+          });
+        }
+        var nipInput = document.getElementById('f-nip');
+        if (nipInput) {
+          nipInput.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g,'').slice(0,10);
+          });
+        }
+        function validate(inputId, groupId, condition) {
+          var input = document.getElementById(inputId);
+          var group = document.getElementById(groupId);
+          if (!input || !group) return true;
+          var err = group.querySelector('.ferror');
+          if (!condition) {
+            input.style.borderColor = '#c0392b';
+            input.style.boxShadow   = '0 0 0 3px rgba(192,57,43,.12)';
+            if (err) err.style.display = 'block';
+            return false;
+          }
+          input.style.borderColor = '';
+          input.style.boxShadow   = '';
+          if (err) err.style.display = 'none';
+          return true;
+        }
+        ['f-imie','f-nazwisko','f-ulica','f-kod','f-miasto',
+         'f-email','f-tel','f-produkt','f-ilosc','f-nazwa','f-nip'
+        ].forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el) {
+            el.addEventListener('input',  function() { el.style.borderColor=''; el.style.boxShadow=''; });
+            el.addEventListener('change', function() { el.style.borderColor=''; el.style.boxShadow=''; });
+          }
+        });
+        var form = document.getElementById('fakturaFormEl');
+        if (!form) return;
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var g = function(id) { return ((document.getElementById(id)||{}).value||'').trim(); };
+          var imie=g('f-imie'), nazwisko=g('f-nazwisko'), ulica=g('f-ulica');
+          var kod=g('f-kod'), miasto=g('f-miasto'), email=g('f-email');
+          var tel=g('f-tel'), produkt=g('f-produkt'), ilosc=g('f-ilosc');
+          var nazwa=g('f-nazwa'), nip=g('f-nip');
+          var woj=g('f-woj'), uwagi=g('f-uwagi');
+          var ok = true;
+          ok = validate('f-imie',    'g-imie',    imie.length>1)                          && ok;
+          ok = validate('f-nazwisko','g-nazwisko',nazwisko.length>1)                      && ok;
+          ok = validate('f-ulica',   'g-ulica',   ulica.length>2)                          && ok;
+          ok = validate('f-kod',     'g-kod',     /^\d{2}-\d{3}$/.test(kod))              && ok;
+          ok = validate('f-miasto',  'g-miasto',  miasto.length>1)                         && ok;
+          ok = validate('f-email',   'g-email',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))&& ok;
+          ok = validate('f-tel',     'g-tel',     tel.length>6)                            && ok;
+          ok = validate('f-produkt', 'g-produkt', produkt!=='')                            && ok;
+          ok = validate('f-ilosc',   'g-ilosc',   Number(ilosc)>=1)                        && ok;
+          if (currentType==='firma') {
+            ok = validate('f-nazwa','g-nazwa', nazwa.length>2)     && ok;
+            ok = validate('f-nip',  'g-nip',   /^\d{10}$/.test(nip))&& ok;
+          }
+          if (!ok) {
+            var firstErr = form.querySelector('input[style*="c0392b"]');
+            if (firstErr) firstErr.scrollIntoView({behavior:'smooth',block:'center'});
+            return;
+          }
+          var lines = ['Dzień dobry, przesyłam dane do faktury:',''];
+          if (currentType==='firma') { lines.push('Firma: '+nazwa); lines.push('NIP: '+nip); }
+          lines.push('Imię i nazwisko: '+imie+' '+nazwisko);
+          lines.push('Adres: '+ulica+', '+kod+' '+miasto);
+          if (woj) lines.push('Województwo: '+woj);
+          lines.push('E-mail: '+email);
+          lines.push('Tel: '+tel);
+          lines.push('');
+          lines.push('Produkt: '+produkt);
+          lines.push('Ilość: '+ilosc+' t');
+          if (uwagi) lines.push('Uwagi: '+uwagi);
+          window.open('https://wa.me/48793573900?text='+encodeURIComponent(lines.join('\n')),'_blank');
+          form.style.display = 'none';
+          var sukces = document.getElementById('fakturaSuccess');
+          if (sukces) { sukces.style.display='block'; sukces.scrollIntoView({behavior:'smooth',block:'center'}); }
+        });
+      }
+      if (document.readyState==='loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+    })();
+    </script>
 
-/* ---- FAKTURA: walidacja ---- */
-function validateField(id, condition) {
-  var group = document.getElementById('g-' + id);
-  var input = document.getElementById('f-' + id);
-  if (!group || !input) return true;
-  if (!condition) {
-    group.classList.add('has-error');
-    input.classList.add('error');
-    return false;
-  }
-  group.classList.remove('has-error');
-  input.classList.remove('error');
-  return true;
-}
+    <!-- tutaj reszta sekcji strony -->
 
-document.getElementById('fakturaFormEl').addEventListener('submit', function(e) {
-  e.preventDefault();
+    <script>
+    (function() {
+      // ... cały kod JS ...
+    })();
+    </script>
 
-  var imie    = document.getElementById('f-imie').value.trim();
-  var nazwisko= document.getElementById('f-nazwisko').value.trim();
-  var ulica   = document.getElementById('f-ulica').value.trim();
-  var kod     = document.getElementById('f-kod').value.trim();
-  var miasto  = document.getElementById('f-miasto').value.trim();
-  var email   = document.getElementById('f-email').value.trim();
-  var tel     = document.getElementById('f-tel').value.trim();
-  var produkt = document.getElementById('f-produkt').value;
-  var ilosc   = document.getElementById('f-ilosc').value;
-  var nazwa   = document.getElementById('f-nazwa') ? document.getElementById('f-nazwa').value.trim() : '';
-  var nip     = document.getElementById('f-nip') ? document.getElementById('f-nip').value.trim() : '';
-  var woj     = document.getElementById('f-woj').value;
-  var uwagi   = document.getElementById('f-uwagi').value.trim();
-
-  var ok = true;
-  ok = validateField('imie',    imie.length > 1)     && ok;
-  ok = validateField('nazwisko',nazwisko.length > 1)  && ok;
-  ok = validateField('ulica',   ulica.length > 2)     && ok;
-  ok = validateField('kod',     /^\d{2}-\d{3}$/.test(kod)) && ok;
-  ok = validateField('miasto',  miasto.length > 1)    && ok;
-  ok = validateField('email',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) && ok;
-  ok = validateField('tel',     tel.length > 6)       && ok;
-  ok = validateField('produkt', produkt !== '')        && ok;
-  ok = validateField('ilosc',   ilosc >= 1)            && ok;
-
-  if (currentType === 'firma') {
-    ok = validateField('nazwa', nazwa.length > 2)     && ok;
-    ok = validateField('nip',   /^\d{10}$/.test(nip)) && ok;
-  }
-
-  if (!ok) return;
-
-  /* ---- buduj wiadomość WhatsApp ---- */
-  var msg = 'Dzień dobry, przesyłam dane do faktury:%0A%0A';
-
-  if (currentType === 'firma') {
-    msg += '🏢 Firma: ' + encodeURIComponent(nazwa) + '%0A';
-    msg += '📋 NIP: ' + encodeURIComponent(nip) + '%0A';
-  }
-
-  msg += '👤 Imię i nazwisko: ' + encodeURIComponent(imie + ' ' + nazwisko) + '%0A';
-  msg += '📍 Adres: ' + encodeURIComponent(ulica + ', ' + kod + ' ' + miasto) + '%0A';
-  if (woj) msg += '🗺 Województwo: ' + encodeURIComponent(woj) + '%0A';
-  msg += '📧 E-mail: ' + encodeURIComponent(email) + '%0A';
-  msg += '📞 Telefon: ' + encodeURIComponent(tel) + '%0A%0A';
-  msg += '📦 Produkt: ' + encodeURIComponent(produkt) + '%0A';
-  msg += '⚖️ Ilość: ' + encodeURIComponent(ilosc) + ' t%0A';
-  if (uwagi) msg += '💬 Uwagi: ' + encodeURIComponent(uwagi) + '%0A';
-
-  /* ---- otwórz WhatsApp ---- */
-  window.open('https://wa.me/48793573900?text=' + msg, '_blank');
-
-  /* ---- pokaż komunikat sukcesu ---- */
-  document.getElementById('fakturaFormEl').style.display = 'none';
-  document.getElementById('fakturaSuccess').classList.add('show');
-});
-</script>
-<body>
-</script>
-<header id="nav">
-  <div class="ni">
-    <a href="#" class="nb">
-      <img src="logo-pellet.jpg" alt="Sosnowe Chwile"/>
-      <div><strong>Sosnowe Chwile</strong><span>Pellet premium • naturalne ciepło</span></div>
-    </a>
-    <nav class="nl" id="nl">
-      <a href="#oferta">Oferta</a>
-      <a href="#cennik">Cennik</a>
-      <a href="#kontakt">Kontakt</a>
-      <a class="nw" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">Napisz na WhatsApp</a>
-    </nav>
-    <button class="hb" id="hb" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-<section id="hero">
- <span class="ey">Pellet premium • dostawa cała Polska</span>
-<h1>Pellet Premium z dostawą na terenie całej Polski</h1>
-<p class="hl">Stabilne ciepło na cały sezon, bez niespodzianek w kotle. Dostarczamy pellet do każdego województwa – zamówienie ogarniasz wygodnie przez WhatsApp w kilka minut.</p>
-  <div class="hb2">
-    <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zam%C3%B3wi%C4%87%20pellet" target="_blank" rel="noopener">Napisz na WhatsApp</a>
-    <a class="btn2" href="#cennik">Zobacz cennik</a>
-  </div>
-</section>
-<section id="faktura">
-<style>
-#faktura { max-width: 860px; margin: 0 auto; }
-#faktura h2 { font-size: 1.5rem; margin-bottom: .5rem; }
-#faktura > p { color: var(--mu); font-size: .96rem; margin-bottom: 2rem; line-height: 1.6; }
-
-.fform { background: var(--wh); border-radius: var(--rlg); padding: 1.8rem; box-shadow: var(--sh); border: 1px solid rgba(33,79,59,.08); }
-
-.fform-toggle { display: flex; gap: .5rem; margin-bottom: 1.5rem; }
-.ftype-btn {
-  flex: 1; padding: .6rem 1rem; border-radius: var(--rmd);
-  border: 1px solid rgba(33,79,59,.18); background: transparent;
-  color: var(--gr); font-size: .9rem; font-weight: 600;
-  cursor: pointer; transition: all .15s;
-}
-.ftype-btn.active {
-  background: linear-gradient(135deg, var(--gr), #163329);
-  color: #fff; border-color: transparent;
-  box-shadow: 0 6px 18px rgba(33,79,59,.2);
-}
-
-.frow { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
-@media(min-width: 600px) { .frow.two { grid-template-columns: 1fr 1fr; } .frow.three { grid-template-columns: 1fr 1fr 1fr; } }
-
-.fgroup { display: flex; flex-direction: column; gap: .35rem; }
-.fgroup label { font-size: .82rem; font-weight: 600; color: var(--gr); letter-spacing: .04em; text-transform: uppercase; }
-.fgroup input, .fgroup select {
-  padding: .65rem .9rem; border-radius: var(--rmd);
-  border: 1px solid rgba(33,79,59,.18);
-  background: var(--bg); color: var(--tx);
-  font-size: .93rem; font-family: inherit;
-  transition: border-color .15s, box-shadow .15s;
-  width: 100%;
-}
-.fgroup input:focus, .fgroup select:focus {
-  outline: none;
-  border-color: var(--gr);
-  box-shadow: 0 0 0 3px rgba(33,79,59,.1);
-}
-.fgroup input.error { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192,57,43,.1); }
-.ferror { font-size: .78rem; color: #c0392b; display: none; }
-.fgroup.has-error .ferror { display: block; }
-
-.firma-fields { display: none; }
-.firma-fields.show { display: contents; }
-
-.fdivider { border: none; border-top: 1px solid rgba(33,79,59,.08); margin: 1.2rem 0; }
-
-.fform-note { font-size: .82rem; color: var(--mu); line-height: 1.6; margin-bottom: 1.2rem; }
-
-.fsubmit-row { display: flex; flex-direction: column; gap: .8rem; align-items: flex-start; }
-@media(min-width: 600px) { .fsubmit-row { flex-direction: row; align-items: center; } }
-
-.fsuccess {
-  display: none;
-  background: rgba(33,79,59,.06);
-  border: 1px solid rgba(33,79,59,.2);
-  border-radius: var(--rmd);
-  padding: 1.2rem 1.4rem;
-  margin-top: 1rem;
-  font-size: .93rem;
-  color: var(--gr);
-  line-height: 1.6;
-}
-.fsuccess.show { display: block; }
-.fsuccess strong { display: block; margin-bottom: .3rem; font-size: 1rem; }
-</style>
-
-  <h2>Dane do faktury</h2>
-  <p>Wypełnij formularz, a wystawimy fakturę VAT i wyślemy ją na podany adres e-mail. Możesz też podać dane przez WhatsApp przy składaniu zamówienia.</p>
-
-  <div class="fform" id="fakturaForm">
-
-    <!-- Typ: osoba / firma -->
-    <div class="fform-toggle">
-      <button class="ftype-btn active" data-type="osoba" type="button">Osoba prywatna</button>
-      <button class="ftype-btn" data-type="firma" type="button">Firma / działalność</button>
-    </div>
-
-    <form id="fakturaFormEl" novalidate>
-
-      <!-- FIRMA -->
-      <div class="frow two firma-fields" id="firmaFields">
-        <div class="fgroup" id="g-nazwa">
-          abel>Nazwa firmy *</label>
-          <input type="text" id="f-nazwa" placeholder="np. Firma Budowlana Kowalski Sp. z o.o."/>
-          <span class="ferror">Podaj nazwę firmy</span>
-        </div>
-        <div class="fgroup" id="g-nip">
-          abel>NIP *</label>
-          <input type="text" id="f-nip" placeholder="000-000-00-00" maxlength="13"/>
-          <span class="ferror">Podaj poprawny NIP (10 cyfr)</span>
-        </div>
-      </div>
-
-      <!-- IMIĘ I NAZWISKO -->
-      <div class="frow two">
-        <div class="fgroup" id="g-imie">
-          abel>Imię *</label>
-          <input type="text" id="f-imie" placeholder="Jan"/>
-          <span class="ferror">Podaj imię</span>
-        </div>
-        <div class="fgroup" id="g-nazwisko">
-          abel>Nazwisko *</label>
-          <input type="text" id="f-nazwisko" placeholder="Kowalski"/>
-          <span class="ferror">Podaj nazwisko</span>
-        </div>
-      </div>
-
-      <!-- ADRES -->
-      <div class="frow">
-        <div class="fgroup" id="g-ulica">
-          abel>Ulica i numer *</label>
-          <input type="text" id="f-ulica" placeholder="ul. Przykładowa 12/3"/>
-          <span class="ferror">Podaj ulicę i numer</span>
-        </div>
-      </div>
-
-      <div class="frow three">
-        <div class="fgroup" id="g-kod">
-          abel>Kod pocztowy *</label>
-          <input type="text" id="f-kod" placeholder="00-000" maxlength="6"/>
-          <span class="ferror">Podaj kod (00-000)</span>
-        </div>
-        <div class="fgroup" id="g-miasto">
-          abel>Miasto *</label>
-          <input type="text" id="f-miasto" placeholder="Warszawa"/>
-          <span class="ferror">Podaj miasto</span>
-        </div>
-        <div class="fgroup" id="g-woj">
-          abel>Województwo</label>
-          <select id="f-woj">
-            <option value="">– wybierz –</option>
-            <option>Mazowieckie</option>
-            <option>Łódzkie</option>
-            <option>Lubelskie</option>
-            <option>Świętokrzyskie</option>
-            <option>Podlaskie</option>
-            <option>Kujawsko-Pomorskie</option>
-            <option>Inne</option>
-          </select>
-        </div>
-      </div>
-
-      <hr class="fdivider"/>
-
-      <!-- KONTAKT -->
-      <div class="frow two">
-        <div class="fgroup" id="g-email">
-          abel>E-mail do faktury *</label>
-          <input type="email" id="f-email" placeholder="jan@example.com"/>
-          <span class="ferror">Podaj poprawny adres e-mail</span>
-        </div>
-        <div class="fgroup" id="g-tel">
-          abel>Telefon / WhatsApp *</label>
-          <input type="tel" id="f-tel" placeholder="+48 000 000 000"/>
-          <span class="ferror">Podaj numer telefonu</span>
-        </div>
-      </div>
-
-      <hr class="fdivider"/>
-
-      <!-- ZAMÓWIENIE -->
-      <div class="frow two">
-        <div class="fgroup" id="g-produkt">
-          abel>Produkt *</label>
-          <select id="f-produkt">
-            <option value="">– wybierz –</option>
-            <option>Pellet Premium 6 mm</option>
-            <option>Pellet Standard</option>
-            <option>Dostawy hurtowe (od 24 ton)</option>
-          </select>
-          <span class="ferror">Wybierz produkt</span>
-        </div>
-        <div class="fgroup" id="g-ilosc">
-          abel>Ilość (tony) *</label>
-          <input type="number" id="f-ilosc" placeholder="np. 3" min="1" max="100"/>
-          <span class="ferror">Podaj ilość ton (min. 1)</span>
-        </div>
-      </div>
-
-      <div class="frow">
-        <div class="fgroup">
-          abel>Uwagi do zamówienia</label>
-          <input type="text" id="f-uwagi" placeholder="np. dostawa na paletach, preferowany termin..."/>
-        </div>
-      </div>
-
-      <p class="fform-note">
-        Dane przekazywane są bezpośrednio do nas przez WhatsApp w celu wystawienia faktury VAT.
-        Nie przechowujemy danych w zewnętrznych bazach. Więcej w <a href="polityka-prywatnosci.html" style="color:var(--gr)">Polityce prywatności</a>.
-      </p>
-
-      <div class="fsubmit-row">
-        <button class="btn" type="submit">Wyślij dane do faktury</button>
-        <span style="font-size:.82rem;color:var(--mu);">Zostaniesz przekierowany do WhatsApp</span>
-      </div>
-
-    </form>
-
-    <!-- SUKCES -->
-    <div class="fsuccess" id="fakturaSuccess">
-      <strong>Dane wysłane – dziękujemy!</strong>
-      Twoje dane do faktury zostały przekazane przez WhatsApp. Odpiszemy z potwierdzeniem i fakturą na podany e-mail.
-    </div>
+</body>
+</html>
 
   </div>
 </section>
