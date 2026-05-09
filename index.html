@@ -5,18 +5,69 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Sosnowe Chwile – Pellet Premium</title>
 <meta name="description" content="Pellet premium dla domów i firm na Mazowszu. Dostawa Warszawa i okolice."/>
-"/>
+<style>
+:root{--bg:#f7f2e8;--wh:#fff;--gr:#214f3b;--go:#c98b2f;--tx:#1f2724;--mu:#6b716d;--rlg:18px;--rmd:12px;--sh:0 8px 24px rgba(0,0,0,.05);--shl:0 14px 40px rgba(0,0,0,.08);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--tx);background:radial-gradient(circle at top,#fff 0,var(--bg) 50%,#f1eadf 100%);min-height:100vh;}
+section{padding:3.5rem 1.5rem;}
+@media(min-width:768px){section{padding:4.5rem 2.5rem;}}
+h1,h2,h3{color:var(--gr);margin-top:0;}
+.btn,.btn2{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.4rem;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;border:none;cursor:pointer;transition:transform .12s,box-shadow .12s,background .12s;}
+.btn{background:linear-gradient(135deg,var(--gr),#163329);color:#fff;box-shadow:var(--shl);}
+.btn:hover{transform:translateY(-1px);box-shadow:0 18px 40px rgba(0,0,0,.12);}
+.btn2{background:rgba(255,255,255,.5);color:var(--gr);border:1px solid rgba(33,79,59,.18);backdrop-filter:blur(6px);}
+.btn2:hover{background:rgba(255,255,255,.85);}
+/* NAV */
+#nav{position:sticky;top:0;z-index:999;width:100%;background:rgba(247,242,232,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(33,79,59,.1);transition:box-shadow .2s,background .2s;}
+#nav.sc{background:rgba(247,242,232,.97);box-shadow:0 4px 24px rgba(0,0,0,.08);}
+.ni{max-width:1120px;margin:0 auto;padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:relative;}
+.nb{display:flex;align-items:center;gap:.65rem;text-decoration:none;flex-shrink:0;}
+.nb img{width:44px;height:44px;object-fit:contain;border-radius:10px;}
+.nb div{display:flex;flex-direction:column;line-height:1.2;}
+.nb strong{font-size:.9rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gr);}
+.nb span{font-size:.7rem;color:var(--mu);}
+.nl{display:none;align-items:center;gap:.2rem;}
+.nl a{font-size:.9rem;font-weight:500;color:var(--gr);text-decoration:none;padding:.4rem .7rem;border-radius:8px;transition:background .15s;}
+.nl a:hover{background:rgba(33,79,59,.07);}
+.nl .nw{margin-left:.6rem;padding:.45rem 1rem;border-radius:999px;background:linear-gradient(135deg,var(--gr),#163329);color:#fff!important;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.12);}
+.nl .nw:hover{transform:translateY(-1px);}
+.hb{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:6px;border:none;background:transparent;cursor:pointer;border-radius:8px;}
+.hb span{display:block;width:100%;height:2px;background:var(--gr);border-radius:2px;transition:transform .22s,opacity .22s;transform-origin:center;}
+.hb.op span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hb.op span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hb.op span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nl.op{display:flex!important;flex-direction:column;align-items:stretch;position:absolute;top:100%;left:0;right:0;background:rgba(247,242,232,.98);backdrop-filter:blur(16px);border-bottom:1px solid rgba(33,79,59,.1);padding:.8rem 1.5rem 1rem;gap:.2rem;box-shadow:0 12px 32px rgba(0,0,0,.1);animation:si .18s ease;}
+@keyframes si{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.nl.op a{padding:.6rem .8rem;font-size:1rem;border-radius:10px;color:var(--gr)!important;}
+.nl.op .nw{margin-left:0;margin-top:.4rem;text-align:center;color:#fff!important;}
+@media(min-width:768px){.nl{display:flex;}.hb{display:none;}}
+/* HERO */
+#hero{max-width:960px;margin:0 auto;padding-top:3rem;padding-bottom:2rem;}
+.ey{display:block;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:.7rem;}
+#hero h1{font-size:2rem;line-height:1.2;margin-bottom:1rem;}
+.hl{font-size:1rem;color:var(--mu);max-width:40rem;margin-bottom:1.8rem;line-height:1.65;}
+.hb2{display:flex;flex-wrap:wrap;gap:.8rem;}
+@media(max-width:640px){#hero h1{font-size:1.6rem;}.hb2{flex-direction:column;}.btn,.btn2{width:100%;justify-content:center;}}
+/* BANER */
+.baner{margin:0 1.5rem;border-radius:var(--rlg);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18);position:relative;max-height:460px;}
+.baner img{width:100%;height:100%;object-fit:cover;display:block;}
+.baner-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.06) 0,rgba(0,0,0,.42) 100%);}
+@media(min-width:768px){.baner{margin:0 2.5rem;max-height:520px;}}
+/* KORZYŚCI */
+#ben{max-width:960px;margin:0 auto;padding-top:2rem;padding-bottom:2.5rem;display:grid;grid-template-columns:1fr;gap:1rem;}
+.bc{background:rgba(255,255,255,.85);border-radius:var(--rmd);padding:1.1rem 1.2rem;box-shadow:var(--sh);border:1px solid rgba(201,139,47,.08);}
+.bc h3{font-size:.95rem;margin-bottom:.35rem;}
+.bc p{font-size:.88rem;color:var(--mu);line-height:1.55;}
+@media(min-width:768px){#ben{grid-template-columns:repeat(3,1fr);gap:1.1rem;}}
+</style>
 </head>
 <body>
-
 <header id="nav">
   <div class="ni">
     <a href="#" class="nb">
-      <img src="logo-pellet.jpg" alt="Sosnowe Chwile logo"/>
-      <div>
-        <strong>Sosnowe Chwile</strong>
-        <span>Pellet premium • naturalne ciepło</span>
-      </div>
+      <img src="logo-pellet.jpg" alt="Sosnowe Chwile"/>
+      <div><strong>Sosnowe Chwile</strong><span>Pellet premium • naturalne ciepło</span></div>
     </a>
     <nav class="nl" id="nl">
       <a href="#oferta">Oferta</a>
@@ -40,9 +91,9 @@
   </div>
 </section>
 
-<div class="hero-banner">
+<div class="baner">
   <img src="baner.jpg" alt="Sosnowe Chwile – pellet premium"/>
-  <div class="hero-banner-overlay"></div>
+  <div class="baner-overlay"></div>
 </div>
 
 <section id="ben">
@@ -52,6 +103,22 @@
 </section>
 
 <section id="oferta">
+<style>
+#oferta{max-width:1120px;margin:0 auto;}
+#oferta h2{font-size:1.5rem;margin-bottom:.5rem;}
+#oferta>p{max-width:44rem;color:var(--mu);font-size:.96rem;line-height:1.6;}
+.pg{margin-top:2rem;display:grid;grid-template-columns:1fr;gap:1.2rem;}
+.pc{background:var(--wh);border-radius:var(--rlg);padding:1.4rem;box-shadow:var(--sh);border:1px solid rgba(33,79,59,.08);}
+.pc.ft{border:1px solid rgba(201,139,47,.3);box-shadow:0 18px 50px rgba(0,0,0,.12);background:radial-gradient(circle at top left,#fffaf2 0,#fff 42%,#f6efe3 100%);}
+.pt{display:inline-flex;padding:.18rem .65rem;border-radius:999px;background:rgba(201,139,47,.1);color:var(--go);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;margin-bottom:.55rem;}
+.pc h3{font-size:1.1rem;margin-bottom:.3rem;}
+.ps{font-size:.88rem;color:var(--mu);margin-bottom:.7rem;line-height:1.5;}
+.pp{font-size:1.1rem;font-weight:700;color:var(--gr);margin-bottom:.8rem;}
+.pl{list-style:none;padding:0;}
+.pl li{font-size:.88rem;padding-left:1.2rem;position:relative;margin-bottom:.4rem;line-height:1.55;}
+.pl li::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--go);position:absolute;left:.25rem;top:.5rem;}
+@media(min-width:768px){.pg{grid-template-columns:repeat(3,1fr);gap:1.5rem;}}
+</style>
   <h2>Oferta</h2>
   <p>Dostarczamy pellet drzewny dla domów jednorodzinnych, wspólnot i firm na terenie Mazowsza (Warszawa i okolice).</p>
   <div class="pg">
@@ -85,13 +152,27 @@
       <ul class="pl">
         >Stałe dostawy większych ilości – dla firm, wspólnot i składów opału.</li>
         >Lepsze warunki cenowe przy cyklicznych zamówieniach.</li>
-        >Szybka wycena po wiadomości na WhatsApp – bez zbędnych formalności.</li>
+        >Szybka wycena po wiadomości na WhatsApp.</li>
       </ul>
     </article>
   </div>
 </section>
-
 <section id="cennik">
+<style>
+#cennik{max-width:960px;margin:0 auto;}
+#cennik h2{font-size:1.5rem;margin-bottom:.5rem;}
+#cennik>p{max-width:40rem;color:var(--mu);font-size:.96rem;}
+.prl{margin-top:1.5rem;display:grid;grid-template-columns:1fr;gap:.9rem;}
+.prw{background:var(--wh);border-radius:var(--rmd);padding:.9rem 1.1rem;border:1px solid rgba(33,79,59,.08);display:flex;justify-content:space-between;align-items:center;box-shadow:var(--sh);}
+.prw h3{font-size:.96rem;margin:0;}
+.prw .p{font-weight:700;color:var(--gr);font-size:1rem;white-space:nowrap;margin-left:1rem;}
+.hw{margin-top:1.8rem;background:rgba(33,79,59,.04);border-radius:var(--rmd);padding:1.1rem 1.3rem;border:1px dashed rgba(33,79,59,.25);}
+.hw h3{font-size:1rem;margin-bottom:.5rem;}
+.hw ol{padding-left:1.2rem;font-size:.9rem;line-height:1.85;}
+.pn{margin-top:1rem;font-size:.84rem;color:var(--mu);font-style:italic;}
+#cennik .btn{margin-top:1.4rem;}
+@media(min-width:768px){.prl{grid-template-columns:repeat(3,1fr);}}
+</style>
   <h2>Cennik – Mazowsze</h2>
   <p>Ceny brutto za tonę przy dostawie na terenie Mazowsza (Warszawa i okolice).</p>
   <div class="prl">
@@ -102,5 +183,33 @@
   <div class="hw">
     <h3>Jak zamówić pellet?</h3>
     <ol>
-      >Napisz na WhatsApp, podając miejscowość na Mazowszu i ilość ton.</li>
-      
+      >Napisz na WhatsApp podając miejscowość na Mazowszu i ilość ton.</li>
+      >Odpowiemy z potwierdzeniem ceny oraz najbliższym terminem dostawy.</li>
+      >Po opłaceniu zaliczki rezerwujemy towar i termin transportu.</li>
+    </ol>
+  </div>
+  <p class="pn">Cennik aktualny na dzień publikacji. W razie dużych zmian cen rynkowych poinformujemy Cię o różnicy przed potwierdzeniem zamówienia.</p>
+  <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20prosz%C4%99%20o%20ofert%C4%99%20na%20pellet" target="_blank" rel="noopener">Napisz na WhatsApp</a>
+</section>
+
+<section id="kontakt">
+<style>
+#kontakt{max-width:720px;margin:0 auto;}
+#kontakt h2{font-size:1.4rem;margin-bottom:.6rem;}
+#kontakt p{color:var(--mu);font-size:.96rem;margin-bottom:1rem;line-height:1.65;}
+</style>
+  <h2>Przedstawimy ofertę przez WhatsApp</h2>
+  <p>Napisz wiadomość, a przygotujemy ofertę, dostępność oraz szczegóły zakupu pelletu. Numer kontaktowy: <strong>+48 793 573 900</strong>.</p>
+  <a class="btn" href="https://wa.me/48793573900?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20otrzyma%C4%87%20ofert%C4%99%20pelletu" target="_blank" rel="noopener">Otwórz WhatsApp</a>
+</section>
+<footer id="footer">
+<style>
+#footer{margin-top:3rem;padding:2.5rem 1.5rem 1.8rem;background:radial-gradient(circle at top,#1f3c2f 0,#11251c 60%,#0b1712 100%);color:#f7f2e8;}
+.fi{max-width:1120px;margin:0 auto 1.5rem;display:flex;flex-direction:column;gap:1.8rem;}
+.fb p{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.92rem;}
+.fb span{display:block;margin-top:.3rem;font-size:.88rem;color:rgba(247,242,232,.65);}
+.fc{display:flex;flex-direction:column;gap:1.5rem;}
+.fcd h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:rgba(247,242,232,.85);margin-bottom:.5rem;}
+.fcd p{font-size:.88rem;color:rgba(247,242,232,.65);line-height:1.75;}
+.fl a{color:rgba(247,242,232,.85);text-decoration:none;position:relative;padding-bottom:1px;}
+.fl a::after{content:"";position:absolute;left:0;bottom:0
