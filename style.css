@@ -144,4 +144,4 @@ h1,h2,h3{color:var(--gr);margin-top:0;}
 .fbot a{color:rgba(247,242,232,.55);text-decoration:none;}
 .fbot a:hover{color:rgba(247,242,232,.85);}
 .fbot-links{display:flex;flex-wrap:wrap;gap:.3rem .8rem;}
-@media(min-width:768px){#footer{padding:3rem 2.5rem 0;}.fi{flex-direction:row;justify-content:space-between;align-items:flex-start;gap:2.5rem;}.fbot{flex-direction:row;justify-content:space-between;align-items:center;}}
+@media(min-width:768px){#footer{padding:3rem 2.5rem 0;}.fi{flex-direction:row;justify-content:space-between;align-items:flex-start;gap:2.5rem;}.fbot{flex-direction:row;justify-content:space-between;align-items:center;}} 
