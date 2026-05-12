@@ -13,7 +13,7 @@ To prosta strona produktowa przygotowana w formie statycznej witryny HTML/CSS/JS
 
 ## Pliki w repozytorium
 
-- `Index.html` – strona główna.
+- `index.html` – strona główna.
 - `style.css` – style strony.
 - `script.js` – logika JavaScript.
 - `regulamin.html` – podstrona z regulaminem.
