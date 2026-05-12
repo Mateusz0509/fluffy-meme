@@ -122,4 +122,5 @@ html, body {
 main, header, section, footer, .ni, .hero-banner, #hero, #ben, #oferta, #cennik, #wojewodztwa, #faq, #kontakt {
   width: 100%;
   max-width: 100%;
+  box-sizing: border-box;
 }
