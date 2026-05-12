@@ -94,9 +94,7 @@
     </div>
     <div class="calc-result" id="calcResult"><span class="result-label">Szacowana cena</span><div class="result-price" id="resultPrice">—</div><p id="resultDetails">Wpisz dane, aby zobaczyć wycenę.</p></div>
   </div>
-  <div class="hw"><h3>Jak działa wycena</h3><ol><li>Wybierasz pellet.</li><li>Wpisujesz kod i adres dostawy.</li><li>System liczy orientacyjną cenę transportu.</li><li>Otrzymujesz gotową wiadomość do WhatsApp.</li></ol><p class="pn">Wycena jest orientacyjna i może się różnić zależnie od trasy, ilości palet i miejsca rozładunku.</p></div>
-  <p class="pn">Przy zamówieniu może być wymagana zaliczka, a jej wysokość ustalamy indywidualnie przed potwierdzeniem dostawy.</p>
-</div>
+  <div class="hw"><h3>Jak działa wycena</h3><ol><li>Wybierasz pellet.</li><li>Wpisujesz kod i adres dostawy.</li><li>System liczy orientacyjną cenę transportu.</li><li>Otrzymujesz gotową wiadomość do WhatsApp.</li></ol><p class="pn">Wycena jest orientacyjna i może się różnić zależnie od trasy, ilości palet i miejsca rozładunku.</p><p class="pn">Przy zamówieniu może być wymagana zaliczka, a jej wysokość ustalamy indywidualnie przed potwierdzeniem dostawy.</p></div>
 </section>
 
 <section id="wojewodztwa">
@@ -124,9 +122,21 @@
 
 <section id="faktura"><h2>Zapytanie klienta</h2><p>Wypełnij formularz, aby przygotować ofertę i fakturę.</p><form class="fform" id="fakturaForm"><div class="fform-toggle"><button type="button" class="ftype-btn active" data-typ="osoba">Osoba prywatna</button><button type="button" class="ftype-btn" data-typ="firma">Firma</button></div><div id="firmaFields" style="display:none"><div class="frow two"><div class="fgroup"><label for="nazwaFirmy">Nazwa firmy</label><input type="text" id="nazwaFirmy" /><div id="errNazwaFirmy" class="ferror">Podaj nazwę firmy.</div></div><div class="fgroup"><label for="nip">NIP</label><input type="text" id="nip" /><div id="errNIP" class="ferror">Podaj prawidłowy NIP.</div></div></div></div><div class="frow two"><div class="fgroup"><label for="imie">Imię i nazwisko</label><input type="text" id="imie" /><div id="errImie" class="ferror">To pole jest wymagane.</div></div><div class="fgroup"><label for="email">E-mail</label><input type="email" id="email" /><div id="errEmail" class="ferror">Podaj poprawny adres e-mail.</div></div></div><div class="frow two"><div class="fgroup"><label for="telefon">Telefon (opcjonalnie)</label><input type="tel" id="telefon" /></div><div class="fgroup"><label for="miejscowosc">Miejscowość</label><input type="text" id="miejscowosc" /><div id="errMiejscowosc" class="ferror">Podaj miejscowość dostawy.</div></div></div><div class="frow two"><div class="fgroup"><label for="iloscTon">Ilość ton</label><input type="number" min="1" step="0.5" id="iloscTon" /><div id="errIloscTon" class="ferror">Podaj ilość ton.</div></div><div class="fgroup"><label for="formaPlatnosci">Forma płatności</label><select id="formaPlatnosci"><option value="">Wybierz</option><option value="przelew">Przelew przed dostawą</option><option value="gotowka">Gotówka przy dostawie</option></select></div></div><div class="frow"><div class="fgroup"><label for="uwagi">Uwagi do zamówienia (opcjonalnie)</label><input type="text" id="uwagi" /></div></div><hr class="fdivider" /><p class="fform-note">Po kliknięciu "Wyślij dane" otworzy się WhatsApp z podsumowaniem.</p><div class="fsubmit-row"><button type="submit" class="btn">Wyślij dane do wyceny</button></div><div id="fakturaSuccess" class="fsuccess"><strong>Dziękujemy!</strong> Wiadomość z danymi została przygotowana w WhatsApp.</div></form></section>
 
+<section id="galeria">
+  <h2>Galeria zdjęć</h2>
+  <p>Zobacz przykładowe zdjęcia pelletu, dostaw i pakowania produktu.</p>
+  <div class="galeria-grid">
+    <figure class="galeria-item"><a href="baner.jpg" class="galeria-link"><img src="baner.jpg" alt="Pellet Premium - baner" /><figcaption>Pellet Premium</figcaption></a></figure>
+    <figure class="galeria-item"><a href="logo-pellet.jpg" class="galeria-link"><img src="logo-pellet.jpg" alt="Logo Sosnowe Chwile" /><figcaption>Logo marki</figcaption></a></figure>
+    <figure class="galeria-item"><a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/de5ff531424349bcdb54cd2958c052ef15366d42.jpg" class="galeria-link"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/de5ff531424349bcdb54cd2958c052ef15366d42.jpg" alt="Dostawa pelletu na paletach" /><figcaption>Dostawa na paletach</figcaption></a></figure>
+    <figure class="galeria-item"><a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/0a65a88300ca6470225d50e37f1e67a98f45f93b.jpg" class="galeria-link"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/0a65a88300ca6470225d50e37f1e67a98f45f93b.jpg" alt="Worki z pelletem" /><figcaption>Worki z pelletem</figcaption></a></figure>
+  </div>
+</section>
+
 <section id="kontakt"><h2>Kontakt</h2><p>Napisz na WhatsApp lub e-mail - odpowiemy możliwie szybko.</p><p>E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a></p><p>Telefon: +48 793 573 900</p></section>
 </main>
 <footer id="footer"><div class="fi"><div class="fcol"><div class="fbrand-name">Sosnowe Chwile</div><div class="fbrand-sub">Pellet premium z dostawą na terenie całej Polski</div></div><div class="fcol"><h3>Dane firmy</h3><address>NORDIVA TRADE Sp. z o.o.<br>Rynek 17/2<br>83-200 Starogard Gdański<br>NIP 592-230-81-05</address></div><div class="fcol"><h3>Kontakt</h3><p>E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a><br>WhatsApp: <a href="https://wa.me/48793573900" target="_blank" rel="noopener">+48 793 573 900</a></p></div></div><div class="fbot"><p>2025 Sosnowe Chwile. Wszelkie prawa zastrzeżone.</p><div class="fbot-links"><a href="#oferta">Oferta</a><a href="#cennik">Kalkulator</a><a href="#wojewodztwa">Dostawa</a><a href="#faq">FAQ</a><a href="#faktura">Zapytanie</a><a href="#kontakt">Kontakt</a></div></div></footer>
+<div id="lightbox" class="lightbox" aria-hidden="true"><button type="button" class="lightbox-close" id="lightboxClose">×</button><img id="lightboxImg" alt="Powiększone zdjęcie"></div>
 <script src="script.js"></script>
 </body>
 </html>
