@@ -279,3 +279,69 @@
 <script src="script.js"></script>
 </body>
 </html>
+<section id="cennik">
+  <h2>Cennik i kalkulator dostawy</h2>
+  <p>Wybierz pellet, wpisz adres dostawy i od razu zobacz orientacyjną wycenę z transportem.</p>
+  <div class="calc-wrap">
+    <div class="calc-card">
+      <h3>Parametry zamówienia</h3>
+      <div class="calc-grid">
+        <label class="calc-field"><span>Rodzaj pelletu</span>
+          <select id="pelletType">
+            <option value="economy">Tania opcja — Pellet Economy</option>
+            <option value="premium" selected>Pellet Premium</option>
+          </select>
+        </label>
+        <label class="calc-field"><span>Ilość palet</span><input id="pallets" type="number" min="1" value="1"></label>
+      </div>
+      <div class="calc-grid two">
+        <label class="calc-field"><span>Kod pocztowy</span><input id="postal" type="text" placeholder="np. 00-001"></label>
+        <label class="calc-field"><span>Adres dostawy</span><input id="address" type="text" placeholder="Ulica, miasto"></label>
+      </div>
+      <button class="btn" id="calcBtn" type="button">Oblicz wycenę</button>
+    </div>
+    <div class="calc-result" id="calcResult">
+      <span class="result-label">Szacowana cena</span>
+      <div class="result-price" id="resultPrice">—</div>
+      <p id="resultDetails">Wpisz dane, aby zobaczyć wycenę.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faktura">
+  <h2>Formularz zapytania</h2>
+  <p>Po wpisaniu adresu wyślemy gotowe zapytanie przez WhatsApp lub e-mail.</p>
+  <form id="quoteForm" class="quote-form">
+    <div class="qrow two">
+      <label><span>Imię i nazwisko</span><input id="qName" type="text" required></label>
+      <label><span>Telefon</span><input id="qPhone" type="tel" required></label>
+    </div>
+    <div class="qrow two">
+      <label><span>E-mail</span><input id="qEmail" type="email" required></label>
+      <label><span>Kod pocztowy</span><input id="qPostal" type="text" required></label>
+    </div>
+    <div class="qrow two">
+      <label><span>Adres dostawy</span><input id="qAddress" type="text" required></label>
+      <label><span>Ilość palet</span><input id="qPallets" type="number" min="1" value="1" required></label>
+    </div>
+    <div class="qrow two">
+      <label><span>Rodzaj pelletu</span>
+        <select id="qType">
+          <option value="Pellet Economy">Pellet Economy</option>
+          <option value="Pellet Premium" selected>Pellet Premium</option>
+        </select>
+      </label>
+      <label><span>Sposób kontaktu</span>
+        <select id="qMethod">
+          <option value="whatsapp" selected>WhatsApp</option>
+          <option value="email">E-mail</option>
+        </select>
+      </label>
+    </div>
+    <label class="qfull"><span>Uwagi</span><textarea id="qNotes" rows="4" placeholder="np. termin dostawy, piętro, winda"></textarea></label>
+    <div class="qactions">
+      <button class="btn" type="submit">Wyślij zapytanie</button>
+      <a class="btn2" id="mailLink" href="mailto:biuro@sosnowechwile.pl">Wyślij mailem</a>
+    </div>
+  </form>
+</section>
