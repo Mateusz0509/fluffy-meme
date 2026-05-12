@@ -122,17 +122,58 @@
 
 <section id="faktura"><h2>Zapytanie klienta</h2><p>Wypełnij formularz, aby przygotować ofertę i fakturę.</p><form class="fform" id="fakturaForm"><div class="fform-toggle"><button type="button" class="ftype-btn active" data-typ="osoba">Osoba prywatna</button><button type="button" class="ftype-btn" data-typ="firma">Firma</button></div><div id="firmaFields" style="display:none"><div class="frow two"><div class="fgroup"><label for="nazwaFirmy">Nazwa firmy</label><input type="text" id="nazwaFirmy" /><div id="errNazwaFirmy" class="ferror">Podaj nazwę firmy.</div></div><div class="fgroup"><label for="nip">NIP</label><input type="text" id="nip" /><div id="errNIP" class="ferror">Podaj prawidłowy NIP.</div></div></div></div><div class="frow two"><div class="fgroup"><label for="imie">Imię i nazwisko</label><input type="text" id="imie" /><div id="errImie" class="ferror">To pole jest wymagane.</div></div><div class="fgroup"><label for="email">E-mail</label><input type="email" id="email" /><div id="errEmail" class="ferror">Podaj poprawny adres e-mail.</div></div></div><div class="frow two"><div class="fgroup"><label for="telefon">Telefon (opcjonalnie)</label><input type="tel" id="telefon" /></div><div class="fgroup"><label for="miejscowosc">Miejscowość</label><input type="text" id="miejscowosc" /><div id="errMiejscowosc" class="ferror">Podaj miejscowość dostawy.</div></div></div><div class="frow two"><div class="fgroup"><label for="iloscTon">Ilość ton</label><input type="number" min="1" step="0.5" id="iloscTon" /><div id="errIloscTon" class="ferror">Podaj ilość ton.</div></div><div class="fgroup"><label for="formaPlatnosci">Forma płatności</label><select id="formaPlatnosci"><option value="">Wybierz</option><option value="przelew">Przelew przed dostawą</option><option value="gotowka">Gotówka przy dostawie</option></select></div></div><div class="frow"><div class="fgroup"><label for="uwagi">Uwagi do zamówienia (opcjonalnie)</label><input type="text" id="uwagi" /></div></div><hr class="fdivider" /><p class="fform-note">Po kliknięciu "Wyślij dane" otworzy się WhatsApp z podsumowaniem.</p><div class="fsubmit-row"><button type="submit" class="btn">Wyślij dane do wyceny</button></div><div id="fakturaSuccess" class="fsuccess"><strong>Dziękujemy!</strong> Wiadomość z danymi została przygotowana w WhatsApp.</div></form></section>
 
-<section id="galeria">
-  <h2>Galeria zdjęć</h2>
-  <p>Zobacz przykładowe zdjęcia pelletu, dostaw i pakowania produktu.</p>
+<section id="galeria-pellet">
+  <h2>Galeria pelletu</h2>
+  <p>Zdjęcia pelletu Premium A1 oraz Standard Economy.</p>
+
+  <h3>Pellet Premium A1</h3>
   <div class="galeria-grid">
-    <figure class="galeria-item"><a href="baner.jpg" class="galeria-link"><img src="baner.jpg" alt="Pellet Premium - baner" /><figcaption>Pellet Premium</figcaption></a></figure>
-    <figure class="galeria-item"><a href="logo-pellet.jpg" class="galeria-link"><img src="logo-pellet.jpg" alt="Logo Sosnowe Chwile" /><figcaption>Logo marki</figcaption></a></figure>
-    <figure class="galeria-item"><a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/de5ff531424349bcdb54cd2958c052ef15366d42.jpg" class="galeria-link"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/de5ff531424349bcdb54cd2958c052ef15366d42.jpg" alt="Dostawa pelletu na paletach" /><figcaption>Dostawa na paletach</figcaption></a></figure>
-    <figure class="galeria-item"><a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/0a65a88300ca6470225d50e37f1e67a98f45f93b.jpg" class="galeria-link"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/0a65a88300ca6470225d50e37f1e67a98f45f93b.jpg" alt="Worki z pelletem" /><figcaption>Worki z pelletem</figcaption></a></figure>
+    <figure class="galeria-item">
+      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/213c3a45f2926e2a47f25044cf8dbfc18c358a79.jpg" class="galeria-link">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/213c3a45f2926e2a47f25044cf8dbfc18c358a79.jpg" alt="Pellet Premium A1 - worek" />
+        <figcaption>Premium A1</figcaption>
+      </a>
+    </figure>
+
+    <figure class="galeria-item">
+      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/2026d5cba5f4ea2387733ac91279f213c10244e9.jpg" class="galeria-link">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/2026d5cba5f4ea2387733ac91279f213c10244e9.jpg" alt="Pellet Premium A1 - worek premium" />
+        <figcaption>Premium A1 - opakowanie</figcaption>
+      </a>
+    </figure>
+
+    <figure class="galeria-item">
+      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/5b3cf17cf81319b0efdc3db92fee23b9a05b9a7b.jpg" class="galeria-link">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/5b3cf17cf81319b0efdc3db92fee23b9a05b9a7b.jpg" alt="Pellet Premium A1 - worek biały" />
+        <figcaption>Premium A1 - biały worek</figcaption>
+      </a>
+    </figure>
+  </div>
+
+  <h3>Pellet Standard Economy</h3>
+  <div class="galeria-grid">
+    <figure class="galeria-item">
+      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/445354c1fa6a431af317590061864ec327c6a709.jpg" class="galeria-link">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/445354c1fa6a431af317590061864ec327c6a709.jpg" alt="Pellet Standard Economy - worek" />
+        <figcaption>Economy - worek</figcaption>
+      </a>
+    </figure>
+
+    <figure class="galeria-item">
+      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/26687282424f1629ae0dad59ca634ee863eb470c.jpg" class="galeria-link">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/26687282424f1629ae0dad59ca634ee863eb470c.jpg" alt="Pellet Standard Economy - opakowanie" />
+        <figcaption>Economy - opakowanie</figcaption>
+      </a>
+    </figure>
+
+    <figure class="galeria-item">
+      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f03193e9df9896acba391693a8e586080a3acff7.jpg" class="galeria-link">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f03193e9df9896acba391693a8e586080a3acff7.jpg" alt="Pellet Standard Economy - worek pomarańczowy" />
+        <figcaption>Economy - wariant worka</figcaption>
+      </a>
+    </figure>
   </div>
 </section>
-
 <section id="kontakt"><h2>Kontakt</h2><p>Napisz na WhatsApp lub e-mail - odpowiemy możliwie szybko.</p><p>E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a></p><p>Telefon: +48 793 573 900</p></section>
 </main>
 <footer id="footer"><div class="fi"><div class="fcol"><div class="fbrand-name">Sosnowe Chwile</div><div class="fbrand-sub">Pellet premium z dostawą na terenie całej Polski</div></div><div class="fcol"><h3>Dane firmy</h3><address>NORDIVA TRADE Sp. z o.o.<br>Rynek 17/2<br>83-200 Starogard Gdański<br>NIP 592-230-81-05</address></div><div class="fcol"><h3>Kontakt</h3><p>E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a><br>WhatsApp: <a href="https://wa.me/48793573900" target="_blank" rel="noopener">+48 793 573 900</a></p></div></div><div class="fbot"><p>2025 Sosnowe Chwile. Wszelkie prawa zastrzeżone.</p><div class="fbot-links"><a href="#oferta">Oferta</a><a href="#cennik">Kalkulator</a><a href="#wojewodztwa">Dostawa</a><a href="#faq">FAQ</a><a href="#faktura">Zapytanie</a><a href="#kontakt">Kontakt</a></div></div></footer>
