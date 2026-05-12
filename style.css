@@ -161,3 +161,21 @@ h1,h2,h3{color:var(--gr);margin-top:0;}
 #footer .fbot a:hover{color:rgba(247,242,232,.85);}
 #footer .fbot-links{display:flex;flex-wrap:wrap;gap:.3rem .8rem;}
 @media(min-width:768px){#footer{padding:3rem 2.5rem 0;}#footer .fi{flex-direction:row;justify-content:space-between;align-items:flex-start;gap:2.5rem;}#footer .fbot{flex-direction:row;justify-content:space-between;align-items:center;}}
+#cennik{max-width:960px;margin:0 auto;}
+#cennik h2,#faktura h2{font-size:1.5rem;margin-bottom:.5rem;}
+#cennik>p,#faktura>p{max-width:40rem;color:var(--mu);font-size:.96rem;line-height:1.6;}
+.calc-wrap{margin-top:1.5rem;display:grid;grid-template-columns:1fr;gap:1rem;}
+.calc-card,.calc-result,.quote-form{background:#fff;border-radius:22px;padding:1.4rem;box-shadow:0 10px 28px rgba(0,0,0,.06);border:1px solid rgba(33,79,59,.08);}
+.calc-card h3{margin-bottom:1rem;font-size:1.05rem;}
+.calc-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem;}
+.calc-field,.qfull{display:flex;flex-direction:column;gap:.35rem;}
+.calc-field span,.quote-form span{font-size:.8rem;font-weight:700;color:#214f3b;text-transform:uppercase;letter-spacing:.04em;}
+.calc-field input,.calc-field select,.quote-form input,.quote-form select,.quote-form textarea{padding:.72rem .9rem;border-radius:12px;border:1px solid rgba(33,79,59,.18);background:#f7f2e8;font-size:.95rem;font-family:inherit}
+.calc-result{display:flex;flex-direction:column;justify-content:center;gap:.5rem;min-height:220px;background:linear-gradient(135deg,#214f3b,#163329);color:#fff;}
+.result-label{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+.result-price{font-size:2rem;font-weight:800;line-height:1.1;}
+.calc-result p{font-size:.92rem;line-height:1.6;color:rgba(255,255,255,.84);}
+.quote-form{margin-top:1.3rem;}
+.qrow{display:grid;gap:1rem;margin-bottom:1rem;}
+.qactions{display:grid;gap:.75rem;margin-top:1rem;}
+@media(min-width:760px){.calc-wrap{grid-template-columns:1.15fr .85fr;}.calc-grid,.qrow.two{grid-template-columns:1fr 1fr;}.qactions{grid-template-columns:1fr 1fr;}}
