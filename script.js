@@ -156,4 +156,4 @@ document.addEventListener('DOMContentLoaded', function () {
       if (successBox) successBox.style.display = 'block';
     });
   }
-});
+}); 
