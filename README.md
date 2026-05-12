@@ -37,12 +37,12 @@ To prosta strona produktowa przygotowana w formie statycznej witryny HTML/CSS/JS
 ## Uruchomienie lokalne
 
 1. Sklonuj repozytorium.
-2. Otwórz plik `Index.html` w przeglądarce.
+2. Otwórz plik `index.html` w przeglądarce.
 3. Możesz też uruchomić projekt przez lokalny serwer, np. Live Server.
 
 ## GitHub Pages
 
-Projekt można wdrożyć na GitHub Pages, wskazując plik `Index.html` jako stronę główną.
+Projekt można wdrożyć na GitHub Pages, wskazując plik `index.html` jako stronę główną.
 
 ## Autor
 
