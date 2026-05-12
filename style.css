@@ -149,4 +149,4 @@ h1,h2,h3{color:var(--gr);margin-top:0;}
 #kontakt{max-width:720px;margin:0 auto;}
 #kontakt h2{font-size:1.4rem;margin-bottom:.6rem;}
 #kontakt p{color:var(--mu);font-size:.96rem;margin-bottom:1rem;line-height:1.65;}
-@media(max-width:768px){.fi,.fbot{padding-left:0;padding-right:0;}}
+@media(max-width:768px){.fi,.fbot{padding-left:0;padding-right:0;}} 
