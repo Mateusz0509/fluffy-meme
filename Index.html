@@ -306,27 +306,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // FAQ – rozwijanie pytań
-  document.querySelectorAll('#faq .faq-item').forEach(function (item) {
-    const btn = item.querySelector('.faq-q');
-    const ans = item.querySelector('.faq-a');
-    const icon = item.querySelector('.faq-icon');
+    // FAQ – rozwijanie pytań
+  document.querySelectorAll('#faq .fi').forEach(function (item) {
+    const btn = item.querySelector('h3');
+    const ans = item.querySelector('p');
 
     if (!btn || !ans) return;
 
     btn.addEventListener('click', function () {
-      const isOpen = item.classList.contains('open');
+      const isOpen = item.classList.contains('active');
 
-      // zamknij wszystkie
-      document.querySelectorAll('#faq .faq-item').forEach(function (it) {
-        it.classList.remove('open');
-        const a = it.querySelector('.faq-a');
-        if (a) a.style.maxHeight = null;
+      document.querySelectorAll('#faq .fi').forEach(function (it) {
+        it.classList.remove('active');
+        const p = it.querySelector('p');
+        if (p) p.style.maxHeight = null;
       });
 
-      // jeśli wcześniej było zamknięte – otwórz kliknięte
       if (!isOpen) {
-        item.classList.add('open');
+        item.classList.add('active');
         ans.style.maxHeight = ans.scrollHeight + 'px';
       }
     });
