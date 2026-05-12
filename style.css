@@ -112,3 +112,13 @@ h1,h2,h3{color:var(--gr);margin-top:0;}
 .fi.active h3 span{transform:rotate(45deg);}
 .fi p{max-height:0;overflow:hidden;opacity:0;transition:max-height .26s ease,opacity .2s ease;margin-top:0;color:var(--mu);font-size:.9rem;line-height:1.65;}
 .fi.active p{max-height:400px;opacity:1;margin-top:.8rem;}
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main, header, section, footer, .ni, .hero-banner, #hero, #ben, #oferta, #cennik, #wojewodztwa, #faq, #kontakt {
+  width: 100%;
+  max-width: 100%;
+}
