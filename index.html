@@ -25,10 +25,528 @@ h1,h2,h3{color:var(--gr);margin-top:0;}
 #nav{position:sticky;top:0;z-index:999;width:100%;background:rgba(247,242,232,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(33,79,59,.1);transition:box-shadow .2s,background .2s;}
 #nav.sc{background:rgba(247,242,232,.97);box-shadow:0 4px 24px rgba(0,0,0,.08);}
 .ni{max-width:1120px;margin:0 auto;padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:relative;}
-...
+.nb{display:flex;align-items:center;gap:.65rem;text-decoration:none;flex-shrink:0;}
+.nb img{width:44px;height:44px;object-fit:contain;border-radius:10px;}
+.nb div{display:flex;flex-direction:column;line-height:1.2;}
+.nb strong{font-size:.9rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gr);}
+.nb span{font-size:.7rem;color:var(--mu);}
+.nl{display:none;align-items:center;gap:.2rem;}
+.nl a{font-size:.9rem;font-weight:500;color:var(--gr);text-decoration:none;padding:.4rem .7rem;border-radius:8px;transition:background .15s;}
+.nl a:hover{background:rgba(33,79,59,.07);}
+.nl .nw{margin-left:.6rem;padding:.45rem 1rem;border-radius:999px;background:linear-gradient(135deg,var(--gr),#163329);color:#fff!important;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.12);}
+.nl .nw:hover{transform:translateY(-1px);}
+.hb{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:6px;border:none;background:transparent;cursor:pointer;border-radius:8px;}
+.hb span{display:block;width:100%;height:2px;background:var(--gr);border-radius:2px;transition:transform .22s,opacity .22s;transform-origin:center;}
+.hb.op span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hb.op span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hb.op span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nl.op{display:flex!important;flex-direction:column;align-items:stretch;position:absolute;top:100%;left:0;right:0;background:rgba(247,242,232,.98);backdrop-filter:blur(16px);border-bottom:1px solid rgba(33,79,59,.1);padding:.8rem 1.5rem 1rem;gap:.2rem;box-shadow:0 12px 32px rgba(0,0,0,.1);animation:si .18s ease;}
+@keyframes si{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.nl.op a{padding:.6rem .8rem;font-size:1rem;border-radius:10px;color:var(--gr)!important;}
+.nl.op .nw{margin-left:0;margin-top:.4rem;text-align:center;color:#fff!important;}
+@media(min-width:768px){.nl{display:flex;}.hb{display:none;}}
+
+/* HERO */
+#hero{max-width:960px;margin:0 auto;padding-top:3rem;padding-bottom:2rem;}
+.ey{display:block;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:.7rem;}
+#hero h1{font-size:2rem;line-height:1.2;margin-bottom:1rem;}
+.hl{font-size:1rem;color:var(--mu);max-width:40rem;margin-bottom:1.8rem;line-height:1.65;}
+.hb2{display:flex;flex-wrap:wrap;gap:.8rem;}
+@media(max-width:640px){#hero h1{font-size:1.6rem;}.hb2{flex-direction:column;}.btn,.btn2{width:100%;justify-content:center;}}
+
+/* BANER */
+.baner{margin:0 1.5rem;border-radius:var(--rlg);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18);position:relative;max-height:460px;}
+.baner img{width:100%;height:100%;object-fit:cover;display:block;}
+.baner-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.06) 0,rgba(0,0,0,.42) 100%);}
+@media(min-width:768px){.baner{margin:0 2.5rem;max-height:520px;}}
+
+/* KORZYŚCI */
+#ben{max-width:960px;margin:0 auto;padding-top:2rem;padding-bottom:2.5rem;display:grid;grid-template-columns:1fr;gap:1rem;}
+.bc{background:rgba(255,255,255,.85);border-radius:var(--rmd);padding:1.1rem 1.2rem;box-shadow:var(--sh);border:1px solid rgba(201,139,47,.08);}
+.bc h3{font-size:.95rem;margin-bottom:.35rem;}
+.bc p{font-size:.88rem;color:var(--mu);line-height:1.55;}
+@media(min-width:768px){#ben{grid-template-columns:repeat(3,1fr);gap:1.1rem;}}
+
+/* OFERTA */
+#oferta{max-width:1120px;margin:0 auto;}
+#oferta h2{font-size:1.5rem;margin-bottom:.5rem;}
+#oferta>p{max-width:44rem;color:var(--mu);font-size:.96rem;line-height:1.6;}
+.pg{margin-top:2rem;display:grid;grid-template-columns:1fr;gap:1.2rem;}
+.pc{background:var(--wh);border-radius:var(--rlg);padding:1.4rem;box-shadow:var(--sh);border:1px solid rgba(33,79,59,.08);}
+.pc.ft{border:1px solid rgba(201,139,47,.3);box-shadow:0 18px 50px rgba(0,0,0,.12);background:radial-gradient(circle at top left,#fffaf2 0,#fff 42%,#f6efe3 100%);}
+.pt{display:inline-flex;padding:.18rem .65rem;border-radius:999px;background:rgba(201,139,47,.1);color:var(--go);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;margin-bottom:.55rem;}
+.pc h3{font-size:1.1rem;margin-bottom:.3rem;}
+.ps{font-size:.88rem;color:var(--mu);margin-bottom:.7rem;line-height:1.5;}
+.pp{font-size:1.1rem;font-weight:700;color:var(--gr);margin-bottom:.8rem;}
+.pl{list-style:none;padding:0;}
+.pl li{font-size:.88rem;padding-left:1.2rem;position:relative;margin-bottom:.4rem;line-height:1.55;}
+.pl li::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--go);position:absolute;left:.25rem;top:.5rem;}
+@media(min-width:768px){.pg{grid-template-columns:repeat(3,1fr);gap:1.5rem;}}
+
+/* CENNIK */
+#cennik{max-width:960px;margin:0 auto;}
+#cennik h2{font-size:1.5rem;margin-bottom:.5rem;}
+#cennik>p{max-width:40rem;color:var(--mu);font-size:.96rem;}
+.prl{margin-top:1.5rem;display:grid;grid-template-columns:1fr;gap:.9rem;}
+.prw{background:var(--wh);border-radius:var(--rmd);padding:.9rem 1.1rem;border:1px solid rgba(33,79,59,.08);display:flex;justify-content:space-between;align-items:center;box-shadow:var(--sh);}
+.prw h3{font-size:.96rem;margin:0;}
+.prw .p{font-weight:700;color:var(--gr);font-size:1rem;white-space:nowrap;margin-left:1rem;}
+.hw{margin-top:1.8rem;background:rgba(33,79,59,.04);border-radius:var(--rmd);padding:1.1rem 1.3rem;border:1px dashed rgba(33,79,59,.25);}
+.hw h3{font-size:1rem;margin-bottom:.5rem;}
+.hw ol{padding-left:1.2rem;font-size:.9rem;line-height:1.85;}
+.pn{margin-top:1rem;font-size:.84rem;color:var(--mu);font-style:italic;}
+#cennik .btn{margin-top:1.4rem;}
+@media(min-width:768px){.prl{grid-template-columns:repeat(3,1fr);}}
+
+/* WOJEWÓDZTWA */
+#wojewodztwa{max-width:1120px;margin:0 auto;}
+#wojewodztwa h2{font-size:1.5rem;margin-bottom:.5rem;}
+#wojewodztwa>p{max-width:44rem;color:var(--mu);font-size:.96rem;margin-bottom:2rem;line-height:1.6;}
+.woj-layout{display:flex;flex-direction:column;gap:1rem;}
+.woj-tabs{display:flex;flex-direction:row;flex-wrap:wrap;gap:.5rem;}
+.woj-tab{padding:.55rem 1rem;border-radius:999px;border:1px solid rgba(33,79,59,.18);background:rgba(255,255,255,.7);color:var(--gr);font-size:.88rem;font-weight:500;cursor:pointer;transition:background .15s,border-color .15s,color .15s,box-shadow .15s;white-space:nowrap;}
+.woj-tab:hover{background:rgba(33,79,59,.06);border-color:rgba(33,79,59,.3);}
+.woj-tab.active{background:linear-gradient(135deg,var(--gr),#163329);color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(33,79,59,.25);}
+.woj-panel{display:none;background:var(--wh);border-radius:var(--rlg);padding:1.6rem;box-shadow:var(--sh);border:1px solid rgba(33,79,59,.08);animation:fadeIn .2s ease;}
+.woj-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+.woj-panel h3{font-size:1.1rem;margin-bottom:.3rem;}
+.woj-sub{font-size:.88rem;color:var(--mu);margin-bottom:1.2rem;line-height:1.5;}
+.woj-prices{display:grid;grid-template-columns:1fr;gap:.7rem;margin-bottom:1.2rem;}
+.woj-price-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 1rem;background:var(--bg);border-radius:var(--rmd);border:1px solid rgba(33,79,59,.07);}
+.woj-price-row span:first-child{font-size:.9rem;color:var(--tx);}
+.wprice{font-weight:700;color:var(--gr);font-size:.98rem;white-space:nowrap;}
+.woj-note{font-size:.82rem;color:var(--mu);font-style:italic;margin-bottom:1.1rem;line-height:1.5;}
+.woj-panel .btn{font-size:.9rem;padding:.65rem 1.3rem;}
+@media(min-width:768px){.woj-layout{flex-direction:row;align-items:flex-start;gap:1.5rem;}.woj-tabs{flex-direction:column;flex-wrap:nowrap;flex-shrink:0;width:185px;gap:.4rem;}.woj-tab{border-radius:var(--rmd);width:100%;text-align:left;padding:.65rem 1rem;}}
+@media(min-width:1024px){.woj-prices{grid-template-columns:repeat(3,1fr);}}
+
+/* FAQ */
+#faq{max-width:860px;margin:0 auto;}
+#faq h2{font-size:1.5rem;margin-bottom:.5rem;}
+#faq>p{color:var(--mu);font-size:.96rem;line-height:1.6;}
+.fa{margin-top:1.4rem;display:grid;gap:.75rem;}
+.fi{background:var(--wh);border-radius:var(--rmd);padding:1rem 1.1rem;box-shadow:var(--sh);border:1px solid rgba(33,79,59,.08);}
+.fi h3{font-size:.95rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;line-height:1.45;}
+.fi h3 span{font-size:1.2rem;color:var(--go);margin-left:1rem;transition:transform .2s;}
+.fi.active h3 span{transform:rotate(45deg);}
+.fi p{max-height:0;overflow:hidden;opacity:0;transition:max-height .26s ease,opacity .2s ease;margin-top:0;color:var(--mu);font-size:.9rem;line-height:1.65;}
+.fi.active p{max-height:400px;opacity:1;margin-top:.8rem;}
 </style>
 </head>
 <body>
-...
-</body>
-</html>
+
+<nav id="nav">
+  <div class="ni">
+    <a class="nb" href="#hero">
+      <img src="logo.png" alt="Sosnowe Chwile logo">
+      <div>
+        <strong>Sosnowe Chwile</strong>
+        <span>Pellet Premium</span>
+      </div>
+    </a>
+    <div class="nl" id="menu">
+      <a href="#hero">Start</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#wojewodztwa">Dostawa</a>
+      <a href="#faq">FAQ</a>
+      <a class="nw" href="https://wa.me/48500000000" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <button class="hb" id="hb" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section id="hero">
+  <span class="ey">Pellet Premium A1</span>
+  <h1>Ekologiczne ciepło do domu, z szybką wyceną i dostawą.</h1>
+  <p class="hl">Zamów pellet premium z prostym kontaktem przez WhatsApp. Oferujemy pellet ENplus A1 w workach 15 kg, palety 975 kg i wygodną dostawę na terenie Polski.</p>
+  <div class="hb2">
+    <a class="btn" href="https://wa.me/48500000000" target="_blank" rel="noopener">Wyceń przez WhatsApp</a>
+    <a class="btn2" href="#oferta">Zobacz ofertę</a>
+  </div>
+</section>
+
+<div class="baner">
+  <img src="baner.jpg" alt="Pellet premium Sosnowe Chwile">
+  <div class="baner-overlay"></div>
+</div>
+
+<section id="ben">
+  <div class="bc">
+    <h3>Jakość ENplus A1</h3>
+    <p>Wysoka wartość opałowa, mało popiołu i stabilna jakość spalania przez cały sezon.</p>
+  </div>
+  <div class="bc">
+    <h3>Szybka wycena</h3>
+    <p>Kontakt przez WhatsApp, bez długiego czekania i zbędnych formularzy.</p>
+  </div>
+  <div class="bc">
+    <h3>Dostawa lub odbiór</h3>
+    <p>Możesz zamówić z dostawą pod dom albo odebrać pellet samodzielnie.</p>
+  </div>
+</section>
+
+<section id="oferta">
+  <h2>Nasza oferta pelletu</h2>
+  <p>Pellet Premium A1 jest przeznaczony dla klientów, którzy chcą stabilnej jakości, wygodnego zakupu i prostego kontaktu w sprawie zamówienia.</p>
+  <div class="pg">
+    <article class="pc ft">
+      <span class="pt">Najczęściej wybierany</span>
+      <h3>Pellet Premium A1</h3>
+      <p class="ps">Idealny wybór do domu jednorodzinnego i do ogrzewania sezonowego.</p>
+      <div class="pp">od 2100 zł / paleta</div>
+      <ul class="pl">
+        <li>około 975 kg na palecie</li>
+        <li>worki 15 kg</li>
+        <li>niskie pylenie i mało popiołu</li>
+      </ul>
+    </article>
+    <article class="pc">
+      <span class="pt">Opcja dostawy</span>
+      <h3>Dostawa pod dom</h3>
+      <p class="ps">Zamówienie z dostawą na wskazany adres, wygodnie i bez komplikacji.</p>
+      <div class="pp">Na terenie Polski</div>
+      <ul class="pl">
+        <li>ustalenie terminu</li>
+        <li>szybki kontakt</li>
+        <li>bezpieczne rozładunki</li>
+      </ul>
+    </article>
+    <article class="pc">
+      <span class="pt">Dla firm</span>
+      <h3>Większe zamówienia</h3>
+      <p class="ps">Możliwość przygotowania wyceny dla większej liczby palet.</p>
+      <div class="pp">Wyceń hurtowo</div>
+      <ul class="pl">
+        <li>krótszy czas realizacji</li>
+        <li>wycena indywidualna</li>
+        <li>kontakt bezpośredni</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="cennik">
+  <h2>Cennik i zamówienie</h2>
+  <p>Poniżej znajdziesz prosty podgląd oferty. Ceny możesz w przyszłości łatwo podmienić w jednym miejscu.</p>
+  <div class="prl">
+    <div class="prw"><h3>Paleta pelletu Premium A1</h3><div class="p">2100 zł</div></div>
+    <div class="prw"><h3>Worki 15 kg</h3><div class="p">w palecie</div></div>
+    <div class="prw"><h3>Waga palety</h3><div class="p">ok. 975 kg</div></div>
+  </div>
+  <div class="hw">
+    <h3>Jak zamówić</h3>
+    <ol>
+      <li>Napisz przez WhatsApp.</li>
+      <li>Podaj liczbę palet i adres dostawy.</li>
+      <li>Otrzymasz szybką wycenę i potwierdzenie.</li>
+    </ol>
+  </div>
+  <p class="pn">Oferta ma charakter informacyjny i może się zmieniać w zależności od dostępności.</p>
+  <a class="btn" href="https://wa.me/48500000000" target="_blank" rel="noopener">Zamów teraz</a>
+</section><section id="wojewodztwa">
+  <h2>Dostawa według województw</h2>
+  <p>Wybierz województwo, aby zobaczyć przykładowy zakres dostawy i orientacyjny opis obsługi. To miejsce możesz później połączyć z mapą lub osobnymi strefami dostaw.</p>
+
+  <div class="woj-layout">
+    <div class="woj-tabs">
+      <button class="woj-tab active" data-woj="mazowieckie">Mazowieckie</button>
+      <button class="woj-tab" data-woj="lodzi">Łódzkie</button>
+      <button class="woj-tab" data-woj="lubelskie">Lubelskie</button>
+      <button class="woj-tab" data-woj="swietokrzyskie">Świętokrzyskie</button>
+      <button class="woj-tab" data-woj="podlaskie">Podlaskie</button>
+      <button class="woj-tab" data-woj="kujawsko">Kujawsko-pomorskie</button>
+    </div>
+
+    <div class="woj-panels">
+      <div class="woj-panel active" id="mazowieckie">
+        <h3>Mazowieckie</h3>
+        <p class="woj-sub">Najczęściej obsługiwany obszar z szybkim kontaktem i wygodnym terminem dostawy.</p>
+        <div class="woj-prices">
+          <div class="woj-price-row"><span>Warszawa i okolice</span><span class="wprice">szybka wycena</span></div>
+          <div class="woj-price-row"><span>Płock / Radom</span><span class="wprice">indywidualnie</span></div>
+          <div class="woj-price-row"><span>Dostawa większej ilości</span><span class="wprice">na zapytanie</span></div>
+        </div>
+        <p class="woj-note">Zasięg dostawy i koszt zależy od liczby palet, odległości oraz terminu realizacji.</p>
+        <a class="btn" href="https://wa.me/48500000000" target="_blank" rel="noopener">Zapytaj o dostawę</a>
+      </div>
+
+      <div class="woj-panel" id="lodzi">
+        <h3>Łódzkie</h3>
+        <p class="woj-sub">Obsługa klientów indywidualnych i firm z możliwością dopasowania terminu transportu.</p>
+        <div class="woj-prices">
+          <div class="woj-price-row"><span>Łódź</span><span class="wprice">szybka wycena</span></div>
+          <div class="woj-price-row"><span>Piotrków / Sieradz</span><span class="wprice">indywidualnie</span></div>
+          <div class="woj-price-row"><span>Większe zamówienie</span><span class="wprice">na zapytanie</span></div>
+        </div>
+        <p class="woj-note">Cena dostawy jest ustalana po podaniu adresu i liczby palet.</p>
+        <a class="btn" href="https://wa.me/48500000000" target="_blank" rel="noopener">Zapytaj o dostawę</a>
+      </div>
+
+      <div class="woj-panel" id="lubelskie">
+        <h3>Lubelskie</h3>
+        <p class="woj-sub">Dostawa pelletu z możliwością wyceny dla domu i dla małych firm.</p>
+        <div class="woj-prices">
+          <div class="woj-price-row"><span>Lublin</span><span class="wprice">szybka wycena</span></div>
+          <div class="woj-price-row"><span>Zamość / Puławy</span><span class="wprice">indywidualnie</span></div>
+          <div class="woj-price-row"><span>Dostawa paletowa</span><span class="wprice">na zapytanie</span></div>
+        </div>
+        <p class="woj-note">W przypadku dalszych lokalizacji wycena może być przygotowana osobno.</p>
+        <a class="btn" href="https://wa.me/48500000000" target="_blank" rel="noopener">Zapytaj o dostawę</a>
+      </div>
+
+      <div class="woj-panel" id="swietokrzyskie">
+        <h3>Świętokrzyskie</h3>
+        <p class="woj-sub">Dobry wybór dla klientów szukających prostego kontaktu i szybkiej odpowiedzi.</p>
+        <div class="woj-prices">
+          <div class="woj-price-row"><span>Kielce</span><span class="wprice">szybka wycena</span></div>
+          <div class="woj-price-row"><span>Ostrowiec / Starachowice</span><span class="wprice">indywidualnie</span></div>
+          <div class="woj-price-row"><span>Większa liczba palet</span><span class="wprice">na zapytanie</span></div>
+        </div>
+        <p class="woj-note">Termin i koszt najlepiej potwierdzić bezpośrednio przed złożeniem zamówienia.</p>
+        <a class="btn" href="https://wa.me/48500000000" target="_blank" rel="noopener">Zapytaj o dostawę</a>
+      </div>
+
+      <div class="woj-panel" id="podlaskie">
+        <h3>Podlaskie</h3>
+        <p class="woj-sub">Przykładowy obszar z możliwością przygotowania indywidualnej oferty transportowej.</p>
+        <div class="woj-prices">
+          <div class="woj-price-row"><span>Białystok</span><span class="wprice">szybka wycena</span></div>
+          <div class="woj-price-row"><span>Łomża / Suwałki</span><span class="wprice">indywidualnie</span></div>
+          <div class="woj-price-row"><span>Palety hurtowe</span><span class="wprice">na zapytanie</span></div>
+        </div>
+        <p class="woj-note">Dalsze odległości mogą wymagać osobnej wyceny logistycznej.</p>
+        <a class="btn" href="https://wa.me/48500000000" target="_blank" rel="noopener">Zapytaj o dostawę</a>
+      </div>
+
+      <div class="woj-panel" id="kujawsko">
+        <h3>Kujawsko-pomorskie</h3>
+        <p class="woj-sub">Dostawa pelletu dla klientów indywidualnych oraz odbiorców z większym zapotrzebowaniem.</p>
+        <div class="woj-prices">
+          <div class="woj-price-row"><span>Bydgoszcz / Toruń</span><span class="wprice">szybka wycena</span></div>
+          <div class="woj-price-row"><span>Włocławek / Grudziądz</span><span class="wprice">indywidualnie</span></div>
+          <div class="woj-price-row"><span>Większe zamówienie</span><span class="wprice">na zapytanie</span></div>
+        </div>
+        <p class="woj-note">Końcowa cena zależy od ilości palet oraz adresu dostawy.</p>
+        <a class="btn" href="https://wa.me/48500000000" target="_blank" rel="noopener">Zapytaj o dostawę</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>Najczęstsze pytania</h2>
+  <p>Krótko odpowiadamy na pytania, które klienci zadają najczęściej przed zamówieniem pelletu.</p>
+
+  <div class="fa">
+    <div class="fi">
+      <h3>Czy pellet jest dostępny od ręki? <span>+</span></h3>
+      <p>Stan magazynowy może się zmieniać, dlatego najlepiej potwierdzić dostępność przez WhatsApp przed zamówieniem.</p>
+    </div>
+    <div class="fi">
+      <h3>Czy można zamówić jedną paletę? <span>+</span></h3>
+      <p>Tak, można zamówić zarówno jedną paletę, jak i większą ilość — wszystko zależy od Twoich potrzeb.</p>
+    </div>
+    <div class="fi">
+      <h3>Jak wygląda dostawa? <span>+</span></h3>
+      <p>Po ustaleniu ilości i adresu przygotowujemy wycenę oraz termin dostawy, a następnie potwierdzamy szczegóły zamówienia.</p>
+    </div>
+    <div class="fi">
+      <h3>Czy mogę odebrać pellet osobiście? <span>+</span></h3>
+      <p>Tak, jeśli zależy Ci na odbiorze własnym, ustalimy szczegóły bezpośrednio przed przyjazdem.</p>
+    </div>
+  </div>
+</section>
+<script>
+// MENU MOBILNE (hamburger)
+document.addEventListener('DOMContentLoaded', function () {
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('hb');
+  const navList = document.getElementById('nl');
+
+  // sticky cień przy scrollu
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 10) {
+      nav.classList.add('sc');
+    } else {
+      nav.classList.remove('sc');
+    }
+  });
+
+  // otwieranie / zamykanie menu mobilnego
+  if (burger && navList) {
+    burger.addEventListener('click', function () {
+      const isOpen = navList.classList.toggle('op');
+      burger.classList.toggle('op', isOpen);
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // zamknij menu po kliknięciu w link
+    navList.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navList.classList.remove('op');
+        burger.classList.remove('op');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // FAQ – rozwijanie pytań
+  document.querySelectorAll('#faq .faq-item').forEach(function (item) {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    const icon = item.querySelector('.faq-icon');
+
+    if (!btn || !ans) return;
+
+    btn.addEventListener('click', function () {
+      const isOpen = item.classList.contains('open');
+
+      // zamknij wszystkie
+      document.querySelectorAll('#faq .faq-item').forEach(function (it) {
+        it.classList.remove('open');
+        const a = it.querySelector('.faq-a');
+        if (a) a.style.maxHeight = null;
+      });
+
+      // jeśli wcześniej było zamknięte – otwórz kliknięte
+      if (!isOpen) {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // WOJEWÓDZTWA – przełączanie zakładek
+  const tabs = document.querySelectorAll('.woj-tab');
+  const panels = document.querySelectorAll('.woj-panel');
+
+  if (tabs.length && panels.length) {
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        const target = tab.getAttribute('data-woj');
+
+        // aktywny przycisk
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+
+        // aktywny panel
+        panels.forEach(function (p) {
+          if (p.id === 'woj-' + target) {
+            p.classList.add('active');
+          } else {
+            p.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+
+  // FORMULARZ FAKTURY
+  const typeBtns = document.querySelectorAll('.ftype-btn');
+  const firmaFields = document.getElementById('firmaFields');
+  const form = document.getElementById('fakturaForm');
+  const successBox = document.getElementById('fakturaSuccess');
+
+  // przełącznik osoba / firma
+  if (typeBtns.length && firmaFields) {
+    typeBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const typ = btn.getAttribute('data-typ') || 'osoba';
+
+        typeBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        if (typ === 'firma') {
+          firmaFields.style.display = 'grid';
+        } else {
+          firmaFields.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // walidacja + WhatsApp
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // prosta walidacja
+      let ok = true;
+      form.querySelectorAll('.ferror').forEach(function (el) {
+        el.style.display = 'none';
+      });
+
+      function check(id, errId) {
+        const el = document.getElementById(id);
+        const err = document.getElementById(errId);
+        if (!el || !err) return true;
+        if (!el.value.trim()) {
+          err.style.display = 'block';
+          ok = false;
+          return false;
+        }
+        return true;
+      }
+
+      check('imie', 'errImie');
+      check('email', 'errEmail');
+      check('miejscowosc', 'errMiejscowosc');
+      check('iloscTon', 'errIloscTon');
+
+      const aktywnyTyp = document.querySelector('.ftype-btn.active');
+      const typ = aktywnyTyp ? aktywnyTyp.getAttribute('data-typ') : 'osoba';
+
+      if (typ === 'firma') {
+        check('nazwaFirmy', 'errNazwaFirmy');
+        check('nip', 'errNIP');
+      }
+
+      if (!ok) {
+        const firstErr = form.querySelector('.ferror[style*="block"]');
+        if (firstErr) {
+          const parent = firstErr.closest('.fgroup') || firstErr;
+          parent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      // budowa wiadomości WhatsApp
+      const imie = (document.getElementById('imie') || {}).value || '';
+      const email = (document.getElementById('email') || {}).value || '';
+      const tel = (document.getElementById('telefon') || {}).value || '';
+      const miejscowosc = (document.getElementById('miejscowosc') || {}).value || '';
+      const ilosc = (document.getElementById('iloscTon') || {}).value || '';
+      const formaPlatnosci = (document.getElementById('formaPlatnosci') || {}).value || '';
+      const uwagi = (document.getElementById('uwagi') || {}).value || '';
+
+      const nazwaFirmy = (document.getElementById('nazwaFirmy') || {}).value || '';
+      const nip = (document.getElementById('nip') || {}).value || '';
+
+      let msg = 'Nowe zapytanie o fakturę na pellet:%0A%0A';
+      msg += 'Typ klienta: ' + (typ === 'firma' ? 'Firma' : 'Osoba prywatna') + '%0A';
+      if (typ === 'firma') {
+        msg += 'Nazwa firmy: ' + nazwaFirmy + '%0A';
+        msg += 'NIP: ' + nip + '%0A';
+      }
+      msg += 'Imię i nazwisko: ' + imie + '%0A';
+      msg += 'E-mail: ' + email + '%0A';
+      if (tel) msg += 'Telefon: ' + tel + '%0A';
+      msg += 'Miejscowość: ' + miejscowosc + '%0A';
+      msg += 'Ilość ton: ' + ilosc + '%0A';
+      if (formaPlatnosci) msg += 'Forma płatności: ' + formaPlatnosci + '%0A';
+      if (uwagi) msg += '%0AUwagi: ' + uwagi + '%0A';
+
+      const url = 'https://wa.me/4.87935739e+10?text=' + encodeURIComponent(decodeURIComponent(msg));
+      window.open(url, '_blank');
+
+      if (successBox) {
+        successBox.style.display = 'block';
+      }
+    });
+  }
+});
+</script>
