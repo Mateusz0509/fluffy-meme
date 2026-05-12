@@ -59,6 +59,40 @@ const setError = (id, show) => {
 
 const validNip = v => (v || '').replace(/D/g, '').length === 10;
 
+const basePrice = { premium: 2100, economy: 1890 };
+const regionSurcharge = { mazowieckie: 0, lodzkie: 40, lubelskie: 80, swietokrzyskie: 60, podlaskie: 110, kujawsko: 50 };
+
+const postalBoost = code => {
+  const n = (code || '').replace(/D/g, '');
+  return n ? Math.min(220, Math.max(0, Number(n.slice(0, 2)) || 0) % 9 * 10) : 0;
+};
+
+const calcBtn = document.getElementById('calcBtn');
+
+if (calcBtn) {
+  calcBtn.addEventListener('click', () => {
+    const type = document.getElementById('pelletType')?.value || 'premium';
+    const pallets = Math.max(1, Number(document.getElementById('pallets')?.value || 1));
+    const postal = document.getElementById('postal')?.value || '';
+    const address = document.getElementById('address')?.value || '';
+
+    const price = basePrice[type] * pallets;
+    const transport = 350 + Math.min(250, pallets * 35) + postalBoost(postal);
+    const total = price + transport;
+
+    const rp = document.getElementById('resultPrice');
+    const rd = document.getElementById('resultDetails');
+
+    if (rp) rp.textContent = `${total.toLocaleString('pl-PL')} zł`;
+    if (rd) rd.textContent = `${type === 'premium' ? 'Pellet Premium A1' : 'Pellet Standard Economy'} • ${pallets} palet(y) • transport orientacyjny ${transport.toLocaleString('pl-PL')} zł${address ? ` • ${address}` : ''}`;
+
+    if (successBox) {
+      successBox.style.display = 'block';
+      successBox.innerHTML = '<strong>Wycena gotowa!</strong> Możesz przepisać dane do WhatsApp lub formularza zapytania.';
+    }
+  });
+}
+
 if (form) {
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -93,7 +127,7 @@ if (form) {
     if (!ok) return;
 
     const msg = [
-      'Nowe zapytanie o fakturę / pellet',
+      'Nowe zapytanie o wycenę pelletu',
       '',
       `Typ klienta: ${typ === 'firma' ? 'Firma' : 'Osoba prywatna'}`,
       typ === 'firma' ? `Nazwa firmy: ${vals.nazwaFirmy}` : null,
@@ -111,6 +145,10 @@ if (form) {
 ');
 
     window.open(`https://wa.me/48793573900?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
-    if (successBox) successBox.style.display = 'block';
+
+    if (successBox) {
+      successBox.style.display = 'block';
+      successBox.innerHTML = '<strong>Dziękujemy!</strong> Wiadomość z danymi została przygotowana w WhatsApp.';
+    }
   });
 }
