@@ -8,6 +8,7 @@ if (hb && nl) {
     hb.classList.toggle('op', op);
     hb.setAttribute('aria-expanded', op);
   });
+
   nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     nl.classList.remove('op');
     hb.classList.remove('op');
@@ -19,6 +20,7 @@ if (nav) window.addEventListener('scroll', () => nav.classList.toggle('sc', wind
 
 const tabs = document.querySelectorAll('.woj-tab');
 const panels = document.querySelectorAll('.woj-panel');
+
 tabs.forEach(tab => tab.addEventListener('click', () => {
   tabs.forEach(t => t.classList.remove('active'));
   panels.forEach(p => p.classList.remove('active'));
@@ -50,12 +52,17 @@ if (typeBtns.length && firmaFields) {
   }));
 }
 
-const setError = (id, show) => { const el = document.getElementById(id); if (el) el.style.display = show ? 'block' : 'none'; };
-const validNip = v => (v || '').replace(/\D/g, '').length === 10;
+const setError = (id, show) => {
+  const el = document.getElementById(id);
+  if (el) el.style.display = show ? 'block' : 'none';
+};
+
+const validNip = v => (v || '').replace(/D/g, '').length === 10;
 
 if (form) {
   form.addEventListener('submit', e => {
     e.preventDefault();
+
     const typ = document.querySelector('.ftype-btn.active')?.dataset.typ || 'osoba';
     const vals = {
       imie: document.getElementById('imie')?.value.trim() || '',
@@ -68,11 +75,13 @@ if (form) {
       formaPlatnosci: document.getElementById('formaPlatnosci')?.value.trim() || '',
       uwagi: document.getElementById('uwagi')?.value.trim() || ''
     };
+
     let ok = true;
     setError('errImie', !vals.imie); ok = ok && !!vals.imie;
     setError('errEmail', !vals.email || !vals.email.includes('@')); ok = ok && !!vals.email && vals.email.includes('@');
     setError('errMiejscowosc', !vals.miejscowosc); ok = ok && !!vals.miejscowosc;
     setError('errIloscTon', !vals.iloscTon || Number(vals.iloscTon) <= 0); ok = ok && !!vals.iloscTon && Number(vals.iloscTon) > 0;
+
     if (typ === 'firma') {
       setError('errNazwaFirmy', !vals.nazwaFirmy); ok = ok && !!vals.nazwaFirmy;
       setError('errNIP', !validNip(vals.nip)); ok = ok && validNip(vals.nip);
@@ -80,23 +89,27 @@ if (form) {
       setError('errNazwaFirmy', false);
       setError('errNIP', false);
     }
+
     if (!ok) return;
+
     const msg = [
-      'Nowe zapytanie o fakturÄ / pellet',
+      'Nowe zapytanie o fakturę / pellet',
       '',
       `Typ klienta: ${typ === 'firma' ? 'Firma' : 'Osoba prywatna'}`,
       typ === 'firma' ? `Nazwa firmy: ${vals.nazwaFirmy}` : null,
       typ === 'firma' ? `NIP: ${vals.nip}` : null,
-      `ImiÄ i nazwisko: ${vals.imie}`,
+      `Imię i nazwisko: ${vals.imie}`,
       `E-mail: ${vals.email}`,
       vals.telefon ? `Telefon: ${vals.telefon}` : null,
-      `MiejscowoĹÄ: ${vals.miejscowosc}`,
-      `IloĹÄ ton: ${vals.iloscTon}`,
-      vals.formaPlatnosci ? `Forma pĹatnoĹci: ${vals.formaPlatnosci}` : null,
+      `Miejscowość: ${vals.miejscowosc}`,
+      `Ilość ton: ${vals.iloscTon}`,
+      vals.formaPlatnosci ? `Forma płatności: ${vals.formaPlatnosci}` : null,
       vals.uwagi ? `Uwagi: ${vals.uwagi}` : null,
       '',
-      'ProszÄ o wycenÄ i potwierdzenie zamĂłwienia.'
-    ].filter(Boolean).join('\n');
+      'Proszę o wycenę i potwierdzenie zamówienia.'
+    ].filter(Boolean).join('
+');
+
     window.open(`https://wa.me/48793573900?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
     if (successBox) successBox.style.display = 'block';
   });
