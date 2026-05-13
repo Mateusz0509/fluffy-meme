@@ -316,7 +316,7 @@ section > p {
   text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
-.hero-content p {
+.hero-content p { 
   font-size: 14px;
   margin: 0 0 12px;
   opacity: 0.95;
