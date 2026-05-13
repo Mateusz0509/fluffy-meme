@@ -1,16 +1,15 @@
 :root {
-  --bg: #f5efe6;
-  --bg-alt: #fffaf2;
-  --surface: #fffaf2;
-  --text: #1d1d1b;
-  --muted: #5f5a52;
-  --accent: #1f5a3a;
-  --accent-soft: rgba(31, 90, 58, 0.10);
-  --accent-dark: #0f2f27;
-  --border: #e7dccd;
+  --bg: #fafafa;
+  --bg-alt: #ffffff;
+  --text: #222222;
+  --muted: #666666;
+  --accent: #0f7b3b;
+  --accent-soft: #e1f5ea;
+  --accent-dark: #085227;
+  --border: #e0e0e0;
   --danger: #c62828;
-  --shadow-soft: 0 8px 24px rgba(15, 47, 39, 0.06);
-  --radius: 18px;
+  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.06);
+  --radius: 10px;
   --transition: 0.2s ease;
   --max-width: 1100px;
 }
@@ -33,6 +32,8 @@ body {
   color: var(--text);
   line-height: 1.6;
 }
+
+/* --- GLOBAL --- */
 
 img {
   max-width: 100%;
@@ -59,7 +60,6 @@ section {
 section > h2 {
   margin: 0 0 0.75rem;
   font-size: 1.9rem;
-  color: var(--accent-dark);
 }
 
 section > p {
@@ -189,12 +189,41 @@ section > p {
   transform: translateY(-4px) rotate(-45deg);
 }
 
-/* --- HERO --- */
+/* --- HERO / BANNER --- */
 
-#hero {
+.hero-banner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 3rem 1.25rem 1.5rem;
+  width: 100%;
+  min-height: 260px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background-image:
+    linear-gradient(rgba(20,20,20,0.45), rgba(20,20,20,0.65)),
+    url("baner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 20px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+}
+
+.hero-banner-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  max-width: 520px;
 }
 
 .ey {
@@ -209,22 +238,46 @@ section > p {
   font-weight: 600;
 }
 
-#hero h1 {
+.hero-content h1 {
   margin: 0.8rem 0 0.5rem;
-  font-size: clamp(2.1rem, 4vw, 2.6rem);
-  color: var(--accent-dark);
+  font-size: clamp(2.1rem, 3.2vw, 2.7rem);
+  line-height: 1.1;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
 .hl {
   margin: 0 0 1.2rem;
-  color: var(--muted);
+  color: #f5f5f5;
   max-width: 34rem;
+  font-size: 0.95rem;
+  opacity: 0.96;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+}
+
+.hero-tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.hero-tags span {
+  font-size: 0.7rem;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(6px);
 }
 
 .hb2 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
+  justify-content: center;
 }
 
 /* buttons */
@@ -244,7 +297,11 @@ section > p {
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 .btn,
@@ -281,63 +338,32 @@ section > p {
   font-size: 0.85rem;
 }
 
-/* hero banner */
+/* --- BENEFITY --- */
 
-.hero-banner {
-  width: 100%;
-  min-height: 210px;
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  background-image: linear-gradient(rgba(20,20,20,0.35), rgba(20,20,20,0.45)), url("banner-mobile.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  box-sizing: border-box;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+#ben {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
 }
 
-.hero-content {
-  text-align: center;
-  color: #fff;
-  max-width: 92%;
+.bc {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: 1rem 1rem;
+  box-shadow: var(--shadow-soft);
 }
 
-.hero-content h1 {
-  font-size: 27px;
-  line-height: 1.05;
-  margin: 0 0 6px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+.bc h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
 }
 
-.hero-content p {
-  font-size: 14px;
-  margin: 0 0 12px;
-  opacity: 0.95;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
-}
-
-.hero-tags {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.hero-tags span {
-  font-size: 11px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.16);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.22);
-  backdrop-filter: blur(6px);
+.bc p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 /* --- OFERTA --- */
@@ -368,7 +394,6 @@ section > p {
 .oferta-box h3 {
   margin: 0.3rem 0 0.3rem;
   font-size: 1.1rem;
-  color: var(--accent-dark);
 }
 
 .oferta-box p {
@@ -457,7 +482,11 @@ section > p {
   font-size: 0.9rem;
   cursor: pointer;
   color: var(--muted);
-  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
 }
 
 .woj-tab:hover {
@@ -505,7 +534,6 @@ section > p {
 
 .wprice {
   font-weight: 600;
-  color: var(--accent-dark);
 }
 
 .woj-info {
@@ -594,7 +622,6 @@ section > p {
 .result-price {
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--accent-dark);
 }
 
 #resultDetails {
@@ -602,9 +629,13 @@ section > p {
   color: var(--muted);
 }
 
+/* blok WhatsApp pod kalkulatorem */
+
 .calc-wa {
   margin-top: 0.7rem;
 }
+
+/* opis jak działa wycena */
 
 .hw {
   margin-top: 1.75rem;
@@ -658,7 +689,6 @@ section > p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--accent-dark);
 }
 
 .faq-icon {
@@ -821,6 +851,8 @@ section > p {
   font-size: 0.85rem;
   color: var(--muted);
 }
+
+/* lightbox */
 
 .lightbox {
   position: fixed;
@@ -1011,5 +1043,25 @@ section > p {
   .fbot {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .hero-banner {
+    padding: 22px 16px;
+    min-height: 220px;
+    background-image:
+      linear-gradient(rgba(20,20,20,0.35), rgba(20,20,20,0.55)),
+      url("banner-mobile.jpg");
+  }
+
+  .hero-content {
+    max-width: 92%;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
+  }
+
+  .hl {
+    font-size: 0.9rem;
   }
 }
