@@ -285,21 +285,18 @@ section > p {
 /* hero banner */
 
 .hero-banner {
-  width: 100%;
-  min-height: 210px;
+  max-width: var(--max-width);
+  margin: 1.5rem auto 0;
   border-radius: 20px;
   overflow: hidden;
-  position: relative;
-  background-image: linear-gradient(rgba(20,20,20,0.35), rgba(20,20,20,0.45)), url("banner-mobile.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  box-sizing: border-box;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+
 }
 
 .hero-content {
