@@ -204,63 +204,49 @@ section > p {
   padding: 0;
 }
 
-.hero-banner {
+.hero-banner-only {
   width: 100%;
   min-height: 340px;
-  border-radius: 0;
-  position: relative;
-  background-image: linear-gradient(rgba(15, 15, 15, 0.45), rgba(15, 15, 15, 0.55)),
-    url("baner-sosnowe-chwile-1920x600.jpg");
+  background-image: url("baner-sosnowe-chwile-1920x600.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 16px;
-  box-sizing: border-box;
   box-shadow: 0 10px 24px rgba(0,0,0,0.18);
 }
 
-.hero-content {
+/* blok z nagłówkiem pod banerem */
+.hero-under {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 2.5rem;
   text-align: center;
-  color: #ffffff;
-  max-width: 640px;
 }
 
-.ey {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.2rem 0.7rem;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent-dark);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.hero-content .ey {
+.hero-under .ey {
   margin-bottom: 0.7rem;
 }
 
-.hero-content h1 {
+.hero-under h1 {
   font-size: clamp(2.2rem, 5vw, 2.8rem);
   line-height: 1.1;
   margin: 0 0 0.5rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-.hl {
+.hero-under .hl {
   margin: 0 0 1.2rem;
-  color: #e5e7eb;
+  color: var(--muted);
   max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero-content .hb2 {
+.hero-under .hb2 {
+  display: flex;
   justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 /* buttons */
