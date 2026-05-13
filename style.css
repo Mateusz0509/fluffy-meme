@@ -427,7 +427,7 @@ section > p {
   color: #ffffff;
 }
 
-/* --- WOJEWĂ“DZTWA --- */
+/* --- WOJEWÓDZTWA --- */
 
 #wojewodztwa {
   max-width: var(--max-width);
@@ -606,7 +606,7 @@ section > p {
   margin-top: 0.7rem;
 }
 
-/* opis jak dziaĹ‚a wycena */
+/* opis jak działa wycena */
 
 .hw {
   margin-top: 1.75rem;
@@ -935,7 +935,7 @@ section > p {
   color: #9ca3af;
 }
 
-/* --- RESPONSYWNOĹšÄ† --- */
+/* --- RESPONSYWNOŚĆ --- */
 
 @media (max-width: 960px) {
   .oferta-grid {
@@ -1015,39 +1015,4 @@ section > p {
     flex-direction: column;
     align-items: flex-start;
   }
-}
-
-.galeria-pellet {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-.galeria-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.9rem;
-  margin: 0.7rem 0 1.2rem;
-}
-.galeria-item {
-  background: var(--bg-alt);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  margin: 0;
-}
-.galeria-item img {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  display: block;
-}
-.galeria-item figcaption {
-  padding: 0.4rem 0.6rem 0.6rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-@media (max-width: 960px) {
-  .galeria-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 720px) {
-  .galeria-grid { grid-template-columns: minmax(0, 1fr); }
 }
