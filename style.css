@@ -285,18 +285,21 @@ section > p {
 /* hero banner */
 
 .hero-banner {
-  max-width: var(--max-width);
-  margin: 1.5rem auto 0;
+  width: 100%;
+  min-height: 210px;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
-}
-
-.hero-banner img {
-  width: 100%;
-  height: auto;
-  display: block;
-
+  position: relative;
+  background-image: linear-gradient(rgba(20,20,20,0.35), rgba(20,20,20,0.45)), url("banner-mobile.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
 }
 
 .hero-content {
@@ -424,7 +427,7 @@ section > p {
   color: #ffffff;
 }
 
-/* --- WOJEWÓDZTWA --- */
+/* --- WOJEWĂ“DZTWA --- */
 
 #wojewodztwa {
   max-width: var(--max-width);
@@ -603,7 +606,7 @@ section > p {
   margin-top: 0.7rem;
 }
 
-/* opis jak działa wycena */
+/* opis jak dziaĹ‚a wycena */
 
 .hw {
   margin-top: 1.75rem;
@@ -932,7 +935,7 @@ section > p {
   color: #9ca3af;
 }
 
-/* --- RESPONSYWNOŚĆ --- */
+/* --- RESPONSYWNOĹšÄ† --- */
 
 @media (max-width: 960px) {
   .oferta-grid {
@@ -1013,26 +1016,3 @@ section > p {
     align-items: flex-start;
   }
 }
-
-.brand-banner {
-  max-width: var(--max-width);
-  margin: 2rem auto;
-  border-radius: 20px;
-  overflow: hidden;
-  min-height: 420px;
-  background: linear-gradient(135deg, rgba(8, 82, 39, 0.92), rgba(15, 123, 59, 0.72));
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
-}
-.brand-banner__overlay {
-  min-height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1.25rem;
-  text-align: center;
-}
-.brand-banner__content { max-width: 760px; color: #fff; }
-.brand-banner__logo { width: min(220px, 45vw); height: auto; margin-bottom: 1rem; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.25)); }
-.brand-banner h2 { margin: 0 0 0.7rem; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; }
-.brand-banner p { margin: 0 0 1.25rem; font-size: 1.05rem; color: rgba(255,255,255,0.92); }
-@media (max-width: 720px) { .brand-banner, .brand-banner__overlay { min-height: 320px; } }
