@@ -78,25 +78,84 @@
 
 <section id="cennik">
   <h2>Cennik i kalkulator dostawy</h2>
-  <p>Wybierz pellet, wpisz adres i sprawdź orientacyjną wycenę dla klienta.</p>
-  <div class="calc-wrap">
-    <div class="calc-card">
-      <h3>Parametry zamówienia</h3>
-      <div class="calc-grid">
-        <label class="calc-field"><span>Rodzaj pelletu</span><select id="pelletType"><option value="economy">Pellet Standard Economy</option><option value="premium" selected>Pellet Premium A1</option></select></label>
-        <label class="calc-field"><span>Ilość palet</span><input id="pallets" type="number" min="1" value="1"></label>
-      </div>
-      <div class="calc-grid two">
-        <label class="calc-field"><span>Kod pocztowy</span><input id="postal" type="text" placeholder="np. 00-001"></label>
-        <label class="calc-field"><span>Adres dostawy</span><input id="address" type="text" placeholder="Ulica, miasto"></label>
-      </div>
-      <button class="btn" id="calcBtn" type="button">Oblicz wycenę</button>
-    </div>
-    <div class="calc-result" id="calcResult"><span class="result-label">Szacowana cena</span><div class="result-price" id="resultPrice">—</div><p id="resultDetails">Wpisz dane, aby zobaczyć wycenę.</p></div>
-  </div>
-  <div class="hw"><h3>Jak działa wycena</h3><ol><li>Wybierasz pellet.</li><li>Wpisujesz kod i adres dostawy.</li><li>System liczy orientacyjną cenę transportu.</li><li>Otrzymujesz gotową wiadomość do WhatsApp.</li></ol><p class="pn">Wycena jest orientacyjna i może się różnić zależnie od trasy, ilości palet i miejsca rozładunku.</p><p class="pn">Przy zamówieniu może być wymagana zaliczka, a jej wysokość ustalamy indywidualnie przed potwierdzeniem dostawy.</p></div>
-</section>
+  <p>
+    Oblicz cenę pelletu z dostawą pod Twój adres. 
+    Wpisz podstawowe dane – w 30 sekund zobaczysz orientacyjną cenę, 
+    a gotową wiadomość wyślemy Ci na WhatsApp.
+  </p>
 
+  <h3>Parametry zamówienia</h3>
+
+  <form id="calc-form">
+    <div class="form-row">
+      <label for="pellet-type">Rodzaj pelletu</label>
+      <select id="pellet-type" name="pellet-type">
+        <option value="economy">Pellet Standard Economy</option>
+        <option value="premium">Pellet Premium A1</option>
+      </select>
+      <small>Możesz zmienić wariant później w rozmowie na WhatsApp.</small>
+    </div>
+
+    <div class="form-row">
+      <label for="palets">Ilość palet</label>
+      <input id="palets" name="palets" type="number" min="1" step="1" placeholder="np. 2">
+      <small>Jeśli nie jesteś pewny, wpisz przybliżoną ilość – doprecyzujemy w wycenie.</small>
+    </div>
+
+    <div class="form-row">
+      <label for="zip">Kod pocztowy</label>
+      <input id="zip" name="zip" type="text" placeholder="00-000">
+      <small>Na podstawie kodu obliczymy trasę dostawy.</small>
+    </div>
+
+    <div class="form-row">
+      <label for="address">Adres dostawy</label>
+      <input id="address" name="address" type="text" placeholder="ul. Przykładowa 1, 00-000 Miejscowość">
+      <small>Podaj ulicę i miejscowość, gdzie ma trafić pellet.</small>
+    </div>
+
+    <button type="submit" class="btn-primary">
+      Oblicz wycenę i przejdź do WhatsApp
+    </button>
+  </form>
+
+  <div id="calc-result" class="calc-result calc-result--empty">
+    <h3>Szacowana cena</h3>
+    <p>Wpisz dane powyżej, aby zobaczyć orientacyjną wycenę pelletu i dostawy.</p>
+  </div>
+
+  <!-- Po obliczeniu możesz dynamicznie podmienić powyższy blok np. na: -->
+  <!--
+  <div id="calc-result" class="calc-result">
+    <h3>Szacowana cena</h3>
+    <p>
+      Szacowana cena: <strong>2100 zł / paleta Premium A1</strong> (ok. 975 kg)
+      + orientacyjny koszt dostawy <strong>ok. 240 zł</strong>.
+    </p>
+    <p>
+      To wycena orientacyjna – dokładną kwotę i termin dostawy potwierdzimy na WhatsApp.
+    </p>
+    <button type="button" class="btn-whatsapp">
+      Akceptuję wstępną wycenę – przejdź do WhatsApp
+    </button>
+  </div>
+  -->
+
+  <h3>Jak działa wycena</h3>
+  <ol class="steps">
+    <li>Wybierasz rodzaj pelletu i ilość palet.</li>
+    <li>Wpisujesz kod pocztowy oraz adres dostawy.</li>
+    <li>System liczy orientacyjną cenę pelletu i transportu.</li>
+    <li>Otrzymujesz gotową wiadomość na WhatsApp – wystarczy kliknąć „Wyślij”.</li>
+  </ol>
+  <p class="small">
+    Na WhatsApp możesz dopytać o rabat, termin dostawy i formę płatności.
+  </p>
+  <p class="small">
+    Wycena jest orientacyjna i może się różnić zależnie od trasy, ilości palet i miejsca rozładunku. 
+    Przy zamówieniu może być wymagana zaliczka, a jej wysokość ustalamy indywidualnie przed potwierdzeniem dostawy.
+  </p>
+</section>
 <section id="wojewodztwa">
   <h2>Dostawa na terenie całej Polski</h2>
   <p>Realizujemy dostawy w całym kraju. Najtańsza oferta Economy jest przygotowana właśnie dla klientów z różnych regionów Polski.</p>
