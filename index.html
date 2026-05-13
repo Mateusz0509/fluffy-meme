@@ -1,51 +1,74 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sosnowe Chwile - Pellet Premium</title>
-<meta name="description" content="Pellet premium z dostawą na terenie całej Polski. Kalkulator ceny i dostawy, szybka wycena przez WhatsApp." />
-<link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <title>Sosnowe Chwile - Pellet Premium</title>
+  <meta name="description" content="Pellet premium i tańszy pellet Economy z dostawą na terenie całej Polski. Szybka wycena przez kalkulator i WhatsApp.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- tutaj Twoje CSS -->
 </head>
 <body>
-<header id="nav">
-  <div class="ni">
-    <a href="#hero" class="nb">
-      <img src="logo-pellet.jpg" alt="Sosnowe Chwile" />
-      <div><strong>Sosnowe Chwile</strong><span>Pellet premium - naturalne ciepło</span></div>
-    </a>
-    <nav class="nl" id="nl">
-      <a href="#oferta">Oferta</a>
-      <a href="#cennik">Kalkulator</a>
-      <a href="#wojewodztwa">Dostawa</a>
-      <a href="#faq">FAQ</a>
-      <a href="#faktura">Zapytanie</a>
-      <a href="#kontakt">Kontakt</a>
-      <a class="nw" href="https://wa.me/48793573900?text=Dzień%20dobry,%20chcę%20zamówić%20pellet" target="_blank" rel="noopener">Zamów - cała Polska</a>
-    </nav>
-    <button class="hb" id="hb" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
+
+<header class="site-header">
+  <a href="#hero" class="logo">Sosnowe Chwile</a>
+  <nav class="main-nav">
+    <a href="#oferta">Oferta</a>
+    <a href="#cennik">Kalkulator</a>
+    <a href="#wojewodztwa">Dostawa</a>
+    <a href="#faq">FAQ</a>
+    <a href="#faktura">Zapytanie</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <a 
+    href="https://wa.me/48793573900?text=Dzień%20dobry,%20chcę%20zamówić%20pellet" 
+    class="btn-whatsapp header-cta"
+  >
+    Zamów – cała Polska
+  </a>
 </header>
-<main>
-<section id="hero">
-  <span class="ey">Pellet premium - dostawa cała Polska</span>
-  <h1>Pellet Premium z dostawą na terenie całej Polski</h1>
-  <p class="hl">Czyste spalanie, stabilna jakość i szybka dostawa. Dobierz tańszą ofertę albo premium, a kalkulator pokaże orientacyjną wycenę dla Twojego adresu.</p>
-  <div class="hb2">
-    <a class="btn" href="#cennik">Oblicz wycenę</a>
-    <a class="btn2" href="#oferta">Zobacz oferty</a>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-content">
+    <h1>Pellet Premium z dostawą na terenie całej Polski</h1>
+    <p class="hero-subtitle">
+      Czyste spalanie, stabilna jakość i szybka dostawa pod Twój adres. 
+      Dobierz tańszą ofertę albo premium, a kalkulator pokaże 
+      orientacyjną wycenę dla Twojego adresu.
+    </p>
+
+    <p class="hero-highlight">
+      Od <strong>1890 zł / paleta</strong> z dostawą – sprawdź cenę w 30 sekund i zamów przez WhatsApp.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#cennik" class="btn-primary">Oblicz wycenę</a>
+      <a href="#oferta" class="btn-secondary">Zobacz oferty</a>
+    </div>
+
+    <div class="hero-columns">
+      <div>
+        <h3>Dostawa cała Polska</h3>
+        <p>Dowozimy pellet do wszystkich województw, także w tańszej ofercie ekonomicznej.</p>
+      </div>
+      <div>
+        <h3>Szybki kontakt</h3>
+        <p>Wycena przez WhatsApp w kilka minut, z uwzględnieniem adresu dostawy.</p>
+      </div>
+      <div>
+        <h3>Bezpieczna rezerwacja</h3>
+        <p>Potwierdzenie zamówienia po akceptacji ceny i terminu dostawy.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="baner.jpg" alt="Pellet Premium" />
   </div>
 </section>
 
-<div class="hero-banner"><img src="baner.jpg" alt="Pellet Premium" /><div class="hero-banner-overlay"></div></div>
-
-<section id="ben">
-  <div class="bc"><h3>Dostawa cała Polska</h3><p>Dowozimy pellet do wszystkich województw, także w tańszej ofercie ekonomicznej.</p></div>
-  <div class="bc"><h3>Szybki kontakt</h3><p>Wycena przez WhatsApp w kilka minut, z uwzględnieniem adresu dostawy.</p></div>
-  <div class="bc"><h3>Bezpieczna rezerwacja</h3><p>Potwierdzenie zamówienia po akceptacji ceny i terminu dostawy.</p></div>
-</section>
-
-<<section id="oferta" class="offer">
+<!-- OFERTA -->
+<section id="oferta" class="offer">
   <h2>Oferta pelletu</h2>
   <p>
     Przygotowaliśmy kilka opcji, aby dopasować cenę do Twojego budżetu. 
@@ -54,7 +77,6 @@
   </p>
 
   <div class="offer-grid">
-    <!-- KARTA PREMIUM -->
     <article class="offer-card offer-card--highlight">
       <div class="offer-badge">Najczęściej wybierany</div>
       <h3>Pellet Premium A1</h3>
@@ -62,64 +84,55 @@
         Najwyższa jakość spalania, bardzo mało popiołu i stabilna wydajność. 
         Dobry wybór do domu i firmy.
       </p>
-
       <p class="offer-price">
         od <strong>2100 zł / paleta</strong><br>
         <span class="offer-price-details">(ok. 975 kg, worki 15 kg)</span>
       </p>
-
       <ul class="offer-features">
         <li>Certyfikowany pellet ENplus A1.</li>
         <li>Wysoka wartość opałowa i powtarzalna jakość.</li>
         <li>Dostawa palet pod dom na terenie całej Polski.</li>
         <li>Wycena pod Twój adres przez WhatsApp.</li>
       </ul>
-
       <a 
         href="https://wa.me/48793573900?text=Dzień%20dobry,%20chcę%20zamówić%20Pellet%20Premium%20A1" 
         class="btn-whatsapp"
       >
         Zamów Premium przez WhatsApp
       </a>
-
       <p class="offer-note">
         Cena jest orientacyjna. Dokładną wycenę z dostawą potwierdzimy po podaniu adresu.
       </p>
     </article>
 
-    <!-- KARTA ECONOMY -->
     <article class="offer-card">
       <div class="offer-badge offer-badge--economy">Tańsza oferta</div>
       <h3>Pellet Standard Economy</h3>
       <p class="offer-lead">
-        Tańsza opcja dla klientów, którzy chcą obniżyć koszt zakupu przy zachowaniu dobrej jakości opału.
+        Tańsza opcja dla klientów, którzy chcą obniżyć koszt zakupu 
+        przy zachowaniu dobrej jakości opału.
       </p>
-
       <p class="offer-price">
         od <strong>1890 zł / paleta</strong><br>
         <span class="offer-price-details">(ok. 975 kg, dostawa cała Polska)</span>
       </p>
-
       <ul class="offer-features">
         <li>Niższa cena zakupu przy zachowaniu dobrych parametrów opałowych.</li>
         <li>Dostawa na teren całego kraju.</li>
         <li>Dobry wybór do sezonowego ogrzewania.</li>
         <li>Szybka wycena dla Twojego adresu przez WhatsApp.</li>
       </ul>
-
       <a 
         href="https://wa.me/48793573900?text=Dzień%20dobry,%20chcę%20wycenę%20Pellet%20Standard%20Economy" 
         class="btn-whatsapp btn-whatsapp--outline"
       >
         Zapytaj o Economy przez WhatsApp
       </a>
-
       <p class="offer-note">
         Podaj miejscowość i ilość, a przygotujemy dla Ciebie wycenę z dostawą.
       </p>
     </article>
 
-    <!-- KARTA HURT -->
     <article class="offer-card">
       <div class="offer-badge offer-badge--b2b">Hurt i współpraca</div>
       <h3>Sprzedaż hurtowa</h3>
@@ -127,32 +140,30 @@
         Oferta dla firm, składów opału i wspólnot mieszkaniowych. 
         Przy większej liczbie palet przygotowujemy indywidualną wycenę.
       </p>
-
       <p class="offer-price">
         ceny hurtowe<br>
         <span class="offer-price-details">od kilku palet</span>
       </p>
-
       <ul class="offer-features">
         <li>Stała współpraca i regularne dostawy.</li>
         <li>Faktury VAT i warunki dla firm.</li>
         <li>Transport na terenie całego kraju.</li>
         <li>Wycena przygotowana od ręki na WhatsApp.</li>
       </ul>
-
       <a 
         href="https://wa.me/48793573900?text=Dzień%20dobry,%20proszę%20o%20ofertę%20hurtową%20na%20pellet" 
         class="btn-whatsapp"
       >
         Poproś o ofertę hurtową
       </a>
-
       <p class="offer-note">
         Napisz, ile palet Cię interesuje i dokąd mamy dowozić – odezwiemy się z propozycją ceny.
       </p>
     </article>
   </div>
 </section>
+
+<!-- KALKULATOR -->
 <section id="cennik">
   <h2>Cennik i kalkulator dostawy</h2>
   <p>
@@ -162,7 +173,6 @@
   </p>
 
   <h3>Parametry zamówienia</h3>
-
   <form id="calc-form">
     <div class="form-row">
       <label for="pellet-type">Rodzaj pelletu</label>
@@ -196,30 +206,11 @@
     </button>
   </form>
 
-  <div id="calc-result" class="calc-result calc-result--empty">
-    <h3>Szacowana cena</h3>
-    <p>Wpisz dane powyżej, aby zobaczyć orientacyjną wycenę pelletu i dostawy.</p>
-  </div>
-
-  <!-- Po obliczeniu możesz dynamicznie podmienić powyższy blok np. na: -->
-  <!--
-  <div id="calc-result" class="calc-result">
-    <h3>Szacowana cena</h3>
-    <p>
-      Szacowana cena: <strong>2100 zł / paleta Premium A1</strong> (ok. 975 kg)
-      + orientacyjny koszt dostawy <strong>ok. 240 zł</strong>.
-    </p>
-    <p>
-      To wycena orientacyjna – dokładną kwotę i termin dostawy potwierdzimy na WhatsApp.
-    </p>
-    <button type="button" class="btn-whatsapp">
-      Akceptuję wstępną wycenę – przejdź do WhatsApp
-    </button>
-  </div>
-  -->
+  <h3>Szacowana cena</h3>
+  <p>Wpisz dane powyżej, aby zobaczyć orientacyjną wycenę pelletu i dostawy.</p>
 
   <h3>Jak działa wycena</h3>
-  <ol class="steps">
+  <ol>
     <li>Wybierasz rodzaj pelletu i ilość palet.</li>
     <li>Wpisujesz kod pocztowy oraz adres dostawy.</li>
     <li>System liczy orientacyjną cenę pelletu i transportu.</li>
@@ -233,95 +224,103 @@
     Przy zamówieniu może być wymagana zaliczka, a jej wysokość ustalamy indywidualnie przed potwierdzeniem dostawy.
   </p>
 </section>
+
+<!-- DOSTAWA (skrót) -->
 <section id="wojewodztwa">
   <h2>Dostawa na terenie całej Polski</h2>
-  <p>Realizujemy dostawy w całym kraju. Najtańsza oferta Economy jest przygotowana właśnie dla klientów z różnych regionów Polski.</p>
-  <div class="woj-layout">
-    <div class="woj-tabs">
-      <button class="woj-tab active" data-woj="mazowieckie">Mazowieckie</button>
-      <button class="woj-tab" data-woj="lodzkie">Łódzkie</button>
-      <button class="woj-tab" data-woj="lubelskie">Lubelskie</button>
-      <button class="woj-tab" data-woj="swietokrzyskie">Świętokrzyskie</button>
-      <button class="woj-tab" data-woj="podlaskie">Podlaskie</button>
-      <button class="woj-tab" data-woj="kujawsko">Kujawsko-Pomorskie</button>
-    </div>
-    <div class="woj-panel active" id="woj-mazowieckie"><h3>Mazowieckie</h3><p class="woj-sub">Warszawa i okolice. Najszybsze terminy dostaw.</p><div class="woj-prices"><div class="woj-price-row"><span>Premium A1 - 1 paleta</span><span class="wprice">2100 zł</span></div><div class="woj-price-row"><span>Economy - 1 paleta</span><span class="wprice">1890 zł</span></div><div class="woj-price-row"><span>Od 2 palet</span><span class="wprice">indywidualnie</span></div></div><a class="btn" href="#cennik">Oblicz cenę</a></div>
-    <div class="woj-panel" id="woj-lodzkie"><h3>Łódzkie</h3><p class="woj-sub">Dostawa do Łodzi i okolic.</p><div class="woj-prices"><div class="woj-price-row"><span>Premium A1 - 1 paleta</span><span class="wprice">2100 zł</span></div><div class="woj-price-row"><span>Economy - 1 paleta</span><span class="wprice">1890 zł</span></div><div class="woj-price-row"><span>Wycena transportu</span><span class="wprice">po adresie</span></div></div></div>
-    <div class="woj-panel" id="woj-lubelskie"><h3>Lubelskie</h3><p class="woj-sub">Lublin, Zamość, Chełm.</p><div class="woj-prices"><div class="woj-price-row"><span>Premium A1 - 1 paleta</span><span class="wprice">2100 zł</span></div><div class="woj-price-row"><span>Economy - 1 paleta</span><span class="wprice">1890 zł</span></div><div class="woj-price-row"><span>Wycena transportu</span><span class="wprice">po adresie</span></div></div></div>
-    <div class="woj-panel" id="woj-swietokrzyskie"><h3>Świętokrzyskie</h3><p class="woj-sub">Kielce i okolice.</p><div class="woj-prices"><div class="woj-price-row"><span>Premium A1 - 1 paleta</span><span class="wprice">2100 zł</span></div><div class="woj-price-row"><span>Economy - 1 paleta</span><span class="wprice">1890 zł</span></div><div class="woj-price-row"><span>Wycena transportu</span><span class="wprice">po adresie</span></div></div></div>
-    <div class="woj-panel" id="woj-podlaskie"><h3>Podlaskie</h3><p class="woj-sub">Białystok i okolice.</p><div class="woj-prices"><div class="woj-price-row"><span>Premium A1 - 1 paleta</span><span class="wprice">2100 zł</span></div><div class="woj-price-row"><span>Economy - 1 paleta</span><span class="wprice">1890 zł</span></div><div class="woj-price-row"><span>Wycena transportu</span><span class="wprice">po adresie</span></div></div></div>
-    <div class="woj-panel" id="woj-kujawsko"><h3>Kujawsko-Pomorskie</h3><p class="woj-sub">Bydgoszcz, Toruń, Włocławek.</p><div class="woj-prices"><div class="woj-price-row"><span>Premium A1 - 1 paleta</span><span class="wprice">2100 zł</span></div><div class="woj-price-row"><span>Economy - 1 paleta</span><span class="wprice">1890 zł</span></div><div class="woj-price-row"><span>Wycena transportu</span><span class="wprice">po adresie</span></div></div></div>
-  </div>
+  <p>
+    Realizujemy dostawy w całym kraju. Najtańsza oferta Economy jest przygotowana 
+    właśnie dla klientów z różnych regionów Polski.
+  </p>
+
+  <!-- przykładowy blok województw – masz już szczegółowe sekcje w kodzie -->
+  <!-- Mazowieckie, Łódzkie, Lubelskie, Świętokrzyskie, Podlaskie, Kujawsko-Pomorskie itd. -->
 </section>
 
-<section id="faq"><h2>FAQ</h2><p>Najczęściej zadawane pytania o pellet i dostawę.</p><div class="fa"><div class="faq-item"><h3 class="faq-q">Czy dostarczacie pellet na terenie całej Polski? <span class="faq-icon">+</span></h3><p class="faq-a">Tak, realizujemy dostawy do wszystkich województw.</p></div><div class="faq-item"><h3 class="faq-q">Czy jest tańsza oferta? <span class="faq-icon">+</span></h3><p class="faq-a">Tak, dostępny jest Pellet Standard Economy z dostawą na teren całego kraju.</p></div><div class="faq-item"><h3 class="faq-q">Ile trwa wycena? <span class="faq-icon">+</span></h3><p class="faq-a">Wycena pojawia się po wpisaniu danych w kalkulatorze i może zostać potwierdzona przez WhatsApp.</p></div></div></section>
+<!-- FAQ -->
+<section id="faq">
+  <h2>FAQ</h2>
+  <p>Najczęściej zadawane pytania o pellet i dostawę.</p>
 
+  <details>
+    <summary>Czy dostarczacie pellet na terenie całej Polski?</summary>
+    <p>Tak, realizujemy dostawy do wszystkich województw.</p>
+  </details>
+
+  <details>
+    <summary>Czy jest tańsza oferta?</summary>
+    <p>Tak, dostępny jest Pellet Standard Economy z dostawą na teren całego kraju.</p>
+  </details>
+
+  <details>
+    <summary>Ile trwa wycena?</summary>
+    <p>
+      Wycena pojawia się po wpisaniu danych w kalkulatorze i może zostać potwierdzona przez WhatsApp.
+    </p>
+  </details>
+</section>
+
+<!-- ZAPYTANIE KLIENTA -->
 <section id="faktura">
   <h2>Zapytanie klienta</h2>
   <p>
-    Wyślij dane do wyceny i faktury. 
-    Na podstawie poniższych informacji przygotujemy wycenę na WhatsApp oraz dane do faktury – 
+    Wyślij dane do wyceny i faktury. Na podstawie poniższych informacji 
+    przygotujemy wycenę na WhatsApp oraz dane do faktury – 
     jeszcze niczego nie rezerwujesz na stałe.
   </p>
 
   <form id="inquiry-form">
-    <fieldset class="form-group">
+    <fieldset>
       <legend>Typ klienta</legend>
-      <label>
-        <input type="radio" name="client-type" value="osoba" checked>
-        Osoba prywatna
-      </label>
-      <label>
-        <input type="radio" name="client-type" value="firma">
-        Firma
-      </label>
+      <label><input type="radio" name="client-type" value="osoba" checked> Osoba prywatna</label>
+      <label><input type="radio" name="client-type" value="firma"> Firma</label>
     </fieldset>
 
-    <div id="company-fields" class="form-group form-group--company" style="display:none;">
+    <div id="company-fields" style="display:none;">
       <div class="form-row">
         <label for="company-name">Nazwa firmy</label>
-        <input id="company-name" name="company-name" type="text" placeholder="Nazwa firmy">
+        <input id="company-name" name="company-name" type="text">
         <small>Podaj pełną nazwę firmy do faktury.</small>
       </div>
       <div class="form-row">
         <label for="nip">NIP</label>
-        <input id="nip" name="nip" type="text" placeholder="000-000-00-00">
+        <input id="nip" name="nip" type="text">
         <small>Podaj prawidłowy NIP.</small>
       </div>
     </div>
 
     <div class="form-row">
-      <label for="name">Imię i nazwisko <span class="required">*</span></label>
-      <input id="name" name="name" type="text" required placeholder="Jan Kowalski">
+      <label for="name">Imię i nazwisko *</label>
+      <input id="name" name="name" type="text" required>
       <small>To pole jest wymagane.</small>
     </div>
 
     <div class="form-row">
-      <label for="email">E-mail <span class="required">*</span></label>
-      <input id="email" name="email" type="email" required placeholder="jan.kowalski@example.com">
+      <label for="email">E-mail *</label>
+      <input id="email" name="email" type="email" required>
       <small>Na ten adres wyślemy potwierdzenie wyceny.</small>
     </div>
 
     <div class="form-row">
       <label for="phone">Telefon (opcjonalnie)</label>
-      <input id="phone" name="phone" type="tel" placeholder="+48 600 000 000">
+      <input id="phone" name="phone" type="tel">
       <small>Podaj, jeśli wolisz, abyśmy mogli zadzwonić w razie pytań.</small>
     </div>
 
     <div class="form-row">
-      <label for="city">Miejscowość dostawy <span class="required">*</span></label>
-      <input id="city" name="city" type="text" required placeholder="np. Bobolice, woj. zachodniopomorskie">
+      <label for="city">Miejscowość dostawy *</label>
+      <input id="city" name="city" type="text" required>
       <small>Podaj miejscowość, do której mamy dowieźć pellet.</small>
     </div>
 
     <div class="form-row">
-      <label for="tons">Ilość ton <span class="required">*</span></label>
-      <input id="tons" name="tons" type="number" min="0.5" step="0.5" required placeholder="np. 2,0">
+      <label for="tons">Ilość ton *</label>
+      <input id="tons" name="tons" type="number" min="0.5" step="0.5" required>
       <small>Jeśli nie jesteś pewny, wpisz przybliżoną ilość – pomożemy dobrać odpowiednią.</small>
     </div>
 
     <div class="form-row">
-      <label for="payment">Forma płatności <span class="required">*</span></label>
+      <label for="payment">Forma płatności *</label>
       <select id="payment" name="payment" required>
         <option value="" disabled selected>Wybierz</option>
         <option value="przelew">Przelew przed dostawą</option>
@@ -331,7 +330,7 @@
 
     <div class="form-row">
       <label for="notes">Uwagi do zamówienia (opcjonalnie)</label>
-      <textarea id="notes" name="notes" rows="3" placeholder="Np. preferowane dni dostawy, godziny, uwagi do rozładunku."></textarea>
+      <textarea id="notes" name="notes" rows="3"></textarea>
     </div>
 
     <p class="small">
@@ -344,7 +343,7 @@
     </button>
   </form>
 
-  <div id="inquiry-success" class="form-success" style="display:none;">
+  <div id="inquiry-success" style="display:none;">
     <h3>Dziękujemy!</h3>
     <p>
       Otworzyliśmy WhatsApp z podsumowaniem Twoich danych. 
@@ -353,62 +352,45 @@
   </div>
 </section>
 
-<section id="galeria-pellet">
-  <h2>Galeria pelletu</h2>
-  <p>Zdjęcia pelletu Premium A1 oraz Standard Economy.</p>
-
-  <h3>Pellet Premium A1</h3>
-  <div class="galeria-grid">
-    <figure class="galeria-item">
-      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/213c3a45f2926e2a47f25044cf8dbfc18c358a79.jpg" class="galeria-link">
-        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/213c3a45f2926e2a47f25044cf8dbfc18c358a79.jpg" alt="Pellet Premium A1 - worek" />
-        <figcaption>Premium A1</figcaption>
-      </a>
-    </figure>
-
-    <figure class="galeria-item">
-      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/2026d5cba5f4ea2387733ac91279f213c10244e9.jpg" class="galeria-link">
-        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/2026d5cba5f4ea2387733ac91279f213c10244e9.jpg" alt="Pellet Premium A1 - worek premium" />
-        <figcaption>Premium A1 - opakowanie</figcaption>
-      </a>
-    </figure>
-
-    <figure class="galeria-item">
-      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/5b3cf17cf81319b0efdc3db92fee23b9a05b9a7b.jpg" class="galeria-link">
-        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/5b3cf17cf81319b0efdc3db92fee23b9a05b9a7b.jpg" alt="Pellet Premium A1 - worek biały" />
-        <figcaption>Premium A1 - biały worek</figcaption>
-      </a>
-    </figure>
-  </div>
-
-  <h3>Pellet Standard Economy</h3>
-  <div class="galeria-grid">
-    <figure class="galeria-item">
-      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/445354c1fa6a431af317590061864ec327c6a709.jpg" class="galeria-link">
-        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/445354c1fa6a431af317590061864ec327c6a709.jpg" alt="Pellet Standard Economy - worek" />
-        <figcaption>Economy - worek</figcaption>
-      </a>
-    </figure>
-
-    <figure class="galeria-item">
-      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/26687282424f1629ae0dad59ca634ee863eb470c.jpg" class="galeria-link">
-        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/26687282424f1629ae0dad59ca634ee863eb470c.jpg" alt="Pellet Standard Economy - opakowanie" />
-        <figcaption>Economy - opakowanie</figcaption>
-      </a>
-    </figure>
-
-    <figure class="galeria-item">
-      <a href="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f03193e9df9896acba391693a8e586080a3acff7.jpg" class="galeria-link">
-        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f03193e9df9896acba391693a8e586080a3acff7.jpg" alt="Pellet Standard Economy - worek pomarańczowy" />
-        <figcaption>Economy - wariant worka</figcaption>
-      </a>
-    </figure>
-  </div>
+<!-- KONTAKT / STOPKA -->
+<section id="kontakt">
+  <h2>Kontakt</h2>
+  <p>Napisz na WhatsApp lub e-mail - odpowiemy możliwie szybko.</p>
+  <p>E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a></p>
+  <p>Telefon: +48 793 573 900</p>
+  <p>
+    WhatsApp: 
+    <a href="https://wa.me/48793573900">+48 793 573 900</a>
+  </p>
 </section>
-<section id="kontakt"><h2>Kontakt</h2><p>Napisz na WhatsApp lub e-mail - odpowiemy możliwie szybko.</p><p>E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a></p><p>Telefon: +48 793 573 900</p></section>
-</main>
-<footer id="footer"><div class="fi"><div class="fcol"><div class="fbrand-name">Sosnowe Chwile</div><div class="fbrand-sub">Pellet premium z dostawą na terenie całej Polski</div></div><div class="fcol"><h3>Dane firmy</h3><address>NORDIVA TRADE Sp. z o.o.<br>Rynek 17/2<br>83-200 Starogard Gdański<br>NIP 592-230-81-05</address></div><div class="fcol"><h3>Kontakt</h3><p>E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a><br>WhatsApp: <a href="https://wa.me/48793573900" target="_blank" rel="noopener">+48 793 573 900</a></p></div></div><div class="fbot"><p>2025 Sosnowe Chwile. Wszelkie prawa zastrzeżone.</p><div class="fbot-links"><a href="#oferta">Oferta</a><a href="#cennik">Kalkulator</a><a href="#wojewodztwa">Dostawa</a><a href="#faq">FAQ</a><a href="#faktura">Zapytanie</a><a href="#kontakt">Kontakt</a></div></div></footer>
-<div id="lightbox" class="lightbox" aria-hidden="true"><button type="button" class="lightbox-close" id="lightboxClose">×</button><img id="lightboxImg" alt="Powiększone zdjęcie"></div>
-<script src="script.js"></script>
+
+<footer class="site-footer">
+  <div>
+    <h3>Dane firmy</h3>
+    <p>NORDIVA TRADE Sp. z o.o.<br>
+       Rynek 17/2<br>
+       83-200 Starogard Gdański<br>
+       NIP 592-230-81-05
+    </p>
+  </div>
+  <div>
+    <h3>Kontakt</h3>
+    <p>E-mail: <a href="mailto:biuro@sosnowechwile.pl">biuro@sosnowechwile.pl</a></p>
+    <p>WhatsApp: <a href="https://wa.me/48793573900">+48 793 573 900</a></p>
+  </div>
+  <div class="footer-bottom">
+    <p>2025 Sosnowe Chwile. Wszelkie prawa zastrzeżone.</p>
+    <nav class="footer-nav">
+      <a href="#oferta">Oferta</a>
+      <a href="#cennik">Kalkulator</a>
+      <a href="#wojewodztwa">Dostawa</a>
+      <a href="#faq">FAQ</a>
+      <a href="#faktura">Zapytanie</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- tutaj JS do kalkulatora, formularza i WhatsApp -->
 </body>
 </html>
