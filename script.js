@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const calcWaWrap = document.getElementById('calcWaWrap');
   const calcWaLink = document.getElementById('calcWaLink');
 
-  // proste stawki przykładowe – możesz później podmienić
   const basePrices = {
     economy: 800,
     standard: 1000,
@@ -66,12 +65,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!type || pallets <= 0) {
       resultPrice.textContent = '—';
       resultDetails.textContent = 'Podaj rodzaj pelletu i ilość palet.';
-      calcWaWrap.style.display = 'none';
+      if (calcWaWrap) calcWaWrap.style.display = 'none';
       return;
     }
 
     const base = basePrices[type] || 0;
-    const perTonne = base; // można później rozbudować o rabaty
+    const perTonne = base;
     const total = perTonne * pallets;
 
     resultPrice.textContent = formatNumber(total) + ' zł';
@@ -105,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const msg = encodeURIComponent(msgLines.join('\n'));
 
-      // Tu możesz wpisać swój numer WhatsApp bez + i bez spacji, np. 48793573900
+      // Twój numer WhatsApp (bez + i bez spacji)
       const phone = '48793573900';
       const url = `https://wa.me/${phone}?text=${msg}`;
 
@@ -144,8 +143,8 @@ document.addEventListener('DOMContentLoaded', function () {
         typFaktury = btn.dataset.typ || 'firma';
 
         if (typFaktury === 'firma') {
-          firmaFields.style.display = '';
-        } else {
+          if (firmaFields) firmaFields.style.display = '';
+        } else if (firmaFields) {
           firmaFields.style.display = 'none';
         }
       });
@@ -157,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function validateNIP(nip) {
-    // prosty check długości, możesz podmienić na pełny algorytm
     const clean = (nip || '').replace(/[^0-9]/g, '');
     return clean.length === 10;
   }
@@ -196,22 +194,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
 
-      if (!imie.value.trim()) {
+      if (!imie || !imie.value.trim()) {
         if (errImie) errImie.style.display = 'block';
         valid = false;
       }
 
-      if (!validateEmail(email.value)) {
+      if (!email || !validateEmail(email.value)) {
         if (errEmail) errEmail.style.display = 'block';
         valid = false;
       }
 
-      if (!miejscowosc.value.trim()) {
+      if (!miejscowosc || !miejscowosc.value.trim()) {
         if (errMiejscowosc) errMiejscowosc.style.display = 'block';
         valid = false;
       }
 
-      const tons = parseFloat(iloscTon.value);
+      const tons = iloscTon ? parseFloat(iloscTon.value) : 0;
       if (!(tons > 0)) {
         if (errIloscTon) errIloscTon.style.display = 'block';
         valid = false;
@@ -245,7 +243,11 @@ document.addEventListener('DOMContentLoaded', function () {
         `Miejscowość: ${miejscowosc.value.trim()}`,
         '',
         `Ilość ton: ${tons}`,
-        `Forma płatności: ${formaPlatnosci.value === 'przelew' ? 'Przelew przed dostawą' : 'Gotówka przy dostawie'}`,
+        `Forma płatności: ${
+          formaPlatnosci && formaPlatnosci.value === 'przelew'
+            ? 'Przelew przed dostawą'
+            : 'Gotówka przy dostawie'
+        }`,
         uwagi && uwagi.value.trim() ? `Uwagi: ${uwagi.value.trim()}` : '',
         zaliczkaAkcept && zaliczkaAkcept.checked
           ? 'Klient akceptuje zaliczkę przed realizacją zamówienia.'
