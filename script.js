@@ -105,3 +105,70 @@ if (lbClose) {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && lb) lb.classList.remove('open');
 });
+<script>
+  (function() {
+    const calcForm = document.getElementById('calc-form');
+    if (!calcForm) return;
+
+    const pelletTypeEl = document.getElementById('pellet-type');
+    const paletsEl = document.getElementById('palets');
+    const zipEl = document.getElementById('zip');
+    const addressEl = document.getElementById('address');
+
+    // Proste założenia cenowe – podmień na swoje, jeśli trzeba
+    const PRICES = {
+      premium: 2100,   // zł za paletę
+      economy: 1890    // zł za paletę
+    };
+    const DELIVERY_PER_PALET = 240; // zł za paletę (przykładowo)
+
+    const PHONE = '48793573900'; // bez plusa, format dla wa.me
+
+    calcForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const pelletType = pelletTypeEl.value === 'premium' ? 'Pellet Premium A1' : 'Pellet Standard Economy';
+      const palets = parseInt(paletsEl.value, 10) || 1;
+      const zip = (zipEl.value || '').trim();
+      const address = (addressEl.value || '').trim();
+
+      // Prosta walidacja – możesz rozbudować
+      if (!zip || !address) {
+        alert('Podaj kod pocztowy i adres dostawy, aby obliczyć wycenę.');
+        return;
+      }
+
+      const unitPrice = pelletTypeEl.value === 'premium' ? PRICES.premium : PRICES.economy;
+      const pelletCost = unitPrice * palets;
+      const deliveryCost = DELIVERY_PER_PALET * palets;
+      const totalApprox = pelletCost + deliveryCost;
+
+      const szacowanaCenaTekst =
+        `około ${pelletCost.toLocaleString('pl-PL')} zł za pellet ` +
+        `+ około ${deliveryCost.toLocaleString('pl-PL')} zł za dostawę ` +
+        `(łącznie około ${totalApprox.toLocaleString('pl-PL')} zł, wycena orientacyjna)`;
+
+      const messageLines = [
+        'Dzień dobry, chciałbym otrzymać wycenę pelletu.',
+        '',
+        `Rodzaj pelletu: ${pelletType}`,
+        `Ilość palet: ${palets}`,
+        `Adres dostawy: ${address}`,
+        `Kod pocztowy: ${zip}`,
+        '',
+        'Szacowana cena z kalkulatora:',
+        szacowanaCenaTekst,
+        '',
+        'Proszę o potwierdzenie dokładnej ceny razem z dostawą',
+        'oraz najbliższego możliwego terminu dostawy.'
+      ];
+
+      const message = messageLines.join('\n');
+      const encoded = encodeURIComponent(message);
+      const url = `https://wa.me/${PHONE}?text=${encoded}`;
+
+      // Otwórz WhatsApp w nowej karcie
+      window.open(url, '_blank');
+    });
+  })();
+</script>
