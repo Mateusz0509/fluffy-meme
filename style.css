@@ -285,31 +285,69 @@ section > p {
 /* hero banner */
 
 .hero-banner {
-  position: relative;
-  max-width: var(--max-width);
-  margin: 0 auto 2rem;
-  padding: 0 1.25rem;
-}
-
-.hero-banner img {
   width: 100%;
-  border-radius: var(--radius);
-  object-fit: cover;
-  max-height: 260px;
+  min-height: 220px;
+  border-radius: 18px;
+  overflow: hidden;
+  background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url("banner-mobile.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.hero-banner-overlay {
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.3),
-    transparent 40%,
-    transparent
-  );
+.hero-content {
+  text-align: center;
+  color: #fff;
+  max-width: 92%;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
 }
 
+.hero-content h1 {
+  font-size: 28px;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 15px;
+  margin: 0 0 12px;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-tags span {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    min-height: 180px;
+    background-position: center center;
+  }
+
+  .hero-content h1 {
+    font-size: 22px;
+  }
+
+  .hero-content p {
+    font-size: 13px;
+  }
+}
 /* --- BENEFITS --- */
 
 #ben {
