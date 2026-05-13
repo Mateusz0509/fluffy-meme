@@ -1052,3 +1052,37 @@ section > p {
     align-items: flex-start;
   }
 }
+.sosnowe-banner {
+  max-width: var(--max-width);
+  margin: 3rem auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.banner-content {
+  position: relative;
+  display: block;
+}
+
+.banner-link {
+  display: block;
+  transition: transform var(--transition);
+}
+
+.banner-link:hover {
+  transform: translateY(-4px);
+}
+
+.sosnowe-banner img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .sosnowe-banner {
+    margin: 2rem 1.25rem;
+  }
+}
