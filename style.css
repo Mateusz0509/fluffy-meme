@@ -204,21 +204,22 @@ section > p {
   padding: 0;
 }
 
+/* niższy baner, bez tekstu */
 .hero-banner-only {
   width: 100%;
-  min-height: 340px;
+  min-height: 220px;        /* było 340px – możesz dalej zmniejszyć np. do 180px */
   background-image: url("baner-sosnowe-chwile-1920x600.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.16);
 }
 
 /* blok z nagłówkiem pod banerem */
 .hero-under {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem 1.25rem 2.5rem;
+  padding: 1.8rem 1.25rem 2.3rem;
   text-align: center;
 }
 
@@ -227,15 +228,15 @@ section > p {
 }
 
 .hero-under h1 {
-  font-size: clamp(2.2rem, 5vw, 2.8rem);
+  font-size: clamp(2rem, 4.4vw, 2.5rem); /* trochę mniejsze niż wcześniej */
   line-height: 1.1;
   margin: 0 0 0.5rem;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
 }
 
 .hero-under .hl {
-  margin: 0 0 1.2rem;
+  margin: 0 0 1.1rem;
   color: var(--muted);
   max-width: 34rem;
   margin-left: auto;
