@@ -104,11 +104,17 @@ section > p {
   color: var(--text);
 }
 
-.nb img {
+/* logo przy nazwie */
+
+.nb-logo {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  object-fit: cover;
+  background-image: url("logo-sosnowe-chwile.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
 }
 
 .nb div {
@@ -190,12 +196,36 @@ section > p {
   transform: translateY(-4px) rotate(-45deg);
 }
 
-/* --- HERO --- */
+/* --- HERO – DUŻY BANER NA GÓRZE --- */
 
 #hero {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 3rem 1.25rem 1.5rem;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-banner {
+  width: 100%;
+  min-height: 340px;
+  border-radius: 0;
+  position: relative;
+  background-image: linear-gradient(rgba(15, 15, 15, 0.45), rgba(15, 15, 15, 0.55)),
+    url("baner-sosnowe-chwile-1920x600.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.hero-content {
+  text-align: center;
+  color: #ffffff;
+  max-width: 640px;
 }
 
 .ey {
@@ -210,21 +240,27 @@ section > p {
   font-weight: 600;
 }
 
-#hero h1 {
-  margin: 0.8rem 0 0.5rem;
-  font-size: clamp(2.1rem, 4vw, 2.6rem);
+.hero-content .ey {
+  margin-bottom: 0.7rem;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
+  line-height: 1.1;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
 .hl {
   margin: 0 0 1.2rem;
-  color: var(--muted);
+  color: #e5e7eb;
   max-width: 34rem;
 }
 
-.hb2 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
+.hero-content .hb2 {
+  justify-content: center;
 }
 
 /* buttons */
@@ -282,75 +318,6 @@ section > p {
   font-size: 0.85rem;
 }
 
-/* hero banner */
-
-/* --- HERO NA CAŁĄ SZEROKOŚĆ --- */
-
-#hero {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
-.hero-banner {
-  width: 100%;
-  min-height: 320px;         /* możesz podbić np. do 380–420px */
-  border-radius: 0;
-  position: relative;
-  background-image: linear-gradient(rgba(15, 15, 15, 0.45), rgba(15, 15, 15, 0.55)),
-    url("baner-sosnowe-chwile-1920x600.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 16px;
-  box-sizing: border-box;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-}
-
-.hero-content {
-  text-align: center;
-  color: #ffffff;
-  max-width: 640px;
-}
-
-.hero-content .ey {
-  margin-bottom: 0.7rem;
-}
-
-.hero-content h1 {
-  font-size: clamp(2.2rem, 5vw, 2.8rem);
-  line-height: 1.1;
-  margin: 0 0 0.5rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-}
-
-.hero-content .hl {
-  margin: 0 0 1.1rem;
-  color: #e5e7eb;
-}
-
-.hero-content .hb2 {
-  justify-content: center;
-}
-
-/* na mniejszych ekranach trochę mniejszy hero */
-
-@media (max-width: 720px) {
-  .hero-banner {
-    min-height: 260px;
-    padding: 24px 14px;
-  }
-
-  .hero-content h1 {
-    font-size: 1.9rem;
-  }
-}
-}
 /* --- OFERTA --- */
 
 #oferta {
@@ -438,7 +405,7 @@ section > p {
   color: #ffffff;
 }
 
-/* --- WOJEWÓDZTWA --- */
+/* --- WOJEWÓDZTWA (jeśli użyjesz) --- */
 
 #wojewodztwa {
   max-width: var(--max-width);
@@ -644,7 +611,7 @@ section > p {
   color: var(--muted);
 }
 
-/* --- FAQ --- */
+/* --- FAQ (jeśli użyjesz) --- */
 
 #faq {
   max-width: var(--max-width);
@@ -871,7 +838,7 @@ section > p {
   cursor: pointer;
 }
 
-/* --- KONTAKT / FOOTER --- */
+/* --- KONTAKT / FOOTER (jeśli dodasz) --- */
 
 #kontakt {
   max-width: var(--max-width);
@@ -1025,5 +992,14 @@ section > p {
   .fbot {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .hero-banner {
+    min-height: 280px;
+    padding: 24px 14px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
   }
 }
