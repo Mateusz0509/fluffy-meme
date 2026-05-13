@@ -167,6 +167,83 @@
   </div>
 </section>
 
+<section id="cennik">
+  <h2>Cennik i kalkulator dostawy</h2>
+  <p>Wybierz pellet, wpisz adres i sprawdź orientacyjną wycenę dla klienta.</p>
+
+  <div class="calc-wrap">
+    <div class="calc-card">
+      <h3>Parametry zamówienia</h3>
+
+      <div class="calc-grid">
+        <label class="calc-field">
+          <span>Rodzaj pelletu</span>
+          <select id="pelletType">
+            <option value="economy">Pellet Standard Economy</option>
+            <option value="premium" selected>Pellet Premium A1</option>
+          </select>
+        </label>
+
+        <label class="calc-field">
+          <span>Ilość palet</span>
+          <input id="pallets" type="number" min="1" value="1" />
+        </label>
+      </div>
+
+      <div class="calc-grid two">
+        <label class="calc-field">
+          <span>Kod pocztowy</span>
+          <input id="postal" type="text" placeholder="np. 00-001" />
+        </label>
+
+        <label class="calc-field">
+          <span>Adres dostawy</span>
+          <input id="address" type="text" placeholder="Ulica, miasto" />
+        </label>
+      </div>
+
+      <button class="btn" id="calcBtn" type="button">Oblicz wycenę</button>
+    </div>
+
+    <div class="calc-result" id="calcResult">
+      <span class="result-label">Szacowana cena</span>
+      <div class="result-price" id="resultPrice">—</div>
+      <p id="resultDetails">Wpisz dane, aby zobaczyć wycenę.</p>
+
+      <!-- przycisk WhatsApp z podsumowaniem wyceny -->
+      <div class="calc-wa" id="calcWaWrap" style="display:none; margin-top:1rem;">
+        <a
+          id="calcWaLink"
+          class="btn btn-outline"
+          href="#"
+          target="_blank"
+          rel="noopener"
+        >
+          Wyślij zapytanie z wyceną przez WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hw">
+    <h3>Jak działa wycena</h3>
+    <ol>
+      <li>Wybierasz pellet.</li>
+      <li>Wpisujesz kod i adres dostawy.</li>
+      <li>System liczy orientacyjną cenę z transportem.</li>
+      <li>Możesz wysłać podsumowanie wyceny przez WhatsApp.</li>
+    </ol>
+    <p class="pn">
+      Wycena jest orientacyjna i może się różnić zależnie od trasy, ilości palet
+      i miejsca rozładunku.
+    </p>
+    <p class="pn">
+      Przy zamówieniu może być wymagana zaliczka, a jej wysokość ustalamy
+      indywidualnie przed potwierdzeniem dostawy.
+    </p>
+  </div>
+</section>
+
 <section id="wojewodztwa">
   <h2>Dostawa pelletu na terenie całej Polski</h2>
   <p>
