@@ -1,287 +1,311 @@
-// --- NAWIGACJA / HAMBURGER / STICKY NAV ---
-const hb = document.getElementById('hb');
-const nl = document.getElementById('nl');
-const nav = document.getElementById('nav');
+// Po załadowaniu DOM
+document.addEventListener('DOMContentLoaded', function () {
+  // --- ELEMENTY WSPÓLNE ---
+  const nav = document.getElementById('nav');
+  const hb = document.getElementById('hb');
+  const navList = document.getElementById('nl');
 
-if (hb && nl) {
-  hb.addEventListener('click', () => {
-    const open = nl.classList.toggle('op');
-    hb.classList.toggle('op', open);
-    hb.setAttribute('aria-expanded', open);
-  });
+  // --- HAMBURGER + MENU MOBILE ---
+  if (hb && navList) {
+    hb.addEventListener('click', function () {
+      const isOpen = hb.classList.toggle('op');
+      navList.classList.toggle('op', isOpen);
+      hb.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
 
-  nl.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => {
-      nl.classList.remove('op');
-      hb.classList.remove('op');
-      hb.setAttribute('aria-expanded', false);
-    })
-  );
-}
+    // Zamknij menu po kliknięciu w link
+    navList.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        hb.classList.remove('op');
+        navList.classList.remove('op');
+        hb.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
-if (nav) {
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('sc', window.scrollY > 12);
-  });
-}
+  // --- HEADER: klasa po scrollu ---
+  if (nav) {
+    window.addEventListener('scroll', function () {
+      const scrolled = window.scrollY || window.pageYOffset;
+      if (scrolled > 20) {
+        nav.classList.add('sc');
+      } else {
+        nav.classList.remove('sc');
+      }
+    });
+  }
 
-// --- TABS Z WOJEWÓDZTWAMI ---
-document.querySelectorAll('.woj-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.woj-tab').forEach(t =>
-      t.classList.remove('active')
-    );
-    document.querySelectorAll('.woj-panel').forEach(p =>
-      p.classList.remove('active')
-    );
-    tab.classList.add('active');
-    const panel = document.getElementById(`woj-${tab.dataset.woj}`);
-    if (panel) panel.classList.add('active');
-  });
-});
+  // --- KALKULATOR WYCENY + WHATSAPP ---
+  const pelletType = document.getElementById('pelletType');
+  const palletsInput = document.getElementById('pallets');
+  const postalInput = document.getElementById('postal');
+  const addressInput = document.getElementById('address');
+  const calcBtn = document.getElementById('calcBtn');
+  const resultPrice = document.getElementById('resultPrice');
+  const resultDetails = document.getElementById('resultDetails');
+  const calcWaWrap = document.getElementById('calcWaWrap');
+  const calcWaLink = document.getElementById('calcWaLink');
 
-// --- FAQ AKORDEON ---
-document.querySelectorAll('.faq-item').forEach(item => {
-  const q = item.querySelector('.faq-q');
-  if (!q) return;
-  q.addEventListener('click', () => {
-    const open = item.classList.contains('active');
-    document.querySelectorAll('.faq-item').forEach(i =>
-      i.classList.remove('active')
-    );
-    if (!open) item.classList.add('active');
-  });
-});
+  // proste stawki przykładowe – możesz później podmienić
+  const basePrices = {
+    economy: 800,
+    standard: 1000,
+    premium: 1250
+  };
 
-// --- FORMULARZ: OSOBA / FIRMA + WALIDACJA + WHATSAPP ---
-const typeBtns = document.querySelectorAll('.ftype-btn');
-const firmaFields = document.getElementById('firmaFields');
+  function formatNumber(n) {
+    return n.toLocaleString('pl-PL');
+  }
 
-if (typeBtns.length && firmaFields) {
-  typeBtns.forEach(btn =>
-    btn.addEventListener('click', () => {
-      typeBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      firmaFields.style.display =
-        btn.dataset.typ === 'firma' ? 'block' : 'none';
-    })
-  );
-}
+  function obliczWycene() {
+    if (!pelletType || !palletsInput || !resultPrice || !resultDetails) return;
 
-const fakturaForm = document.getElementById('fakturaForm');
-const fakturaSuccess = document.getElementById('fakturaSuccess');
+    const type = pelletType.value;
+    const pallets = parseInt(palletsInput.value, 10) || 0;
 
-function showError(id, show) {
-  const el = document.getElementById(id);
-  if (el) el.style.display = show ? 'block' : 'none';
-}
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function isValidNIP(nip) {
-  const digits = (nip || '').replace(/\D/g, '');
-  return digits.length === 10;
-}
-
-if (fakturaForm) {
-  fakturaForm.addEventListener('submit', e => {
-    e.preventDefault();
-
-    const typ =
-      document.querySelector('.ftype-btn.active')?.dataset.typ || 'osoba';
-    const nazwaFirmy = document.getElementById('nazwaFirmy')?.value || '';
-    const nip = document.getElementById('nip')?.value || '';
-    const imie = document.getElementById('imie')?.value || '';
-    const email = document.getElementById('email')?.value || '';
-    const telefon = document.getElementById('telefon')?.value || '';
-    const miejscowosc =
-      document.getElementById('miejscowosc')?.value || '';
-    const iloscTon = document.getElementById('iloscTon')?.value || '';
-    const formaPlatnosci =
-      document.getElementById('formaPlatnosci')?.value || '';
-    const uwagi = document.getElementById('uwagi')?.value || '';
-
-    let ok = true;
-
-    if (typ === 'firma') {
-      const nipOk = isValidNIP(nip);
-      const nazwaOk = nazwaFirmy.trim().length > 1;
-      showError('errNIP', !nipOk);
-      showError('errNazwaFirmy', !nazwaOk);
-      if (!nipOk || !nazwaOk) ok = false;
-    } else {
-      showError('errNIP', false);
-      showError('errNazwaFirmy', false);
-    }
-
-    const imieOk = imie.trim().length > 1;
-    const emailOk = isValidEmail(email);
-    const miejscowoscOk = miejscowosc.trim().length > 1;
-    const iloscOk = Number(iloscTon) > 0;
-
-    showError('errImie', !imieOk);
-    showError('errEmail', !emailOk);
-    showError('errMiejscowosc', !miejscowoscOk);
-    showError('errIloscTon', !iloscOk);
-
-    if (!ok || !imieOk || !emailOk || !miejscowoscOk || !iloscOk) {
+    if (!type || pallets <= 0) {
+      resultPrice.textContent = '—';
+      resultDetails.textContent = 'Podaj rodzaj pelletu i ilość palet.';
+      calcWaWrap.style.display = 'none';
       return;
     }
 
-    const lines = [
-      'Dzień dobry, wysyłam dane do przygotowania oferty / faktury:',
-      '',
-      `Typ klienta: ${typ === 'firma' ? 'Firma' : 'Osoba prywatna'}`,
-    ];
+    const base = basePrices[type] || 0;
+    const perTonne = base; // można później rozbudować o rabaty
+    const total = perTonne * pallets;
 
-    if (typ === 'firma') {
-      lines.push(`Nazwa firmy: ${nazwaFirmy}`);
-      lines.push(`NIP: ${nip}`);
-    }
+    resultPrice.textContent = formatNumber(total) + ' zł';
+    resultDetails.textContent =
+      `Szacunkowa wartość zamówienia: ${pallets} palet (${perTonne} zł / tona). Cena orientacyjna, dokładna wycena po potwierdzeniu adresu dostawy.`;
 
-    lines.push(
-      '',
-      `Imię i nazwisko: ${imie}`,
-      `E-mail: ${email}`,
-      telefon ? `Telefon: ${telefon}` : '',
-      `Miejscowość: ${miejscowosc}`,
-      `Ilość ton: ${iloscTon}`,
-      formaPlatnosci
-        ? `Forma płatności: ${
-            formaPlatnosci === 'przelew'
-              ? 'Przelew przed dostawą'
-              : 'Gotówka przy dostawie'
-          }`
-        : '',
-      uwagi ? `Uwagi: ${uwagi}` : '',
-      '',
-      'Proszę o przygotowanie wyceny i terminu dostawy.'
-    );
+    // Przygotowanie linku do WhatsApp
+    if (calcWaWrap && calcWaLink) {
+      const postal = postalInput ? postalInput.value.trim() : '';
+      const addr = addressInput ? addressInput.value.trim() : '';
 
-    const text = encodeURIComponent(lines.filter(Boolean).join('\n'));
-    const phone = '48793573900';
+      const typLabel =
+        type === 'economy'
+          ? 'Pellet Economy'
+          : type === 'standard'
+          ? 'Pellet Standard'
+          : 'Pellet Premium A1';
 
-    if (fakturaSuccess) {
-      fakturaSuccess.style.display = 'block';
-    }
-
-    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-  });
-}
-
-// --- KALKULATOR CENY + WHATSAPP ---
-const calcBtn = document.getElementById('calcBtn');
-
-if (calcBtn) {
-  calcBtn.addEventListener('click', () => {
-    const typeEl = document.getElementById('pelletType');
-    const palletsEl = document.getElementById('pallets');
-    const postalEl = document.getElementById('postal');
-    const addressEl = document.getElementById('address');
-
-    const type = typeEl?.value || 'premium';
-    const pallets = Math.max(1, Number(palletsEl?.value || 1));
-    const postalRaw = postalEl?.value || '';
-    const postal = postalRaw.replace(/\D/g, '');
-    const address = (addressEl?.value || '').trim();
-
-    const base = type === 'premium' ? 2100 : 1890;
-
-    // prosty, orientacyjny model transportu
-    let transport = 300 + pallets * 30;
-
-    if (postal.length >= 2) {
-      const prefix = Number(postal.slice(0, 2)) || 0;
-      const modifier = (prefix % 5) * 10; // 0–40 zł
-      transport += modifier;
-    }
-
-    const total = base * pallets + transport;
-
-    const rp = document.getElementById('resultPrice');
-    const rd = document.getElementById('resultDetails');
-
-    const pelletName =
-      type === 'premium'
-        ? 'Pellet Premium A1'
-        : 'Pellet Standard Economy';
-
-    if (rp) {
-      rp.textContent = `${total.toLocaleString('pl-PL')} zł`;
-    }
-
-    if (rd) {
-      rd.textContent =
-        `${pelletName} • ${pallets} palet(y)` +
-        (address
-          ? ` • ${address}`
-          : ' • wycena orientacyjna – dokładną cenę potwierdzimy po adresie');
-    }
-
-    // WhatsApp – generowanie linku z podsumowaniem
-    const waWrap = document.getElementById('calcWaWrap');
-    const waLink = document.getElementById('calcWaLink');
-
-    if (waWrap && waLink) {
       const msgLines = [
         'Dzień dobry, proszę o wycenę pelletu:',
         '',
-        `Rodzaj: ${pelletName}`,
-        `Ilość: ${pallets} palet(y)`,
-        postal ? `Kod pocztowy: ${postalRaw}` : '',
-        address ? `Adres dostawy: ${address}` : '',
+        `Rodzaj: ${typLabel}`,
+        `Ilość palet: ${pallets}`,
+        `Szacunkowa wartość: ${formatNumber(total)} zł`,
         '',
-        `Szacowana cena z kalkulatora: ${total.toLocaleString('pl-PL')} zł`,
-        '(wiem, że to wycena orientacyjna – proszę o dokładną ofertę)',
+        postal ? `Kod pocztowy: ${postal}` : '',
+        addr ? `Adres dostawy: ${addr}` : '',
+        '',
+        'Wiadomość z kalkulatora na stronie Sosnowe Chwile.'
       ].filter(Boolean);
 
-      const text = encodeURIComponent(msgLines.join('\n'));
+      const msg = encodeURIComponent(msgLines.join('\n'));
+
+      // Tu możesz wpisać swój numer WhatsApp bez + i bez spacji, np. 48793573900
       const phone = '48793573900';
+      const url = `https://wa.me/${phone}?text=${msg}`;
 
-      waLink.href = `https://wa.me/${phone}?text=${text}`;
-      waWrap.style.display = 'block';
+      calcWaLink.href = url;
+      calcWaWrap.style.display = 'block';
     }
-  });
-}
+  }
 
-// --- GALERIA / LIGHTBOX ---
-document.querySelectorAll('.galeria-link').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const lb = document.getElementById('lightbox');
-    const img = document.getElementById('lightboxImg');
-    if (lb && img) {
-      img.src = a.href;
-      lb.classList.add('open');
-      lb.setAttribute('aria-hidden', 'false');
+  if (calcBtn) {
+    calcBtn.addEventListener('click', function () {
+      obliczWycene();
+    });
+  }
+
+  // --- FORMULARZ FAKTURA → WhatsApp ---
+  const fakturaForm = document.getElementById('fakturaForm');
+  const ftypeBtns = document.querySelectorAll('.ftype-btn');
+  const firmaFields = document.getElementById('firmaFields');
+
+  const errNazwaFirmy = document.getElementById('errNazwaFirmy');
+  const errNIP = document.getElementById('errNIP');
+  const errImie = document.getElementById('errImie');
+  const errEmail = document.getElementById('errEmail');
+  const errMiejscowosc = document.getElementById('errMiejscowosc');
+  const errIloscTon = document.getElementById('errIloscTon');
+  const fsuccess = document.getElementById('fakturaSuccess');
+
+  let typFaktury = 'firma';
+
+  // przełączanie Firma / Osoba
+  if (ftypeBtns.length) {
+    ftypeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        ftypeBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        typFaktury = btn.dataset.typ || 'firma';
+
+        if (typFaktury === 'firma') {
+          firmaFields.style.display = '';
+        } else {
+          firmaFields.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  function validateEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
+  function validateNIP(nip) {
+    // prosty check długości, możesz podmienić na pełny algorytm
+    const clean = (nip || '').replace(/[^0-9]/g, '');
+    return clean.length === 10;
+  }
+
+  if (fakturaForm) {
+    fakturaForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nazwaFirmy = document.getElementById('nazwaFirmy');
+      const nip = document.getElementById('nip');
+      const imie = document.getElementById('imie');
+      const email = document.getElementById('email');
+      const telefon = document.getElementById('telefon');
+      const miejscowosc = document.getElementById('miejscowosc');
+      const iloscTon = document.getElementById('iloscTon');
+      const formaPlatnosci = document.getElementById('formaPlatnosci');
+      const uwagi = document.getElementById('uwagi');
+      const zaliczkaAkcept = document.getElementById('zaliczkaAkcept');
+
+      // reset błędów
+      [errNazwaFirmy, errNIP, errImie, errEmail, errMiejscowosc, errIloscTon].forEach(
+        (el) => el && (el.style.display = 'none')
+      );
+      if (fsuccess) fsuccess.style.display = 'none';
+
+      let valid = true;
+
+      if (typFaktury === 'firma') {
+        if (nazwaFirmy && !nazwaFirmy.value.trim()) {
+          if (errNazwaFirmy) errNazwaFirmy.style.display = 'block';
+          valid = false;
+        }
+        if (nip && !validateNIP(nip.value)) {
+          if (errNIP) errNIP.style.display = 'block';
+          valid = false;
+        }
+      }
+
+      if (!imie.value.trim()) {
+        if (errImie) errImie.style.display = 'block';
+        valid = false;
+      }
+
+      if (!validateEmail(email.value)) {
+        if (errEmail) errEmail.style.display = 'block';
+        valid = false;
+      }
+
+      if (!miejscowosc.value.trim()) {
+        if (errMiejscowosc) errMiejscowosc.style.display = 'block';
+        valid = false;
+      }
+
+      const tons = parseFloat(iloscTon.value);
+      if (!(tons > 0)) {
+        if (errIloscTon) errIloscTon.style.display = 'block';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      const typOpis =
+        typFaktury === 'firma' ? 'Faktura dla firmy' : 'Faktura dla osoby prywatnej';
+
+      const firmaLine =
+        typFaktury === 'firma' && nazwaFirmy && nazwaFirmy.value.trim()
+          ? `Nazwa firmy: ${nazwaFirmy.value.trim()}`
+          : '';
+
+      const nipLine =
+        typFaktury === 'firma' && nip && nip.value.trim()
+          ? `NIP: ${nip.value.trim()}`
+          : '';
+
+      const msgLines = [
+        'Dzień dobry, proszę o przygotowanie oferty / faktury za pellet:',
+        '',
+        typOpis,
+        firmaLine,
+        nipLine,
+        '',
+        `Imię i nazwisko: ${imie.value.trim()}`,
+        `E-mail: ${email.value.trim()}`,
+        telefon && telefon.value.trim() ? `Telefon: ${telefon.value.trim()}` : '',
+        `Miejscowość: ${miejscowosc.value.trim()}`,
+        '',
+        `Ilość ton: ${tons}`,
+        `Forma płatności: ${formaPlatnosci.value === 'przelew' ? 'Przelew przed dostawą' : 'Gotówka przy dostawie'}`,
+        uwagi && uwagi.value.trim() ? `Uwagi: ${uwagi.value.trim()}` : '',
+        zaliczkaAkcept && zaliczkaAkcept.checked
+          ? 'Klient akceptuje zaliczkę przed realizacją zamówienia.'
+          : '',
+        '',
+        'Wiadomość z formularza zamówienia na stronie Sosnowe Chwile.'
+      ].filter(Boolean);
+
+      const msg = encodeURIComponent(msgLines.join('\n'));
+
+      // ten sam numer co w kalkulatorze
+      const phone = '48793573900';
+      const url = `https://wa.me/${phone}?text=${msg}`;
+
+      window.open(url, '_blank');
+
+      if (fsuccess) {
+        fsuccess.style.display = 'block';
+      }
+    });
+  }
+
+  // --- GALERIA: LIGHTBOX ---
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const galleryLinks = document.querySelectorAll('.galeria-link');
+
+  if (lightbox && lightboxImg && galleryLinks.length) {
+    galleryLinks.forEach((link) => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (!href) return;
+        lightboxImg.src = href;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+    };
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
     }
-  });
-});
 
-const lb = document.getElementById('lightbox');
-const lbClose = document.getElementById('lightboxClose');
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
 
-if (lb) {
-  lb.addEventListener('click', e => {
-    if (e.target === lb) {
-      lb.classList.remove('open');
-      lb.setAttribute('aria-hidden', 'true');
-    }
-  });
-}
-
-if (lbClose) {
-  lbClose.addEventListener('click', () => {
-    lb.classList.remove('open');
-    lb.setAttribute('aria-hidden', 'true');
-  });
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && lb) {
-    lb.classList.remove('open');
-    lb.setAttribute('aria-hidden', 'true');
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+        closeLightbox();
+      }
+    });
   }
 });
