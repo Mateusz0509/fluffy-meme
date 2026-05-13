@@ -17,8 +17,8 @@ To prosta strona produktowa przygotowana w formie statycznej witryny HTML/CSS/JS
 - `style.css` – style strony.
 - `script.js` – logika JavaScript.
 - `regulamin.html` – podstrona z regulaminem.
-- `logo-sosnowe-chwile.png` – logo projektu.
-- 'baner-sosnowe-chwile.png' – grafika baneru.
+- `logo-sosnowe-chwile.jpg` – logo projektu.
+- 'baner-sosnowe-chwile-1920x1200.jpg' – grafika baneru.
 
 ## Funkcje
 
