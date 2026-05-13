@@ -284,61 +284,72 @@ section > p {
 
 /* hero banner */
 
+/* --- HERO NA CAŁĄ SZEROKOŚĆ --- */
+
+#hero {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
 .hero-banner {
   width: 100%;
-  min-height: 210px;
-  border-radius: 20px;
-  overflow: hidden;
+  min-height: 320px;         /* możesz podbić np. do 380–420px */
+  border-radius: 0;
   position: relative;
-  background-image: linear-gradient(rgba(20,20,20,0.35), rgba(20,20,20,0.45)), url("banner-mobile.jpg");
+  background-image: linear-gradient(rgba(15, 15, 15, 0.45), rgba(15, 15, 15, 0.55)),
+    url("baner-sosnowe-chwile-1920x600.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px;
+  padding: 32px 16px;
   box-sizing: border-box;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
 .hero-content {
   text-align: center;
-  color: #fff;
-  max-width: 92%;
+  color: #ffffff;
+  max-width: 640px;
+}
+
+.hero-content .ey {
+  margin-bottom: 0.7rem;
 }
 
 .hero-content h1 {
-  font-size: 27px;
-  line-height: 1.05;
-  margin: 0 0 6px;
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
+  line-height: 1.1;
+  margin: 0 0 0.5rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-.hero-content p {
-  font-size: 14px;
-  margin: 0 0 12px;
-  opacity: 0.95;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+.hero-content .hl {
+  margin: 0 0 1.1rem;
+  color: #e5e7eb;
 }
 
-.hero-tags {
-  display: flex;
-  gap: 8px;
+.hero-content .hb2 {
   justify-content: center;
-  flex-wrap: wrap;
 }
 
-.hero-tags span {
-  font-size: 11px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.16);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.22);
-  backdrop-filter: blur(6px);
+/* na mniejszych ekranach trochę mniejszy hero */
+
+@media (max-width: 720px) {
+  .hero-banner {
+    min-height: 260px;
+    padding: 24px 14px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
+  }
+}
 }
 /* --- OFERTA --- */
 
