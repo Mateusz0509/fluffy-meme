@@ -17,7 +17,7 @@ To prosta strona produktowa przygotowana w formie statycznej witryny HTML/CSS/JS
 - `style.css` – style strony.
 - `script.js` – logika JavaScript.
 - `regulamin.html` – podstrona z regulaminem.
-- `Logo-pellet.jpg` – logo projektu.
+- `logo-sosnowe-chwile.png` – logo projektu.
 - 'baner-sosnowe-chwile.png' – grafika baneru.
 
 ## Funkcje
