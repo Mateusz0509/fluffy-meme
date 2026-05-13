@@ -427,7 +427,7 @@ section > p {
   color: #ffffff;
 }
 
-/* --- WOJEWÓDZTWA --- */
+/* --- WOJEWĂ“DZTWA --- */
 
 #wojewodztwa {
   max-width: var(--max-width);
@@ -606,7 +606,7 @@ section > p {
   margin-top: 0.7rem;
 }
 
-/* opis jak działa wycena */
+/* opis jak dziaĹ‚a wycena */
 
 .hw {
   margin-top: 1.75rem;
@@ -935,7 +935,7 @@ section > p {
   color: #9ca3af;
 }
 
-/* --- RESPONSYWNOŚĆ --- */
+/* --- RESPONSYWNOĹšÄ† --- */
 
 @media (max-width: 960px) {
   .oferta-grid {
@@ -1016,3 +1016,5 @@ section > p {
     align-items: flex-start;
   }
 }
+.hero-banner { width: 100%; max-width: none; margin: 0; border-radius: 0; overflow: hidden; }
+.hero-banner img { width: 100%; height: auto; display: block; }
