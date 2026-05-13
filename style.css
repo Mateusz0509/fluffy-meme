@@ -157,37 +157,3 @@ form#inquiry-form {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-form#inquiry-form .form-row {
-  margin-bottom: 0.75rem;
-}
-
-form#inquiry-form label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-form#inquiry-form input,
-form#inquiry-form select,
-form#inquiry-form textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0.4rem 0.5rem;
-  font-size: 1rem;
-}
-
-form#inquiry-form small {
-  display: block;
-  font-size: 0.8rem;
-  color: #555;
-  margin-top: 0.1rem;
-}
-
-.required {
-  color: #c00;
-}
-
-.btn-whatsapp {
-  display: inline-block;
-  margin-top: 0.75rem;
-}
