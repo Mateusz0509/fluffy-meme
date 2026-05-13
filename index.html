@@ -166,4 +166,126 @@
       <form id="fakturaForm" class="fform">
         <div class="fform-toggle">
           <button type="button" class="ftype-btn active" data-typ="firma">Firma</button>
-          <button type="button" class="ftype-btn" 
+          <button type="button" class="ftype-btn" data-typ="osoba">Osoba</button>
+        </div>
+        <div id="firmaFields">
+          <div class="frow two">
+            <label class="fgroup">
+              <span>Nazwa firmy</span>
+              <input id="nazwaFirmy">
+            </label>
+            <label class="fgroup">
+              <span>NIP</span>
+              <input id="nip">
+            </label>
+          </div>
+          <div class="ferror" id="errNazwaFirmy">Podaj nazwę firmy.</div>
+          <div class="ferror" id="errNIP">Podaj poprawny NIP.</div>
+        </div>
+        <div class="frow two">
+          <label class="fgroup">
+            <span>Imię i nazwisko</span>
+            <input id="imie">
+          </label>
+          <label class="fgroup">
+            <span>E-mail</span>
+            <input id="email" type="email">
+          </label>
+        </div>
+        <div class="frow two">
+          <label class="fgroup">
+            <span>Telefon</span>
+            <input id="telefon">
+          </label>
+          <label class="fgroup">
+            <span>Miejscowość</span>
+            <input id="miejscowosc">
+          </label>
+        </div>
+        <div class="frow two">
+          <label class="fgroup">
+            <span>Ilość ton</span>
+            <input id="iloscTon" type="number" min="1" value="4">
+          </label>
+          <label class="fgroup">
+            <span>Forma płatności</span>
+            <select id="formaPlatnosci">
+              <option value="przelew">Przelew przed dostawą</option>
+              <option value="gotowka">Gotówka przy dostawie</option>
+            </select>
+          </label>
+        </div>
+        <div class="frow">
+          <label class="fgroup">
+            <span>Uwagi</span>
+            <input id="uwagi" value="Oferta hurtowa 800-1450 zł">
+          </label>
+        </div>
+        <div class="frow">
+          <label class="fgroup">
+            <span>
+              <input type="checkbox" id="zaliczkaAkcept" checked>
+              Akceptuję zaliczkę przed realizacją zamówienia
+            </span>
+          </label>
+        </div>
+        <div class="ferror" id="errImie">Podaj imię i nazwisko.</div>
+        <div class="ferror" id="errEmail">Podaj poprawny e-mail.</div>
+        <div class="ferror" id="errMiejscowosc">Podaj miejscowość.</div>
+        <div class="ferror" id="errIloscTon">Podaj ilość ton.</div>
+        <hr class="fdivider">
+        <p class="fform-note">Po wysłaniu dane zostaną zebrane do WhatsApp jako gotowe zamówienie.</p>
+        <div class="fsubmit-row">
+          <button class="btn" type="submit">Wyślij zamówienie</button>
+        </div>
+        <div id="fakturaSuccess" class="fsuccess">Dziękujemy. Zamówienie zostało przygotowane.</div>
+      </form>
+    </section>
+
+    <section id="galeria-pellet">
+      <h2>Galeria pelletu</h2>
+      <p>Zdjęcia przedstawiają worki pelletu, palety i zbliżenia produktu, aby klient od razu widział jakość oferty.</p>
+      <div class="galeria-grid">
+        <figure class="galeria-item">
+          <a href="1000043231.jpg" class="galeria-link">
+            <img src="1000043231.jpg" alt="Pellet Premium">
+          </a>
+          <figcaption>Pellet Premium</figcaption>
+        </figure>
+        <!-- Zaktualizowana galeria pod Twoje ostatnie wdrożone zdjęcia [cite:12] -->
+        <figure class="galeria-item">
+          <a href="1000043354.jpg" class="galeria-link">
+            <img src="1000043354.jpg" alt="Pellet w zielonym worku">
+          </a>
+          <figcaption>Pellet zielony worek</figcaption>
+        </figure>
+        <figure class="galeria-item">
+          <a href="1000043388.jpg" class="galeria-link">
+            <img src="1000043388.jpg" alt="Pellet premium czarny worek">
+          </a>
+          <figcaption>Pellet premium czarny</figcaption>
+        </figure>
+        <figure class="galeria-item">
+          <a href="1000043386.jpg" class="galeria-link">
+            <img src="1000043386.jpg" alt="Pellet Premium Plus">
+          </a>
+          <figcaption>Pellet Premium Plus</figcaption>
+        </figure>
+        <figure class="galeria-item">
+          <a href="1000043355.jpg" class="galeria-link">
+            <img src="1000043355.jpg" alt="Paleta pelletu">
+          </a>
+          <figcaption>Paleta pelletu</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" class="lightbox-close" id="lightboxClose">×</button>
+    <img id="lightboxImg" alt="Powiększone zdjęcie">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
