@@ -1,3 +1,0 @@
-<?php
-$number = $_GET['order'] ?? '0001';
-?><!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Faktura <?= htmlspecialchars($number) ?></title><style>body{font-family:Arial,sans-serif;padding:40px;background:#f5f0e6}.inv{max-width:900px;margin:auto;background:#fff;padding:24px;border:1px solid #ddd;border-radius:16px}h1{margin-top:0}</style></head><body><div class="inv"><h1>Faktura / zaliczka <?= htmlspecialchars($number) ?></h1><p>To jest gotowy szablon do dalszego podpięcia pod generowanie PDF.</p><p>Odbiorca: Sosnowe Chwile</p><p>Przelew: 00 0000 0000 0000 0000 0000 0000</p></div></body></html>
