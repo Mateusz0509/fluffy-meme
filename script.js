@@ -1,208 +1,50 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sosnowe Chwile</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  
-  <section class="top-banner">
-    <div class="container banner-inner">
-      <img class="banner-logo" src="logo.jpg" alt="Sosnowe Chwile logo">
-      <div class="banner-prices">
-        <div><strong>Standard</strong><span>od 1099 zł / paleta</span></div>
-        <div><strong>Economy</strong><span>od 999 zł / paleta</span></div>
-        <div><strong>Premium Plus</strong><span>od 1249 zł / paleta</span></div>
-        <div><strong>Premium A1</strong><span>od 1299 zł / paleta</span></div>
-      </div>
-      <div class="banner-cta">Szybka wycena • Dostawa na terenie Polski</div>
-    </div>
-  </section>
+<script>
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('navMenu');
 
-  <header class="header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#home">
-        <span class="brand-mark">S</span>
-        <span class="brand-text">Sosnowe Chwile</span>
-      </a>
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 
-      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu">
-        <span></span><span></span><span></span>
-      </button>
+  const qty = document.getElementById('qty');
+  const product = document.getElementById('product');
+  const totalPrice = document.getElementById('totalPrice');
+  const calcNote = document.getElementById('calcNote');
 
-      <nav class="nav" id="navMenu">
-        <a href="#home">Strona główna</a>
-        <a href="#oferta">Oferta</a>
-        <a href="#dostawa">Dostawa</a>
-        <a href="#wycena">Wycena</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-    </div>
-  </header>
+  function updatePrice() {
+    const unit = Number(product.value);
+    const count = Number(qty.value);
+    const total = unit * count;
+    totalPrice.textContent = total.toLocaleString('pl-PL') + ' zł';
+    calcNote.textContent = 'Szacunkowa cena dla ' + count + ' palet.';
+  }
 
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Nowa marka pelletu</span>
-          <h1>Pellet Sosnowe Chwile – jakość i cena dla Twojego domu</h1>
-          <p>Wybierz naturalny pellet w przyzwoitej cenie. Oferta dla domu, firmy i hurtu z naciskiem na prostą obsługę oraz szybką dostawę.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#oferta">Sprawdź ofertę</a>
-            <a class="btn btn-outline" href="#kontakt">Zapytaj o cenę</a>
-          </div>
-        </div>
+  qty.addEventListener('change', updatePrice);
+  product.addEventListener('change', updatePrice);
+  updatePrice();
 
-        <div class="hero-image">
-          <img src="tir.png" alt="Ciężarówka Sosnowe Chwile z dostawą pelletu" />
-        </div>
-      </div>
-    </section>
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+  const modalClose = document.getElementById('modalClose');
 
-    <section class="section" id="oferta">
-      <div class="container">
-        <div class="section-head">
-          <h2>Oferta</h2>
-          <p>Przejrzyste warianty, które łatwo porównać na telefonie.</p>
-        </div>
-
-        <div class="cards">
-          <article class="product">
-            <img src="standard.png" alt="Pellet Standard" />
-            <div class="product-body">
-              <h3>Standard</h3>
-              <p class="price">od 1099 zł / paleta</p>
-              <p class="desc">Solidna opcja do codziennego ogrzewania.</p>
-              <a class="btn btn-dark" href="#kontakt">Kup teraz</a>
-            </div>
-          </article>
-
-          <article class="product">
-            <img src="economu.png" alt="Pellet Economy" />
-            <div class="product-body">
-              <h3>Economy</h3>
-              <p class="price">od 999 zł / paleta</p>
-              <p class="desc">Najbardziej budżetowa propozycja.</p>
-              <a class="btn btn-dark" href="#kontakt">Kup teraz</a>
-            </div>
-          </article>
-
-          <article class="product">
-            <img src="premiumplus.png" alt="Pellet Premium Plus" />
-            <div class="product-body">
-              <h3>Premium Plus</h3>
-              <p class="price">od 1249 zł / paleta</p>
-              <p class="desc">Lepszy komfort, wyższa klasa produktu.</p>
-              <a class="btn btn-dark" href="#kontakt">Kup teraz</a>
-            </div>
-          </article>
-
-          <article class="product">
-            <img src="premiuma1.png" alt="Pellet Premium A1" />
-            <div class="product-body">
-              <h3>Premium A1</h3>
-              <p class="price">od 1299 zł / paleta</p>
-              <p class="desc">Wariant dla wymagających klientów.</p>
-              <a class="btn btn-dark" href="#kontakt">Kup teraz</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="dostawa">
-      <div class="container features">
-        <div class="feature">
-          <img src="magazyn.png" alt="Magazyn Sosnowe Chwile" />
-          <h3>Magazyn</h3>
-          <p>Stały towar i szybkie przygotowanie zamówień.</p>
-        </div>
-        <div class="feature">
-          <img src="tir.png" alt="Transport TIR" />
-          <h3>Dostawa</h3>
-          <p>Transport na terenie całej Polski, także hurtowo.</p>
-        </div>
-        <div class="feature">
-          <img src="standard.png" alt="Pellet standard" />
-          <h3>Przyzwoite ceny</h3>
-          <p>Oferta bez przesady, nastawiona na wartość.</p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="section" id="wycena">
-      <div class="container">
-        <div class="section-head">
-          <h2>Szybka wycena i faktura</h2>
-          <p>Wypełnij formularz, a przygotujemy ofertę i dane do dokumentu.</p>
-        </div>
-
-        <div class="quote-grid">
-          <form class="quote-form">
-            <div class="form-row">
-              <label>Imię i nazwisko / firma<input type="text" placeholder="Np. Jan Kowalski / Firma XYZ"></label>
-              <label>NIP do faktury<input type="text" placeholder="Np. 1234567890"></label>
-            </div>
-            <div class="form-row">
-              <label>Email<input type="email" placeholder="Np. kontakt@firma.pl"></label>
-              <label>Telefon<input type="tel" placeholder="Np. +48 123 456 789"></label>
-            </div>
-            <div class="form-row">
-              <label>Ilość palet<select><option>1 paleta</option><option>2-3 palety</option><option>4-9 palet</option><option>10+ palet</option></select></label>
-              <label>Rodzaj produktu<select><option>Standard</option><option>Economy</option><option>Premium Plus</option><option>Premium A1</option></select></label>
-            </div>
-            <label>Adres dostawy<textarea rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea></label>
-            <label>Uwagi do zamówienia<textarea rows="4" placeholder="Np. termin dostawy, rozładunek, faktura VAT"></textarea></label>
-            <a class="btn btn-dark" href="mailto:kontakt@sosnowechwile.pl?subject=Szybka%20wycena%20Sosnowe%20Chwile">Wyślij zapytanie</a>
-            <a class="btn btn-outline" style="color:#223117;border-color:#cfc5b2;" href="https://wa.me/48123456789" target="_blank" rel="noopener">Napisz na WhatsApp</a>
-          </form>
-
-          <aside class="payment-box">
-            <h3>Zaliczka i przelew</h3>
-            <p>Zaliczka zależy od wielkości zamówienia i ustalamy ją indywidualnie.</p>
-            <ul class="pay-list">
-              <li>Małe zamówienia: zwykle niższa zaliczka.</li>
-              <li>Większe zamówienia: zaliczka ustalana po wycenie.</li>
-              <li>Hurt: warunki do uzgodnienia.</li>
-            </ul>
-            <div class="bank-box">
-              <strong>Dane do przelewu</strong>
-              <p><span>Odbiorca:</span> Sosnowe Chwile Sp. z o.o.</p>
-              <p><span>Nr konta:</span> 00 0000 0000 0000 0000 0000 0000</p>
-              <p><span>Tytuł:</span> Zaliczka za pellet / numer zamówienia</p>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer" id="kontakt">
-    <div class="container footer-grid">
-      <div>
-        <h2>Sosnowe Chwile</h2>
-        <p>Nowa marka pelletu z prostą ofertą i uczciwą ceną.</p>
-      </div>
-      <div>
-        <p><strong>Telefon:</strong> +48 123 456 789</p>
-        <p><strong>Email:</strong> kontakt@sosnowechwile.pl</p>
-      </div>
-    </div>
-    <a class="whatsapp-float" href="https://wa.me/48123456789" target="_blank" rel="noopener" aria-label="WhatsApp">
-    WhatsApp
-  </a>
-</footer>
-
-  <script>
-    const btn = document.getElementById('menuBtn');
-    const nav = document.getElementById('navMenu');
-    btn.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.querySelectorAll('.gallery-img').forEach(img => {
+    img.addEventListener('click', () => {
+      modal.classList.add('open');
+      modalImage.src = img.src;
+      modalImage.alt = img.alt;
     });
-  </script>
-</body>
-</html>
+  });
+
+  modalClose.addEventListener('click', () => {
+    modal.classList.remove('open');
+    modalImage.src = '';
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+      modalImage.src = '';
+    }
+  });
+</script>
