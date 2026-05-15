@@ -65,3 +65,40 @@ if (qty && product) {
   product.addEventListener('change', updatePrice);
   updatePrice();
 }
+function formatPLNFloat(n) {
+  return n.toFixed(2).replace('.', ',') + ' zł';
+}
+
+function updatePrice() {
+  const unit  = Number(product.value);
+  const count = Number(qty.value);
+  const total = unit * 1 * count;
+  const minD  = total * 0.10;
+  const maxD  = total * 0.20;
+  const midD  = total * 0.15;
+
+  // Szacunkowa wartość w #wycena
+  totalPrice.textContent = total.toLocaleString('pl-PL') + ' zł';
+  calcNote.textContent   = 'Szacunkowa cena dla ' + count + ' palet.';
+
+  // W #efaktura
+  sumTotal.textContent     = total.toLocaleString('pl-PL') + ' zł';
+  depositRange.textContent = formatPLNFloat(minD) + ' – ' + formatPLNFloat(maxD);
+  depositNow.textContent   = formatPLNFloat(midD);
+  depositStrong.textContent = formatPLNFloat(midD);
+
+  pdfQty.textContent        = count + ' palet';
+  pdfProduct.textContent    = product.options[product.selectedIndex].text;
+  pdfUnit.textContent       = (unit).toLocaleString('pl-PL') + ' zł';
+  pdfTotal.textContent      = total.toLocaleString('pl-PL') + ' zł';
+
+  // synchronizacja numeru faktury
+  const pdInvNo = document.getElementById('pdInvNo');
+  const invNo   = document.getElementById('invNo');
+  if (pdInvNo && invNo) pdInvNo.textContent = invNo.textContent;
+}
+
+// Nasłuch na zmianę w sekcji #wycena
+qty.addEventListener('change', updatePrice);
+product.addEventListener('change', updatePrice);
+updatePrice(); // pierwsze wywołanie
