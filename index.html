@@ -340,28 +340,4 @@
 
     // Generowanie PDF eFaktury
     document.getElementById('generatePdf').addEventListener('click', async () => {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-
-      const name     = document.getElementById('clientName').value ||
-document.getElementById('generatePdf').addEventListener('click', async () => {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-
-  const name     = document.getElementById('clientName').value || '—';
-  const nip      = document.getElementById('clientNip').value || '—';
-  const email    = document.getElementById('clientEmail').value || '—';
-  const phone    = document.getElementById('clientPhone').value || '—';
-  const address  = document.getElementById('clientAddress').value || '—';
-  const notes    = document.getElementById('clientNotes').value || '—';
-  const count    = Number(qty.value);
-  const unit     = Number(product.value);
-  const total    = unit * count;
-  const deposit  = total * 0.15;
-  const invNo    = document.getElementById('invNo').textContent;
-
-  // ... nagłówki itd. ...
-
-  doc.save('efaktura-zaliczkowa-sosnowe-chwile.pdf');  // ← tu jest koniec
-});
-</script>  <!-- ← tu musi być zamknięcie tagu -->
+      const { jsPDF } = window
