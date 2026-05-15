@@ -483,10 +483,13 @@ textarea {
   padding: 12px 0;
 }
 
-.banner-logo {
-  height: 54px;
-  width: auto;
-  object-fit: contain;
+.banner-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  object-fit: cover;
 }
 
 .banner-prices {
@@ -495,6 +498,38 @@ textarea {
   gap: 10px;
 }
 
+.banner-prices div {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.banner-prices strong {
+  display: block;
+  font-size: 14px;
+}
+
+.banner-prices span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.banner-cta {
+  font-weight: 700;
+  font-size: 14px;
+  color: #dbe7c1;
+}
+
+@media (min-width: 900px) {
+  .banner-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .banner-prices {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 .banner-prices div {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
