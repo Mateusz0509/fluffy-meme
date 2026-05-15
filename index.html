@@ -2,412 +2,203 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Podgląd e‑faktury – Sosnowe Chwile</title>
-  <style>
-    :root {
-      --header-height: 120px;
-      --max-width: 1000px;
-      --font: 12px Arial, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 20px;
-      font: var(--font);
-      background: #f4f4f4;
-    }
-
-    .controls {
-      position: sticky;
-      top: 0;
-      background: white;
-      padding: 10px;
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .controls h3 {
-      margin-top: 0;
-      grid-column: span 3;
-    }
-
-    .controls label {
-      display: block;
-      font-size: 11px;
-      margin-bottom: 3px;
-    }
-
-    .controls span {
-      font-size: 10px;
-      color: #666;
-    }
-
-    .invoice-container {
-      margin: 0 auto;
-      background: white;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      max-width: var(--max-width);
-    }
-
-    .invoice-header {
-      height: var(--header-height);
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 15px;
-      position: relative;
-      font-size: 11px;
-    }
-
-    .invoice-header .logo {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      max-height: 70px;
-      background: #f0f0f0;
-      border-radius: 3px;
-      border: 1px dashed #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .invoice-header .logo img {
-      max-height: 100%;
-      max-width: 100%;
-    }
-
-    .invoice-header .logo.hidden {
-      display: none;
-    }
-
-    .invoice-header .logo.size-small {
-      width: 80px;
-      height: 40px;
-      padding: 0;
-      font-size: 8px;
-    }
-
-    .invoice-header .logo.size-medium {
-      width: 120px;
-      height: 60px;
-      font-size: 10px;
-    }
-
-    .invoice-header .logo.size-large {
-      width: 200px;
-      height: 80px;
-      font-size: 12px;
-    }
-
-    .invoice-header .logo.size-aspect {
-      height: 40px;
-      width: auto;
-    }
-
-    .invoice-header .logo.place-left {
-      left: 12px;
-      right: initial;
-    }
-    .invoice-header .logo.place-right {
-      left: initial;
-      right: 12px;
-    }
-    .invoice-header .logo.place-center {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .invoice-header .seller-info {
-      margin-left: 100px;
-    }
-
-    .invoice-header .seller-info.placeholder {
-      font-style: italic;
-      color: #888;
-    }
-
-    .invoice-body {
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 15px;
-    }
-
-    .invoice-body table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .invoice-body th,
-    .invoice-body td {
-      border: 1px solid #ddd;
-      padding: 4px 6px;
-      font-size: 10px;
-    }
-
-    .invoice-body th {
-      background: #f9f9f9;
-    }
-
-    .invoice-body .long-name {
-      word-break: break-word;
-    }
-
-    .invoice-footer {
-      font-size: 10px;
-    }
-
-    .export-buttons {
-      margin-top: 10px;
-    }
-
-    .export-buttons button {
-      margin-right: 8px;
-      padding: 6px 12px;
-      font-size: 12px;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sosnowe Chwile - eFaktura zaliczkowa</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 </head>
 <body>
-  <h1>Podgląd e‑faktury – Sosnowe Chwile</h1>
-
-  <div class="controls">
-    <h3>Nagłówek – logo</h3>
-
-    <div>
-      <label>Widoczność logo</label>
-      <select id="logoVisible">
-        <option value="visible">Widoczne</option>
-        <option value="hidden">Ukryj</option>
-      </select>
-    </div>
-
-    <div>
-      <label>Położenie logo</label>
-      <select id="logoPosition">
-        <option value="left">Lewy górny róg</option>
-        <option value="right">Prawy górny róg</option>
-        <option value="center">Środek góra</option>
-      </select>
-    </div>
-
-    <div>
-      <label>Proporcje / rozmiar</label>
-      <select id="logoSize">
-        <option value="small">Mały kwadrat</option>
-        <option value="medium">Średni</option>
-        <option value="large">Duży</option>
-        <option value="aspect">Zachowaj proporcje</option>
-      </select>
-    </div>
-
-    <h3>Responsywność i szerokość</h3>
-
-    <div>
-      <label>Szerokość invoice‑container</label>
-      <input type="range" id="previewWidth" min="600" max="1200" value="1000" />
-      <span id="previewWidthValue">1000px</span>
-    </div>
-
-    <div>
-      <label>Wysokość nagłówka</label>
-      <input type="range" id="headerHeight" min="60" max="200" value="120" />
-      <span id="headerHeightValue">120px</span>
-    </div>
-
-    <h3>Zawartość – test czytelności</h3>
-
-    <div>
-      <label>Długość nazw pozycji</label>
-      <select id="longNames">
-        <option value="normal">Zwykłe nazwy</option>
-        <option value="long">Długie nazwy</option>
-      </select>
-    </div>
-
-    <div>
-      <label>Liczba wierszy pozycji</label>
-      <input type="range" id="itemRows" min="3" max="50" value="10" />
-      <span id="itemRowsValue">10 wierszy</span>
-    </div>
-  </div>
-
-  <div class="controls">
-    <div class="export-buttons">
-      <button id="exportHTML">Eksportuj HTML faktury</button>
-      <button id="exportZIP">Eksportuj ZIP (HTML + CSS)</button>
-    </div>
-  </div>
-
-  <div class="invoice-container" id="invoiceContainer">
-    <div class="invoice-header" id="invoiceHeader">
-      <div class="logo" id="logo">
-        LOGO Sosnowe Chwile
+  <section class="top-banner">
+    <div class="container banner-inner">
+      <img class="banner-image" src="baner.png" alt="Baner Sosnowe Chwile">
+      <div class="banner-prices">
+        <div><strong>Standard</strong><span>od 1099 zł / paleta</span></div>
+        <div><strong>Economy</strong><span>od 999 zł / paleta</span></div>
+        <div><strong>Premium Plus</strong><span>od 1249 zł / paleta</span></div>
+        <div><strong>Premium A1</strong><span>od 1299 zł / paleta</span></div>
       </div>
+      <div class="banner-cta">Szybka wycena • Dostawa na terenie Polski</div>
+    </div>
+  </section>
 
-      <div class="seller-info">
-        <strong>Sosnowe Chwile</strong><br />
-        ul. Przykładowa 123<br />
-        87‑654 Sosnowiec<br />
-        NIP: 0123456789
+  <header class="header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">Sosnowe Chwile</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+      <nav class="nav" id="navMenu">
+        <a href="#home">Start</a><a href="#oferta">Oferta</a><a href="#wycena">Wycena</a><a href="#efaktura">eFaktura</a><a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Nowa marka pelletu</span>
+          <h1>Pellet Sosnowe Chwile – szybka wycena i eFaktura zaliczkowa</h1>
+          <p>Klient wypełnia formularz, a po kliknięciu generuje PDF z zaliczką 10–20% wartości zamówienia.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#efaktura">Wypełnij formularz</a>
+            <a class="btn btn-outline" href="#oferta">Zobacz ofertę</a>
+          </div>
+        </div>
+        <div class="hero-image"><img src="tir.png" alt="Ciężarówka Sosnowe Chwile z dostawą pelletu"></div>
       </div>
-    </div>
+    </section>
 
-    <div class="invoice-body">
-      <table>
-        <thead>
-          <tr>
-            <th>L.p.</th>
-            <th>Nazwa towaru / usługi</th>
-            <th>Ilość</th>
-            <th>J.m.</th>
-            <th>Cena jedn.</th>
-            <th>Razem</th>
-          </tr>
-        </thead>
-        <tbody id="itemsTable">
-          <tr><td>1</td><td>Pellet premium 18 mm</td><td>1</td><td>t</td><td>1200,00</td><td>1200,00</td></tr>
-          <tr><td>2</td><td>Wózek do transportu opału</td><td>1</td><td>szt.</td><td>250,00</td><td>250,0_Depending</td></tr>
-          <tr><td>3</td><td>Pellet premium 18 mm refaktura</td><td>1</td><td>t</td><td>1200,00</td><td>1200,00</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <section class="section" id="oferta">
+      <div class="container">
+        <div class="section-head"><h2>Oferta</h2><p>Przejrzyste warianty pelletu.</p></div>
+        <div class="cards">
+          <article class="product"><img src="standard.png" alt="Pellet Standard"><div class="product-body"><h3>Standard</h3><p class="price">od 1099 zł / paleta</p><p class="desc">Solidna opcja do codziennego ogrzewania.</p></div></article>
+          <article class="product"><img src="economy.png" alt="Pellet Economy"><div class="product-body"><h3>Economy</h3><p class="price">od 999 zł / paleta</p><p class="desc">Najbardziej budżetowa propozycja.</p></div></article>
+          <article class="product"><img src="premiumplus.png" alt="Pellet Premium Plus"><div class="product-body"><h3>Premium Plus</h3><p class="price">od 1249 zł / paleta</p><p class="desc">Wyższa klasa produktu.</p></div></article>
+          <article class="product"><img src="premiuma1.png" alt="Pellet Premium A1"><div class="product-body"><h3>Premium A1</h3><p class="price">od 1299 zł / paleta</p><p class="desc">Wariant dla wymagających klientów.</p></div></article>
+        </div>
+      </div>
+    </section>
 
-    <div class="invoice-footer">
-      <p>Podsumowanie: …</p>
-    </div>
+    <section class="section" id="wycena">
+      <div class="container">
+        <div class="section-head"><h2>Szybka wycena</h2><p>Szacunkowa wartość zamówienia i dane do eFaktury.</p></div>
+        <div class="quote-grid">
+          <form class="quote-form" id="quoteForm">
+            <div class="form-row">
+              <label>Imię i nazwisko / firma<input type="text" id="clientName" placeholder="Np. Jan Kowalski / Firma XYZ"></label>
+              <label>NIP do faktury<input type="text" id="clientNip" placeholder="Np. 1234567890"></label>
+            </div>
+            <div class="form-row">
+              <label>Email<input type="email" id="clientEmail" placeholder="Np. kontakt@firma.pl"></label>
+              <label>Telefon<input type="tel" id="clientPhone" placeholder="Np. +48 123 456 789"></label>
+            </div>
+            <div class="form-row">
+              <label>Ilość palet<select id="qty"><option value="1">1 paleta</option><option value="2">2 palety</option><option value="3">3 palety</option><option value="5">4-5 palet</option><option value="10">6+ palet</option></select></label>
+              <label>Rodzaj produktu<select id="product"><option value="1099">Standard</option><option value="999">Economy</option><option value="1249">Premium Plus</option><option value="1299">Premium A1</option></select></label>
+            </div>
+            <label>Adres dostawy<textarea id="clientAddress" rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea></label>
+            <label>Uwagi do zamówienia<textarea id="clientNotes" rows="4" placeholder="Np. termin dostawy, rozładunek"></textarea></label>
+            <div class="calc-box">
+              <p>Szacunkowa wartość zamówienia:</p><strong id="totalPrice">1099 zł</strong><small id="calcNote">Cena orientacyjna za 1 paletę Standard.</small>
+            </div>
+            <a class="btn btn-dark" href="#efaktura">Przejdź do eFaktury</a>
+          </form>
+          <aside class="payment-box">
+            <h3>Zaliczka i przelew</h3>
+            <p>Zaliczka wynosi 10–20% wartości zamówienia i jest ustalana indywidualnie.</p>
+            <div class="bank-box"><strong>Dane do przelewu</strong><p><span>Odbiorca:</span> Sosnowe Chwile Sp. z o.o.</p><p><span>Nr konta:</span> 39 1160 2202 0000 0007 1309 0461</p></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section invoice-section" id="efaktura">
+      <div class="container">
+        <div class="section-head"><h2>eFaktura zaliczkowa</h2><p>Klient wypełnia formularz i pobiera PDF.</p></div>
+        <div class="invoice-card">
+          <div class="invoice-top">
+            <div class="invoice-brand">
+  <img src="logo.jpg" alt="Logo Sosnowe Chwile" class="invoice-logo">
+  <div>
+    <h3>Sosnowe Chwile</h3>
+    <p>Pellet drzewny • Dostawa na terenie Polski</p>
   </div>
+</div> class="invoice-meta"><p><strong>Dokument:</strong> eFaktura zaliczkowa</p><p><strong>Nr:</strong> <span id="invNo">FSZ/2026/05/001</span></p><p><strong>Data:</strong> <span id="invDate">15.05.2026</span></p></div>
+          </div>
+          <div class="invoice-grid">
+            <div class="invoice-box"><h4>Sprzedawca</h4><p><strong>Nordiva trade Sp. z o.o.</strong></p><p>ul. Rynek 17/2, 82-400 Gdansk</p><p>NIP: 592-230-81-05</p></div>
+            <div class="invoice-box"><h4>Nabywca</h4><p id="pdfClientName">—</p><p id="pdfClientAddress">—</p><p id="pdfClientNip">—</p></div>
+          </div>
+          <div class="invoice-details">
+            <h4>Pozycja zamówienia</h4>
+            <div class="invoice-table">
+              <div class="row head"><span>Produkt</span><span>Ilość</span><span>Cena brutto</span><span>Wartość</span></div>
+              <div class="row"><span id="pdfProduct">Standard</span><span id="pdfQty">1 paleta</span><span id="pdfUnit">1 099 zł</span><span id="pdfTotal">1 099 zł</span></div>
+            </div>
+          </div>
+          <div class="invoice-summary">
+            <div><p><strong>Wartość zamówienia:</strong> <span id="sumTotal">1 099 zł</span></p><p><strong>Zaliczka 10–20%:</strong> <span id="depositRange">109,90 zł – 219,80 zł</span></p><p><strong>Do zapłaty teraz:</strong> <span id="depositNow">164,85 zł</span></p></div>
+            <div class="invoice-total"><span>Zaliczka</span><strong id="depositStrong">164,85 zl</strong></div>
+          </div>
+          <div class="invoice-note"><p>Zaliczka wynosi 10–20% wartości zamówienia i jest ustalana indywidualnie.</p></div>
+          <div class="invoice-bank"><h4>Dane do przelewu</h4><p><strong>Odbiorca:</strong> Sosnowe Chwile Sp. z o.o.</p><p><strong>Nr konta:</strong> 39 1160 2202 0000 0007 1309 0461</p><p><strong>Tytuł:</strong> Zaliczka za pellet / nr zamowienia</p></div>
+          <div class="hero-actions" style="margin-top:16px;">
+            <button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="kontakt"><div class="container footer-grid"><div><h2>Sosnowe Chwile</h2><p>Nowa marka pelletu z prostą ofertą i uczciwą ceną.</p></div><div><p><strong>Telefon:</strong> +48 793 573 900</p><p><strong>Email:</strong> kontakt@sosnowechwile.pl</p></div></div></footer>
 
   <script>
-    // Wartości domyślne
-    const baseItems = [
-      "Pellet premium 18 mm",
-      "Wózek do transportu opału",
-      "Pellet premium 18 mm refaktura"
-    ];
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('navMenu');
+    btn.addEventListener('click', () => { const open = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); });
 
-    function updatePreview() {
-      const header = document.getElementById("invoiceHeader");
-      const logo = document.getElementById("logo");
-      const container = document.getElementById("invoiceContainer");
+    const qty = document.getElementById('qty');
+    const product = document.getElementById('product');
+    const totalPrice = document.getElementById('totalPrice');
+    const calcNote = document.getElementById('calcNote');
+    const depositRange = document.getElementById('depositRange');
+    const depositNow = document.getElementById('depositNow');
+    const depositStrong = document.getElementById('depositStrong');
+    const sumTotal = document.getElementById('sumTotal');
+    const pdfQty = document.getElementById('pdfQty');
+    const pdfProduct = document.getElementById('pdfProduct');
+    const pdfUnit = document.getElementById('pdfUnit');
+    const pdfTotal = document.getElementById('pdfTotal');
 
-      const visible = document.getElementById("logoVisible").value;
-      const position = document.getElementById("logoPosition").value;
-      const size = document.getElementById("logoSize").value;
-
-      const width = document.getElementById("previewWidth").value;
-      const height = document.getElementById("headerHeight").value;
-
-      const namesLong = document.getElementById("longNames").value;
-      const rows = +document.getElementById("itemRows").value;
-
-      // LOGO – widoczność
-      logo.classList.toggle("hidden", visible === "hidden");
-
-      // LOGO – pozycja
-      logo.className = logo.className.replace(/place-[a-z]+/g, "");
-      logo.classList.add(`place-${position}`);
-
-      // LOGO – rozmiar
-      logo.className = logo.className.replace(/size-[a-z]+|aspect/g, "");
-      logo.classList.add(`size-${size}`);
-
-      // Wysokość nagłówka
-      document.documentElement.style.setProperty("--header-height", `${height}px`);
-      document.getElementById("headerHeightValue").textContent = `${height}px`;
-
-      // Szerokość kontenera
-      container.style.maxWidth = `${width}px`;
-      document.getElementById("previewWidthValue").textContent = `${width}px`;
-
-      // Nazwy pozycji (krótkie / długie)
-      const tbody = document.getElementById("itemsTable");
-      tbody.innerHTML = "";
-
-      const longBase = "Sosnowe kłody premium do pieców kotłowych o bardzo wysokiej jakości, idealne do długotrwałego spalania";
-
-      for (let i = 0; i < rows; i++) {
-        const name = namesLong === "long"
-          ? longBase + " – zestaw " + (i + 1)
-          : baseItems[i % baseItems.length];
-
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${i + 1}</td>
-          <td class="${namesLong === "long" ? "long-name" : ""}">
-            ${name}
-          </td>
-          <td>1</td>
-          <td>t</td>
-          <td>1200,00</td>
-          <td>1200,00</td>
-        `;
-        tbody.appendChild(tr);
-      }
+    function formatPLN(n){ return n.toLocaleString('pl-PL') + ' zl'; }
+    function updatePrice() {
+      const unit = Number(product.value);
+      const count = Number(qty.value);
+      const total = unit * count;
+      const minD = total * 0.10;
+      const maxD = total * 0.20;
+      const midD = total * 0.15;
+      totalPrice.textContent = formatPLN(total);
+      calcNote.textContent = 'Szacunkowa cena dla ' + count + ' palet.';
+      sumTotal.textContent = formatPLN(total);
+      depositRange.textContent = formatPLN(minD) + ' – ' + formatPLN(maxD);
+      depositNow.textContent = formatPLN(midD);
+      depositStrong.textContent = formatPLN(midD);
+      pdfQty.textContent = count + ' palet';
+      pdfProduct.textContent = product.options[product.selectedIndex].text;
+      pdfUnit.textContent = formatPLN(unit);
+      pdfTotal.textContent = formatPLN(total);
     }
+    qty.addEventListener('change', updatePrice);
+    product.addEventListener('change', updatePrice);
+    updatePrice();
 
-    // Reakcja na zmiany
-    [
-      "logoVisible",
-      "logoPosition",
-      "logoSize",
-      "previewWidth",
-      "headerHeight",
-      "longNames",
-      "itemRows"
-    ].forEach(id => {
-      document.getElementById(id).addEventListener("input", updatePreview);
-      document.getElementById(id).addEventListener("change", updatePreview);
-    });
-
-    // Inicjalizacja
-    updatePreview();
-
-    // eksport HTML faktury
-    document.getElementById("exportHTML").addEventListener("click", () => {
-      const html = document.getElementById("invoiceContainer").outerHTML;
-      const blob = new Blob([`<div class="invoice-container" style="max-width: ${document.getElementById("invoiceContainer").style.maxWidth}">${html}</div>`], { type: "text/html" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "efaktura-sosnowe-chwile.html";
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-
-    // eksport ZIP (uproszczony: generuje HTML + CSS jako pliki w ZIP)
-    document.getElementById("exportZIP").addEventListener("click", () => {
-      // Użyjemy biblioteki JSZip – w praktyce:
-      // 1) dodaj <script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script> w HEAD
-      // 2) poniżej tylko szkielet logiki
-
-      alert(
-        "Zalecane: dodaj bibliotekę JSZip do projektu, a następnie wygeneruj pliki:
-" +
-        "1. efaktura-sosnowe-chwile.html (zawartość #invoiceContainer)
-" +
-        "2. style.css (zawartość <style> z tego dokumentu)"
-      );
-
-      // W pełni roboczej wersji:
-      // 1. pobierz HTML z #invoiceContainer
-      // 2. pobierz CSS z <style> (lub wyciągnij klasy do osobnego CSS)
-      // 3. stwórz ZIP z JSZip i pobierz:
-      //    zip.file("efaktura.html", html);
-      //    zip.file("style.css", css);
-      //    zip.generateAsync({type: "blob"}).then(...);
+    document.getElementById('generatePdf').addEventListener('click', async () => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+      const name = document.getElementById('clientName').value || '—';
+      const nip = document.getElementById('clientNip').value || '—';
+      const email = document.getElementById('clientEmail').value || '—';
+      const phone = document.getElementById('clientPhone').value || '—';
+      const address = document.getElementById('clientAddress').value || '—';
+      const notes = document.getElementById('clientNotes').value || '—';
+      const total = Number(product.value) * Number(qty.value);
+      const deposit = total * 0.15;
+      doc.setFontSize(16); doc.text('Sosnowe Chwile - eFaktura zaliczkowa', 14, 16);
+      doc.setFontSize(10); doc.text('Nabywca: ' + name, 14, 28); doc.text('NIP: ' + nip, 14, 34); doc.text('Email: ' + email, 14, 40); doc.text('Telefon: ' + phone, 14, 46);
+      const lines = doc.splitTextToSize('Adres dostawy: ' + address, 180); doc.text(lines, 14, 54);
+      const lines2 = doc.splitTextToSize('Uwagi: ' + notes, 180); doc.text(lines2, 14, 66);
+      doc.text('Produkt: ' + product.options[product.selectedIndex].text, 14, 84);
+      doc.text('Ilość: ' + qty.value + ' palet', 14, 90);
+      doc.text('Wartość zamówienia: ' + formatPLN(total), 14, 96);
+      doc.text('Zaliczka 15%: ' + formatPLN(deposit), 14, 102);
+      doc.text('Odbiorca: Sosnowe Chwile Sp. z o.o.', 14, 118);
+      doc.text('Nr konta: 39 1160 2202 0000 0007 1309 0461', 14, 124);
+      doc.text('Tytuł: Zaliczka za pellet / EVP533755355', 14, 130);
+      doc.save('efaktura-zaliczkowa-sosnowe-chwile.pdf');
     });
   </script>
 </body>
