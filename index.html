@@ -273,17 +273,23 @@
   </footer>
 
   <script>
+    // 1. Menu przewijane
     const btn = document.getElementById('menuBtn');
     const nav = document.getElementById('navMenu');
-    btn.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+    if (btn && nav) {
+      btn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
 
+    // 2. Elementy z sekcji #wycena
     const qty        = document.getElementById('qty');
     const product    = document.getElementById('product');
     const totalPrice = document.getElementById('totalPrice');
     const calcNote   = document.getElementById('calcNote');
+
+    // 3. Elementy z sekcji #efaktura
     const depositRange  = document.getElementById('depositRange');
     const depositNow    = document.getElementById('depositNow');
     const depositStrong = document.getElementById('depositStrong');
@@ -293,6 +299,7 @@
     const pdfUnit       = document.getElementById('pdfUnit');
     const pdfTotal      = document.getElementById('pdfTotal');
 
+    // 4. Funkcje formatowania
     function formatPLN(n) {
       return n.toLocaleString('pl-PL') + ' zł';
     }
@@ -301,17 +308,23 @@
       return n.toFixed(2).replace('.', ',') + ' zł';
     }
 
+    // 5. Aktualizacja ceny i zaliczki
     function updatePrice() {
-      const unit  = Number(product.value);
-      const count = Number(qty.value);
+      if (!qty || !product || !totalPrice || !calcNote) {
+        console.log('Brak ważnych elementów w DOM, nie mogę liczyć ceny');
+        return;
+      }
+
+      const unit  = Number(product.value) || 1099;
+      const count = Number(qty.value) || 1;
       const total = unit * count;
       const minD  = total * 0.10;
       const maxD  = total * 0.20;
       const midD  = total * 0.15;
 
       // Szacunkowa wartość w #wycena
-      if (totalPrice)  totalPrice.textContent = formatPLN(total);
-      if (calcNote)    calcNote.textContent   = 'Szacunkowa cena dla ' + count + ' palet.';
+      totalPrice.textContent = formatPLN(total);
+      calcNote.textContent   = 'Szacunkowa cena dla ' + count + ' palet.';
 
       // Wartość i zaliczka w #efaktura
       if (sumTotal)      sumTotal.textContent     = formatPLN(total);
@@ -321,159 +334,6 @@
 
       // tabela w eFakturze
       if (pdfQty)      pdfQty.textContent        = count + ' palet';
-      if (pdfProduct)  pdfProduct.textContent    = product.options[product.selectedIndex].text;
+      if (pdfProduct)  pdfProduct.textContent    = product.options[product.selectedIndex]?.text || '—';
       if (pdfUnit)     pdfUnit.textContent       = formatPLN(unit);
       if (pdfTotal)    pdfTotal.textContent      = formatPLN(total);
-
-      // synchronizacja numeru faktury
-      const invNo   = document.getElementById('invNo');
-      const pdInvNo = document.getElementById('pdInvNo');
-      if (invNo && pdInvNo) pdInvNo.textContent = invNo.textContent;
-    }
-
-    // Nasłuch na zmiany w #wycena
-    if (qty && product) {
-      qty.addEventListener('change', updatePrice);
-      product.addEventListener('change', updatePrice);
-      updatePrice();
-    }
-
-        // Generowanie PDF eFaktury
-    document.getElementById('generatePdf').addEventListener('click', async () => {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-
-  const name     = document.getElementById('clientName').value || '—';
-  const nip      = document.getElementById('clientNip').value || '—';
-  const email    = document.getElementById('clientEmail').value || '—';
-  const phone    = document.getElementById('clientPhone').value || '—';
-  const address  = document.getElementById('clientAddress').value || '—';
-  const notes    = document.getElementById('clientNotes').value || '—';
-  const count    = Number(qty.value);
-  const unit     = Number(product.value);
-  const total    = unit * count;
-  const deposit  = total * 0.15;
-  const invNo    = document.getElementById('invNo').textContent;
-  const invDate  = document.getElementById('invDate').textContent;
-
-  // ----------------------------
-  // Strona 1 – eFaktura zaliczkowa
-  // ----------------------------
-
-  // Nagłówek
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(14);
-  doc.text('SOSNOWE CHWILE', 14, 16);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(10);
-  doc.text('Pellet drzewny • Dostawa na terenie Polski', 14, 21);
-
-  // Numer faktury i data
-  doc.setFontSize(11);
-  doc.text('eFaktura zaliczkowa', 14, 29);
-  doc.text('Nr: ' + invNo, 14, 34);
-  doc.text('Data: ' + invDate, 14, 39);
-
-  // Separator
-  doc.setLineWidth(0.5);
-  doc.line(14, 44, 196, 44);
-
-  // Sprzedawca
-  const sellerY = 50;
-  doc.setFont('helvetica', 'bold');
-  doc.text('Sprzedawca:', 14, sellerY);
-  doc.setFont('helvetica', 'normal');
-  doc.text('Nordiva trade Sp. z o.o.', 14, sellerY + 5);
-  doc.text('ul. Rynek 17/2, 82-400 Gdańsk', 14, sellerY + 10);
-  doc.text('NIP: 592-230-81-05', 14, sellerY + 15);
-
-  // Nabywca
-  const buyerY = 70;
-  doc.setFont('helvetica', 'bold');
-  doc.text('Nabywca:', 14, buyerY);
-  doc.setFont('helvetica', 'normal');
-  doc.text(name, 14, buyerY + 5);
-  doc.text('NIP: ' + nip, 14, buyerY + 10);
-  doc.text('Adres dostawy:', 14, buyerY + 15);
-
-  const addrLines = doc.splitTextToSize(address, 170);
-  doc.text(addrLines, 14, buyerY + 20);
-
-  const nextY = buyerY + 20 + (addrLines.length * 6) + 4;
-
-  // Pozycja zamówienia
-  const itemY = nextY;
-  doc.setFont('helvetica', 'bold');
-  doc.text('Pozycja zamówienia', 14, itemY);
-
-  const itemTextY = itemY + 7;
-  doc.setFont('helvetica', 'normal');
-  doc.text('Produkt: ' + product.options[product.selectedIndex].text, 14, itemTextY);
-  doc.text('Ilość: ' + qty.value + ' palet', 14, itemTextY + 6);
-  doc.text('Wartość zamówienia brutto: ' + total.toLocaleString('pl-PL') + ' zł', 14, itemTextY + 12);
-  doc.text('Zaliczka 15%: ' + formatPLNFloat(deposit), 14, itemTextY + 18);
-
-  // Linia i podsumowanie
-  const sumLineY = itemTextY + 22;
-  doc.setLineWidth(0.3);
-  doc.line(14, sumLineY, 196, sumLineY);
-
-  const sumY = sumLineY + 6;
-  doc.setFont('helvetica', 'bold');
-  doc.text('Podsumowanie zaliczki', 14, sumY);
-  doc.setFont('helvetica', 'normal');
-  doc.text('Kwota do zapłaty teraz: ' + formatPLNFloat(deposit), 14, sumY + 6);
-
-  // Dane do przelewu
-  const bankY = sumY + 14;
-  doc.setFont('helvetica', 'bold');
-  doc.text('Dane do przelewu zaliczki', 14, bankY);
-
-  doc.setFont('helvetica', 'normal');
-  doc.text('Odbiorca: Sosnowe Chwile Sp. z o.o.', 14, bankY + 6);
-  doc.text('Nr konta: 39 1160 2202 0000 0007 1309 0461', 14, bankY + 12);
-  doc.text('Tytuł przelewu: Zaliczka za pellet / nr faktury ' + invNo, 14, bankY + 18);
-
-  // --------------------------------
-  // Strona 2 – WARUNKI DOSTAWY
-  // --------------------------------
-
-  doc.addPage();  // druga strona
-
-  const page2Top = 20;
-
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(14);
-  doc.text('WARUNKI DOSTAWY I PŁATNOŚCI', 14, page2Top);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(10);
-
-  const terms = [
-    '1. Zaliczka wynosi 15% wartości zamówienia i jest wymagalna przed realizacją dostawy.',
-    '2. Pełna płatność za pozostałą część zamówienia jest wymagalna zgodnie z ustaleniami w zamówieniu.',
-    '3. Dostawa pelletu odbywa się na terenie Polski zgodnie z umową lub potwierdzeniem dostawy.',
-    '4. W przypadku opóźnień w dostawie Sprzedawca nie odpowiada za szkody poniesione przez Nabywcę.',
-    '5. Wszelkie reklamacje dotyczące jakości towaru należy zgłosić w przeciągu 7 dni od odbioru przesyłki.',
-    '6. Zmiany warunków, cen lub terminu dostawy wymagają pisemnego potwierdzenia od obu stron.',
-    '7. Sprzedawca zastrzega możliwość zmian cen wskutek zmian cen producenta lub podatku VAT.',
-    '8. Pełne zasady i regulamin umowy sprzedaży są dostępne na stronie www.sosnowechwile.pl.',
-    '9. Wszelkie spory wynikające z wykonania umowy podlegają sądom właściwym dla Sprzedawcy.',
-  ];
-
-  let y = page2Top + 16;
-  terms.forEach(line => {
-    const lines = doc.splitTextToSize(line, 180);
-    doc.text(lines, 14, y);
-    y += (lines.length * 6) + 2;
-  });
-
-  // Stopka strona 2
-  const footerY = 270;
-  doc.setFont('helvetica', 'italic');
-  doc.setFontSize(9);
-  doc.text('Dokument wygenerowany elektronicznie. Nie wymaga uzupełnień odręcznych.', 14, footerY);
-
-  // Zapisuje PDF
-  doc.save('efaktura-zaliczkowa-sosnowe-chwile.pdf');
-});
