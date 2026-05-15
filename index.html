@@ -280,18 +280,18 @@
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
-    const qty = document.getElementById('qty');
-    const product = document.getElementById('product');
+    const qty        = document.getElementById('qty');
+    const product    = document.getElementById('product');
     const totalPrice = document.getElementById('totalPrice');
-    const calcNote = document.getElementById('calcNote');
-    const depositRange = document.getElementById('depositRange');
-    const depositNow = document.getElementById('depositNow');
+    const calcNote   = document.getElementById('calcNote');
+    const depositRange  = document.getElementById('depositRange');
+    const depositNow    = document.getElementById('depositNow');
     const depositStrong = document.getElementById('depositStrong');
-    const sumTotal = document.getElementById('sumTotal');
-    const pdfQty = document.getElementById('pdfQty');
-    const pdfProduct = document.getElementById('pdfProduct');
-    const pdfUnit = document.getElementById('pdfUnit');
-    const pdfTotal = document.getElementById('pdfTotal');
+    const sumTotal      = document.getElementById('sumTotal');
+    const pdfQty        = document.getElementById('pdfQty');
+    const pdfProduct    = document.getElementById('pdfProduct');
+    const pdfUnit       = document.getElementById('pdfUnit');
+    const pdfTotal      = document.getElementById('pdfTotal');
 
     function formatPLN(n) {
       return n.toLocaleString('pl-PL') + ' zł';
@@ -302,41 +302,66 @@
     }
 
     function updatePrice() {
-      const unit = Number(product.value);
+      const unit  = Number(product.value);
       const count = Number(qty.value);
       const total = unit * count;
-      const minD = total * 0.10;
-      const maxD = total * 0.20;
-      const midD = total * 0.15;
-      totalPrice.textContent = formatPLN(total);
-      calcNote.textContent = 'Szacunkowa cena dla ' + count + ' palet.';
-      sumTotal.textContent = formatPLN(total);
-      depositRange.textContent = formatPLNFloat(minD) + ' – ' + formatPLNFloat(maxD);
-      depositNow.textContent = formatPLNFloat(midD);
-      depositStrong.textContent = formatPLNFloat(midD);
-      pdfQty.textContent = count + ' palet';
-      pdfProduct.textContent = product.options[product.selectedIndex].text;
-      pdfUnit.textContent = formatPLN(unit);
-      pdfTotal.textContent = formatPLN(total);
-      // synchronizacja numeru faktury w PDF
-      document.getElementById('pdInvNo').textContent = document.getElementById('invNo').textContent;
+      const minD  = total * 0.10;
+      const maxD  = total * 0.20;
+      const midD  = total * 0.15;
+
+      // Szacunkowa wartość w #wycena
+      if (totalPrice)  totalPrice.textContent = formatPLN(total);
+      if (calcNote)    calcNote.textContent   = 'Szacunkowa cena dla ' + count + ' palet.';
+
+      // Wartość i zaliczka w #efaktura
+      if (sumTotal)      sumTotal.textContent     = formatPLN(total);
+      if (depositRange)  depositRange.textContent = formatPLNFloat(minD) + ' – ' + formatPLNFloat(maxD);
+      if (depositNow)    depositNow.textContent   = formatPLNFloat(midD);
+      if (depositStrong) depositStrong.textContent = formatPLNFloat(midD);
+
+      // tabela w eFakturze
+      if (pdfQty)      pdfQty.textContent        = count + ' palet';
+      if (pdfProduct)  pdfProduct.textContent    = product.options[product.selectedIndex].text;
+      if (pdfUnit)     pdfUnit.textContent       = formatPLN(unit);
+      if (pdfTotal)    pdfTotal.textContent      = formatPLN(total);
+
+      // synchronizacja numeru faktury
+      const invNo   = document.getElementById('invNo');
+      const pdInvNo = document.getElementById('pdInvNo');
+      if (invNo && pdInvNo) pdInvNo.textContent = invNo.textContent;
     }
 
-    qty.addEventListener('change', updatePrice);
-    product.addEventListener('change', updatePrice);
-    updatePrice();
+    // Nasłuch na zmiany w #wycena
+    if (qty && product) {
+      qty.addEventListener('change', updatePrice);
+      product.addEventListener('change', updatePrice);
+      updatePrice();
+    }
 
+    // Generowanie PDF eFaktury
     document.getElementById('generatePdf').addEventListener('click', async () => {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-      const name = document.getElementById('clientName').value || '—';
-      const nip = document.getElementById('clientNip').value || '—';
-      const email = document.getElementById('clientEmail').value || '—';
-      const phone = document.getElementById('clientPhone').value || '—';
-      const address = document.getElementById('clientAddress').value || '—';
-      const notes = document.getElementById('clientNotes').value || '—';
-      const total = Number(product.value) * Number(qty.value);
-      const deposit = total * 0.15;
-      const invNo = document.getElementById('invNo').textContent;
 
-      doc.setFontSize(
+      const name     = document.getElementById('clientName').value ||
+document.getElementById('generatePdf').addEventListener('click', async () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+
+  const name     = document.getElementById('clientName').value || '—';
+  const nip      = document.getElementById('clientNip').value || '—';
+  const email    = document.getElementById('clientEmail').value || '—';
+  const phone    = document.getElementById('clientPhone').value || '—';
+  const address  = document.getElementById('clientAddress').value || '—';
+  const notes    = document.getElementById('clientNotes').value || '—';
+  const count    = Number(qty.value);
+  const unit     = Number(product.value);
+  const total    = unit * count;
+  const deposit  = total * 0.15;
+  const invNo    = document.getElementById('invNo').textContent;
+
+  // ... nagłówki itd. ...
+
+  doc.save('efaktura-zaliczkowa-sosnowe-chwile.pdf');  // ← tu jest koniec
+});
+</script>  <!-- ← tu musi być zamknięcie tagu -->
