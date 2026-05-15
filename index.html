@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sosnowe Chwile</title>
+  <title>Sosnowe Chwile - eFaktura zaliczkowa</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 </head>
 <body>
-
   <section class="top-banner">
     <div class="container banner-inner">
       <img class="banner-image" src="baner.png" alt="Baner Sosnowe Chwile">
@@ -27,19 +27,9 @@
         <span class="brand-mark">S</span>
         <span class="brand-text">Sosnowe Chwile</span>
       </a>
-
-      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu">
-        <span></span><span></span><span></span>
-      </button>
-
+      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
       <nav class="nav" id="navMenu">
-        <a href="#home">Strona główna</a>
-        <a href="#oferta">Oferta</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#dostawa">Dostawa</a>
-        <a href="#wycena">Wycena</a>
-        <a href="#faktura-zaliczkowa">Faktura zaliczkowa</a>
-        <a href="#kontakt">Kontakt</a>
+        <a href="#home">Start</a><a href="#oferta">Oferta</a><a href="#wycena">Wycena</a><a href="#efaktura">eFaktura</a><a href="#kontakt">Kontakt</a>
       </nav>
     </div>
   </header>
@@ -49,353 +39,162 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <span class="eyebrow">Nowa marka pelletu</span>
-          <h1>Pellet Sosnowe Chwile – jakość i cena dla Twojego domu</h1>
-          <p>Wybierz naturalny pellet w przyzwoitej cenie. Oferta dla domu, firmy i hurtu z naciskiem na prostą obsługę oraz szybką dostawę.</p>
+          <h1>Pellet Sosnowe Chwile – szybka wycena i eFaktura zaliczkowa</h1>
+          <p>Klient wypełnia formularz, a po kliknięciu generuje PDF z zaliczką 10–20% wartości zamówienia.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#oferta">Sprawdź ofertę</a>
-            <a class="btn btn-outline" href="#kontakt">Zapytaj o cenę</a>
+            <a class="btn btn-primary" href="#efaktura">Wypełnij formularz</a>
+            <a class="btn btn-outline" href="#oferta">Zobacz ofertę</a>
           </div>
         </div>
-
-        <div class="hero-image">
-          <img src="tir.png" alt="Ciężarówka Sosnowe Chwile z dostawą pelletu">
-        </div>
+        <div class="hero-image"><img src="tir.png" alt="Ciężarówka Sosnowe Chwile z dostawą pelletu"></div>
       </div>
     </section>
 
     <section class="section" id="oferta">
       <div class="container">
-        <div class="section-head">
-          <h2>Oferta</h2>
-          <p>Przejrzyste warianty, które łatwo porównać na telefonie.</p>
-        </div>
-
+        <div class="section-head"><h2>Oferta</h2><p>Przejrzyste warianty pelletu.</p></div>
         <div class="cards">
-          <article class="product">
-            <img src="standard.png" alt="Pellet Standard">
-            <div class="product-body">
-              <h3>Standard</h3>
-              <p class="price">od 1099 zł / paleta</p>
-              <p class="desc">Solidna opcja do codziennego ogrzewania.</p>
-              <a class="btn btn-dark" href="#wycena">Wybierz</a>
-            </div>
-          </article>
-
-          <article class="product">
-            <img src="economy.png" alt="Pellet Economy">
-            <div class="product-body">
-              <h3>Economy</h3>
-              <p class="price">od 999 zł / paleta</p>
-              <p class="desc">Najbardziej budżetowa propozycja.</p>
-              <a class="btn btn-dark" href="#wycena">Wybierz</a>
-            </div>
-          </article>
-
-          <article class="product">
-            <img src="premiumplus.png" alt="Pellet Premium Plus">
-            <div class="product-body">
-              <h3>Premium Plus</h3>
-              <p class="price">od 1249 zł / paleta</p>
-              <p class="desc">Lepszy komfort, wyższa klasa produktu.</p>
-              <a class="btn btn-dark" href="#wycena">Wybierz</a>
-            </div>
-          </article>
-
-          <article class="product">
-            <img src="premiuma1.png" alt="Pellet Premium A1">
-            <div class="product-body">
-              <h3>Premium A1</h3>
-              <p class="price">od 1299 zł / paleta</p>
-              <p class="desc">Wariant dla wymagających klientów.</p>
-              <a class="btn btn-dark" href="#wycena">Wybierz</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="galeria">
-      <div class="container">
-        <div class="section-head">
-          <h2>Galeria</h2>
-          <p>Kliknij zdjęcie, aby je powiększyć.</p>
-        </div>
-
-        <div class="gallery-grid">
-          <img src="standard.png" alt="Pellet Standard" class="gallery-img">
-          <img src="premiumplus.png" alt="Pellet Premium Plus" class="gallery-img">
-          <img src="premiuma1.png" alt="Pellet Premium A1" class="gallery-img">
-          <img src="tir.png" alt="Transport i dostawa" class="gallery-img">
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="dostawa">
-      <div class="container features">
-        <div class="feature">
-          <img src="magazyn.png" alt="Magazyn Sosnowe Chwile">
-          <h3>Magazyn</h3>
-          <p>Stały towar i szybkie przygotowanie zamówień.</p>
-        </div>
-        <div class="feature">
-          <img src="tir.png" alt="Transport TIR">
-          <h3>Dostawa</h3>
-          <p>Transport na terenie całej Polski, także hurtowo.</p>
-        </div>
-        <div class="feature">
-          <img src="standard.png" alt="Pellet standard">
-          <h3>Przyzwoite ceny</h3>
-          <p>Oferta bez przesady, nastawiona na wartość.</p>
+          <article class="product"><img src="standard.png" alt="Pellet Standard"><div class="product-body"><h3>Standard</h3><p class="price">od 1099 zł / paleta</p><p class="desc">Solidna opcja do codziennego ogrzewania.</p></div></article>
+          <article class="product"><img src="economy.png" alt="Pellet Economy"><div class="product-body"><h3>Economy</h3><p class="price">od 999 zł / paleta</p><p class="desc">Najbardziej budżetowa propozycja.</p></div></article>
+          <article class="product"><img src="premiumplus.png" alt="Pellet Premium Plus"><div class="product-body"><h3>Premium Plus</h3><p class="price">od 1249 zł / paleta</p><p class="desc">Wyższa klasa produktu.</p></div></article>
+          <article class="product"><img src="premiuma1.png" alt="Pellet Premium A1"><div class="product-body"><h3>Premium A1</h3><p class="price">od 1299 zł / paleta</p><p class="desc">Wariant dla wymagających klientów.</p></div></article>
         </div>
       </div>
     </section>
 
     <section class="section" id="wycena">
       <div class="container">
-        <div class="section-head">
-          <h2>Szybka wycena</h2>
-          <p>Wypełnij formularz, a przygotujemy ofertę i dane do dokumentu.</p>
-        </div>
-
+        <div class="section-head"><h2>Szybka wycena</h2><p>Szacunkowa wartość zamówienia i dane do eFaktury.</p></div>
         <div class="quote-grid">
           <form class="quote-form" id="quoteForm">
             <div class="form-row">
-              <label>Imię i nazwisko / firma
-                <input type="text" placeholder="Np. Jan Kowalski / Firma XYZ">
-              </label>
-              <label>NIP do faktury
-                <input type="text" placeholder="Np. 1234567890">
-              </label>
+              <label>Imię i nazwisko / firma<input type="text" id="clientName" placeholder="Np. Jan Kowalski / Firma XYZ"></label>
+              <label>NIP do faktury<input type="text" id="clientNip" placeholder="Np. 1234567890"></label>
             </div>
-
             <div class="form-row">
-              <label>Email
-                <input type="email" placeholder="Np. kontakt@firma.pl">
-              </label>
-              <label>Telefon
-                <input type="tel" placeholder="Np. +48 123 456 789">
-              </label>
+              <label>Email<input type="email" id="clientEmail" placeholder="Np. kontakt@firma.pl"></label>
+              <label>Telefon<input type="tel" id="clientPhone" placeholder="Np. +48 123 456 789"></label>
             </div>
-
             <div class="form-row">
-              <label>Ilość palet
-                <select id="qty">
-                  <option value="1">1 paleta</option>
-                  <option value="2">2 palety</option>
-                  <option value="3">3 palety</option>
-                  <option value="5">4-5 palet</option>
-                  <option value="10">6+ palet</option>
-                </select>
-              </label>
-
-              <label>Rodzaj produktu
-                <select id="product">
-                  <option value="1099">Standard</option>
-                  <option value="999">Economy</option>
-                  <option value="1249">Premium Plus</option>
-                  <option value="1299">Premium A1</option>
-                </select>
-              </label>
+              <label>Ilość palet<select id="qty"><option value="1">1 paleta</option><option value="2">2 palety</option><option value="3">3 palety</option><option value="5">4-5 palet</option><option value="10">6+ palet</option></select></label>
+              <label>Rodzaj produktu<select id="product"><option value="1099">Standard</option><option value="999">Economy</option><option value="1249">Premium Plus</option><option value="1299">Premium A1</option></select></label>
             </div>
-
-            <label>Adres dostawy
-              <textarea rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea>
-            </label>
-
-            <label>Uwagi do zamówienia
-              <textarea rows="4" placeholder="Np. termin dostawy, rozładunek, faktura VAT"></textarea>
-            </label>
-
+            <label>Adres dostawy<textarea id="clientAddress" rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea></label>
+            <label>Uwagi do zamówienia<textarea id="clientNotes" rows="4" placeholder="Np. termin dostawy, rozładunek"></textarea></label>
             <div class="calc-box">
-              <p>Szacunkowa wartość zamówienia:</p>
-              <strong id="totalPrice">1099 zł</strong>
-              <small id="calcNote">Cena orientacyjna za 1 paletę Standard.</small>
+              <p>Szacunkowa wartość zamówienia:</p><strong id="totalPrice">1099 zł</strong><small id="calcNote">Cena orientacyjna za 1 paletę Standard.</small>
             </div>
-
-            <a class="btn btn-dark" href="mailto:nordivatrade@gmail.com?subject=Szybka%20wycena%20Sosnowe%20Chwile">Wyślij zapytanie</a>
-            <a class="btn btn-outline" style="color:#223117;border-color:#cfc5b2;" href="https://wa.me/48793573900" target="_blank" rel="noopener">Napisz na WhatsApp</a>
+            <a class="btn btn-dark" href="#efaktura">Przejdź do eFaktury</a>
           </form>
-
           <aside class="payment-box">
             <h3>Zaliczka i przelew</h3>
-            <p>Zaliczka zależy od wielkości zamówienia i ustalamy ją indywidualnie.</p>
-            <ul class="pay-list">
-              <li>Małe zamówienia: zwykle niższa zaliczka.</li>
-              <li>Większe zamówienia: zaliczka ustalana po wycenie.</li>
-              <li>Hurt: warunki do uzgodnienia.</li>
-            </ul>
-            <div class="bank-box">
-              <strong>Dane do przelewu</strong>
-              <p><span>Odbiorca:</span> Sosnowe Chwile Sp. z o.o.</p>
-              <p><span>Nr konta:</span> 39 1160 2202 0000 0007 1309 0461</p>
-              <p><span>Tytuł:</span> Zaliczka za pellet / numer zamówienia</p>
-            </div>
+            <p>Zaliczka wynosi 10–20% wartości zamówienia i jest ustalana indywidualnie.</p>
+            <div class="bank-box"><strong>Dane do przelewu</strong><p><span>Odbiorca:</span> Sosnowe Chwile Sp. z o.o.</p><p><span>Nr konta:</span> 39 1160 2202 0000 0007 1309 0461</p></div>
           </aside>
         </div>
       </div>
     </section>
 
-    <section class="section invoice-section" id="faktura-zaliczkowa">
+    <section class="section invoice-section" id="efaktura">
       <div class="container">
-        <div class="section-head">
-          <h2>Faktura zaliczkowa</h2>
-          <p>Przykładowy dokument zaliczkowy do szybkiej akceptacji zamówienia.</p>
-        </div>
-
+        <div class="section-head"><h2>eFaktura zaliczkowa</h2><p>Klient wypełnia formularz i pobiera PDF.</p></div>
         <div class="invoice-card">
           <div class="invoice-top">
-            <div class="invoice-brand">
-              <img src="logo.png" alt="Logo Sosnowe Chwile" class="invoice-logo">
-              <div>
-                <h3>Sosnowe Chwile</h3>
-                <p>Pellet drzewny • Dostawa na terenie Polski</p>
-              </div>
-            </div>
-
-            <div class="invoice-meta">
-              <p><strong>Dokument:</strong> Faktura zaliczkowa</p>
-              <p><strong>Nr:</strong> FSZ/2026/05/001</p>
-              <p><strong>Data wystawienia:</strong> 15.05.2026</p>
-              <p><strong>Termin płatności:</strong> 3 dni</p>
-            </div>
+            <div class="invoice-brand"><img src="logo.png" alt="Logo Sosnowe Chwile" class="invoice-logo"><div><h3>Sosnowe Chwile</h3><p>Pellet drzewny • Dostawa na terenie Polski</p></div></div>
+            <div class="invoice-meta"><p><strong>Dokument:</strong> eFaktura zaliczkowa</p><p><strong>Nr:</strong> <span id="invNo">FSZ/2026/05/001</span></p><p><strong>Data:</strong> <span id="invDate">15.05.2026</span></p></div>
           </div>
-
           <div class="invoice-grid">
-            <div class="invoice-box">
-              <h4>Sprzedawca</h4>
-              <p><strong>Sosnowe Chwile Sp. z o.o.</strong></p>
-              <p>ul. Przykładowa 10, 00-000 Warszawa</p>
-              <p>NIP: 123-456-78-90</p>
-              <p>Email: kontakt@sosnowechwile.pl</p>
-              <p>Tel: +48 793 573 900</p>
-            </div>
-
-            <div class="invoice-box">
-              <h4>Nabywca</h4>
-              <p><strong>Jan Kowalski / Firma XYZ</strong></p>
-              <p>ul. Klienta 5, 00-000 Miasto</p>
-              <p>NIP: 111-222-33-44</p>
-              <p>Email: klient@firma.pl</p>
-              <p>Tel: +48 600 700 800</p>
-            </div>
+            <div class="invoice-box"><h4>Sprzedawca</h4><p><strong>Sosnowe Chwile Sp. z o.o.</strong></p><p>ul. Przykładowa 10, 00-000 Warszawa</p><p>NIP: 123-456-78-90</p></div>
+            <div class="invoice-box"><h4>Nabywca</h4><p id="pdfClientName">—</p><p id="pdfClientAddress">—</p><p id="pdfClientNip">—</p></div>
           </div>
-
           <div class="invoice-details">
-            <h4>Opis zamówienia</h4>
+            <h4>Pozycja zamówienia</h4>
             <div class="invoice-table">
-              <div class="row head">
-                <span>Produkt</span>
-                <span>Ilość</span>
-                <span>Cena brutto</span>
-                <span>Wartość</span>
-              </div>
-              <div class="row">
-                <span>Pellet Standard</span>
-                <span>1 paleta</span>
-                <span>1 099 zł</span>
-                <span>1 099 zł</span>
-              </div>
+              <div class="row head"><span>Produkt</span><span>Ilość</span><span>Cena brutto</span><span>Wartość</span></div>
+              <div class="row"><span id="pdfProduct">Standard</span><span id="pdfQty">1 paleta</span><span id="pdfUnit">1 099 zł</span><span id="pdfTotal">1 099 zł</span></div>
             </div>
           </div>
-
           <div class="invoice-summary">
-            <div>
-              <p><strong>Wartość zamówienia:</strong> 1 099 zł</p>
-              <p><strong>Zaliczka 10–20%:</strong> od 109,90 zł do 219,80 zł</p>
-              <p><strong>Przykładowa zaliczka:</strong> 15% = 164,85 zł</p>
-            </div>
-            <div class="invoice-total">
-              <span>Do zapłaty teraz</span>
-              <strong>164,85 zł</strong>
-            </div>
+            <div><p><strong>Wartość zamówienia:</strong> <span id="sumTotal">1 099 zł</span></p><p><strong>Zaliczka 10–20%:</strong> <span id="depositRange">109,90 zł – 219,80 zł</span></p><p><strong>Do zapłaty teraz:</strong> <span id="depositNow">164,85 zł</span></p></div>
+            <div class="invoice-total"><span>Zaliczka</span><strong id="depositStrong">164,85 zł</strong></div>
           </div>
-
-          <div class="invoice-note">
-            <p>Zaliczka wynosi 10–20% wartości zamówienia i jest ustalana indywidualnie w zależności od wielkości dostawy.</p>
-          </div>
-
-          <div class="invoice-bank">
-            <h4>Dane do przelewu</h4>
-            <p><strong>Odbiorca:</strong> Sosnowe Chwile Sp. z o.o.</p>
-            <p><strong>Nr konta:</strong> 39 1160 2202 0000 0007 1309 0461</p>
-            <p><strong>Tytuł:</strong> Zaliczka za pellet / nr zamówienia FSZ/2026/05/001</p>
+          <div class="invoice-note"><p>Zaliczka wynosi 10–20% wartości zamówienia i jest ustalana indywidualnie.</p></div>
+          <div class="invoice-bank"><h4>Dane do przelewu</h4><p><strong>Odbiorca:</strong> Sosnowe Chwile Sp. z o.o.</p><p><strong>Nr konta:</strong> 39 1160 2202 0000 0007 1309 0461</p><p><strong>Tytuł:</strong> Zaliczka za pellet / nr zamówienia</p></div>
+          <div class="hero-actions" style="margin-top:16px;">
+            <button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer" id="kontakt">
-    <div class="container footer-grid">
-      <div>
-        <h2>Sosnowe Chwile</h2>
-        <p>Nowa marka pelletu z prostą ofertą i uczciwą ceną.</p>
-      </div>
-      <div>
-        <p><strong>Telefon:</strong> +48 793 573 900</p>
-        <p><strong>Email:</strong> kontakt@sosnowechwile.pl</p>
-      </div>
-    </div>
-
-    <a class="whatsapp-float" href="https://wa.me/48793573900" target="_blank" rel="noopener" aria-label="WhatsApp">
-      WhatsApp
-    </a>
-  </footer>
-
-  <div class="image-modal" id="imageModal">
-    <button class="modal-close" id="modalClose" aria-label="Zamknij">×</button>
-    <img id="modalImage" alt="">
-  </div>
+  <footer class="footer" id="kontakt"><div class="container footer-grid"><div><h2>Sosnowe Chwile</h2><p>Nowa marka pelletu z prostą ofertą i uczciwą ceną.</p></div><div><p><strong>Telefon:</strong> +48 793 573 900</p><p><strong>Email:</strong> kontakt@sosnowechwile.pl</p></div></div></footer>
 
   <script>
     const btn = document.getElementById('menuBtn');
     const nav = document.getElementById('navMenu');
-
-    btn.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+    btn.addEventListener('click', () => { const open = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); });
 
     const qty = document.getElementById('qty');
     const product = document.getElementById('product');
     const totalPrice = document.getElementById('totalPrice');
     const calcNote = document.getElementById('calcNote');
+    const depositRange = document.getElementById('depositRange');
+    const depositNow = document.getElementById('depositNow');
+    const depositStrong = document.getElementById('depositStrong');
+    const sumTotal = document.getElementById('sumTotal');
+    const pdfQty = document.getElementById('pdfQty');
+    const pdfProduct = document.getElementById('pdfProduct');
+    const pdfUnit = document.getElementById('pdfUnit');
+    const pdfTotal = document.getElementById('pdfTotal');
 
+    function formatPLN(n){ return n.toLocaleString('pl-PL') + ' zł'; }
     function updatePrice() {
       const unit = Number(product.value);
       const count = Number(qty.value);
       const total = unit * count;
-      totalPrice.textContent = total.toLocaleString('pl-PL') + ' zł';
+      const minD = total * 0.10;
+      const maxD = total * 0.20;
+      const midD = total * 0.15;
+      totalPrice.textContent = formatPLN(total);
       calcNote.textContent = 'Szacunkowa cena dla ' + count + ' palet.';
+      sumTotal.textContent = formatPLN(total);
+      depositRange.textContent = formatPLN(minD) + ' – ' + formatPLN(maxD);
+      depositNow.textContent = formatPLN(midD);
+      depositStrong.textContent = formatPLN(midD);
+      pdfQty.textContent = count + ' palet';
+      pdfProduct.textContent = product.options[product.selectedIndex].text;
+      pdfUnit.textContent = formatPLN(unit);
+      pdfTotal.textContent = formatPLN(total);
     }
-
     qty.addEventListener('change', updatePrice);
     product.addEventListener('change', updatePrice);
     updatePrice();
 
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalClose = document.getElementById('modalClose');
-
-    document.querySelectorAll('.gallery-img').forEach(img => {
-      img.addEventListener('click', () => {
-        modal.classList.add('open');
-        modalImage.src = img.src;
-        modalImage.alt = img.alt;
-      });
-    });
-
-    modalClose.addEventListener('click', () => {
-      modal.classList.remove('open');
-      modalImage.src = '';
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('open');
-        modalImage.src = '';
-      }
+    document.getElementById('generatePdf').addEventListener('click', async () => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+      const name = document.getElementById('clientName').value || '—';
+      const nip = document.getElementById('clientNip').value || '—';
+      const email = document.getElementById('clientEmail').value || '—';
+      const phone = document.getElementById('clientPhone').value || '—';
+      const address = document.getElementById('clientAddress').value || '—';
+      const notes = document.getElementById('clientNotes').value || '—';
+      const total = Number(product.value) * Number(qty.value);
+      const deposit = total * 0.15;
+      doc.setFontSize(16); doc.text('Sosnowe Chwile - eFaktura zaliczkowa', 14, 16);
+      doc.setFontSize(10); doc.text('Nabywca: ' + name, 14, 28); doc.text('NIP: ' + nip, 14, 34); doc.text('Email: ' + email, 14, 40); doc.text('Telefon: ' + phone, 14, 46);
+      const lines = doc.splitTextToSize('Adres dostawy: ' + address, 180); doc.text(lines, 14, 54);
+      const lines2 = doc.splitTextToSize('Uwagi: ' + notes, 180); doc.text(lines2, 14, 66);
+      doc.text('Produkt: ' + product.options[product.selectedIndex].text, 14, 84);
+      doc.text('Ilość: ' + qty.value + ' palet', 14, 90);
+      doc.text('Wartość zamówienia: ' + formatPLN(total), 14, 96);
+      doc.text('Zaliczka 15%: ' + formatPLN(deposit), 14, 102);
+      doc.text('Odbiorca: Sosnowe Chwile Sp. z o.o.', 14, 118);
+      doc.text('Nr konta: 39 1160 2202 0000 0007 1309 0461', 14, 124);
+      doc.text('Tytuł: Zaliczka za pellet / nr zamówienia', 14, 130);
+      doc.save('efaktura-zaliczkowa-sosnowe-chwile.pdf');
     });
   </script>
 </body>
-</html> 
+</html>
