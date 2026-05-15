@@ -10,67 +10,16 @@
 
   <section class="top-banner">
     <div class="container banner-inner">
-      <img class="banner-image" src="baner.png" alt="Baner Sosnowe Chwile">
       <img class="banner-logo" src="logo.jpg" alt="Sosnowe Chwile logo">
-
-  <div class="quote-grid">
-  <form class="quote-form" id="quoteForm">
-    <div class="form-row">
-      <label>Imię i nazwisko / firma
-        <input type="text" placeholder="Np. Jan Kowalski / Firma XYZ">
-      </label>
-      <label>NIP do faktury
-        <input type="text" placeholder="Np. 1234567890">
-      </label>
+      <div class="banner-prices">
+        <div><strong>Standard</strong><span>od 1099 zł / paleta</span></div>
+        <div><strong>Economy</strong><span>od 999 zł / paleta</span></div>
+        <div><strong>Premium Plus</strong><span>od 1249 zł / paleta</span></div>
+        <div><strong>Premium A1</strong><span>od 1299 zł / paleta</span></div>
+      </div>
+      <div class="banner-cta">Szybka wycena • Dostawa na terenie Polski</div>
     </div>
-
-    <div class="form-row">
-      <label>Email
-        <input type="email" placeholder="Np. kontakt@firma.pl">
-      </label>
-      <label>Telefon
-        <input type="tel" placeholder="Np. +48 123 456 789">
-      </label>
-    </div>
-
-    <div class="form-row">
-      <label>Ilość palet
-        <select id="qty">
-          <option value="1">1 paleta</option>
-          <option value="2">2 palety</option>
-          <option value="3">3 palety</option>
-          <option value="5">4-5 palet</option>
-          <option value="10">6+ palet</option>
-        </select>
-      </label>
-
-      <label>Rodzaj produktu
-        <select id="product">
-          <option value="1099">Standard</option>
-          <option value="999">Economy</option>
-          <option value="1249">Premium Plus</option>
-          <option value="1299">Premium A1</option>
-        </select>
-      </label>
-    </div>
-
-    <label>Adres dostawy
-      <textarea rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea>
-    </label>
-
-    <label>Uwagi do zamówienia
-      <textarea rows="4" placeholder="Np. termin dostawy, rozładunek, faktura VAT"></textarea>
-    </label>
-
-    <div class="calc-box">
-      <p>Szacunkowa wartość zamówienia:</p>
-      <strong id="totalPrice">1099 zł</strong>
-      <small id="calcNote">Cena orientacyjna za 1 paletę Standard.</small>
-    </div>
-
-    <a class="btn btn-dark" href="mailto:kontakt@sosnowechwile.pl?subject=Szybka%20wycena%20Sosnowe%20Chwile">Wyślij zapytanie</a>
-    <a class="btn btn-outline" style="color:#223117;border-color:#cfc5b2;" href="https://wa.me/48793573900" target="_blank" rel="noopener">Napisz na WhatsApp</a>
-  </form>
+  </section>
 
   <header class="header">
     <div class="container nav-wrap">
@@ -86,6 +35,7 @@
       <nav class="nav" id="navMenu">
         <a href="#home">Strona główna</a>
         <a href="#oferta">Oferta</a>
+        <a href="#galeria">Galeria</a>
         <a href="#dostawa">Dostawa</a>
         <a href="#wycena">Wycena</a>
         <a href="#kontakt">Kontakt</a>
@@ -107,7 +57,7 @@
         </div>
 
         <div class="hero-image">
-          <img src="tir.png" alt="Ciężarówka Sosnowe Chwile z dostawą pelletu" />
+          <img src="tir.png" alt="Ciężarówka Sosnowe Chwile z dostawą pelletu">
         </div>
       </div>
     </section>
@@ -121,44 +71,60 @@
 
         <div class="cards">
           <article class="product">
-            <img src="standard.png" alt="Pellet Standard" />
+            <img src="standard.png" alt="Pellet Standard">
             <div class="product-body">
               <h3>Standard</h3>
               <p class="price">od 1099 zł / paleta</p>
               <p class="desc">Solidna opcja do codziennego ogrzewania.</p>
-              <a class="btn btn-dark" href="#kontakt">Kup teraz</a>
+              <a class="btn btn-dark" href="#wycena">Wybierz</a>
             </div>
           </article>
 
           <article class="product">
-            <img src="economy.png" alt="Pellet Economy" />
+            <img src="economy.png" alt="Pellet Economy">
             <div class="product-body">
               <h3>Economy</h3>
               <p class="price">od 999 zł / paleta</p>
               <p class="desc">Najbardziej budżetowa propozycja.</p>
-              <a class="btn btn-dark" href="#kontakt">Kup teraz</a>
+              <a class="btn btn-dark" href="#wycena">Wybierz</a>
             </div>
           </article>
 
           <article class="product">
-            <img src="premiumplus.png" alt="Pellet Premium Plus" />
+            <img src="premiumplus.png" alt="Pellet Premium Plus">
             <div class="product-body">
               <h3>Premium Plus</h3>
               <p class="price">od 1249 zł / paleta</p>
               <p class="desc">Lepszy komfort, wyższa klasa produktu.</p>
-              <a class="btn btn-dark" href="#kontakt">Kup teraz</a>
+              <a class="btn btn-dark" href="#wycena">Wybierz</a>
             </div>
           </article>
 
           <article class="product">
-            <img src="premiuma1.png" alt="Pellet Premium A1" />
+            <img src="premiuma1.png" alt="Pellet Premium A1">
             <div class="product-body">
               <h3>Premium A1</h3>
               <p class="price">od 1299 zł / paleta</p>
               <p class="desc">Wariant dla wymagających klientów.</p>
-              <a class="btn btn-dark" href="#kontakt">Kup teraz</a>
+              <a class="btn btn-dark" href="#wycena">Wybierz</a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <h2>Galeria</h2>
+          <p>Kliknij zdjęcie, aby je powiększyć.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <img src="standard.png" alt="Pellet Standard" class="gallery-img">
+          <img src="premiumplus.png" alt="Pellet Premium Plus" class="gallery-img">
+          <img src="premiuma1.png" alt="Pellet Premium A1" class="gallery-img">
+          <img src="tir.png" alt="Transport i dostawa" class="gallery-img">
         </div>
       </div>
     </section>
@@ -166,17 +132,17 @@
     <section class="section alt" id="dostawa">
       <div class="container features">
         <div class="feature">
-          <img src="magazyn.png" alt="Magazyn Sosnowe Chwile" />
+          <img src="magazyn.png" alt="Magazyn Sosnowe Chwile">
           <h3>Magazyn</h3>
           <p>Stały towar i szybkie przygotowanie zamówień.</p>
         </div>
         <div class="feature">
-          <img src="tir.png" alt="Transport TIR" />
+          <img src="tir.png" alt="Transport TIR">
           <h3>Dostawa</h3>
           <p>Transport na terenie całej Polski, także hurtowo.</p>
         </div>
         <div class="feature">
-          <img src="standard.png" alt="Pellet standard" />
+          <img src="standard.png" alt="Pellet standard">
           <h3>Przyzwoite ceny</h3>
           <p>Oferta bez przesady, nastawiona na wartość.</p>
         </div>
@@ -191,21 +157,59 @@
         </div>
 
         <div class="quote-grid">
-          <form class="quote-form">
+          <form class="quote-form" id="quoteForm">
             <div class="form-row">
-              <label>Imię i nazwisko / firma<input type="text" placeholder="Np. Jan Kowalski / Firma XYZ"></label>
-              <label>NIP do faktury<input type="text" placeholder="Np. 1234567890"></label>
+              <label>Imię i nazwisko / firma
+                <input type="text" placeholder="Np. Jan Kowalski / Firma XYZ">
+              </label>
+              <label>NIP do faktury
+                <input type="text" placeholder="Np. 1234567890">
+              </label>
             </div>
+
             <div class="form-row">
-              <label>Email<input type="email" placeholder="Np. kontakt@firma.pl"></label>
-              <label>Telefon<input type="tel" placeholder="Np. +48 123 456 789"></label>
+              <label>Email
+                <input type="email" placeholder="Np. kontakt@firma.pl">
+              </label>
+              <label>Telefon
+                <input type="tel" placeholder="Np. +48 123 456 789">
+              </label>
             </div>
+
             <div class="form-row">
-              <label>Ilość palet<select><option>1 paleta</option><option>2-3 palety</option><option>4-9 palet</option><option>10+ palet</option></select></label>
-              <label>Rodzaj produktu<select><option>Standard</option><option>Economy</option><option>Premium Plus</option><option>Premium A1</option></select></label>
+              <label>Ilość palet
+                <select id="qty">
+                  <option value="1">1 paleta</option>
+                  <option value="2">2 palety</option>
+                  <option value="3">3 palety</option>
+                  <option value="5">4-5 palet</option>
+                  <option value="10">6+ palet</option>
+                </select>
+              </label>
+
+              <label>Rodzaj produktu
+                <select id="product">
+                  <option value="1099">Standard</option>
+                  <option value="999">Economy</option>
+                  <option value="1249">Premium Plus</option>
+                  <option value="1299">Premium A1</option>
+                </select>
+              </label>
             </div>
-            <label>Adres dostawy<textarea rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea></label>
-            <label>Uwagi do zamówienia<textarea rows="4" placeholder="Np. termin dostawy, rozładunek, faktura VAT"></textarea></label>
+
+            <label>Adres dostawy
+              <textarea rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea>
+            </label>
+
+            <label>Uwagi do zamówienia
+              <textarea rows="4" placeholder="Np. termin dostawy, rozładunek, faktura VAT"></textarea>
+            </label>
+
+            <div class="calc-box">
+              <p>Szacunkowa wartość zamówienia:</p>
+              <strong id="totalPrice">1099 zł</strong>
+              <small id="calcNote">Cena orientacyjna za 1 paletę Standard.</small>
+            </div>
 
             <a class="btn btn-dark" href="mailto:kontakt@sosnowechwile.pl?subject=Szybka%20wycena%20Sosnowe%20Chwile">Wyślij zapytanie</a>
             <a class="btn btn-outline" style="color:#223117;border-color:#cfc5b2;" href="https://wa.me/48793573900" target="_blank" rel="noopener">Napisz na WhatsApp</a>
@@ -243,17 +247,64 @@
       </div>
     </div>
 
-    <a class="whatsapp-float" href="https://wa.me/48793573900" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <a class="whatsapp-float" href="https://wa.me/48793593900" target="_blank" rel="noopener" aria-label="WhatsApp">
       WhatsApp
     </a>
   </footer>
 
+  <div class="image-modal" id="imageModal">
+    <button class="modal-close" id="modalClose" aria-label="Zamknij">×</button>
+    <img id="modalImage" alt="">
+  </div>
+
   <script>
     const btn = document.getElementById('menuBtn');
     const nav = document.getElementById('navMenu');
+
     btn.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    const qty = document.getElementById('qty');
+    const product = document.getElementById('product');
+    const totalPrice = document.getElementById('totalPrice');
+    const calcNote = document.getElementById('calcNote');
+
+    function updatePrice() {
+      const unit = Number(product.value);
+      const count = Number(qty.value);
+      const total = unit * count;
+      totalPrice.textContent = total.toLocaleString('pl-PL') + ' zł';
+      calcNote.textContent = 'Szacunkowa cena dla ' + count + ' palet.';
+    }
+
+    qty.addEventListener('change', updatePrice);
+    product.addEventListener('change', updatePrice);
+    updatePrice();
+
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+
+    document.querySelectorAll('.gallery-img').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.classList.add('open');
+        modalImage.src = img.src;
+        modalImage.alt = img.alt;
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('open');
+      modalImage.src = '';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('open');
+        modalImage.src = '';
+      }
     });
   </script>
 </body>
