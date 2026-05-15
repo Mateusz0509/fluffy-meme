@@ -1,17 +1,20 @@
-const qty        = document.getElementById('qty');
-const product    = document.getElementById('product');
-const totalPrice = document.getElementById('totalPrice');       // w #wycena
-const calcNote   = document.getElementById('calcNote');         // w #wycena
+const qty             = document.getElementById('qty');
+const product         = document.getElementById('product');
 
-const depositRange  = document.getElementById('depositRange');  // w #efaktura
-const depositNow    = document.getElementById('depositNow');    // w #efaktura
-const depositStrong = document.getElementById('depositStrong'); // w #efaktura
-const sumTotal      = document.getElementById('sumTotal');      // w #efaktura
+// Wycena
+const totalPrice      = document.getElementById('totalPrice');
+const calcNote        = document.getElementById('calcNote');
 
-const pdfQty    = document.getElementById('pdfQty');            // w #efaktura
-const pdfProduct= document.getElementById('pdfProduct');        // w #efaktura
-const pdfUnit   = document.getElementById('pdfUnit');           // w #efaktura
-const pdfTotal  = document.getElementById('pdfTotal');          // w #efaktura
+// eFaktura
+const depositRange    = document.getElementById('depositRange');
+const depositNow      = document.getElementById('depositNow');
+const depositStrong   = document.getElementById('depositStrong');
+const sumTotal        = document.getElementById('sumTotal');
+
+const pdfQty          = document.getElementById('pdfQty');
+const pdfProduct      = document.getElementById('pdfProduct');
+const pdfUnit         = document.getElementById('pdfUnit');
+const pdfTotal        = document.getElementById('pdfTotal');
 
 
 function formatPLN(n) {
@@ -23,33 +26,42 @@ function formatPLNFloat(n) {
 }
 
 function updatePrice() {
-  const unit = Number(product.value);
+  console.log('updatePrice wywołany');
+
+  const unit  = Number(product.value);
   const count = Number(qty.value);
   const total = unit * count;
-  const minD = total * 0.10;
-  const maxD = total * 0.20;
-  const midD = total * 0.15;
+  const minD  = total * 0.10;
+  const maxD  = total * 0.20;
+  const midD  = total * 0.15;
 
-  // Szacunkowa wartość zamówienia (sekcja #wycena)
-  totalPrice.textContent = formatPLN(total);
-  calcNote.textContent   = 'Szacunkowa cena dla ' + count + ' palet.';
+  // Szacunkowa wartość zamówienia (#wycena)
+  if (totalPrice)      totalPrice.textContent = formatPLN(total);
+  if (calcNote)        calcNote.textContent   = 'Szacunkowa cena dla ' + count + ' palet.';
 
-  // Wartość i zaliczka (sekcja #efaktura)
-  sumTotal.textContent     = formatPLN(total);
-  depositRange.textContent = formatPLNFloat(minD) + ' – ' + formatPLNFloat(maxD);
-  depositNow.textContent   = formatPLNFloat(midD);
-  depositStrong.textContent = formatPLNFloat(midD);
+  // Wartość i zaliczka (#efaktura)
+  if (sumTotal)      sumTotal.textContent     = formatPLN(total);
+  if (depositRange)  depositRange.textContent = formatPLNFloat(minD) + ' – ' + formatPLNFloat(maxD);
+  if (depositNow)    depositNow.textContent   = formatPLNFloat(midD);
+  if (depositStrong) depositStrong.textContent = formatPLNFloat(midD);
 
-  pdfQty.textContent    = count + ' palet';
-  pdfProduct.textContent = product.options[product.selectedIndex].text;
-  pdfUnit.textContent   = formatPLN(unit);
-  pdfTotal.textContent  = formatPLN(total);
+  // Tabela w eFakturze
+  if (pdfQty)      pdfQty.textContent        = count + ' palet';
+  if (pdfProduct)  pdfProduct.textContent    = product.options[product.selectedIndex].text;
+  if (pdfUnit)     pdfUnit.textContent       = formatPLN(unit);
+  if (pdfTotal)    pdfTotal.textContent      = formatPLN(total);
 
-  // synchronizacja numeru faktury (jeśli chcesz)
-  document.getElementById('pdInvNo').textContent = document.getElementById('invNo').textContent;
+  // numer faktury
+  const invNo = document.getElementById('invNo');
+  const pdInvNo = document.getElementById('pdInvNo');
+  if (invNo && pdInvNo) {
+    pdInvNo.textContent = invNo.textContent;
+  }
 }
 
-// Nasłuchiwanie na zmiany w formularzu #wycena
-qty.addEventListener('change', updatePrice);
-product.addEventListener('change', updatePrice);
-updatePrice();  // pierwsze wywołanie
+// Listener tylko jeśli elementy istnieją
+if (qty && product) {
+  qty.addEventListener('change', updatePrice);
+  product.addEventListener('change', updatePrice);
+  updatePrice();
+}
