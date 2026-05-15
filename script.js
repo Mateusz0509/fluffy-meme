@@ -102,3 +102,61 @@ function updatePrice() {
 qty.addEventListener('change', updatePrice);
 product.addEventListener('change', updatePrice);
 updatePrice(); // pierwsze wywołanie
+document.getElementById('generatePdf').addEventListener('click', async () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+
+  const name     = document.getElementById('clientName').value || '—';
+  const nip      = document.getElementById('clientNip').value || '—';
+  const email    = document.getElementById('clientEmail').value || '—';
+  const phone    = document.getElementById('clientPhone').value || '—';
+  const address  = document.getElementById('clientAddress').value || '—';
+  const notes    = document.getElementById('clientNotes').value || '—';
+  const count    = Number(qty.value);
+  const unit     = Number(product.value);
+  const total    = unit * count;
+  const deposit  = total * 0.15;
+  const invNo    = document.getElementById('invNo').textContent;
+
+  // Nagłówek
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Sosnowe Chwile – eFaktura zaliczkowa', 14, 16);
+
+  // Nabywca
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.text('Nabywca:', 14, 26);
+  doc.text(name, 14, 32);
+  doc.text('NIP: ' + nip, 14, 38);
+  doc.text('Email: ' + email, 14, 44);
+  doc.text('Telefon: ' + phone, 14, 50);
+
+  // Adres dostawy
+  const addrLines = doc.splitTextToSize('Adres dostawy: ' + address, 180);
+  doc.text(addrLines, 14, 58);
+
+  // Uwagi do zamówienia
+  const notesLines = doc.splitTextToSize('Uwagi: ' + notes, 180);
+  const nextY = 58 + (addrLines.length * 6) + 8;
+  doc.text(notesLines, 14, nextY);
+
+  // Pozycja zamówienia
+  const posY = nextY + (notesLines.length * 6) + 12;
+  doc.text('Produkt: ' + product.options[product.selectedIndex].text, 14, posY);
+  doc.text('Ilość: ' + qty.value + ' palet', 14, posY + 6);
+  doc.text('Wartość zamówienia brutto: ' + total.toLocaleString('pl-PL') + ' zł', 14, posY + 12);
+  doc.text('Zaliczka 15%: ' + formatPLNFloat(deposit), 14, posY + 18);
+
+  // Dane do przelewu
+  const bankY = posY + 18 + 12;
+  doc.setFont('helvetica', 'bold');
+  doc.text('Dane do przelewu zaliczki', 14, bankY);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Odbiorca: Sosnowe Chwile Sp. z o.o.', 14, bankY + 6);
+  doc.text('Nr konta: 39 1160 2202 0000 0007 1309 0461', 14, bankY + 12);
+  doc.text('Tytuł: Zaliczka za pellet / nr faktury ' + invNo, 14, bankY + 18);
+
+  doc.save('efaktura-zaliczkowa-sosnowe-chwile.pdf');
+});
+</script>
