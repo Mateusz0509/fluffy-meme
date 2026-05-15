@@ -121,10 +121,10 @@
           </div>
           <div class="invoice-summary">
             <div><p><strong>Wartość zamówienia:</strong> <span id="sumTotal">1 099 zł</span></p><p><strong>Zaliczka 10–20%:</strong> <span id="depositRange">109,90 zł – 219,80 zł</span></p><p><strong>Do zapłaty teraz:</strong> <span id="depositNow">164,85 zł</span></p></div>
-            <div class="invoice-total"><span>Zaliczka</span><strong id="depositStrong">164,85 zł</strong></div>
+            <div class="invoice-total"><span>Zaliczka</span><strong id="depositStrong">164,85 zl</strong></div>
           </div>
           <div class="invoice-note"><p>Zaliczka wynosi 10–20% wartości zamówienia i jest ustalana indywidualnie.</p></div>
-          <div class="invoice-bank"><h4>Dane do przelewu</h4><p><strong>Odbiorca:</strong> Sosnowe Chwile Sp. z o.o.</p><p><strong>Nr konta:</strong> 39 1160 2202 0000 0007 1309 0461</p><p><strong>Tytuł:</strong> Zaliczka za pellet / EVP533755355</p></div>
+          <div class="invoice-bank"><h4>Dane do przelewu</h4><p><strong>Odbiorca:</strong> Sosnowe Chwile Sp. z o.o.</p><p><strong>Nr konta:</strong> 39 1160 2202 0000 0007 1309 0461</p><p><strong>Tytuł:</strong> Zaliczka za pellet / nr zamowienia</p></div>
           <div class="hero-actions" style="margin-top:16px;">
             <button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button>
           </div>
@@ -197,7 +197,7 @@
       doc.text('Zaliczka 15%: ' + formatPLN(deposit), 14, 102);
       doc.text('Odbiorca: Sosnowe Chwile Sp. z o.o.', 14, 118);
       doc.text('Nr konta: 39 1160 2202 0000 0007 1309 0461', 14, 124);
-      doc.text('Tytuł: Zaliczka za pellet / nr zamówienia', 14, 130);
+      doc.text('Tytuł: Zaliczka za pellet / EVP533755355', 14, 130);
       doc.save('efaktura-zaliczkowa-sosnowe-chwile.pdf');
     });
   </script>
