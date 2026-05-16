@@ -780,3 +780,85 @@ textarea:focus {
     padding: 32px;
   }
 }
+/* --- MENU: desktop widoczne, mobile hamburger --- */
+.nav {
+  display: none;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav a {
+  padding: 8px 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.nav a:hover {
+  color: #324b25;
+  border-bottom-color: #324b25;
+}
+
+.menu-btn {
+  width: 44px;
+  height: 40px;
+  border: 1px solid #d7ceb9;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  height: 2px;
+  background: #24361d;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.menu-btn:hover span {
+  background: #324b25;
+}
+
+/* stan otwarcia menu na mobilkach */
+.nav.open {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 74px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e3dbc9;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+  z-index: 50;
+}
+
+/* desktop: menu zawsze widoczne, hamburger znika */
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+    position: static;
+    box-shadow: none;
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
+
+  .nav.open {
+    position: static;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+}
