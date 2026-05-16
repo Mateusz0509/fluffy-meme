@@ -357,97 +357,131 @@
     console.log('Nie znaleziono #qty lub #product');
   }
 
-  // Generowanie PDF eFaktury
-  document.getElementById('generatePdf').addEventListener('click', async () => {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  // Generowanie PDF eFaktury — profesjonalna wersja z logo
+document.getElementById('generatePdf').addEventListener('click', async () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
 
-    const name     = document.getElementById('clientName').value || '—';
-    const nip      = document.getElementById('clientNip').value || '—';
-    const email    = document.getElementById('clientEmail').value || '—';
-    const phone    = document.getElementById('clientPhone').value || '—';
-    const address  = document.getElementById('clientAddress').value || '—';
-    const notes    = document.getElementById('clientNotes').value || '—';
-    const count    = Number(qty.value) || 1;
-    const unit     = Number(product.value) || 1099;
-    const total    = unit * count;
-    const deposit  = total * 0.15;
-    const invNo    = document.getElementById('invNo').textContent;
-    const invDate  = document.getElementById('invDate').textContent;
+  // Pobieranie danych z formularza
+  const name    = document.getElementById('clientName').value || '—';
+  const nip     = document.getElementById('clientNip').value || '—';
+  const email   = document.getElementById('clientEmail').value || '—';
+  const phone   = document.getElementById('clientPhone').value || '—';
+  const address = document.getElementById('clientAddress').value || '—';
+  const count   = Number(qty.value) || 1;
+  const unit    = Number(product.value) || 1099;
+  const total   = unit * count;
+  const deposit = total * 0.15;
+  const invNo   = document.getElementById('invNo').textContent;
+  const invDate = document.getElementById('invDate').textContent;
+  const productName = product.options[product.selectedIndex]?.text || 'Standard';
 
-    // Nagłówek
+  // Funkcje formatowania
+  function formatPLN(n) {
+    return n.toLocaleString('pl-PL') + ' zł';
+  }
+  function formatPLNFloat(n) {
+    return n.toFixed(2).replace('.', ',') + ' zł';
+  }
+
+  // === LOGO ===
+  try {
+    const logoImg = new Image();
+    logoImg.src = 'logo.jpg';
+    await new Promise((resolve, reject) => {
+      logoImg.onload = resolve;
+      logoImg.onerror = reject;
+    });
+    doc.addImage(logoImg, 'JPEG', 14, 12, 30, 15); // x, y, w, h
+  } catch (e) {
+    console.warn('Nie udało się załadować logo:', e);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(14);
     doc.text('SOSNOWE CHWILE', 14, 16);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-    doc.text('Pellet drzewny • Dostawa na terenie Polski', 14, 21);
+  }
 
-    // Numer faktury i data
-    doc.setFontSize(11);
-    doc.text('eFaktura zaliczkowa', 14, 29);
-    doc.text('Nr: ' + invNo, 14, 34);
-    doc.text('Data: ' + invDate, 14, 39);
+  // Nagłówek firmy
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(14);
+  doc.text('SOSNOWE CHWILE', 50, 16);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.text('Pellet drzewny • Dostawa na terenie Polski', 50, 21);
 
-    // Kreska separatora
-    doc.setLineWidth(0.5);
-    doc.line(14, 44, 196, 44);
+  // Typ dokumentu i numer
+  doc.setFontSize(11);
+  doc.text('eFaktura zaliczkowa', 14, 29);
+  doc.text('Nr: ' + invNo, 14, 34);
+  doc.text('Data: ' + invDate, 14, 39);
 
-    // Sprzedawca
-    const sellerY = 50;
-    doc.setFont('helvetica', 'bold');
-    doc.text('Sprzedawca:', 14, sellerY);
-    doc.setFont('helvetica', 'normal');
-    doc.text('Nordiva trade Sp. z o.o.', 14, sellerY + 5);
-    doc.text('ul. Rynek 17/2, 82-400 Gdańsk', 14, sellerY + 10);
-    doc.text('NIP: 592-230-81-05', 14, sellerY + 15);
+  // Separator
+  doc.setLineWidth(0.5);
+  doc.line(14, 44, 196, 44);
 
-    // Nabywca
-    const buyerY = 70;
-    doc.setFont('helvetica', 'bold');
-    doc.text('Nabywca:', 14, buyerY);
-    doc.setFont('helvetica', 'normal');
-    doc.text(name, 14, buyerY + 5);
-    doc.text('NIP: ' + nip, 14, buyerY + 10);
-    doc.text('Adres dostawy:', 14, buyerY + 15);
+  // Sprzedawca
+  const sellerY = 50;
+  doc.setFont('helvetica', 'bold');
+  doc.text('Sprzedawca:', 14, sellerY);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Nordiva trade Sp. z o.o.', 14, sellerY + 5);
+  doc.text('ul. Rynek 17/2, 82-400 Gdańsk', 14, sellerY + 10);
+  doc.text('NIP: 592-230-81-05', 14, sellerY + 15);
 
-    const addrLines = doc.splitTextToSize(address, 170);
-    doc.text(addrLines, 14, buyerY + 20);
+  // Nabywca
+  const buyerY = 70;
+  doc.setFont('helvetica', 'bold');
+  doc.text('Nabywca:', 14, buyerY);
+  doc.setFont('helvetica', 'normal');
+  doc.text(name, 14, buyerY + 5);
+  doc.text('NIP: ' + nip, 14, buyerY + 10);
+  doc.text('Email: ' + email, 14, buyerY + 15);
+  doc.text('Telefon: ' + phone, 14, buyerY + 20);
+  doc.text('Adres dostawy:', 14, buyerY + 25);
 
-    const nextY = buyerY + 20 + (addrLines.length * 6) + 4;
+  const addrLines = doc.splitTextToSize(address, 170);
+  doc.text(addrLines, 14, buyerY + 30);
 
-    // Pozycja zamówienia
-    const itemY = nextY;
-    doc.setFont('helvetica', 'bold');
-    doc.text('Pozycja zamówienia', 14, itemY);
+  const nextY = buyerY + 30 + (addrLines.length * 6) + 4;
 
-    const itemTextY = itemY + 7;
-    doc.setFont('helvetica', 'normal');
-    doc.text('Produkt: ' + product.options[product.selectedIndex]?.text || '—', 14, itemTextY);
-    doc.text('Ilość: ' + qty.value + ' palet', 14, itemTextY + 6);
-    doc.text('Wartość zamówienia brutto: ' + formatPLN(total), 14, itemTextY + 12);
-    doc.text('Zaliczka 15%: ' + formatPLNFloat(deposit), 14, itemTextY + 18);
+  // Pozycja zamówienia
+  const itemY = nextY;
+  doc.setFont('helvetica', 'bold');
+  doc.text('Pozycja zamówienia', 14, itemY);
 
-    // Kreska i podsumowanie zaliczki
-    const sumLineY = itemTextY + 22;
-    doc.setLineWidth(0.3);
-    doc.line(14, sumLineY, 196, sumLineY);
+  const itemTextY = itemY + 7;
+  doc.setFont('helvetica', 'normal');
+  doc.text('Produkt: ' + productName, 14, itemTextY);
+  doc.text('Ilość: ' + count + ' palet', 14, itemTextY + 6);
+  doc.text('Cena jednostkowa: ' + formatPLN(unit), 14, itemTextY + 12);
+  doc.text('Wartość zamówienia brutto: ' + formatPLN(total), 14, itemTextY + 18);
+  doc.text('Zaliczka 15%: ' + formatPLNFloat(deposit), 14, itemTextY + 24);
 
-    const sumY = sumLineY + 6;
-    doc.setFont('helvetica', 'bold');
-    doc.text('Podsumowanie zaliczki', 14, sumY);
-    doc.setFont('helvetica', 'normal');
-    doc.text('Kwota do zapłaty teraz: ' + formatPLNFloat(deposit), 14, sumY + 6);
+  // Separator
+  const sumLineY = itemTextY + 28;
+  doc.setLineWidth(0.3);
+  doc.line(14, sumLineY, 196, sumLineY);
 
-    // Dane do przelewu zaliczki
-    const bankY = sumY + 14;
-    doc.setFont('helvetica', 'bold');
-    doc.text('Dane do przelewu zaliczki', 14, bankY);
-    doc.setFont('helvetica', 'normal');
-    doc.text('Odbiorca: Sosnowe Chwile Sp. z o.o.', 14, bankY + 6);
-    doc.text('Nr konta: 39 1160 2202 0000 0007 1309 0461', 14, bankY + 12);
-    doc.text('Tytuł przelewu: Zaliczka za pellet / nr faktury ' + invNo, 14, bankY + 18);
+  // Podsumowanie
+  const sumY = sumLineY + 6;
+  doc.setFont('helvetica', 'bold');
+  doc.text('Podsumowanie zaliczki', 14, sumY);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Kwota do zapłaty teraz: ' + formatPLNFloat(deposit), 14, sumY + 6);
 
-    doc.save('efaktura-zaliczkowa-sosnowe-chwile.pdf');
-  });
-</script>
+  // Dane do przelewu
+  const bankY = sumY + 14;
+  doc.setFont('helvetica', 'bold');
+  doc.text('Dane do przelewu zaliczki', 14, bankY);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Odbiorca: Sosnowe Chwile Sp. z o.o.', 14, bankY + 6);
+  doc.text('Nr konta: 39 1160 2202 0000 0007 1309 0461', 14, bankY + 12);
+  doc.text('Tytuł przelewu: Zaliczka za pellet / ' + invNo, 14, bankY + 18);
+
+  // Uwaga
+  const noteY = bankY + 24;
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'italic');
+  doc.text('Zaliczka wynosi 10–20% wartości zamówienia i jest ustalana indywidualnie.', 14, noteY);
+
+  doc.save('efaktura-zaliczkowa-sosnowe-chwile.pdf');
+});
