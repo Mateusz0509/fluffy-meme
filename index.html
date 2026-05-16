@@ -74,18 +74,6 @@
       </div>
     </section>
 
-    <section class="section" id="galeria">
-      <div class="container">
-        <div class="section-head">
-          <h2>Galeria</h2>
-          <p>Jedno zdjęcie produktu.</p>
-        </div>
-        <div class="gallery-single">
-          <img class="gallery-img" src="image-1.png" alt="Galeria 1">
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="wycena">
       <div class="container">
         <div class="section-head">
@@ -106,6 +94,22 @@
       </div>
     </section>
 
+    
+    <section class="section" id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <h2>Galeria premium</h2>
+          <p>Kliknij zdjęcie, aby je powiększyć.</p>
+        </div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="image-1.png" alt="Galeria 1">
+          <img class="gallery-img" src="image-2.png" alt="Galeria 2">
+          <img class="gallery-img" src="image.png" alt="Galeria 3">
+          <img class="gallery-img" src="image-3.png" alt="Galeria 4">
+        </div>
+      </div>
+    </section>
+
     <section class="section invoice-section" id="efaktura">
       <div class="container">
         <div class="section-head"><h2>eFaktura zaliczkowa</h2><p>Klient wypełnia formularz i pobiera PDF.</p></div>
@@ -118,6 +122,7 @@
           <div class="invoice-details"><h4>Pozycja zamówienia</h4><div class="invoice-table"><div class="row head"><span>Lp.</span><span>Nazwa produktu</span><span>Ilość</span><span>Cena brutto</span><span>Wartość brutto</span></div><div class="row"><span>1</span><span id="pdfProduct">Standard</span><span id="pdfQty">1 paleta</span><span id="pdfUnit">1 099 zł</span><span id="pdfTotal">1 099 zł</span></div></div></div>
           <div class="invoice-summary"><div class="invoice-summary-left"><p><strong>Wartość zamówienia brutto:</strong> <span id="sumTotal">1 099 zł</span></p><p><strong>Podatek VAT:</strong> <span>0%</span></p><p><strong>Wartość brutto:</strong> <span id="sumTotalBrutto">1 099 zł</span></p></div></div>
           <div class="invoice-note"><p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p></div>
+
           <div class="hero-actions" style="margin-top:16px;"><button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button></div>
         </div>
       </div>

@@ -80,3 +80,6 @@
 .invoice-logo{background:transparent!important}
 .invoice-logo-compact .invoice-logo{width:78px;height:78px}
 @media (max-width:767px){.invoice-logo-compact .invoice-logo{width:66px;height:66px}}
+
+.brand-gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.brand-gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:16px;border:1px solid #e7dfcf;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+@media (max-width:767px){.brand-gallery{gap:8px;margin-top:12px}.brand-gallery img{border-radius:14px}}
