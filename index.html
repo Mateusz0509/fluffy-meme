@@ -50,7 +50,7 @@
           <p>Wybierz liczbę palet, zobacz cenę i przejdź prosto do eFaktury.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#oferta">Zobacz ofertę</a>
-            <a class="btn btn-outline" href="#efaktura">Przejdź do eFaktury</a>
+            <a class="btn btn-outline" href="#wycena">Przejdź do wyceny</a>
           </div>
         </div>
         <div class="hero-image">
@@ -66,35 +66,211 @@
           <p>Przejrzyste warianty pelletu.</p>
         </div>
         <div class="cards">
-          <article class="product"><img src="standard.png" alt="Pellet Standard"><div class="product-body"><h3>Standard</h3><p class="price">od 1099 zł / paleta</p><p class="desc">Solidna opcja do codziennego ogrzewania.</p></div></article>
-          <article class="product"><img src="economy.png" alt="Pellet Economy"><div class="product-body"><h3>Economy</h3><p class="price">od 999 zł / paleta</p><p class="desc">Najbardziej budżetowa propozycja.</p></div></article>
-          <article class="product"><img src="premiumplus.png" alt="Pellet Premium Plus"><div class="product-body"><h3>Premium Plus</h3><p class="price">od 1249 zł / paleta</p><p class="desc">Wyższa klasa produktu.</p></div></article>
-          <article class="product"><img src="premiuma1.png" alt="Pellet Premium A1"><div class="product-body"><h3>Premium A1</h3><p class="price">od 1299 zł / paleta</p><p class="desc">Wariant dla wymagających klientów.</p></div></article>
+          <article class="product">
+            <img src="standard.png" alt="Pellet Standard">
+            <div class="product-body">
+              <h3>Standard</h3>
+              <p class="price">od 1099 zł / paleta</p>
+              <p class="desc">Solidna opcja do codziennego ogrzewania.</p>
+            </div>
+          </article>
+          <article class="product">
+            <img src="economy.png" alt="Pellet Economy">
+            <div class="product-body">
+              <h3>Economy</h3>
+              <p class="price">od 999 zł / paleta</p>
+              <p class="desc">Najbardziej budżetowa propozycja.</p>
+            </div>
+          </article>
+          <article class="product">
+            <img src="premiumplus.png" alt="Pellet Premium Plus">
+            <div class="product-body">
+              <h3>Premium Plus</h3>
+              <p class="price">od 1249 zł / paleta</p>
+              <p class="desc">Wyższa klasa produktu.</p>
+            </div>
+          </article>
+          <article class="product">
+            <img src="premiuma1.png" alt="Pellet Premium A1">
+            <div class="product-body">
+              <h3>Premium A1</h3>
+              <p class="price">od 1299 zł / paleta</p>
+              <p class="desc">Wariant dla wymagających klientów.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- NOWA STRUKTURA FORMULARZA -->
     <section class="section" id="wycena">
       <div class="container">
         <div class="section-head">
           <h2>Jak zamówić</h2>
-          <p>Krótki formularz przed eFakturą.</p>
+          <p>Wypełnij krótki formularz, oblicz cenę i przejdź do eFaktury.</p>
         </div>
+
         <div class="quote-grid">
-          <form class="quote-form" id="quoteForm">
-            <div class="form-row"><label>Imię i nazwisko / firma<input type="text" id="clientName" placeholder="Np. Jan Kowalski / Firma XYZ"></label><label>NIP do faktury<input type="text" id="clientNip" placeholder="Np. 1234567890"></label></div>
-            <div class="form-row"><label>Email<input type="email" id="clientEmail" placeholder="Np. kontakt@firma.pl"></label><label>Telefon<input type="tel" id="clientPhone" placeholder="Np. +48 123 456 789"></label></div>
-            <div class="form-row"><label>Ilość palet<select id="qty"><option value="1">1 paleta</option><option value="2">2 palety</option><option value="3">3 palety</option><option value="5">4-5 palet</option><option value="10">6+ palet</option></select></label><label>Rodzaj produktu<select id="product"><option value="1099">Standard</option><option value="999">Economy</option><option value="1249">Premium Plus</option><option value="1299">Premium A1</option></select></label></div>
-            <label>Adres dostawy<textarea id="clientAddress" rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea></label>
-            <label>Uwagi do zamówienia<textarea id="clientNotes" rows="4" placeholder="Np. termin dostawy, rozładunek"></textarea></label>
-            <div class="calc-box"><p>Szacunkowa wartość zamówienia:</p><strong id="totalPrice">1099 zł</strong><small id="calcNote">Cena orientacyjna za 1 paletę Standard.</small></div>
-            <a class="btn btn-dark" href="#efaktura">Przejdź do eFaktury</a>
+          <div class="form-alert form-alert--error" aria-live="polite" hidden>
+            Sprawdź zaznaczone pola – popraw błędy, abyśmy mogli przygotować eFakturę.
+          </div>
+
+          <form id="order-form" class="quote-form" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Imię i nazwisko / firma</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="np. Jan Kowalski lub Firma ABC Sp. z o.o."
+                  required
+                />
+                <small class="field-error" data-error-for="name" hidden>
+                  To pole jest wymagane – podaj imię i nazwisko lub nazwę firmy.
+                </small>
+              </div>
+
+              <div class="form-field">
+                <label for="nip">NIP do faktury</label>
+                <input
+                  type="text"
+                  id="nip"
+                  name="nip"
+                  placeholder="np. 123-456-78-90"
+                  inputmode="numeric"
+                />
+                <small class="field-hint">
+                  Podaj NIP, jeśli chcesz otrzymać fakturę na firmę.
+                </small>
+                <small class="field-error" data-error-for="nip" hidden>
+                  Sprawdź, czy NIP ma prawidłowy format (10 cyfr).
+                </small>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="np. jan.kowalski@example.com"
+                  required
+                />
+                <small class="field-error" data-error-for="email" hidden>
+                  Podaj poprawny adres email – wyślemy na niego eFakturę.
+                </small>
+              </div>
+
+              <div class="form-field">
+                <label for="phone">Telefon</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="np. 600 000 000"
+                  required
+                />
+                <small class="field-error" data-error-for="phone" hidden>
+                  Podaj numer telefonu – potrzebny do ustalenia dostawy.
+                </small>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="quantity">Ilość palet</label>
+                <select id="quantity" name="quantity" required>
+                  <option value="" selected disabled>Wybierz ilość</option>
+                  <option value="1">1 paleta</option>
+                  <option value="2">2 palety</option>
+                  <option value="3">3 palety</option>
+                  <option value="4-5">4–5 palet</option>
+                  <option value="6+">6+ palet</option>
+                </select>
+                <small class="field-error" data-error-for="quantity" hidden>
+                  Wybierz ilość palet, aby obliczyć szacunkową wartość zamówienia.
+                </small>
+                <small class="field-hint">
+                  Przy większej liczbie palet przygotujemy indywidualną wycenę dostawy.
+                </small>
+              </div>
+
+              <div class="form-field">
+                <label for="product-select">Rodzaj produktu</label>
+                <select id="product-select" name="product" required>
+                  <option value="" selected disabled>Wybierz rodzaj pelletu</option>
+                  <option value="standard">Standard – solidna opcja do codziennego ogrzewania</option>
+                  <option value="economy">Economy – najbardziej budżetowa propozycja</option>
+                  <option value="premium-plus">Premium Plus – wyższa klasa produktu</option>
+                  <option value="premium-a1">Premium A1 – wariant dla wymagających klientów</option>
+                </select>
+                <small class="field-error" data-error-for="product" hidden>
+                  Wybierz rodzaj pelletu, który chcesz zamówić.
+                </small>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="address">Adres dostawy</label>
+              <textarea
+                id="address"
+                name="address"
+                rows="3"
+                placeholder="Ulica, nr domu/mieszkania, kod pocztowy, miejscowość"
+                required
+              ></textarea>
+              <small class="field-error" data-error-for="address" hidden>
+                Podaj pełny adres dostawy, abyśmy mogli wycenić transport.
+              </small>
+            </div>
+
+            <div class="form-field">
+              <label for="notes">Uwagi do zamówienia <span class="optional">(opcjonalne)</span></label>
+              <textarea
+                id="notes"
+                name="notes"
+                rows="3"
+                placeholder="Np. preferowane godziny dostawy, dostęp do posesji, inne informacje"
+              ></textarea>
+            </div>
+
+            <div class="form-field form-field--checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  id="terms"
+                  name="terms"
+                  required
+                />
+                Zapoznałem się z regulaminem i polityką prywatności oraz akceptuję ich treść.
+              </label>
+              <small class="field-error" data-error-for="terms" hidden>
+                Aby kontynuować, zaznacz zgodę na regulamin i politykę prywatności.
+              </small>
+            </div>
+
+            <div class="calc-box order-summary">
+              <p>Szacunkowa wartość zamówienia:</p>
+              <strong id="totalPrice">—</strong>
+              <small id="calcNote">
+                Podana kwota to szacunkowa cena brutto za wybrany pellet i liczbę palet.
+                Ostateczną wartość potwierdzimy na eFakturze.
+              </small>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-dark">
+                Oblicz cenę i przejdź do eFaktury
+              </button>
+            </div>
           </form>
         </div>
       </div>
     </section>
 
-    
     <section class="section" id="galeria">
       <div class="container">
         <div class="section-head">
@@ -112,18 +288,81 @@
 
     <section class="section invoice-section" id="efaktura">
       <div class="container">
-        <div class="section-head"><h2>eFaktura zaliczkowa</h2><p>Klient wypełnia formularz i pobiera PDF.</p></div>
+        <div class="section-head">
+          <h2>eFaktura zaliczkowa</h2>
+          <p>Klient wypełnia formularz i pobiera PDF.</p>
+        </div>
+
         <div class="invoice-card invoice-modern">
           <header class="invoice-header">
-            <div class="invoice-logo-box invoice-logo-compact"><img src="logo-premium.svg" alt="Logo Sosnowe Chwile" class="invoice-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="invoice-brand-text"><div class="logo-fallback" style="display:none">SOSNOWE CHWILE</div><h3>Sosnowe Chwile</h3><p>Pellet drzewny • Dostawa na terenie Polski</p></div></div>
-            <div class="invoice-meta"><p><strong>Dokument:</strong> eFaktura zaliczkowa</p><p><strong>Nr:</strong> <span id="invNo">FSZ/2026/05/001</span></p><p><strong>Data:</strong> <span id="invDate">15.05.2026</span></p></div>
+            <div class="invoice-logo-box invoice-logo-compact">
+              <img src="logo-premium.svg" alt="Logo Sosnowe Chwile" class="invoice-logo"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+              <div class="invoice-brand-text">
+                <div class="logo-fallback" style="display:none">SOSNOWE CHWILE</div>
+                <h3>Sosnowe Chwile</h3>
+                <p>Pellet drzewny • Dostawa na terenie Polski</p>
+              </div>
+            </div>
+            <div class="invoice-meta">
+              <p><strong>Dokument:</strong> eFaktura zaliczkowa</p>
+              <p><strong>Nr:</strong> <span id="invNo">FSZ/2026/05/001</span></p>
+              <p><strong>Data:</strong> <span id="invDate">15.05.2026</span></p>
+            </div>
           </header>
-          <div class="invoice-parties"><div class="invoice-box"><h4>Sprzedawca</h4><p><strong>Nordiva trade Sp. z o.o.</strong></p><p>ul. Rynek 17/2, 82-400 Gdańsk</p><p>NIP: 592-230-81-05</p></div><div class="invoice-box"><h4>Nabywca</h4><p id="pdfClientName">—</p><p id="pdfClientAddress">—</p><p id="pdfClientNip">—</p></div></div>
-          <div class="invoice-details"><h4>Pozycja zamówienia</h4><div class="invoice-table"><div class="row head"><span>Lp.</span><span>Nazwa produktu</span><span>Ilość</span><span>Cena brutto</span><span>Wartość brutto</span></div><div class="row"><span>1</span><span id="pdfProduct">Standard</span><span id="pdfQty">1 paleta</span><span id="pdfUnit">1 099 zł</span><span id="pdfTotal">1 099 zł</span></div></div></div>
-          <div class="invoice-summary"><div class="invoice-summary-left"><p><strong>Wartość zamówienia brutto:</strong> <span id="sumTotal">1 099 zł</span></p><p><strong>Podatek VAT:</strong> <span>0%</span></p><p><strong>Wartość brutto:</strong> <span id="sumTotalBrutto">1 099 zł</span></p></div></div>
-          <div class="invoice-note"><p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p></div>
 
-          <div class="hero-actions" style="margin-top:16px;"><button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button></div>
+          <div class="invoice-parties">
+            <div class="invoice-box">
+              <h4>Sprzedawca</h4>
+              <p><strong>Nordiva trade Sp. z o.o.</strong></p>
+              <p>ul. Rynek 17/2, 82-400 Gdańsk</p>
+              <p>NIP: 592-230-81-05</p>
+            </div>
+            <div class="invoice-box">
+              <h4>Nabywca</h4>
+              <p id="pdfClientName">—</p>
+              <p id="pdfClientAddress">—</p>
+              <p id="pdfClientNip">NIP: —</p>
+            </div>
+          </div>
+
+          <div class="invoice-details">
+            <h4>Pozycja zamówienia</h4>
+            <div class="invoice-table">
+              <div class="row head">
+                <span>Lp.</span>
+                <span>Nazwa produktu</span>
+                <span>Ilość</span>
+                <span>Cena brutto</span>
+                <span>Wartość brutto</span>
+              </div>
+              <div class="row">
+                <span>1</span>
+                <span id="pdfProduct">Standard</span>
+                <span id="pdfQty">1 paleta</span>
+                <span id="pdfUnit">1 099 zł</span>
+                <span id="pdfTotal">1 099 zł</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="invoice-summary">
+            <div class="invoice-summary-left">
+              <p><strong>Wartość zamówienia brutto:</strong> <span id="sumTotal">1 099 zł</span></p>
+              <p><strong>Podatek VAT:</strong> <span>0%</span></p>
+              <p><strong>Wartość brutto:</strong> <span id="sumTotalBrutto">1 099 zł</span></p>
+            </div>
+          </div>
+
+          <div class="invoice-note">
+            <p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p>
+          </div>
+
+          <div class="hero-actions" style="margin-top:16px;">
+            <button class="btn btn-primary" id="generatePdf" type="button">
+              Generuj PDF
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -134,7 +373,19 @@
     <img id="modalImage" alt="Powiększone zdjęcie">
   </div>
 
-  <footer class="footer" id="kontakt"><div class="container footer-grid"><div><h2>Sosnowe Chwile</h2><p>Nowa marka pelletu z prostą ofertą i uczciwą ceną.</p></div><div><p><strong>Telefon:</strong> +48 793 573 900</p><p><strong>Email:</strong> kontakt@sosnowechwile.pl</p></div></div></footer>
+  <footer class="footer" id="kontakt">
+    <div class="container footer-grid">
+      <div>
+        <h2>Sosnowe Chwile</h2>
+        <p>Nowa marka pelletu z prostą ofertą i uczciwą ceną.</p>
+      </div>
+      <div>
+        <p><strong>Telefon:</strong> +48 793 573 900</p>
+        <p><strong>Email:</strong> kontakt@sosnowechwile.pl</p>
+      </div>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
