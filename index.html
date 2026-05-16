@@ -2,15 +2,39 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sosnowe Chwile</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="Pellet drzewny Sosnowe Chwile — 4 warianty od 999 zł/paleta. Szybka wycena, eFaktura zaliczkowa PDF, dostawa na terenie całej Polski." />
+  <meta name="keywords" content="pellet, pellet drzewny, pellet A1, ogrzewanie pellet, sosnowe chwile, Nordiva trade" />
+  <meta name="author" content="Nordiva trade Sp. z o.o." />
+  //sosnowechwile.pl/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sosnowechwile.pl/" />
+  <meta property="og:title" content="Sosnowe Chwile — Pellet drzewny" />
+  <meta property="og:description" content="Pellet drzewny do ogrzewania domowego. 4 warianty, szybka wycena, eFaktura zaliczkowa. Dostawa na terenie Polski." />
+  <meta property="og:image" content="https://sosnowechwile.pl/og-image.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://sosnowechwile.pl/" />
+  <meta property="twitter:title" content="Sosnowe Chwile — Pellet drzewny" />
+  <meta property="twitter:description" content="Pellet drzewny do ogrzewania domowego. 4 warianty, szybka wycena, eFaktura zaliczkowa." />
+  <meta property="twitter:image" content="https://sosnowechwile.pl/og-image.png" />
+
+  <title>Sosnowe Chwile — Pellet drzewny, szybka wycena, eFaktura online</title>
+
+  /svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231a3c2a'/><path d='M32 8 L48 32 L40 32 L48 56 L16 56 L24 32 L16 32 Z' fill='%23e8dcc8'/></svg>" />
+  " />
+  " />
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
 </head>
 <body>
+
+  <!-- TOP BANNER — always visible prices -->
   <section class="top-banner">
     <div class="container banner-inner">
-      <img class="banner-image" src="baner.png" alt="Baner Sosnowe Chwile">
+      <img class="banner-image" src="baner.png" alt="Baner Sosnowe Chwile" loading="eager" />
       <div class="banner-frame">
         <div class="banner-prices">
           <div><strong>Standard</strong><span>1099 zł / paleta</span></div>
@@ -18,296 +42,465 @@
           <div><strong>Premium Plus</strong><span>1249 zł / paleta</span></div>
           <div><strong>Premium A1</strong><span>1299 zł / paleta</span></div>
         </div>
-        <div class="banner-cta">Szybka wycena • Dostawa na terenie Polski</div>
+        <div class="banner-cta">
+          <span class="banner-cta-pill">Szybka wycena</span>
+          <span class="banner-cta-sep"></span>
+          <span class="banner-cta-pill">Dostawa na terenie Polski</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <header class="header">
+  <!-- STICKY HEADER -->
+  <header class="header" id="siteHeader">
     <div class="container nav-wrap">
-      <a class="brand" href="#home">
+      <a class="brand" href="#home" aria-label="Sosnowe Chwile — Strona główna">
         <span class="brand-text">Sosnowe Chwile</span>
+  <!-- STICKY HEADER -->
+  <header class="header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Sosnowe Chwile — Strona główna">
+        <span class="brand-text">Sosnowe Chwile</span>
+        <span class="brand-tagline" aria-hidden="true">Pellet drzewny</span>
       </a>
       <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu">
         <span></span><span></span><span></span>
       </button>
-      <nav class="nav" id="navMenu">
+      <nav class="nav" id="navMenu" aria-label="Główna nawigacja">
         <a href="#home">Start</a>
         <a href="#oferta">Oferta</a>
-        <a href="#wycena">Wycena</a>
+        <a href="#wycena" class="nav-cta">Wycena</a>
         <a href="#efaktura">eFaktura</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
     </div>
+    <div class="header-sticky-bar" aria-hidden="true">
+      <span class="sticky-label">Sosnowe Chwile</span>
+      <a href="#wycena" class="sticky-cta">Zamów teraz</a>
+    </div>
   </header>
 
   <main id="home">
+
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
           <span class="eyebrow">Nowa marka pelletu</span>
-          <h1>Sosnowe Chwile — prosty wybór, szybkie zamówienie</h1>
-          <p>Wybierz liczbę palet, zobacz cenę i przejdź prosto do eFaktury.</p>
+          <!-- H1 poprawiony — zawiera słowa kluczowe -->
+          <h1>Sosnowe Chwile — pellet drzewny z dostawą na terenie Polski</h1>
+          <p class="hero-p">
+            Wybierz liczbę palet, zobacz cenę i pobierz eFakturę zaliczkową PDF — natychmiast, bez dzwonienia.
+          </p>
+          <!-- Single CTA na wysoką konwersję: granatowy/wiodący przycisk = wycena -->
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#oferta">Zobacz ofertę</a>
-            <a class="btn btn-outline" href="#wycena">Przejdź do wyceny</a>
+            <a class="btn btn-primary" href="#wycena">
+              Przejdź do wyceny
+            </a>
+            <a class="btn btn-outline" href="#oferta">
+              Zobacz ofertę
+            </a>
           </div>
+          <!-- Trust signals inline w hero -->
+          <ul class="trust-list" aria-label="Dlaczego Sosnowe Chwile">
+            ><span aria-hidden="true">✓</span> Dostawa na terenie Polski</li>
+            ><span aria-hidden="true">✓</span> eFaktura zaliczkowa od ręki</li>
+            ><span aria-hidden="true">✓</span> Polski produkt</li>
+          </ul>
         </div>
         <div class="hero-image">
-          <img src="baner.png" alt="Baner Sosnowe Chwile">
+          <img src="baner.png" alt="Worek pelletu Sosnowe Chwile na palecie" fetchpriority="high" />
         </div>
       </div>
     </section>
 
+    <!-- OFERTA z CTA i specyfikacją -->
     <section class="section" id="oferta">
       <div class="container">
         <div class="section-head">
-          <h2>Oferta</h2>
-          <p>Przejrzyste warianty pelletu.</p>
+          <h2>Oferta pelletu</h2>
+          <p>4 warianty — dobierz pellet do swojego budżetu i wymagań.</p>
         </div>
         <div class="cards">
+
+          <!-- ECONOMY -->
           <article class="product">
-            <img src="standard.png" alt="Pellet Standard">
-            <div class="product-body">
-              <h3>Standard</h3>
-              <p class="price">od 1099 zł / paleta</p>
-              <p class="desc">Solidna opcja do codziennego ogrzewania.</p>
-            </div>
-          </article>
-          <article class="product">
-            <img src="economy.png" alt="Pellet Economy">
+            <img src="economy.png" alt="Worek pelletu Economy 15kg" loading="lazy" width="376" height="240" />
             <div class="product-body">
               <h3>Economy</h3>
-              <p class="price">od 999 zł / paleta</p>
-              <p class="desc">Najbardziej budżetowa propozycja.</p>
+              <p class="price">od 999 zł <span>/ paleta</span></p>
+              <p class="desc">Najbardziej budżetowa propozycja — dobre rozwiązanie żeby przetrwać sezon ciepło i tanio.</p>
+              <ul class="spec-list" aria-label="Specyfikacja Economy">
+                ><strong>Wartość opałowa:</strong> ~4,8 kWh/kg</li>
+                ><strong>Popiół:</strong> do 2,5%</li>
+                ><strong>Średnica:</strong> 6 mm</li>
+                ><strong>Format:</strong> 15 kg w worku</li>
+              </ul>
+              <a class="btn btn-sm btn-outline" href="#wycena" onclick="prefillProduct('economy')">
+                Wybieram Economy
+              </a>
             </div>
           </article>
+
+          <!-- STANDARD — BESTSELLER BADGE -->
+          <article class="product product--bestseller">
+            <span class="bestseller-badge" aria-hidden="true">Bestseller</span>
+            <img src="standard.png" alt="Worek pelletu Standard 15kg" loading="lazy" width="376" height="240" />
+            <div class="product-body">
+              <h3>Standard</h3>
+              <p class="price">od 1099 zł <span>/ paleta</span></p>
+              <p class="desc">Najpopularniejszy wybór — zrównoważona cena i jakość. Sprawdzony pellet do codziennego ogrzewania.</p>
+              <ul class="spec-list" aria-label="Specyfikacja Standard">
+                ><strong>Wartość opałowa:</strong> ~5,0 kWh/kg</li>
+                ><strong>Popiół:</strong> do 1,5%</li>
+                ><strong>Średnica:</strong> 6 mm</li>
+                ><strong>Format:</strong> 15 kg w worku</li>
+              </ul>
+              <a class="btn btn-sm btn-primary" href="#wycena" onclick="prefillProduct('standard')">
+                Wybieram Standard
+              </a>
+            </div>
+          </article>
+
+          <!-- PREMIUM PLUS -->
           <article class="product">
-            <img src="premiumplus.png" alt="Pellet Premium Plus">
+            <img src="premiumplus.png" alt="Worek pelletu Premium Plus 15kg" loading="lazy" width="376" height="240" />
             <div class="product-body">
               <h3>Premium Plus</h3>
-              <p class="price">od 1249 zł / paleta</p>
-              <p class="desc">Wyższa klasa produktu.</p>
+              <p class="price">od 1249 zł <span>/ paleta</span></p>
+              <p class="desc">Wyższa klasa produktu — niższa zawartość popiołu, wyższa kaloryczność. Idealny do pieców automatycznych.</p>
+              <ul class="spec-list" aria-label="Specyfikacja Premium Plus">
+                ><strong>Wartość opałowa:</strong> ~5,2 kWh/kg</li>
+                ><strong>Popiół:</strong> do 0,7%</li>
+                ><strong>Średnica:</strong> 6 mm</li>
+                ><strong>Format:</strong> 15 kg w worku</li>
+              </ul>
+              <a class="btn btn-sm btn-outline" href="#wycena" onclick="prefillProduct('premium-plus')">
+                Wybieram Premium Plus
+              </a>
             </div>
           </article>
+
+          <!-- PREMIUM A1 -->
           <article class="product">
-            <img src="premiuma1.png" alt="Pellet Premium A1">
+            <img src="premiuma1.png" alt="Worek pelletu Premium A1 15kg" loading="lazy" width="376" height="240" />
             <div class="product-body">
               <h3>Premium A1</h3>
-              <p class="price">od 1299 zł / paleta</p>
-              <p class="desc">Wariant dla wymagających klientów.</p>
+              <p class="price">od 1299 zł <span>/ paleta</span></p>
+              <p class="desc">Topowa klasa zgodnie z normą ENplus A1. Minimalny popiół, maksymalna wydajność — dla wymagających.</p>
+              <ul class="spec-list" aria-label="Specyfikacja Premium A1">
+                ><strong>Wartość opałowa:</strong> ~5,4 kWh/kg</li>
+                ><strong>Popiół:</strong> ≤ 0,5%</li>
+                ><strong>Średnica:</strong> 6 mm</li>
+                ><strong>Certyfikat:</strong> ENplus A1</li>
+              </ul>
+              <a class="btn btn-sm btn-outline" href="#wycena" onclick="prefillProduct('premium-a1')">
+                Wybieram Premium A1
+              </a>
             </div>
           </article>
+
         </div>
       </div>
     </section>
-
-    <!-- NOWA STRUKTURA FORMULARZA -->
+    <!-- WYCENA — formularz podzielony na sekcje -->
     <section class="section" id="wycena">
       <div class="container">
         <div class="section-head">
           <h2>Jak zamówić</h2>
-          <p>Wypełnij krótki formularz, oblicz cenę i przejdź do eFaktury.</p>
+          <p>Wypełnij formularz, zobacz cenę i pobierz eFakturę zaliczkową PDF — bez wychodzenia z domu.</p>
         </div>
 
         <div class="quote-grid">
           <div class="form-alert form-alert--error" aria-live="polite" hidden>
-            Sprawdź zaznaczone pola – popraw błędy, abyśmy mogli przygotować eFakturę.
+            Sprawdź zaznaczone pola — popraw błędy, abyśmy mogli przygotować eFakturę.
           </div>
 
           <form id="order-form" class="quote-form" novalidate>
-            <div class="form-row">
+
+            <!-- KROK 1: DANE OSOBOWE -->
+            <div class="form-step" id="step-intro">
+              <h3>Krok 1: Twoje dane</h3>
+
+              <div class="form-row">
+                <div class="form-field">
+                  abel for="name">Imię i nazwisko / firma</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="np. Jan Kowalski lub Firma ABC Sp. z o.o."
+                    required
+                    autocomplete="name"
+                  />
+                  <small class="field-error" data-error-for="name" hidden>
+                    To pole jest wymagane — podaj imię i nazwisko lub nazwę firmy.
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  abel for="email">Email — na niego wyślemy eFakturę</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="np. jan.kowalski@example.com"
+                    required
+                    autocomplete="email"
+                  />
+                  <small class="field-error" data-error-for="email" hidden>
+                    Podaj poprawny adres email — wyślemy na niego eFakturę.
+                  </small>
+                </div>
+
+                <div class="form-field">
+                  abel for="phone">Telefon</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="np. 600 000 000"
+                    required
+                    autocomplete="tel"
+                    inputmode="tel"
+                  />
+                  <small class="field-error" data-error-for="phone" hidden>
+                    Podaj numer telefonu — potrzebny do ustalenia dostawy.
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  abel for="nip">NIP do faktury <span class="optional">(opcjonalne)</span></label>
+                  <input
+                    type="text"
+                    id="nip"
+                    name="nip"
+                    placeholder="np. 123-456-78-90"
+                    inputmode="numeric"
+                  />
+                  <small class="field-hint">
+                    Podaj NIP, jeśli chcesz otrzymać fakturę na firmę.
+                  </small>
+                  <small class="field-error" data-error-for="nip" hidden>
+                    Sprawdź, czy NIP ma prawidłowy format (10 cyfr).
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <!-- KROK 2: ZAMÓWIENIE -->
+            <div class="form-step" id="step-order">
+              <h3>Krok 2: Zamówienie</h3>
+
+              <div class="form-row">
+                <div class="form-field">
+                  abel for="quantity">Ilość palet</label>
+                  <select id="quantity" name="quantity" required>
+                    <option value="" selected disabled>Wybierz ilość</option>
+                    <option value="1">1 paleta</option>
+                    <option value="2">2 palety</option>
+                    <option value="3">3 palety</option>
+                    <option value="4-5">4–5 palet</option>
+                    <option value="6+">6+ palet (indywidualna wycena)</option>
+                  </select>
+                  <small class="field-error" data-error-for="quantity" hidden>
+                    Wybierz ilość palet, aby obliczyć szacunkową wartość zamówienia.
+                  </small>
+                  <small class="field-hint">
+                    Przy 4–5 i 6+ paletach przygotujemy indywidualną wycenę dostawy.
+                  </small>
+                </div>
+
+                <div class="form-field">
+                  abel for="product-select">Rodzaj pelletu</label>
+                  <select id="product-select" name="product" required>
+                    <option value="" selected disabled>Wybierz rodzaj pelletu</option>
+                    <option value="standard">Standard — 1099 zł/paleta</option>
+                    <option value="economy">Economy — 999 zł/paleta</option>
+                    <option value="premium-plus">Premium Plus — 1249 zł/paleta</option>
+                    <option value="premium-a1">Premium A1 — 1299 zł/paleta</option>
+                  </select>
+                  <small class="field-error" data-error-for="product" hidden>
+                    Wybierz rodzaj pelletu, który chcesz zamówić.
+                  </small>
+                </div>
+              </div>
+
               <div class="form-field">
-                <label for="name">Imię i nazwisko / firma</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="np. Jan Kowalski lub Firma ABC Sp. z o.o."
+                abel for="address">Adres dostawy</label>
+                <textarea
+                  id="address"
+                  name="address"
+                  rows="3"
+                  placeholder="Ulica, nr domu/mieszkania, kod pocztowy, miejscowość"
                   required
-                />
-                <small class="field-error" data-error-for="name" hidden>
-                  To pole jest wymagane – podaj imię i nazwisko lub nazwę firmy.
+                  autocomplete="street-address"
+                ></textarea>
+                <small class="field-error" data-error-for="address" hidden>
+                  Podaj pełny adres dostawy, abyśmy mogli wycenić transport.
                 </small>
               </div>
 
               <div class="form-field">
-                <label for="nip">NIP do faktury</label>
-                <input
-                  type="text"
-                  id="nip"
-                  name="nip"
-                  placeholder="np. 123-456-78-90"
-                  inputmode="numeric"
-                />
-                <small class="field-hint">
-                  Podaj NIP, jeśli chcesz otrzymać fakturę na firmę.
+                abel for="notes">Uwagi do zamówienia <span class="optional">(opcjonalne)</span></label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="3"
+                  placeholder="Np. preferowane godziny dostawy, dostęp do posesji, inne informacje"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- REGULAMIN + CTA -->
+            <div class="form-step" id="step-confirm">
+              <div class="form-field form-field--checkbox">
+                abel>
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    name="terms"
+                    required
+                  />
+                  Zapoznałem się i akceptuję:
+                  <a href="/regulamin.html" target="_blank" rel="noopener">Regulamin</a>
+                  i
+                  <a href="/polityka-prywatnosci.html" target="_blank" rel="noopener">Politykę prywatności</a>.
+                </label>
+                <small class="field-error" data-error-for="terms" hidden>
+                  Aby kontynuować, zaznacz zgodę na regulamin i politykę prywatności.
                 </small>
-                <small class="field-error" data-error-for="nip" hidden>
-                  Sprawdź, czy NIP ma prawidłowy format (10 cyfr).
+              </div>
+
+              <!-- LICZNIK CENY — z linkiem do eFaktury -->
+              <div class="calc-box order-summary" aria-live="polite">
+                <p>Szacunkowa wartość zamówienia:</p>
+                <strong id="totalPrice">—</strong>
+                <small id="calcNote">
+                                    Podana kwota to szacunkowa cena brutto za wybrany pellet i liczbę palet.
+                  <a href="#efaktura">Ostateczną wartość zobaczysz na eFakturze ↓</a>
+                </small>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-dark">
+                  Oblicz cenę i przejdź do eFaktury
+                </button>
+                <small class="form-note">
+                  Po kliknięciu przewiniemy Cię do podglądu eFaktury zaliczkowej.
+                  Dane nie są wysyłane na serwer — действуют только w przeglądarce.
                 </small>
               </div>
             </div>
 
-            <div class="form-row">
-              <div class="form-field">
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="np. jan.kowalski@example.com"
-                  required
-                />
-                <small class="field-error" data-error-for="email" hidden>
-                  Podaj poprawny adres email – wyślemy na niego eFakturę.
-                </small>
-              </div>
-
-              <div class="form-field">
-                <label for="phone">Telefon</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="np. 600 000 000"
-                  required
-                />
-                <small class="field-error" data-error-for="phone" hidden>
-                  Podaj numer telefonu – potrzebny do ustalenia dostawy.
-                </small>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-field">
-                <label for="quantity">Ilość palet</label>
-                <select id="quantity" name="quantity" required>
-                  <option value="" selected disabled>Wybierz ilość</option>
-                  <option value="1">1 paleta</option>
-                  <option value="2">2 palety</option>
-                  <option value="3">3 palety</option>
-                  <option value="4-5">4–5 palet</option>
-                  <option value="6+">6+ palet</option>
-                </select>
-                <small class="field-error" data-error-for="quantity" hidden>
-                  Wybierz ilość palet, aby obliczyć szacunkową wartość zamówienia.
-                </small>
-                <small class="field-hint">
-                  Przy większej liczbie palet przygotujemy indywidualną wycenę dostawy.
-                </small>
-              </div>
-
-              <div class="form-field">
-                <label for="product-select">Rodzaj produktu</label>
-                <select id="product-select" name="product" required>
-                  <option value="" selected disabled>Wybierz rodzaj pelletu</option>
-                  <option value="standard">Standard – solidna opcja do codziennego ogrzewania</option>
-                  <option value="economy">Economy – najbardziej budżetowa propozycja</option>
-                  <option value="premium-plus">Premium Plus – wyższa klasa produktu</option>
-                  <option value="premium-a1">Premium A1 – wariant dla wymagających klientów</option>
-                </select>
-                <small class="field-error" data-error-for="product" hidden>
-                  Wybierz rodzaj pelletu, który chcesz zamówić.
-                </small>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label for="address">Adres dostawy</label>
-              <textarea
-                id="address"
-                name="address"
-                rows="3"
-                placeholder="Ulica, nr domu/mieszkania, kod pocztowy, miejscowość"
-                required
-              ></textarea>
-              <small class="field-error" data-error-for="address" hidden>
-                Podaj pełny adres dostawy, abyśmy mogli wycenić transport.
-              </small>
-            </div>
-
-            <div class="form-field">
-              <label for="notes">Uwagi do zamówienia <span class="optional">(opcjonalne)</span></label>
-              <textarea
-                id="notes"
-                name="notes"
-                rows="3"
-                placeholder="Np. preferowane godziny dostawy, dostęp do posesji, inne informacje"
-              ></textarea>
-            </div>
-
-            <div class="form-field form-field--checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  id="terms"
-                  name="terms"
-                  required
-                />
-                Zapoznałem się z regulaminem i polityką prywatności oraz akceptuję ich treść.
-              </label>
-              <small class="field-error" data-error-for="terms" hidden>
-                Aby kontynuować, zaznacz zgodę na regulamin i politykę prywatności.
-              </small>
-            </div>
-
-            <div class="calc-box order-summary">
-              <p>Szacunkowa wartość zamówienia:</p>
-              <strong id="totalPrice">—</strong>
-              <small id="calcNote">
-                Podana kwota to szacunkowa cena brutto za wybrany pellet i liczbę palet.
-                Ostateczną wartość potwierdzimy na eFakturze.
-              </small>
-            </div>
-
-            <div class="form-actions">
-              <button type="submit" class="btn btn-dark">
-                Oblicz cenę i przejdź do eFaktury
-              </button>
-            </div>
           </form>
         </div>
       </div>
     </section>
 
+    <!-- GALERIA -->
     <section class="section" id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <h2>Galeria produktowa</h2>
+          <p>Kliknij zdjęcie, aby je powiększyć.</p>
+        </div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="image-1.png" alt="Worek pelletu na palecie" loading="lazy" />
+          <img class="gallery-img" src="image-2.png" alt="Worki pelletu w magazynie" loading="lazy" />
+          <img class="gallery-img" src="image.png" alt="Worki pelletu ułożone na palecie" loading="lazy" />
+          <img class="gallery-img" src="image-3.png" alt="Detale worka pelletu Sosnowe Chwile" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- eFAKTURA --
+
+</parameter>
+
+
+
+Kontynuuję od miejsca gdzie urwałem — dokończenie `calc-box` → reszta HTML → CSS → JS.
+
+---
+
+## `index.html` — dokończenie (od `calc-box`)
+
+```html
+              <!-- LICZNIK CENY -->
+              <div class="calc-box order-summary" aria-live="polite">
+                <p>Szacunkowa wartość zamówienia:</p>
+                <strong id="totalPrice">—</strong>
+                <small id="calcNote">
+                  Wybierz ilość palet i rodzaj produktu, aby zobaczyć szacunkową wartość.
+                </small>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-dark btn-lg">
+                  Oblicz cenę i przejdź do eFaktury ↓
+                </button>
+              </div>
+            </div>
+
+          </form>
+        </div><!-- /.quote-grid -->
+      </div><!-- /.container -->
+    </section><!-- /#wycena -->
+
+
+    <!-- GALERIA -->
+    <section class="section section--light" id="galeria">
       <div class="container">
         <div class="section-head">
           <h2>Galeria premium</h2>
           <p>Kliknij zdjęcie, aby je powiększyć.</p>
         </div>
         <div class="gallery-grid">
-          <img class="gallery-img" src="image-1.png" alt="Galeria 1">
-          <img class="gallery-img" src="image-2.png" alt="Galeria 2">
-          <img class="gallery-img" src="image.png" alt="Galeria 3">
-          <img class="gallery-img" src="image-3.png" alt="Galeria 4">
+          <figure>
+            <img class="gallery-img" src="image-1.png" alt="Worek pelletu Sosnowe Chwile — Polski produkt" loading="lazy" />
+          </figure>
+          <figure>
+            <img class="gallery-img" src="image-2.png" alt="Pellet drzewny 15kg na palecie" loading="lazy" />
+          </figure>
+          <figure>
+            <img class="gallery-img" src="image.png" alt="Pellet Sosnowe Chwile — zbliżenie granulatu" loading="lazy" />
+          </figure>
+          <figure>
+            <img class="gallery-img" src="image-3.png" alt="Magazyn palet pelletu — gotowe do wysyłki" loading="lazy" />
+          </figure>
         </div>
       </div>
     </section>
 
+
+    <!-- eFAKTURA -->
     <section class="section invoice-section" id="efaktura">
       <div class="container">
         <div class="section-head">
           <h2>eFaktura zaliczkowa</h2>
-          <p>Klient wypełnia formularz i pobiera PDF.</p>
+          <p>Wypełnij formularz powyżej — podgląd eFaktury pojawi się tutaj automatycznie. Kliknij „Generuj PDF" by pobrać dokument.</p>
         </div>
 
         <div class="invoice-card invoice-modern">
           <header class="invoice-header">
             <div class="invoice-logo-box invoice-logo-compact">
               <img src="logo-premium.svg" alt="Logo Sosnowe Chwile" class="invoice-logo"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
               <div class="invoice-brand-text">
                 <div class="logo-fallback" style="display:none">SOSNOWE CHWILE</div>
                 <h3>Sosnowe Chwile</h3>
-                <p>Pellet drzewny • Dostawa na terenie Polski</p>
+                <p>Pellet drzewny -  Dostawa na terenie Polski</p>
               </div>
             </div>
             <div class="invoice-meta">
               <p><strong>Dokument:</strong> eFaktura zaliczkowa</p>
               <p><strong>Nr:</strong> <span id="invNo">FSZ/2026/05/001</span></p>
-              <p><strong>Data:</strong> <span id="invDate">15.05.2026</span></p>
+              <p><strong>Data:</strong> <span id="invDate">—</span></p>
             </div>
           </header>
 
@@ -320,7 +513,7 @@
             </div>
             <div class="invoice-box">
               <h4>Nabywca</h4>
-              <p id="pdfClientName">—</p>
+              <p id="pdfClientName">— (wypełnij formularz powyżej)</p>
               <p id="pdfClientAddress">—</p>
               <p id="pdfClientNip">NIP: —</p>
             </div>
@@ -349,43 +542,94 @@
           <div class="invoice-summary">
             <div class="invoice-summary-left">
               <p><strong>Wartość zamówienia brutto:</strong> <span id="sumTotal">1 099 zł</span></p>
-              <p><strong>Podatek VAT:</strong> <span>0%</span></p>
+              <p><strong>Podatek VAT:</strong> <span>0% (zaliczka)</span></p>
               <p><strong>Wartość brutto:</strong> <span id="sumTotalBrutto">1 099 zł</span></p>
             </div>
           </div>
 
           <div class="invoice-note">
-            <p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p>
+            <p>Dokument wygenerowany automatycznie na podstawie danych z formularza. Nie jest dokumentem księgowym — stanowi potwierdzenie złożenia zamówienia zaliczkowego. Ostateczna faktura VAT zostanie wystawiona po potwierdzeniu dostawy.</p>
           </div>
 
-          <div class="hero-actions" style="margin-top:16px;">
-            <button class="btn btn-primary" id="generatePdf" type="button">
-              Generuj PDF
+          <div class="form-actions" style="margin-top:20px;">
+            <button class="btn btn-primary btn-lg" id="generatePdf" type="button">
+              Pobierz eFakturę (PDF)
             </button>
           </div>
         </div>
+
       </div>
     </section>
-  </main>
 
-  <div class="image-modal" id="imageModal" aria-hidden="true">
-    <button class="modal-close" id="modalClose" type="button">&times;</button>
-    <img id="modalImage" alt="Powiększone zdjęcie">
+  </main><!-- /#home -->
+
+
+  <!-- MODAL GALERII -->
+  <div class="image-modal" id="imageModal" role="dialog" aria-modal="true" aria-label="Powiększone zdjęcie" aria-hidden="true">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Zamknij">&times;</button>
+    <img id="modalImage" alt="Powiększone zdjęcie produktu" />
   </div>
 
+
+  <!-- STOPKA -->
   <footer class="footer" id="kontakt">
     <div class="container footer-grid">
-      <div>
+      <div class="footer-brand">
         <h2>Sosnowe Chwile</h2>
-        <p>Nowa marka pelletu z prostą ofertą i uczciwą ceną.</p>
+        <p>Nowa marka pelletu drzewnego z prostą ofertą i uczciwą ceną.</p>
+        <p class="footer-company">Nordiva trade Sp. z o.o. -  NIP: 592-230-81-05</p>
       </div>
-      <div>
-        <p><strong>Telefon:</strong> +48 793 573 900</p>
-        <p><strong>Email:</strong> kontakt@sosnowechwile.pl</p>
+
+      <div class="footer-contact">
+        <h3>Kontakt</h3>
+        <p>
+          <strong>Telefon:</strong>
+          <a href="tel:+48793573900">+48 793 573 900</a>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:kontakt@sosnowechwile.pl">kontakt@sosnowechwile.pl</a>
+        </p>
+        <p class="footer-hours">
+          <strong>Dostępność:</strong> pon–pt 8:00–17:00
+        </p>
       </div>
+
+      <div class="footer-nav">
+        <h3>Strona</h3>
+        <nav aria-label="Nawigacja stopki">
+          <a href="#home">Start</a>
+          <a href="#oferta">Oferta</a>
+          <a href="#wycena">Wycena</a>
+          <a href="#efaktura">eFaktura</a>
+        </nav>
+        <div class="footer-legal">
+          <a href="/regulamin.html">Regulamin</a>
+          <a href="/polityka-prywatnosci.html">Polityka prywatności</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="footerYear"></span> Sosnowe Chwile / Nordiva trade Sp. z o.o. Wszelkie prawa zastrzeżone.</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- MOBILE STICKY CTA BAR -->
+  <div class="mobile-cta-bar" id="mobileCta" aria-hidden="true">
+    <a href="tel:+48793573900" class="mobile-cta-btn mobile-cta-btn--phone" aria-label="Zadzwoń">
+      📞 Zadzwoń
+    </a>
+    <a href="#wycena" class="mobile-cta-btn mobile-cta-btn--order">
+      Zamów teraz
+    </a>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
+```
+
+---
+
+;
