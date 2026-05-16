@@ -219,6 +219,8 @@ a {
   padding: 13px 16px;
   border-radius: 14px;
   font-weight: 700;
+  cursor: pointer;
+  border: none;
 }
 
 .btn-primary {
@@ -236,6 +238,11 @@ a {
   width: 100%;
   background: #324b25;
   color: #fff;
+}
+
+.btn-dark:hover,
+.btn-primary:hover {
+  opacity: 0.9;
 }
 
 /* hero image */
@@ -392,6 +399,14 @@ textarea {
   color: #1f1f1f;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #324b25;
+  box-shadow: 0 0 0 3px rgba(50, 75, 37, 0.15);
+}
+
 /* box z szacunkową wartością */
 .calc-box {
   background: #f7f3ea;
@@ -502,7 +517,7 @@ textarea {
 
 /* eFaktura / invoice */
 .invoice-section {
-  padding: 80px 0;
+  padding: 60px 0;
   background: linear-gradient(180deg, #f7f3eb 0%, #ffffff 100%);
 }
 
@@ -510,7 +525,12 @@ textarea {
   padding: 28px;
 }
 
-.invoice-top {
+.invoice-modern {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.invoice-header {
   display: flex;
   justify-content: space-between;
   gap: 24px;
@@ -520,7 +540,7 @@ textarea {
   margin-bottom: 24px;
 }
 
-.invoice-brand {
+.invoice-logo-box {
   display: flex;
   gap: 16px;
   align-items: center;
@@ -536,20 +556,16 @@ textarea {
   border: 1px solid #e9dfcf;
 }
 
-.invoice-brand h3 {
+.invoice-logo-box h3 {
   margin: 0;
   font-size: 1.3rem;
   color: #223117;
 }
 
-.invoice-brand p,
-.invoice-meta p,
-.invoice-box p,
-.invoice-note p,
-.invoice-bank p {
-  margin: 4px 0;
+.invoice-logo-box p {
+  margin: 4px 0 0;
   color: #4d5a45;
-  line-height: 1.5;
+  font-size: 14px;
 }
 
 .invoice-meta {
@@ -560,7 +576,14 @@ textarea {
   padding: 16px 18px;
 }
 
-.invoice-grid {
+.invoice-meta p {
+  margin: 4px 0;
+  color: #4d5a45;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.invoice-parties {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
@@ -574,11 +597,23 @@ textarea {
   padding: 18px;
 }
 
-.invoice-box h4,
-.invoice-details h4,
-.invoice-bank h4 {
+.invoice-box h4 {
   margin: 0 0 12px;
   color: #223117;
+  font-size: 15px;
+}
+
+.invoice-box p {
+  margin: 4px 0;
+  color: #4d5a45;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.invoice-details h4 {
+  margin: 0 0 12px;
+  color: #223117;
+  font-size: 15px;
 }
 
 .invoice-table {
@@ -589,11 +624,12 @@ textarea {
 
 .invoice-table .row {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 0.6fr 2.5fr 1fr 1fr 1fr;
   gap: 12px;
   padding: 14px 16px;
   border-top: 1px solid #eee3d2;
   background: #fff;
+  font-size: 14px;
 }
 
 .invoice-table .row.head {
@@ -615,24 +651,24 @@ textarea {
   border-radius: 18px;
 }
 
-.invoice-total {
-  text-align: right;
-  background: #223117;
-  color: #fff;
-  padding: 16px 20px;
-  border-radius: 16px;
-  min-width: 180px;
+.invoice-summary-grid {
+  flex-wrap: wrap;
 }
 
-.invoice-total span {
-  display: block;
-  font-size: 0.9rem;
-  opacity: 0.85;
-  margin-bottom: 6px;
+.invoice-summary-left,
+.invoice-summary-right {
+  flex: 1;
+  min-width: 200px;
 }
 
-.invoice-total strong {
-  font-size: 1.5rem;
+.invoice-summary p {
+  margin: 6px 0;
+  color: #4d5a45;
+  font-size: 14px;
+}
+
+.invoice-summary strong {
+  color: #223117;
 }
 
 .invoice-note {
@@ -641,6 +677,13 @@ textarea {
   border-left: 4px solid #b38b5d;
   background: #fff8ef;
   border-radius: 12px;
+  font-size: 14px;
+}
+
+.invoice-note p {
+  margin: 0;
+  color: #5f5f5f;
+  line-height: 1.5;
 }
 
 .invoice-bank {
@@ -649,6 +692,22 @@ textarea {
   background: #f8f5ee;
   border-radius: 18px;
   border: 1px solid #eee3d2;
+}
+
+.invoice-bank h4 {
+  margin: 0 0 12px;
+  color: #223117;
+  font-size: 15px;
+}
+
+.invoice-bank p {
+  margin: 6px 0;
+  color: #4d5a45;
+  font-size: 14px;
+}
+
+.invoice-bank strong {
+  color: #223117;
 }
 
 /* footer */
@@ -670,4 +729,54 @@ textarea {
 
 .footer p {
   margin: 0;
-  color: rgba(255, 255, 255
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* responsywność */
+@media (min-width: 768px) {
+  .banner-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .banner-prices {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quote-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .invoice-parties {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .quote-grid {
+    gap: 24px;
+  }
+
+  .invoice-card {
+    padding: 32px;
+  }
+}
