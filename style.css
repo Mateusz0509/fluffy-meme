@@ -533,17 +533,20 @@ textarea:focus {
 .invoice-header {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 20px;
   align-items: flex-start;
   border-bottom: 1px solid #eee3d2;
   padding-bottom: 20px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 .invoice-logo-box {
   display: flex;
-  gap: 16px;
   align-items: center;
+  gap: 14px;
+  flex: 1 1 320px;
+  min-width: 0;
 }
 
 .invoice-logo {
@@ -554,89 +557,34 @@ textarea:focus {
   background: #f8f5ee;
   padding: 10px;
   border: 1px solid #e9dfcf;
+  flex: 0 0 auto;
 }
 
-.invoice-logo-box h3 {
+.invoice-brand-text {
+  min-width: 0;
+}
+
+.invoice-brand-text h3 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #223117;
+  line-height: 1.2;
 }
 
-.invoice-logo-box p {
+.invoice-brand-text p {
   margin: 4px 0 0;
   color: #4d5a45;
   font-size: 14px;
+  line-height: 1.4;
 }
 
 .invoice-meta {
-  min-width: 240px;
+  min-width: 220px;
   background: #f8f5ee;
   border: 1px solid #eee3d2;
   border-radius: 16px;
   padding: 16px 18px;
-}
-
-.invoice-meta p {
-  margin: 4px 0;
-  color: #4d5a45;
-  line-height: 1.5;
-  font-size: 14px;
-}
-
-.invoice-parties {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 24px;
-}
-
-.invoice-box {
-  background: #fcfaf6;
-  border: 1px solid #eee3d2;
-  border-radius: 18px;
-  padding: 18px;
-}
-
-.invoice-box h4 {
-  margin: 0 0 12px;
-  color: #223117;
-  font-size: 15px;
-}
-
-.invoice-box p {
-  margin: 4px 0;
-  color: #4d5a45;
-  line-height: 1.5;
-  font-size: 14px;
-}
-
-.invoice-details h4 {
-  margin: 0 0 12px;
-  color: #223117;
-  font-size: 15px;
-}
-
-.invoice-table {
-  border: 1px solid #e8dfcf;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.invoice-table .row {
-  display: grid;
-  grid-template-columns: 0.6fr 2.5fr 1fr 1fr 1fr;
-  gap: 12px;
-  padding: 14px 16px;
-  border-top: 1px solid #eee3d2;
-  background: #fff;
-  font-size: 14px;
-}
-
-.invoice-table .row.head {
-  background: #223117;
-  color: #fff;
-  font-weight: 600;
-  border-top: none;
+  flex: 0 1 280px;
 }
 
 .invoice-summary {
@@ -649,10 +597,8 @@ textarea:focus {
   background: linear-gradient(135deg, #f8f5ee, #fff);
   border: 1px solid #eee3d2;
   border-radius: 18px;
-}
-
-.invoice-summary-grid {
   flex-wrap: wrap;
+}
 }
 
 .invoice-summary-left,
