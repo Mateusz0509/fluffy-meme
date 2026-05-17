@@ -1,42 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Sosnowe Chwile premium logo">
-  <rect width="1200" height="1200" fill="#f6efe3"/>
-  <g fill="none" stroke="#c8a85a" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M430 320C520 220 620 210 710 265" stroke-width="8"/>
-    <path d="M445 330C475 290 500 260 530 240" stroke-width="5"/>
-    <path d="M470 360C500 315 530 282 565 255" stroke-width="4"/>
-    <path d="M520 300C555 270 600 235 650 225" stroke-width="4"/>
-    <path d="M575 285C620 255 670 238 725 242" stroke-width="4"/>
-    <path d="M610 305C660 275 710 270 760 285" stroke-width="4"/>
-    <path d="M610 305C585 360 560 410 525 450" stroke-width="7"/>
-    <path d="M570 270C595 330 620 390 650 440" stroke-width="7"/>
-  </g>
-  <g fill="#c8a85a">
-    <ellipse cx="690" cy="430" rx="65" ry="48" transform="rotate(35 690 430)"/>
-    <ellipse cx="670" cy="420" rx="55" ry="40" transform="rotate(10 670 420)" fill="#d8be77"/>
-    <g fill="#f6efe3">
-      <ellipse cx="660" cy="408" rx="10" ry="7" transform="rotate(10 660 408)"/>
-      <ellipse cx="682" cy="405" rx="10" ry="7" transform="rotate(10 682 405)"/>
-      <ellipse cx="704" cy="404" rx="10" ry="7" transform="rotate(10 704 404)"/>
-      <ellipse cx="650" cy="424" rx="10" ry="7" transform="rotate(10 650 424)"/>
-      <ellipse cx="672" cy="421" rx="10" ry="7" transform="rotate(10 672 421)"/>
-      <ellipse cx="694" cy="420" rx="10" ry="7" transform="rotate(10 694 420)"/>
-      <ellipse cx="716" cy="419" rx="10" ry="7" transform="rotate(10 716 419)"/>
-      <ellipse cx="662" cy="440" rx="10" ry="7" transform="rotate(10 662 440)"/>
-      <ellipse cx="684" cy="438" rx="10" ry="7" transform="rotate(10 684 438)"/>
-      <ellipse cx="706" cy="437" rx="10" ry="7" transform="rotate(10 706 437)"/>
-    </g>
-  </g>
-  <g stroke="#c8a85a" stroke-width="5" stroke-linecap="round">
-    <line x1="190" y1="565" x2="520" y2="565"/>
-    <line x1="680" y1="565" x2="1010" y2="565"/>
-  </g>
-  <g fill="#c8a85a"><rect x="590" y="555" width="22" height="22" transform="rotate(45 601 566)"/></g>
-  <text x="600" y="725" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="120" letter-spacing="6" fill="#21422c">SOSNOWE</text>
-  <text x="600" y="865" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="150" letter-spacing="6" fill="#21422c">CHWILE</text>
-  <g stroke="#c8a85a" stroke-width="5" stroke-linecap="round">
-    <line x1="190" y1="930" x2="520" y2="930"/>
-    <line x1="680" y1="930" x2="1010" y2="930"/>
-  </g>
-  <g fill="#c8a85a"><rect x="590" y="920" width="22" height="22" transform="rotate(45 601 931)"/></g>
-  <text x="600" y="1010" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" letter-spacing="10" fill="#c8a85a">PELLET DRZEWNY PREMIUM</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+<rect width="1200" height="1200" fill="#f7f1e8"/>
+<g fill="none" stroke="#b59b3a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M540 220c90 35 160 95 210 180"/>
+<path d="M585 210c110 50 185 130 230 235"/>
+<path d="M635 220c95 35 170 85 235 155"/>
+<path d="M560 260c70 25 130 65 185 120"/>
+<path d="M620 255c78 28 146 78 208 148"/>
+<path d="M680 265c58 20 110 56 160 108"/>
+</g>
+<g fill="#b59b3a">
+<ellipse cx="775" cy="425" rx="18" ry="24" transform="rotate(20 775 425)"/>
+<ellipse cx="760" cy="462" rx="18" ry="24" transform="rotate(8 760 462)"/>
+<ellipse cx="790" cy="462" rx="18" ry="24" transform="rotate(32 790 462)"/>
+<ellipse cx="745" cy="495" rx="18" ry="24" transform="rotate(2 745 495)"/>
+<ellipse cx="775" cy="500" rx="18" ry="24" transform="rotate(18 775 500)"/>
+<ellipse cx="805" cy="500" rx="18" ry="24" transform="rotate(34 805 500)"/>
+<ellipse cx="735" cy="535" rx="18" ry="24" transform="rotate(10 735 535)"/>
+<ellipse cx="765" cy="540" rx="18" ry="24" transform="rotate(24 765 540)"/>
+<ellipse cx="795" cy="540" rx="18" ry="24" transform="rotate(40 795 540)"/>
+</g>
+<line x1="220" y1="680" x2="980" y2="680" stroke="#b59b3a" stroke-width="4"/>
+<circle cx="600" cy="680" r="10" fill="#b59b3a"/>
+<text x="600" y="820" text-anchor="middle" font-family="Times New Roman, Georgia, serif" font-size="108" fill="#173a23" letter-spacing="6">SOSNOWE</text>
+<text x="600" y="930" text-anchor="middle" font-family="Times New Roman, Georgia, serif" font-size="108" fill="#173a23" letter-spacing="6">CHWILE</text>
+<line x1="220" y1="985" x2="980" y2="985" stroke="#b59b3a" stroke-width="4"/>
+<circle cx="600" cy="985" r="10" fill="#b59b3a"/>
+<text x="600" y="1080" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" fill="#b59b3a" letter-spacing="8">PELLET DRZEWNY PREMIUM</text>
 </svg>
