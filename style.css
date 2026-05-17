@@ -42,7 +42,7 @@
     order: 2;
   }
 }
-/* luksusowa galeria premium */
+/* Luksusowa galeria premium */
 #galeria .gallery-grid {
   display: grid;
   gap: 14px;
@@ -87,4 +87,23 @@
 
 #galeria .section-head p {
   color: #5f5a50;
+}
+
+/* Elegancka ramka dla zdjęć delivery */
+#delivery-assets .image-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(135deg, #f4e9ce, #e7efd2);
+  border: 1px solid rgba(192, 160, 90, 0.22);
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+#delivery-assets .image-frame img {
+  border-radius: 18px;
+  display: block;
+  width: 100%;
+  height: auto;
 }
