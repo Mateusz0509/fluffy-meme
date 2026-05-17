@@ -143,3 +143,9 @@ header,nav,.navbar,.topbar,.menu-panel,.dropdown,.mobile-menu{background:rgba(7,
 .card,.offer-card,.product-card,.invoice-card,.info-box,.content-box,.luxury-frame{background:rgba(10,25,18,.9) !important;border:1px solid rgba(226,198,128,.38) !important;color:#f7f0dc !important}
 .card *, .offer-card *, .product-card *, .invoice-card *, .info-box *, .content-box *{color:#f7f0dc !important;opacity:1 !important}
 button, .btn, .primary-btn{background:linear-gradient(135deg,#d8ba72,#b38a35) !important;color:#112218 !important;border:1px solid rgba(255,243,208,.55) !important}
+
+.price,.card-price,.offer-price,.product-price,.subtitle,.description,.excerpt,.muted,.small,.text-sm,.text-gray,.text-secondary{color:#f8eecb !important;opacity:1 !important;text-shadow:0 1px 4px rgba(0,0,0,.55) !important}
+#oferta h3,#oferta .card-title,#oferta .title,#products h3,#products .card-title{color:#fff7e5 !important;opacity:1 !important;text-shadow:0 2px 8px rgba(0,0,0,.65) !important}
+#oferta .card,#products .card,.offer-card,.product-card{background:rgba(7,18,12,.96) !important;border:1px solid rgba(226,198,128,.5) !important;min-height:120px}
+#oferta .card *,#products .card *,.offer-card *,.product-card *{color:inherit !important;opacity:1 !important}
+#oferta .card p,#products .card p,.offer-card p,.product-card p{font-size:1.05rem;line-height:1.65}
