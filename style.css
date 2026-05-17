@@ -174,3 +174,46 @@ p, span, li, label, a, button {
   color: #d8ba72 !important;
   font-weight: 700;
 }
+/* FINAL: widoczność napisów */
+body, body * {
+  color: #f7f3ea !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.section-head h2,
+.oferta-premium-title,
+.hero h1,
+.hero h2,
+.title {
+  color: #fff7e8 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85) !important;
+  opacity: 1 !important;
+}
+
+p, span, li, label, a, button {
+  color: #f5efe3 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+  opacity: 1 !important;
+}
+
+.card, .offer-card, .product-card, .menu-panel, .box, .section {
+  background: rgba(6, 28, 20, 0.92) !important;
+  border: 1px solid rgba(216, 186, 114, 0.35) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28) !important;
+}
+
+.card *, .offer-card *, .product-card *, .menu-panel *, .box * {
+  color: #f7f3ea !important;
+  opacity: 1 !important;
+}
+
+.price, .amount, .value, .highlight {
+  color: #d8ba72 !important;
+  font-weight: 700 !important;
+}
+.card p, .card span, .card strong,
+.offer-card p, .offer-card span, .offer-card strong,
+.product-card p, .product-card span, .product-card strong {
+  color: #f7f3ea !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85) !important;
+}
