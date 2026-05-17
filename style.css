@@ -42,3 +42,49 @@
     order: 2;
   }
 }
+/* luksusowa galeria premium */
+#galeria .gallery-grid {
+  display: grid;
+  gap: 14px;
+}
+
+@media (min-width: 768px) {
+  #galeria .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #galeria .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.gallery-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid rgba(200, 168, 90, 0.22);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  background: linear-gradient(180deg, #fbf6ee, #fffaf1);
+}
+
+.gallery-img:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 22px 42px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.4) inset;
+  filter: saturate(1.04) contrast(1.02);
+}
+
+#galeria .section-head h2 {
+  letter-spacing: 0.02em;
+}
+
+#galeria .section-head p {
+  color: #5f5a50;
+}
