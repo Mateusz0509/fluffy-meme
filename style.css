@@ -165,3 +165,9 @@ textarea{resize:vertical}
   display: block;
   border-radius: 22px;
 }
+@media (max-width: 767px) {
+  .full-image-header,
+  .full-bleed-image {
+    min-height: 280px;
+  }
+}
