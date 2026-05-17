@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Sosnowe Chwile</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -25,19 +25,9 @@
 
   <header class="header">
     <div class="container nav-wrap">
-      <a class="brand" href="#home">
-        <span class="brand-text">Sosnowe Chwile</span>
-      </a>
-      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="navMenu">
-        <a href="#home">Start</a>
-        <a href="#oferta">Oferta</a>
-        <a href="#wycena">Wycena</a>
-        <a href="#efaktura">eFaktura</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
+      <a class="brand" href="#home"><span class="brand-text">Sosnowe Chwile</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+      <nav class="nav" id="navMenu"><a href="#home">Start</a><a href="#oferta">Oferta</a><a href="#wycena">Wycena</a><a href="#efaktura">eFaktura</a><a href="#kontakt">Kontakt</a></nav>
     </div>
   </header>
 
@@ -48,28 +38,15 @@
           <span class="eyebrow">Nowa marka pelletu</span>
           <h1>Sosnowe Chwile — prosty wybór, szybkie zamówienie</h1>
           <p>Wybierz liczbę palet, zobacz cenę i przejdź prosto do eFaktury.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#oferta">Zobacz ofertę</a>
-            <a class="btn btn-outline" href="#efaktura">Przejdź do eFaktury</a>
-          </div>
+          <div class="hero-actions"><a class="btn btn-primary" href="#oferta">Zobacz ofertę</a><a class="btn btn-outline" href="#efaktura">Przejdź do eFaktury</a></div>
         </div>
-        <div class="hero-image">
-          <img src="baner.png" alt="Baner Sosnowe Chwile">
-        </div>
+        <div class="hero-image"><img src="baner.png" alt="Baner Sosnowe Chwile"></div>
       </div>
     </section>
 
     <section class="section" id="oferta">
       <div class="container">
-        <div class="section-head">
-          <h2 class="oferta-premium-title">Oferta premium</h2>
-          <p class="oferta-premium-sub">Nowoczesna typografia, elegancka siatka i czytelna prezentacja produktów.</p>
-        </div>
-      <div class="container">
-        <div class="section-head">
-          <h2>Oferta</h2>
-          <p>Przejrzyste warianty pelletu.</p>
-        </div>
+        <div class="section-head"><h2 class="oferta-premium-title">Oferta premium</h2><p class="oferta-premium-sub">Nowoczesna typografia, elegancka siatka i czytelna prezentacja produktów.</p></div>
         <div class="cards">
           <article class="product"><img src="standard.png" alt="Pellet Standard"><div class="product-body"><h3>Standard</h3><p class="price">od 1099 zł / paleta</p><p class="desc">Solidna opcja do codziennego ogrzewania.</p></div></article>
           <article class="product"><img src="economy.png" alt="Pellet Economy"><div class="product-body"><h3>Economy</h3><p class="price">od 999 zł / paleta</p><p class="desc">Najbardziej budżetowa propozycja.</p></div></article>
@@ -81,10 +58,7 @@
 
     <section class="section" id="wycena">
       <div class="container">
-        <div class="section-head">
-          <h2>Jak zamówić</h2>
-          <p>Krótki formularz przed eFakturą.</p>
-        </div>
+        <div class="section-head"><h2>Jak zamówić</h2><p>Krótki formularz przed eFakturą.</p></div>
         <div class="quote-grid">
           <form class="quote-form" id="quoteForm">
             <div class="form-row"><label>Imię i nazwisko / firma<input type="text" id="clientName" placeholder="Np. Jan Kowalski / Firma XYZ"></label><label>NIP do faktury<input type="text" id="clientNip" placeholder="Np. 1234567890"></label></div>
@@ -99,13 +73,9 @@
       </div>
     </section>
 
-    
     <section class="section" id="galeria">
       <div class="container">
-        <div class="section-head">
-          <h2>Galeria premium</h2>
-          <p>Kliknij zdjęcie, aby je powiększyć.</p>
-        </div>
+        <div class="section-head"><h2>Galeria premium</h2><p>Kliknij zdjęcie, aby je powiększyć.</p></div>
         <div class="gallery-grid">
           <img class="gallery-img" src="image-1.png" alt="Galeria 1">
           <img class="gallery-img" src="image-2.png" alt="Galeria 2">
@@ -127,88 +97,25 @@
           <div class="invoice-details"><h4>Pozycja zamówienia</h4><div class="invoice-table"><div class="row head"><span>Lp.</span><span>Nazwa produktu</span><span>Ilość</span><span>Cena brutto</span><span>Wartość brutto</span></div><div class="row"><span>1</span><span id="pdfProduct">Standard</span><span id="pdfQty">1 paleta</span><span id="pdfUnit">1 099 zł</span><span id="pdfTotal">1 099 zł</span></div></div></div>
           <div class="invoice-summary"><div class="invoice-summary-left"><p><strong>Wartość zamówienia brutto:</strong> <span id="sumTotal">1 099 zł</span></p><p><strong>Podatek VAT:</strong> <span>0%</span></p><p><strong>Wartość brutto:</strong> <span id="sumTotalBrutto">1 099 zł</span></p></div></div>
           <div class="invoice-note"><p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p></div>
-
           <div class="hero-actions" style="margin-top:16px;"><button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button></div>
         </div>
       </div>
     </section>
-  
+
     <section class="section" id="delivery-assets">
       <div class="container">
-        <div class="section-head">
-          <h2>Magazyn i dostawa</h2>
-          <p>Zdjęcia magazyn.png i dostawa.png.</p>
-        </div>
+        <div class="section-head"><h2>Magazyn i dostawa</h2><p>Zdjęcia magazyn.png i dostawa.png.</p></div>
         <div class="gallery-grid">
           <img class="gallery-img" src="magazyn.png" alt="Magazyn">
           <img class="gallery-img" src="dostawa.png" alt="Dostawa">
         </div>
       </div>
     </section>
-
   </main>
 
-  <div class="image-modal" id="imageModal" aria-hidden="true">
-    <button class="modal-close" id="modalClose" type="button">&times;</button>
-    <img id="modalImage" alt="Powiększone zdjęcie">
-  </div>
+  <div class="image-modal" id="imageModal" aria-hidden="true"><button class="modal-close" id="modalClose" type="button">&times;</button><img id="modalImage" alt="Powiększone zdjęcie"></div>
 
   <footer class="footer" id="kontakt"><div class="container footer-grid"><div><h2>Sosnowe Chwile</h2><p>Nowa marka pelletu z prostą ofertą i uczciwą ceną.</p></div><div><p><strong>Telefon:</strong> +48 793 573 900</p><p><strong>Email:</strong> kontakt@sosnowechwile.pl</p></div></div></footer>
   <script src="script.js"></script>
 </body>
-</html><!doctype html>
-<html lang="pl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Sosnowe Chwile – mobile</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">Sosnowe Chwile</div>
-      <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </header>
-  <main>
-    <section class="section hero">
-      <div class="container">
-        <div class="hero-copy">
-          <span class="eyebrow">eFaktura zaliczkowa 15–20%</span>
-          <h1>Krótki formularz przed eFakturą</h1>
-          <p>Czytelny układ dopasowany do telefonu.</p>
-        </div>
-      </div>
-    </section>
-    <section class="section invoice-section">
-      <div class="container">
-        <div class="section-head">
-          <h2>eFaktura zaliczkowa</h2>
-          <p>Podgląd dokumentu.</p>
-        </div>
-        <div class="invoice-card">
-          <div class="invoice-header">
-            <div class="invoice-logo-full"><img src="sosnowe_logo.png" alt="Sosnowe Chwile logo"></div>
-            <div class="invoice-meta">
-              <p><strong>Dokument:</strong> eFaktura zaliczkowa</p>
-              <p><strong>Nr:</strong> FSZ/2026/05/001</p>
-              <p><strong>Data:</strong> 15.05.2026</p>
-            </div>
-          </div>
-          <div class="invoice-summary">
-            <div>
-              <div class="invoice-box"><h4>Wartość brutto</h4><p>1099 zł / paleta</p></div>
-              <div class="invoice-box" style="margin-top:12px"><h4>VAT</h4><p>0%</p></div>
-            </div>
-            <div class="calc-box">
-              <p>Zaliczka</p>
-              <strong>15–20%</strong>
-              <small>wartości całego zamówienia</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-</body>
+</html>
