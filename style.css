@@ -24,3 +24,21 @@
   max-width: 480px;
   height: auto;
 }
+/* layout 2‑kolumnowy formularz + eFaktura na desktopie */
+#efaktura .container {
+  display: grid;
+  gap: 20px;
+}
+@media (min-width: 768px) {
+  #efaktura .container {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  #efaktura .quote-grid {
+    order: 1;
+    margin-bottom: 0;
+  }
+  #efaktura .invoice-card {
+    order: 2;
+  }
+}
