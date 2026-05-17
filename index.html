@@ -6,6 +6,25 @@
   <title>Sosnowe Chwile</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <style>
+    .full-image-header {
+      overflow: hidden;
+    }
+
+    .full-bleed-image.portrait-fix {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .image-frame img,
+    .premium-card img,
+    .gallery-grid img {
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <section class="top-banner">
@@ -26,7 +45,7 @@
   <header class="header">
     <div class="container nav-wrap">
       <a class="brand" href="#home"><span class="brand-text">Sosnowe Chwile</span></a>
-      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu" type="button"><span></span><span></span><span></span></button>
       <nav class="nav" id="navMenu">
         <a href="#home">Start</a>
         <a href="#oferta-premium">Oferta</a>
@@ -210,6 +229,138 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuBtn = document.getElementById('menuBtn');
+      const navMenu = document.getElementById('navMenu');
+      const form = document.getElementById('quoteForm');
+      const generatePdfBtn = document.getElementById('generatePdf');
+
+      if (menuBtn && navMenu) {
+        menuBtn.addEventListener('click', () => {
+          const opened = navMenu.classList.toggle('open');
+          menuBtn.setAttribute('aria-expanded', opened ? 'true' : 'false');
+        });
+      }
+
+      const product = document.getElementById('product');
+      const qtyTons = document.getElementById('qtyTons');
+      const totalPrice = document.getElementById('totalPrice');
+      const calcNoteTons = document.getElementById('calcNoteTons');
+      const pdfProduct = document.getElementById('pdfProduct');
+      const pdfQty = document.getElementById('pdfQty');
+      const pdfUnit = document.getElementById('pdfUnit');
+      const pdfTotal = document.getElementById('pdfTotal');
+      const sumTotal = document.getElementById('sumTotal');
+      const sumTotalBrutto = document.getElementById('sumTotalBrutto');
+      const pdfClientName = document.getElementById('pdfClientName');
+      const pdfClientAddress = document.getElementById('pdfClientAddress');
+      const pdfClientNip = document.getElementById('pdfClientNip');
+      const pdfAdvancePercent = document.getElementById('pdfAdvancePercent');
+      const pdfAdvanceAmount = document.getElementById('pdfAdvanceAmount');
+      const clientName = document.getElementById('clientName');
+      const clientAddress = document.getElementById('clientAddress');
+      const clientNip = document.getElementById('clientNip');
+
+      const formatPLN = (value) => new Intl.NumberFormat('pl-PL', { maximumFractionDigits: 0 }).format(value) + ' zł';
+
+      function updatePrice() {
+        const unit = parseInt(product.value, 10) || 0;
+        const qty = parseInt(qtyTons.value, 10) || 1;
+        const total = unit * qty;
+        const name = product.options[product.selectedIndex].text;
+
+        totalPrice.textContent = formatPLN(total);
+        calcNoteTons.textContent = `Cena orientacyjna dla ${qty} ${qty === 1 ? 'palety' : 'palet'} ${name}.`;
+
+        pdfProduct.textContent = name;
+        pdfQty.textContent = `${qty} ${qty === 1 ? 'paleta' : 'palet'}`;
+        pdfUnit.textContent = formatPLN(unit);
+        pdfTotal.textContent = formatPLN(total);
+        sumTotal.textContent = formatPLN(total);
+        sumTotalBrutto.textContent = formatPLN(total);
+
+        const advancePercent = 30;
+        const advanceAmount = Math.round(total * advancePercent / 100);
+        pdfAdvancePercent.textContent = advancePercent;
+        pdfAdvanceAmount.textContent = formatPLN(advanceAmount);
+
+        pdfClientName.textContent = clientName.value.trim() || '—';
+        pdfClientAddress.textContent = clientAddress.value.trim() || '—';
+        pdfClientNip.textContent = clientNip.value.trim() || '—';
+      }
+
+      [product, qtyTons, clientName, clientAddress, clientNip].forEach(el => {
+        if (el) el.addEventListener('input', updatePrice);
+        if (el) el.addEventListener('change', updatePrice);
+      });
+
+      updatePrice();
+
+      if (generatePdfBtn) {
+        generatePdfBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (!window.jspdf || !window.jspdf.jsPDF) {
+            alert('Biblioteka jsPDF nie została załadowana.');
+            return;
+          }
+
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+          const name = clientName.value.trim() || 'Brak danych';
+          const nip = clientNip.value.trim() || 'Brak NIP';
+          const addr = clientAddress.value.trim() || 'Brak adresu';
+          const prod = product.options[product.selectedIndex].text;
+          const qty = qtyTons.value;
+          const unit = parseInt(product.value, 10) || 0;
+          const total = unit * qty;
+          const advanceAmount = Math.round(total * 0.3);
+
+          doc.setFontSize(16);
+          doc.text('Sosnowe Chwile - eFaktura zaliczkowa', 10, 15);
+          doc.setFontSize(11);
+          doc.text(`Nabywca: ${name}`, 10, 30);
+          doc.text(`NIP: ${nip}`, 10, 38);
+          doc.text(`Adres: ${addr}`, 10, 46);
+          doc.text(`Produkt: ${prod}`, 10, 58);
+          doc.text(`Ilość: ${qty} ton`, 10, 66);
+          doc.text(`Cena jednostkowa: ${formatPLN(unit)}`, 10, 74);
+          doc.text(`Wartość zamówienia: ${formatPLN(total)}`, 10, 82);
+          doc.text(`Zaliczka 30%: ${formatPLN(advanceAmount)}`, 10, 90);
+          doc.save('efaktura-zaliczkowa.pdf');
+        });
+      }
+
+      const imageModal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalClose = document.getElementById('modalClose');
+
+      document.querySelectorAll('.gallery-img, .premium-img, .image-frame img').forEach(img => {
+        img.addEventListener('click', () => {
+          if (!imageModal || !modalImage) return;
+          modalImage.src = img.src;
+          modalImage.alt = img.alt || 'Powiększone zdjęcie';
+          imageModal.classList.add('open');
+          imageModal.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      if (modalClose && imageModal) {
+        modalClose.addEventListener('click', () => {
+          imageModal.classList.remove('open');
+          imageModal.setAttribute('aria-hidden', 'true');
+        });
+      }
+
+      if (imageModal) {
+        imageModal.addEventListener('click', (e) => {
+          if (e.target === imageModal) {
+            imageModal.classList.remove('open');
+            imageModal.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
