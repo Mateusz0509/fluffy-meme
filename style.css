@@ -20,3 +20,36 @@
   padding:0 !important;
   background:transparent !important;
 }
+
+/* Dark headers in sections */
+.section h1,
+.section h2,
+.section h3,
+.section h4,
+.invoice-section h1,
+.invoice-section h2,
+.invoice-section h3,
+.invoice-section h4,
+.order-section h1,
+.order-section h2,
+.order-section h3,
+.order-section h4,
+.section-head h2,
+.section-head p,
+.invoice-brand-text h3,
+.invoice-box h4,
+.invoice-details h4 {
+  color: #1f2f22 !important;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.28) !important;
+  opacity: 1 !important;
+}
+
+.section .subtitle,
+.invoice-section .subtitle,
+.order-section .subtitle,
+.section p,
+.invoice-section p,
+.order-section p {
+  color: #6f6049 !important;
+  text-shadow: none !important;
+}
