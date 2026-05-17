@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Sosnowe Chwile logo">
+  <rect width="1200" height="1200" fill="#f6efe3"/>
+  <g fill="none" stroke="#c8a85a" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M430 320C520 220 620 210 710 265" stroke-width="8"/>
+    <path d="M445 330C475 290 500 260 530 240" stroke-width="5"/>
+    <path d="M470 360C500 315 530 282 565 255" stroke-width="4"/>
+    <path d="M520 300C555 270 600 235 650 225" stroke-width="4"/>
+    <path d="M575 285C620 255 670 238 725 242" stroke-width="4"/>
+    <path d="M610 305C660 275 710 270 760 285" stroke-width="4"/>
+    <path d="M610 305C585 360 560 410 525 450" stroke-width="7"/>
+    <path d="M570 270C595 330 620 390 650 440" stroke-width="7"/>
+  </g>
+  <g fill="#c8a85a">
+    <ellipse cx="690" cy="430" rx="65" ry="48" transform="rotate(35 690 430)"/>
+    <ellipse cx="670" cy="420" rx="55" ry="40" transform="rotate(10 670 420)" fill="#d8be77"/>
+  </g>
+  <text x="600" y="720" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="122" letter-spacing="6" fill="#21422c">SOSNOWE</text>
+  <text x="600" y="860" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="152" letter-spacing="6" fill="#21422c">CHWILE</text>
+  <text x="600" y="980" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" letter-spacing="10" fill="#c8a85a">PELLET DRZEWNY PREMIUM</text>
+</svg>
