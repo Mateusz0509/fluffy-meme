@@ -332,3 +332,24 @@ p, span, li, label, a, button {
   color: #112218 !important;
   border: 1px solid rgba(255, 243, 208, 0.55) !important;
 }
+
+/* Tylko nagłówki: Jak zamówić */
+.order-section h1,
+.order-section h2,
+.order-section h3,
+.order-section h4,
+.order-section .section-head h2,
+.order-section .title {
+  color: #1f2f22 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.01em !important;
+  opacity: 1 !important;
+}
+
+.order-section .section-head p,
+.order-section .subtitle {
+  color: #6f6049 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
