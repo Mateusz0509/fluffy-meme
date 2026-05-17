@@ -32,7 +32,7 @@ const pdfAdvancePercent = document.getElementById('pdfAdvancePercent');
 const pdfAdvanceAmount = document.getElementById('pdfAdvanceAmount');
 
 function formatPLN(n) {
-  return n.toLocaleString('pl-PL') + ' zĹ';
+  return n.toLocaleString('pl-PL') + ' zł';
 }
 
 function getAdvancePercent(unit) {
@@ -52,7 +52,7 @@ function updatePrice() {
   const total = unit * palets;
   const qtyLabel = `${palets} palet`;
   const qtyLabelTons = `${tons} ton${tons === 1 ? '' : 'y'}`;
-  const prodLabel = product.options[product.selectedIndex]?.text || 'â';
+  const prodLabel = product.options[product.selectedIndex]?.text || '—';
   const advPerc = getAdvancePercent(unit);
   const advance = (total * advPerc) / 100;
 
@@ -64,9 +64,9 @@ function updatePrice() {
   if (pdfProduct) pdfProduct.textContent = prodLabel;
   if (pdfUnit) pdfUnit.textContent = formatPLN(unit);
   if (pdfTotal) pdfTotal.textContent = formatPLN(total);
-  if (pdfClientName) pdfClientName.textContent = document.getElementById('clientName')?.value || 'â';
-  if (pdfClientAddress) pdfClientAddress.textContent = document.getElementById('clientAddress')?.value || 'â';
-  if (pdfClientNip) pdfClientNip.textContent = 'NIP: ' + (document.getElementById('clientNip')?.value || 'â');
+  if (pdfClientName) pdfClientName.textContent = document.getElementById('clientName')?.value || '—';
+  if (pdfClientAddress) pdfClientAddress.textContent = document.getElementById('clientAddress')?.value || '—';
+  if (pdfClientNip) pdfClientNip.textContent = 'NIP: ' + (document.getElementById('clientNip')?.value || '—');
   if (pdfAdvancePercent) pdfAdvancePercent.textContent = advPerc;
   if (pdfAdvanceAmount) pdfAdvanceAmount.textContent = formatPLN(advance);
 }
@@ -117,12 +117,12 @@ if (pdfBtn) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'mm', format: 'a4' });
 
-    const name = document.getElementById('clientName')?.value || 'â';
-    const nip = document.getElementById('clientNip')?.value || 'â';
-    const email = document.getElementById('clientEmail')?.value || 'â';
-    const phone = document.getElementById('clientPhone')?.value || 'â';
-    const address = document.getElementById('clientAddress')?.value || 'â';
-    const notes = document.getElementById('clientNotes')?.value || 'â';
+    const name = document.getElementById('clientName')?.value || '—';
+    const nip = document.getElementById('clientNip')?.value || '—';
+    const email = document.getElementById('clientEmail')?.value || '—';
+    const phone = document.getElementById('clientPhone')?.value || '—';
+    const address = document.getElementById('clientAddress')?.value || '—';
+    const notes = document.getElementById('clientNotes')?.value || '—';
 
     const tons = Number(document.getElementById('qtyTons')?.value) || 1;
     const palets = Math.ceil(tons / TONS_PER_PALLET);
@@ -144,7 +144,7 @@ if (pdfBtn) {
     doc.text('Sosnowe Chwile', 14, 16);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8);
-    doc.text('PELLET Z NATURY, CIEPĹO NA DĹUGO', 14, 22);
+    doc.text('PELLET Z NATURY, CIEPŁO NA DŁUGO', 14, 22);
     doc.line(58, 10, 58, 30);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(18);
@@ -154,9 +154,9 @@ if (pdfBtn) {
     doc.text(invNo, w / 2, 24, { align: 'center' });
     doc.setFontSize(9);
     doc.text('Data wystawienia: ' + invDate, w - 14, 12, { align: 'right' });
-    doc.text('Data sprzedaĹźy: ' + invDate, w - 14, 18, { align: 'right' });
-    doc.text('Termin pĹatnoĹci: 06.06.2024', w - 14, 24, { align: 'right' });
-    doc.text('Forma pĹatnoĹci: Przelew', w - 14, 30, { align: 'right' });
+    doc.text('Data sprzedaży: ' + invDate, w - 14, 18, { align: 'right' });
+    doc.text('Termin płatności: 06.06.2024', w - 14, 24, { align: 'right' });
+    doc.text('Forma płatności: Przelew', w - 14, 30, { align: 'right' });
     doc.line(14, 38, w - 14, 38);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
@@ -164,7 +164,7 @@ if (pdfBtn) {
     doc.text('NABYWCA', 100, 46);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
-    doc.text(['Sosnowe Chwile Sp. z o.o.','ul. Rynek 17/2, 80-855 GdaĹsk','NIP: 592-230-81-05','REGON: 123456789','tel. 600 123 456','biuro@sosnowechwile.pl','www.sosnowechwile.pl'], 14, 52);
+    doc.text(['Sosnowe Chwile Sp. z o.o.','ul. Rynek 17/2, 80-855 Gdańsk','NIP: 592-230-81-05','REGON: 123456789','tel. 600 123 456','biuro@sosnowechwile.pl','www.sosnowechwile.pl'], 14, 52);
     doc.text([name, address, 'NIP: ' + nip, 'Email: ' + email, 'Tel: ' + phone], 100, 52, { maxWidth: 90 });
     const clientSummary = [
       `Adres: ${address}`,
@@ -180,7 +180,7 @@ if (pdfBtn) {
     doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(8);
-    ['Lp.','Nazwa towaru / usĹugi','IloĹÄ','Jedn.','Cena netto','WartoĹÄ netto','VAT','WartoĹÄ VAT','WartoĹÄ brutto'].forEach((t, i) => {
+    ['Lp.','Nazwa towaru / usługi','Ilość','Jedn.','Cena netto','Wartość netto','VAT','Wartość VAT','Wartość brutto'].forEach((t, i) => {
       const xs = [16, 31, 91, 108, 121, 144, 160, 172, 189];
       doc.text(t, xs[i], y + 1);
     });
@@ -191,30 +191,30 @@ if (pdfBtn) {
     doc.text('1', 16, y + 11);
     doc.text(productName, 31, y + 9, { maxWidth: 56 });
     doc.setFontSize(7);
-    doc.text('Zakup na zamĂłwienie nr ' + invNo, 31, y + 14, { maxWidth: 56 });
+    doc.text('Zakup na zamówienie nr ' + invNo, 31, y + 14, { maxWidth: 56 });
     doc.setFontSize(8);
-    doc.text(formatPLN(unit).replace(' zĹ', ''), 91, y + 11);
+    doc.text(formatPLN(unit).replace(' zł', ''), 91, y + 11);
     doc.text('szt.', 108, y + 11);
-    doc.text(formatPLN(unit).replace(' zĹ', ''), 121, y + 11);
-    doc.text(formatPLN(unit).replace(' zĹ', ''), 144, y + 11);
+    doc.text(formatPLN(unit).replace(' zł', ''), 121, y + 11);
+    doc.text(formatPLN(unit).replace(' zł', ''), 144, y + 11);
     doc.text('0%', 160, y + 11);
-    doc.text('0,00 zĹ', 172, y + 11);
+    doc.text('0,00 zł', 172, y + 11);
     doc.text(formatPLN(total), 189, y + 11, { align: 'right' });
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
-    doc.text('SposĂłb pĹatnoĹci: Przelew', 14, 105);
+    doc.text('Sposób płatności: Przelew', 14, 105);
     doc.text('Numer konta: 3911 6022 0200 0000 7130 9046 1', 14, 112);
 
     doc.setFont('helvetica', 'bold');
-    doc.text('Podsumowanie zamĂłwienia', 14, 121);
+    doc.text('Podsumowanie zamówienia', 14, 121);
     doc.setFont('helvetica', 'normal');
     const summaryText = [
       `Produkt: ${productName}`,
-      `IloĹÄ: ${tons} ton (${palets} palet)`,
+      `Ilość: ${tons} ton (${palets} palet)`,
       `Cena jednostkowa: ${formatPLN(unit)}`,
-      `WartoĹÄ zamĂłwienia: ${formatPLN(total)}`,
+      `Wartość zamówienia: ${formatPLN(total)}`,
       `Zaliczka: ${advPerc}% (${formatPLN(advance)})`,
-      `Do zapĹaty przy zaliczce: ${formatPLN(total - advance)}`,
+      `Do zapłaty przy zaliczce: ${formatPLN(total - advance)}`,
       `Uwagi: ${notes}`
     ].join('\n');
     doc.text(doc.splitTextToSize(summaryText, 95), 14, 127);
@@ -223,20 +223,20 @@ if (pdfBtn) {
     const boxY = 104;
     doc.setDrawColor(180, 180, 180);
     doc.rect(boxX, boxY, 70, 25);
-    doc.text('WartoĹÄ netto:', boxX + 4, boxY + 6);
+    doc.text('Wartość netto:', boxX + 4, boxY + 6);
     doc.text(formatPLN(total), boxX + 66, boxY + 6, { align: 'right' });
-    doc.text('WartoĹÄ VAT (0%):', boxX + 4, boxY + 13);
-    doc.text('0,00 zĹ', boxX + 66, boxY + 13, { align: 'right' });
+    doc.text('Wartość VAT (0%):', boxX + 4, boxY + 13);
+    doc.text('0,00 zł', boxX + 66, boxY + 13, { align: 'right' });
     doc.setFillColor(33, 56, 27);
     doc.rect(boxX, boxY + 17, 70, 6, 'F');
     doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
-    doc.text('WartoĹÄ brutto:', boxX + 4, boxY + 21);
+    doc.text('Wartość brutto:', boxX + 4, boxY + 21);
     doc.text(formatPLN(total), boxX + 66, boxY + 21, { align: 'right' });
     doc.setTextColor(20, 20, 20);
     doc.setFont('helvetica', 'normal');
-    doc.text('DziÄkujemy za zaufanie i wybĂłr naszych produktĂłw.', 14, 150);
-    doc.text('Sosnowe Chwile â pellet z natury, ciepĹo na dĹugo.', 14, 156);
+    doc.text('Dziękujemy za zaufanie i wybór naszych produktów.', 14, 150);
+    doc.text('Sosnowe Chwile – pellet z natury, ciepło na długo.', 14, 156);
     doc.text('Zatwierdzono', 170, 184, { align: 'center' });
     doc.save('efaktura-sosnowe-chwile.pdf');
   });

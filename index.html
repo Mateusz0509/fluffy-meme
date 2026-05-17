@@ -50,7 +50,6 @@
             <a class="btn btn-outline" href="#efaktura">Przejdź do eFaktury</a>
           </div>
         </div>
-
         <div class="hero-image">
           <div class="image-frame">
             <img src="tir.png" alt="Dostawa pelletu Sosnowe Chwile" style="margin-bottom:12px;max-width:100%;">
@@ -67,39 +66,11 @@
           <h2>Warianty produktu</h2>
           <p>Elegancka prezentacja pakietów z możliwością powiększenia zdjęcia.</p>
         </div>
-
         <div class="premium-grid">
-          <article class="premium-card">
-            <img class="gallery-img premium-img" src="standard.png" alt="Pellet Standard">
-            <div class="premium-body">
-              <h3>Standard</h3>
-              <p>1099 zł / paleta</p>
-            </div>
-          </article>
-
-          <article class="premium-card">
-            <img class="gallery-img premium-img" src="economy.png" alt="Pellet Economy">
-            <div class="premium-body">
-              <h3>Economy</h3>
-              <p>999 zł / paleta</p>
-            </div>
-          </article>
-
-          <article class="premium-card">
-            <img class="gallery-img premium-img" src="premiumplus.png" alt="Pellet Premium Plus">
-            <div class="premium-body">
-              <h3>Premium Plus</h3>
-              <p>1249 zł / paleta</p>
-            </div>
-          </article>
-
-          <article class="premium-card">
-            <img class="gallery-img premium-img" src="premiuma1.png" alt="Pellet Premium A1">
-            <div class="premium-body">
-              <h3>Premium A1</h3>
-              <p>1299 zł / paleta</p>
-            </div>
-          </article>
+          <article class="premium-card"><img class="gallery-img premium-img" src="standard.png" alt="Pellet Standard"><div class="premium-body"><h3>Standard</h3><p>1099 zł / paleta</p></div></article>
+          <article class="premium-card"><img class="gallery-img premium-img" src="economy.png" alt="Pellet Economy"><div class="premium-body"><h3>Economy</h3><p>999 zł / paleta</p></div></article>
+          <article class="premium-card"><img class="gallery-img premium-img" src="premiumplus.png" alt="Pellet Premium Plus"><div class="premium-body"><h3>Premium Plus</h3><p>1249 zł / paleta</p></div></article>
+          <article class="premium-card"><img class="gallery-img premium-img" src="premiuma1.png" alt="Pellet Premium A1"><div class="premium-body"><h3>Premium A1</h3><p>1299 zł / paleta</p></div></article>
         </div>
       </div>
     </section>
@@ -111,7 +82,6 @@
           <h2>Detale i realizacje</h2>
           <p>Kliknij zdjęcie, aby je powiększyć.</p>
         </div>
-
         <div class="gallery-grid">
           <img class="gallery-img" src="image-1.png" alt="Galeria 1">
           <img class="gallery-img" src="image-2.png" alt="Galeria 2">
@@ -128,7 +98,6 @@
           <h2>Magazyn i dostawa</h2>
           <p>Zdjęcia w eleganckiej ramce premium.</p>
         </div>
-
         <div class="delivery-stack">
           <div class="image-frame">
             <img src="dostawa.png" alt="Dostawa pelletu Sosnowe Chwile" style="margin-bottom:12px;max-width:100%;">
@@ -144,7 +113,6 @@
           <h2>eFaktura zaliczkowa</h2>
           <p>Poniżej wypełnij dane, a eFaktura zostanie automatycznie uzupełniona.</p>
         </div>
-
         <div class="quote-grid">
           <form class="quote-form" id="quoteForm">
             <div class="form-row">
@@ -176,20 +144,13 @@
             </div>
             <label>Adres dostawy<textarea id="clientAddress" rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea></label>
             <label>Uwagi do zamówienia<textarea id="clientNotes" rows="4" placeholder="Np. termin dostawy, rozładunek"></textarea></label>
-
-            <div class="calc-box">
-              <p>Szacunkowa wartość zamówienia:</p>
-              <strong id="totalPrice">1099 zł</strong>
-              <small id="calcNoteTons">Cena orientacyjna za 1 paletę Standard.</small>
-            </div>
+            <div class="calc-box"><p>Szacunkowa wartość zamówienia:</p><strong id="totalPrice">1099 zł</strong><small id="calcNoteTons">Cena orientacyjna za 1 paletę Standard.</small></div>
           </form>
         </div>
-
         <div class="invoice-card invoice-modern">
           <div class="invoice-header full-image-header">
-  <img src="Zaliczkowa.png" alt="Sosnowe Chwile eFaktura zaliczkowa" class="full-bleed-image">
-</div>
-
+            <img src="Zaliczkowa.png" alt="Sosnowe Chwile eFaktura zaliczkowa" class="full-bleed-image portrait-fix">
+          </div>
           <div class="invoice-parties">
             <div class="invoice-box">
               <h4>Sprzedawca</h4>
@@ -204,27 +165,13 @@
               <p id="pdfClientNip">—</p>
             </div>
           </div>
-
           <div class="invoice-details">
             <h4>Pozycja zamówienia</h4>
             <div class="invoice-table">
-              <div class="row head">
-                <span>Lp.</span>
-                <span>Nazwa produktu</span>
-                <span>Ilość</span>
-                <span>Cena brutto</span>
-                <span>Wartość brutto</span>
-              </div>
-              <div class="row">
-                <span>1</span>
-                <span id="pdfProduct">Standard</span>
-                <span id="pdfQty">1 paleta</span>
-                <span id="pdfUnit">1 099 zł</span>
-                <span id="pdfTotal">1 099 zł</span>
-              </div>
+              <div class="row head"><span>Lp.</span><span>Nazwa produktu</span><span>Ilość</span><span>Cena brutto</span><span>Wartość brutto</span></div>
+              <div class="row"><span>1</span><span id="pdfProduct">Standard</span><span id="pdfQty">1 paleta</span><span id="pdfUnit">1 099 zł</span><span id="pdfTotal">1 099 zł</span></div>
             </div>
           </div>
-
           <div class="invoice-summary">
             <div class="invoice-summary-left">
               <p><strong>Wartość zamówienia brutto:</strong> <span id="sumTotal">1 099 zł</span></p>
@@ -232,16 +179,10 @@
               <p><strong>Wartość brutto:</strong> <span id="sumTotalBrutto">1 099 zł</span></p>
             </div>
           </div>
-
           <div class="invoice-note">
             <p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p>
-            <p>
-              <strong>Zaliczka:</strong> <span id="pdfAdvancePercent">—</span>% wartości zamówienia.
-              <span id="pdfAdvanceAmount">—</span> do zaliczki.
-              Pozostała część do zapłaty zgodnie z warunkami umowy.
-            </p>
+            <p><strong>Zaliczka:</strong> <span id="pdfAdvancePercent">—</span>% wartości zamówienia. <span id="pdfAdvanceAmount">—</span> do zaliczki. Pozostała część do zapłaty zgodnie z warunkami umowy.</p>
           </div>
-
           <div class="hero-actions" style="margin-top:16px;">
             <button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button>
           </div>
