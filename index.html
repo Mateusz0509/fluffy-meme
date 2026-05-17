@@ -73,69 +73,115 @@
     </section>
 
     <section class="section invoice-section" id="efaktura">
-      <div class="container">
-        <div class="section-head">
-          <h2>eFaktura zaliczkowa</h2>
-          <p>Klient wypełnia formularz i pobiera PDF.</p>
+  <div class="container">
+    <div class="section-head">
+      <h2>eFaktura zaliczkowa</h2>
+      <p>Poniżej wypełnij dane, a eFaktura zostanie automatycznie uzupełniona.</p>
+    </div>
+
+    <!-- FORMULARZ Z LEWEJ (na desktopie) -->
+    <div class="quote-grid">
+      <form class="quote-form" id="quoteForm">
+        <div class="form-row">
+          <label>Imię i nazwisko / firma<input type="text" id="clientName" placeholder="Np. Jan Kowalski / Firma XYZ"></label>
+          <label>NIP do faktury<input type="text" id="clientNip" placeholder="Np. 1234567890"></label>
         </div>
-        <div class="invoice-card invoice-modern">
-          <header class="invoice-header">
-            <div class="invoice-logo-box invoice-logo-compact">
-              <img src="logo-premium.svg" alt="Logo Sosnowe Chwile" class="invoice-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-              <div class="invoice-brand-text">
-                <div class="logo-fallback" style="display:none">SOSNOWE CHWILE</div>
-                <h3>Sosnowe Chwile</h3>
-                <p>Pellet drzewny • Dostawa na terenie Polski</p>
-              </div>
-            </div>
-            <div class="invoice-meta">
-              <p><strong>Dokument:</strong> eFaktura zaliczkowa</p>
-              <p><strong>Nr:</strong> <span id="invNo">FSZ/2026/05/001</span></p>
-              <p><strong>Data:</strong> <span id="invDate">15.05.2026</span></p>
-            </div>
-          </header>
-          <div class="invoice-parties">
-            <div class="invoice-box">
-              <h4>Sprzedawca</h4>
-              <p><strong>Nordiva Trade Sp. z o.o.</strong></p>
-              <p>ul. Rynek 17/2, 82-400 Gdańsk</p>
-              <p>NIP: 592-230-81-05</p>
-            </div>
-            <div class="invoice-box">
-              <h4>Nabywca</h4>
-              <p id="pdfClientName">—</p>
-              <p id="pdfClientAddress">—</p>
-              <p id="pdfClientNip">—</p>
-            </div>
+        <div class="form-row">
+          <label>Email<input type="email" id="clientEmail" placeholder="Np. kontakt@firma.pl"></label>
+          <label>Telefon<input type="tel" id="clientPhone" placeholder="Np. +48 123 456 789"></label>
+        </div>
+
+        <!-- ILOŚĆ W TONACH -->
+        <div class="form-row">
+          <label>Ilość ton<select id="qtyTons">
+            <option value="1">1 tona</option>
+            <option value="2">2 tony</option>
+            <option value="3">3 tony</option>
+            <option value="5">5 ton</option>
+            <option value="10">10 ton</option>
+            <option value="15">15 ton</option>
+            <option value="20">20 ton</option>
+            <option value="25">25 ton</option>
+            <option value="30">30 ton</option>
+          </select></label>
+          <label>Rodzaj produktu<select id="product">
+            <option value="1099">Standard</option>
+            <option value="999">Economy</option>
+            <option value="1249">Premium Plus</option>
+            <option value="1299">Premium A1</option>
+          </select></label>
+        </div>
+
+        <label>Adres dostawy<textarea id="clientAddress" rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea></label>
+        <label>Uwagi do zamówienia<textarea id="clientNotes" rows="4" placeholder="Np. termin dostawy, rozładunek"></textarea></label>
+
+        <div class="calc-box">
+          <p>Szacunkowa wartość zamówienia:</p>
+          <strong id="totalPrice">1099 zł</strong>
+          <small id="calcNoteTons">Cena orientacyjna za 1 paletę Standard.</small>
+        </div>
+      </form>
+    </div>
+
+    <!-- eFaktura z PRAWYJ (na desktopie) -->
+    <div class="invoice-card invoice-modern">
+      <header class="invoice-header">
+        <div class="invoice-logo-box invoice-logo-compact">
+          <img src="logo-premium.svg" alt="Logo Sosnowe Chwile" class="invoice-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <div class="invoice-brand-text">
+            <div class="logo-fallback" style="display:none">SOSNOWE CHWILE</div>
+            <h3>Sosnowe Chwile</h3>
+            <p>Pellet drzewny • Dostawa na terenie Polski</p>
           </div>
-          <div class="invoice-details">
-            <h4>Pozycja zamówienia</h4>
-            <div class="invoice-table">
-              <div class="row head"><span>Lp.</span><span>Nazwa produktu</span><span>Ilość</span><span>Cena brutto</span><span>Wartość brutto</span></div>
-              <div class="row"><span>1</span><span id="pdfProduct">Standard</span><span id="pdfQty">1 paleta</span><span id="pdfUnit">1 099 zł</span><span id="pdfTotal">1 099 zł</span></div>
-            </div>
-          </div>
-          <div class="invoice-summary">
-            <div class="invoice-summary-left">
-              <p><strong>Wartość zamówienia brutto:</strong> <span id="sumTotal">1 099 zł</span></p>
-              <p><strong>Podatek VAT:</strong> <span>0%</span></p>
-              <p><strong>Wartość brutto:</strong> <span id="sumTotalBrutto">1 099 zł</span></p>
-            </div>
-          </div>
-          <div class="invoice-note">
-            <p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p>
-            <p>
-              <strong>Zaliczka:</strong> <span id="pdfAdvancePercent">—</span>% wartości zamówienia. 
-              <span id="pdfAdvanceAmount">—</span> do zaliczki.
-              Pozostała część do zapłaty zgodnie z warunkami umowy.
-            </p>
-          </div>
-          <div class="hero-actions" style="margin-top:16px;">
-            <button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button>
-          </div>
+        </div>
+        <div class="invoice-meta">
+          <p><strong>Dokument:</strong> eFaktura zaliczkowa</p>
+          <p><strong>Nr:</strong> <span id="invNo">FSZ/2026/05/001</span></p>
+          <p><strong>Data:</strong> <span id="invDate">15.05.2026</span></p>
+        </div>
+      </header>
+      <div class="invoice-parties">
+        <div class="invoice-box">
+          <h4>Sprzedawca</h4>
+          <p><strong>Nordiva Trade Sp. z o.o.</strong></p>
+          <p>ul. Rynek 17/2, 82-400 Gdańsk</p>
+          <p>NIP: 592-230-81-05</p>
+        </div>
+        <div class="invoice-box">
+          <h4>Nabywca</h4>
+          <p id="pdfClientName">—</p>
+          <p id="pdfClientAddress">—</p>
+          <p id="pdfClientNip">—</p>
         </div>
       </div>
-    </section>
+      <div class="invoice-details">
+        <h4>Pozycja zamówienia</h4>
+        <div class="invoice-table">
+          <div class="row head"><span>Lp.</span><span>Nazwa produktu</span><span>Ilość</span><span>Cena brutto</span><span>Wartość brutto</span></div>
+          <div class="row"><span>1</span><span id="pdfProduct">Standard</span><span id="pdfQty">1 paleta</span><span id="pdfUnit">1 099 zł</span><span id="pdfTotal">1 099 zł</span></div>
+        </div>
+      </div>
+      <div class="invoice-summary">
+        <div class="invoice-summary-left">
+          <p><strong>Wartość zamówienia brutto:</strong> <span id="sumTotal">1 099 zł</span></p>
+          <p><strong>Podatek VAT:</strong> <span>0%</span></p>
+          <p><strong>Wartość brutto:</strong> <span id="sumTotalBrutto">1 099 zł</span></p>
+        </div>
+      </div>
+      <div class="invoice-note">
+        <p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p>
+        <p>
+          <strong>Zaliczka:</strong> <span id="pdfAdvancePercent">—</span>% wartości zamówienia. 
+          <span id="pdfAdvanceAmount">—</span> do zaliczki.
+          Pozostała część do zapłaty zgodnie z warunkami umowy.
+        </p>
+      </div>
+      <div class="hero-actions" style="margin-top:16px;">
+        <button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section class="section" id="delivery-assets">
       <div class="container">
