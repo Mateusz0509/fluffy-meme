@@ -132,3 +132,14 @@ h1,h2,h3,.section-head h2,.oferta-premium-title,.hero h1,.hero h2,.title{color:#
 .card,.offer-card,.product-card,.invoice-card,.info-box,.content-box,.luxury-frame{padding:24px 24px;border-radius:24px;background:rgba(10,25,18,.76);border:1px solid rgba(226,198,128,.38);box-shadow:0 18px 44px rgba(0,0,0,.26)}
 .header,.navbar,.topbar{border-bottom:1px solid rgba(226,198,128,.26)}
 @media (max-width:768px){.section{padding-top:56px;padding-bottom:56px;margin-top:6px;margin-bottom:6px}.card,.offer-card,.product-card,.invoice-card,.info-box,.content-box,.luxury-frame{padding:18px 16px;border-radius:20px}}
+
+body, .app, .site, main{color:#f7f0dc !important}
+*, *::before, *::after{caret-color:#f7f0dc}
+a,button,.btn,[class*='nav'],[class*='menu'],[class*='link'],[class*='item']{color:#f7f0dc !important}
+header,nav,.navbar,.topbar,.menu-panel,.dropdown,.mobile-menu{background:rgba(7,18,12,.96) !important;border:1px solid rgba(214,186,120,.42) !important;box-shadow:0 16px 36px rgba(0,0,0,.36) !important}
+.menu-panel a,.dropdown a,.mobile-menu a,.nav-item,.menu-item,.link-item{display:block !important;color:#fff6dd !important;background:transparent !important;opacity:1 !important;visibility:visible !important;text-shadow:0 1px 4px rgba(0,0,0,.6) !important;font-weight:700 !important}
+.menu-panel li,.dropdown li,.mobile-menu li{margin:10px 0 !important}
+.section-head h2,h1,h2,h3{color:#fffaf0 !important;text-shadow:0 2px 10px rgba(0,0,0,.55) !important;opacity:1 !important}
+.card,.offer-card,.product-card,.invoice-card,.info-box,.content-box,.luxury-frame{background:rgba(10,25,18,.9) !important;border:1px solid rgba(226,198,128,.38) !important;color:#f7f0dc !important}
+.card *, .offer-card *, .product-card *, .invoice-card *, .info-box *, .content-box *{color:#f7f0dc !important;opacity:1 !important}
+button, .btn, .primary-btn{background:linear-gradient(135deg,#d8ba72,#b38a35) !important;color:#112218 !important;border:1px solid rgba(255,243,208,.55) !important}
