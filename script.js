@@ -13,10 +13,13 @@ if (btn && nav) {
   );
 }
 
-const qty = document.getElementById('qty');
+// paleta ≈ 1 tona
+const TONS_PER_PALLET = 1.0;
+
+const qtyTons = document.getElementById('qtyTons');          // formularz z tonami
 const product = document.getElementById('product');
 const totalPrice = document.getElementById('totalPrice');
-const calcNote = document.getElementById('calcNote');
+const calcNote = document.getElementById('calcNoteTons');
 const sumTotal = document.getElementById('sumTotal');
 const sumTotalBrutto = document.getElementById('sumTotalBrutto');
 const pdfQty = document.getElementById('pdfQty');
@@ -35,17 +38,19 @@ function formatPLN(n) {
 }
 
 function updatePrice() {
-  if (!qty || !product || !totalPrice || !calcNote) return;
+  if (!qtyTons || !product || !totalPrice || !calcNote) return;
 
   const unit = Number(product.value) || 1099;
-  const count = Number(qty.value) || 1;
-  const total = unit * count;
+  const tons = Number(qtyTons.value) || 1;
+  const palets = Math.ceil(tons / TONS_PER_PALLET);
+  const total = unit * palets;
 
-  const qtyLabel = `${count} palet`;
+  const qtyLabel = `${palets} palet`;
+  const qtyLabelTons = `${tons} ton${tons === 1 ? '' : 'y'}`;
   const prodLabel = product.options[product.selectedIndex]?.text || '—';
 
   totalPrice.textContent = formatPLN(total);
-  calcNote.textContent = `Szacunkowa cena dla ${qtyLabel}.`;
+  calcNote.textContent = `Szacunkowa cena za ${qtyLabel} (${qtyLabelTons}).`;
 
   if (sumTotal) sumTotal.textContent = formatPLN(total);
   if (sumTotalBrutto) sumTotalBrutto.textContent = formatPLN(total);
@@ -59,7 +64,7 @@ function updatePrice() {
   if (pdfClientAddress) pdfClientAddress.textContent = document.getElementById('clientAddress')?.value || '—';
   if (pdfClientNip) pdfClientNip.textContent = 'NIP: ' + (document.getElementById('clientNip')?.value || '—');
 
-  // nowa logika z 10% / 15% / 20%
+  // 10% / 15% / 20% zaliczki
   let advPerc;
   if (unit === 999) {           // Economy
     advPerc = 10;
@@ -79,14 +84,17 @@ function updatePrice() {
   if (pdfAdvanceAmount) pdfAdvanceAmount.textContent = formatPLN(advance);
 }
 
-if (qty && product) {
-  qty.addEventListener('change', updatePrice);
+if (product) {
+  if (qtyTons) {
+    qtyTons.addEventListener('change', updatePrice);
+  }
   product.addEventListener('change', updatePrice);
-  ['clientName', 'clientAddress', 'clientNip'].forEach(id =>
-    document.getElementById(id)?.addEventListener('input', updatePrice)
-  );
   updatePrice();
 }
+
+['clientName', 'clientAddress', 'clientNip'].forEach(id => {
+  document.getElementById(id)?.addEventListener('input', updatePrice);
+});
 
 const imageModal = document.getElementById('imageModal');
 const modalImage = document.getElementById('modalImage');
@@ -131,9 +139,11 @@ if (pdfBtn) {
     const address = document.getElementById('clientAddress')?.value || '—';
     const notes = document.getElementById('clientNotes')?.value || '—';
 
-    const count = Number(qty?.value) || 1;
+    const qty = document.getElementById('qtyTons');          // ilość w tonach
+    const tons = Number(qty?.value) || 1;
+    const palets = Math.ceil(tons / TONS_PER_PALLET);      // palety z zaokrągleniem do góry
     const unit = Number(product?.value) || 1099;
-    const total = unit * count;
+    const total = unit * palets;
     const productName = product?.options[product.selectedIndex]?.text || 'Standard';
 
     const invNo = invNoEl?.textContent || 'FSZ/2026/05/001';
@@ -246,7 +256,7 @@ if (pdfBtn) {
 
     doc.text('Uwagi:', 14, 121);
 
-    // logika procentu zaliczki PDF: 10% / 15% / 20%
+    // 10% / 15% / 20% zaliczki
     let advPerc;
     if (unit === 999) {           // Economy
       advPerc = 10;
