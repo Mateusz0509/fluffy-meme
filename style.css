@@ -115,3 +115,20 @@ a{color:#e7d29a}
 .btn:hover,.button:hover,.primary-btn:hover{filter:brightness(1.03)}
 .gallery-img{border-color:rgba(214,186,120,.35);box-shadow:0 16px 36px rgba(0,0,0,.2)}
 @media (max-width:768px){.container{padding-left:14px;padding-right:14px}.section{padding-top:28px;padding-bottom:28px}.gallery-grid{gap:10px}.gallery-img{height:160px}.card,.offer-card,.product-card,.invoice-card,.info-box,.content-box{border-radius:18px}}
+
+body{color:#f8f1e0}
+.section-head h2,.oferta-premium-title,.hero h1,.hero h2,.title{color:#fff7e6;text-shadow:0 2px 8px rgba(0,0,0,.45),0 1px 0 rgba(0,0,0,.35)}
+p,li,span,td,th,.subtitle,.section-head p,.oferta-premium-sub{color:#efe0bd;text-shadow:0 1px 4px rgba(0,0,0,.28)}
+.card,.offer-card,.product-card,.invoice-card,.info-box,.content-box,.luxury-frame{background:rgba(11,28,19,.72);border:1px solid rgba(214,186,120,.34);box-shadow:0 16px 38px rgba(0,0,0,.22)}
+.card *,.offer-card *,.product-card *,.invoice-card *,.info-box *,.content-box *{color:inherit}
+.gallery-img{box-shadow:0 16px 34px rgba(0,0,0,.22);border:1px solid rgba(214,186,120,.35)}
+nav a,.menu a,.nav-link{color:#f2e4c3;text-shadow:0 1px 3px rgba(0,0,0,.35)}
+header, .navbar, .topbar{background:rgba(10,25,18,.68);backdrop-filter:blur(8px)}
+
+.section{padding-top:72px;padding-bottom:72px;margin-top:10px;margin-bottom:10px}
+.section + .section{margin-top:28px}
+h1,h2,h3,.section-head h2,.oferta-premium-title,.hero h1,.hero h2,.title{color:#fffdf6;text-shadow:0 3px 12px rgba(0,0,0,.55),0 1px 0 rgba(0,0,0,.28);letter-spacing:.06em}
+.section-head p,.subtitle,.oferta-premium-sub,p,li,span,td,th{color:#f2e7c8;text-shadow:0 1px 5px rgba(0,0,0,.32)}
+.card,.offer-card,.product-card,.invoice-card,.info-box,.content-box,.luxury-frame{padding:24px 24px;border-radius:24px;background:rgba(10,25,18,.76);border:1px solid rgba(226,198,128,.38);box-shadow:0 18px 44px rgba(0,0,0,.26)}
+.header,.navbar,.topbar{border-bottom:1px solid rgba(226,198,128,.26)}
+@media (max-width:768px){.section{padding-top:56px;padding-bottom:56px;margin-top:6px;margin-bottom:6px}.card,.offer-card,.product-card,.invoice-card,.info-box,.content-box,.luxury-frame{padding:18px 16px;border-radius:20px}}
