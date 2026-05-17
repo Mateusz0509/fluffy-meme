@@ -39,21 +39,24 @@
 
   <main id="home">
     <section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow">Nowa marka pelletu</span>
-      <h1>Sosnowe Chwile — prosty wybór, szybkie zamówienie</h1>
-      <p>Wybierz liczbę palet, zobacz cenę i przejdź prosto do eFaktury.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#oferta">Zobacz ofertę</a>
-        <a class="btn btn-outline" href="#efaktura">Przejdź do eFaktury</a>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Nowa marka pelletu</span>
+          <h1>Sosnowe Chwile — prosty wybór, szybkie zamówienie</h1>
+          <p>Wybierz liczbę palet, zobacz cenę i przejdź prosto do eFaktury.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#wycena">Zobacz ofertę</a>
+            <a class="btn btn-outline" href="#wycena">Przejdź do wyceny</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="image-frame">
+            <img src="tir.png" alt="Dostawa pelletu Sosnowe Chwile">
+          </div>
+        </div>
       </div>
-    </div>
-  <div class="hero-image">
-  <div class="image-frame">
-    <img src="tir.png" alt="Dostawa pelletu Sosnowe Chwile">
-  </div>
-</div>
+    </section>
+
     <section class="section" id="galeria">
       <div class="container">
         <div class="section-head">
@@ -64,9 +67,7 @@
           <img class="gallery-img" src="image-1.png" alt="Galeria 1">
           <img class="gallery-img" src="image-2.png" alt="Galeria 2">
           <img class="gallery-img" src="image.png" alt="Galeria 3">
-          <img class="gallery-img"
-
- src="image-3.png" alt="Galeria 4">
+          <img class="gallery-img" src="image-3.png" alt="Galeria 4">
         </div>
       </div>
     </section>
@@ -122,13 +123,20 @@
             </div>
           </div>
           <div class="invoice-note">
-  <p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p>
-  <p>
-    <strong>Zaliczka:</strong> 20% wartości zamówienia. 
-    Pozostała część do zapłaty zgodnie z warunkami umowy. 
-    <small>(możesz ustawić 10–20% w zależności od produktu).</small>
-  </p>
-</div>
+            <p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p>
+            <p>
+              <strong>Zaliczka:</strong> <span id="pdfAdvancePercent">—</span>% wartości zamówienia. 
+              <span id="pdfAdvanceAmount">—</span> do zaliczki.
+              Pozostała część do zapłaty zgodnie z warunkami umowy.
+            </p>
+          </div>
+          <div class="hero-actions" style="margin-top:16px;">
+            <button class="btn btn-primary" id="generatePdf" type="button">Generuj PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="delivery-assets">
       <div class="container">
         <div class="section-head">
