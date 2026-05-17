@@ -9,3 +9,18 @@
 .invoice-table{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .invoice-table .row{min-width:520px}
 @media (max-width:767px){.invoice-table .row{min-width:520px}.banner-prices div{min-height:56px}}
+.image-frame {
+  display: inline-block;
+  background: linear-gradient(135deg, #f4e9ce, #e7efd2);
+  border: 1px solid rgba(192, 160, 90, 0.22);
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+.image-frame img {
+  border-radius: 18px;
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
