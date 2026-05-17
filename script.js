@@ -32,7 +32,7 @@ const pdfAdvancePercent = document.getElementById('pdfAdvancePercent');
 const pdfAdvanceAmount = document.getElementById('pdfAdvanceAmount');
 
 function formatPLN(n) {
-  return n.toLocaleString('pl-PL') + ' zĹ';
+  return n.toLocaleString('pl-PL') + ' zł';
 }
 
 function getAdvancePercent(unit) {
@@ -52,7 +52,7 @@ function updatePrice() {
   const total = unit * palets;
   const qtyLabel = `${palets} palet`;
   const qtyLabelTons = `${tons} ton${tons === 1 ? '' : 'y'}`;
-  const prodLabel = product.options[product.selectedIndex]?.text || 'â';
+  const prodLabel = product.options[product.selectedIndex]?.text || '—';
   const advPerc = getAdvancePercent(unit);
   const advance = (total * advPerc) / 100;
 
@@ -64,9 +64,9 @@ function updatePrice() {
   if (pdfProduct) pdfProduct.textContent = prodLabel;
   if (pdfUnit) pdfUnit.textContent = formatPLN(unit);
   if (pdfTotal) pdfTotal.textContent = formatPLN(total);
-  if (pdfClientName) pdfClientName.textContent = document.getElementById('clientName')?.value || 'â';
-  if (pdfClientAddress) pdfClientAddress.textContent = document.getElementById('clientAddress')?.value || 'â';
-  if (pdfClientNip) pdfClientNip.textContent = 'NIP: ' + (document.getElementById('clientNip')?.value || 'â');
+  if (pdfClientName) pdfClientName.textContent = document.getElementById('clientName')?.value || '—';
+  if (pdfClientAddress) pdfClientAddress.textContent = document.getElementById('clientAddress')?.value || '—';
+  if (pdfClientNip) pdfClientNip.textContent = 'NIP: ' + (document.getElementById('clientNip')?.value || '—');
   if (pdfAdvancePercent) pdfAdvancePercent.textContent = advPerc;
   if (pdfAdvanceAmount) pdfAdvanceAmount.textContent = formatPLN(advance);
 }
@@ -81,7 +81,8 @@ if (product) {
   document.getElementById(id)?.addEventListener('input', updatePrice);
 });
 
-document.querySelectorAll('.gallery-img').forEach(img =>
+document.querySelectorAll('.gallery-img').forEach(img => {
+  img.style.cursor = 'pointer';
   img.addEventListener('click', () => {
     const imageModal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
@@ -90,8 +91,8 @@ document.querySelectorAll('.gallery-img').forEach(img =>
       imageModal.classList.add('open');
       imageModal.setAttribute('aria-hidden', 'false');
     }
-  })
-);
+  });
+});
 
 const modalClose = document.getElementById('modalClose');
 const imageModal = document.getElementById('imageModal');
@@ -117,12 +118,12 @@ if (pdfBtn) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'mm', format: 'a4' });
 
-    const name = document.getElementById('clientName')?.value || 'â';
-    const nip = document.getElementById('clientNip')?.value || 'â';
-    const email = document.getElementById('clientEmail')?.value || 'â';
-    const phone = document.getElementById('clientPhone')?.value || 'â';
-    const address = document.getElementById('clientAddress')?.value || 'â';
-    const notes = document.getElementById('clientNotes')?.value || 'â';
+    const name = document.getElementById('clientName')?.value || '—';
+    const nip = document.getElementById('clientNip')?.value || '—';
+    const email = document.getElementById('clientEmail')?.value || '—';
+    const phone = document.getElementById('clientPhone')?.value || '—';
+    const address = document.getElementById('clientAddress')?.value || '—';
+    const notes = document.getElementById('clientNotes')?.value || '—';
     const tons = Number(document.getElementById('qtyTons')?.value) || 1;
     const palets = Math.ceil(tons / TONS_PER_PALLET);
     const unit = Number(product?.value) || 1099;
@@ -145,7 +146,7 @@ if (pdfBtn) {
       doc.text('Sosnowe Chwile', margin, 16);
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(8);
-      doc.text('PELLET Z NATURY, CIEPĹO NA DĹUGO', margin, 22);
+      doc.text('PELLET Z NATURY, CIEPŁO NA DŁUGO', margin, 22);
       doc.line(58, 10, 58, 30);
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(18);
@@ -155,9 +156,9 @@ if (pdfBtn) {
       doc.text(invNo, w / 2, 24, { align: 'center' });
       doc.setFontSize(9);
       doc.text('Data wystawienia: ' + invDate, right, 12, { align: 'right' });
-      doc.text('Data sprzedaĹźy: ' + invDate, right, 18, { align: 'right' });
-      doc.text('Termin pĹatnoĹci: 06.06.2024', right, 24, { align: 'right' });
-      doc.text('Forma pĹatnoĹci: Przelew', right, 30, { align: 'right' });
+      doc.text('Data sprzedaży: ' + invDate, right, 18, { align: 'right' });
+      doc.text('Termin płatności: 06.06.2024', right, 24, { align: 'right' });
+      doc.text('Forma płatności: Przelew', right, 30, { align: 'right' });
       doc.line(margin, 38, right, 38);
     }
 
@@ -172,17 +173,17 @@ if (pdfBtn) {
     head();
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(14);
-    doc.text('WAĹťNE DANE DO PRZELEWU', margin, 48);
+    doc.text('WAŻNE DANE DO PRZELEWU', margin, 48);
     doc.setDrawColor(200, 168, 90);
     doc.setLineWidth(0.8);
     doc.line(margin, 51, right, 51);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
-    doc.text('TytuĹ przelewu:', margin, 60);
+    doc.text('Tytuł przelewu:', margin, 60);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    const tytul = `Zaliczka za zamĂłwienie ${invNo} - ${productName}, ${tons} ton`;
+    const tytul = `Zaliczka za zamówienie ${invNo} - ${productName}, ${tons} ton`;
     doc.text(doc.splitTextToSize(tytul, 180), margin, 66);
 
     doc.setFont('helvetica', 'bold');
@@ -203,8 +204,8 @@ if (pdfBtn) {
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(11);
-    doc.text(`Zaliczka wynosi ${advPerc}% wartoĹci zamĂłwienia.`, margin, 122);
-    doc.text(`Do zapĹaty po zaliczce: ${formatPLN(total - advance)}`, margin, 129);
+    doc.text(`Zaliczka wynosi ${advPerc}% wartości zamówienia.`, margin, 122);
+    doc.text(`Do zapłaty po zaliczce: ${formatPLN(total - advance)}`, margin, 129);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
@@ -219,17 +220,17 @@ if (pdfBtn) {
     head();
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(12);
-    doc.text('Podsumowanie zamĂłwienia', margin, 48);
+    doc.text('Podsumowanie zamówienia', margin, 48);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
 
     const summaryText = [
       `Produkt: ${productName}`,
-      `IloĹÄ: ${tons} ton (${palets} palet)`,
+      `Ilość: ${tons} ton (${palets} palet)`,
       `Cena jednostkowa: ${formatPLN(unit)}`,
-      `WartoĹÄ zamĂłwienia: ${formatPLN(total)}`,
+      `Wartość zamówienia: ${formatPLN(total)}`,
       `Kwota zaliczki: ${formatPLN(advance)}`,
-      `PozostaĹo do zapĹaty: ${formatPLN(total - advance)}`,
+      `Pozostało do zapłaty: ${formatPLN(total - advance)}`,
       `Uwagi: ${notes}`
     ].join('
 ');
@@ -243,21 +244,21 @@ if (pdfBtn) {
     doc.rect(boxX, boxY, boxW, boxH);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
-    doc.text('WartoĹÄ netto:', boxX + 4, boxY + 10);
+    doc.text('Wartość netto:', boxX + 4, boxY + 10);
     doc.text(formatPLN(total), boxX + boxW - 4, boxY + 10, { align: 'right' });
-    doc.text('WartoĹÄ VAT (0%):', boxX + 4, boxY + 20);
-    doc.text('0,00 zĹ', boxX + boxW - 4, boxY + 20, { align: 'right' });
+    doc.text('Wartość VAT (0%):', boxX + 4, boxY + 20);
+    doc.text('0,00 zł', boxX + boxW - 4, boxY + 20, { align: 'right' });
     doc.setFillColor(33, 56, 27);
     doc.rect(boxX, boxY + 26, boxW, 10, 'F');
     doc.setTextColor(255, 255, 255);
-    doc.text('WartoĹÄ brutto:', boxX + 4, boxY + 33);
+    doc.text('Wartość brutto:', boxX + 4, boxY + 33);
     doc.text(formatPLN(total), boxX + boxW - 4, boxY + 33, { align: 'right' });
     doc.setTextColor(20, 20, 20);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
-    doc.text('SposĂłb pĹatnoĹci: Przelew bankowy', margin, 162);
-    doc.text('TytuĹ przelewu oraz numer konta znajdujÄ siÄ na stronie 1.', margin, 169);
+    doc.text('Sposób płatności: Przelew bankowy', margin, 162);
+    doc.text('Tytuł przelewu oraz numer konta znajdują się na stronie 1.', margin, 169);
 
     drawPageNum();
     const pages = doc.internal.getNumberOfPages();
