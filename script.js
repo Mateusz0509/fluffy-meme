@@ -1,278 +1,219 @@
-const btn = document.getElementById('menuBtn');
-const nav = document.getElementById('navMenu');
-if (btn && nav) {
-  btn.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  nav.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    })
-  );
-}
-
-const TONS_PER_PALLET = 1.0;
-const qtyTons = document.getElementById('qtyTons');
-const product = document.getElementById('product');
-const totalPrice = document.getElementById('totalPrice');
-const calcNote = document.getElementById('calcNoteTons');
-const sumTotal = document.getElementById('sumTotal');
-const sumTotalBrutto = document.getElementById('sumTotalBrutto');
-const pdfQty = document.getElementById('pdfQty');
-const pdfProduct = document.getElementById('pdfProduct');
-const pdfUnit = document.getElementById('pdfUnit');
-const pdfTotal = document.getElementById('pdfTotal');
-const invNoEl = document.getElementById('invNo');
-const pdfClientName = document.getElementById('pdfClientName');
-const pdfClientAddress = document.getElementById('pdfClientAddress');
-const pdfClientNip = document.getElementById('pdfClientNip');
-const pdfAdvancePercent = document.getElementById('pdfAdvancePercent');
-const pdfAdvanceAmount = document.getElementById('pdfAdvanceAmount');
-
-function formatPLN(n) {
-  return n.toLocaleString('pl-PL') + ' zĹ';
-}
-
-function getAdvancePercent(unit) {
-  if (unit === 999) return 10;
-  if (unit === 1099) return 15;
-  if (unit === 1249) return 15;
-  if (unit === 1299) return 20;
-  return 15;
-}
-
-function updatePrice() {
-  if (!qtyTons || !product || !totalPrice || !calcNote) return;
-
-  const unit = Number(product.value) || 1099;
-  const tons = Number(qtyTons.value) || 1;
-  const palets = Math.ceil(tons / TONS_PER_PALLET);
-  const total = unit * palets;
-  const qtyLabel = `${palets} palet`;
-  const qtyLabelTons = `${tons} ton${tons === 1 ? '' : 'y'}`;
-  const prodLabel = product.options[product.selectedIndex]?.text || 'â';
-  const advPerc = getAdvancePercent(unit);
-  const advance = (total * advPerc) / 100;
-
-  totalPrice.textContent = formatPLN(total);
-  calcNote.textContent = `Szacunkowa cena za ${qtyLabel} (${qtyLabelTons}).`;
-  if (sumTotal) sumTotal.textContent = formatPLN(total);
-  if (sumTotalBrutto) sumTotalBrutto.textContent = formatPLN(total);
-  if (pdfQty) pdfQty.textContent = qtyLabelTons;
-  if (pdfProduct) pdfProduct.textContent = prodLabel;
-  if (pdfUnit) pdfUnit.textContent = formatPLN(unit);
-  if (pdfTotal) pdfTotal.textContent = formatPLN(total);
-  if (pdfClientName) pdfClientName.textContent = document.getElementById('clientName')?.value || 'â';
-  if (pdfClientAddress) pdfClientAddress.textContent = document.getElementById('clientAddress')?.value || 'â';
-  if (pdfClientNip) pdfClientNip.textContent = 'NIP: ' + (document.getElementById('clientNip')?.value || 'â');
-  if (pdfAdvancePercent) pdfAdvancePercent.textContent = advPerc;
-  if (pdfAdvanceAmount) pdfAdvanceAmount.textContent = formatPLN(advance);
-}
-
-if (product) {
-  if (qtyTons) qtyTons.addEventListener('change', updatePrice);
-  product.addEventListener('change', updatePrice);
-  updatePrice();
-}
-
-['clientName', 'clientAddress', 'clientNip'].forEach(id => {
-  document.getElementById(id)?.addEventListener('input', updatePrice);
-});
-
-document.querySelectorAll('.gallery-img').forEach(img =>
-  img.addEventListener('click', () => {
-    const imageModal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    if (imageModal && modalImage) {
-      modalImage.src = img.src;
-      imageModal.classList.add('open');
-      imageModal.setAttribute('aria-hidden', 'false');
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Sosnowe Chwile</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <style>
+    .image-frame img,
+    .premium-card img,
+    .gallery-grid img {
+      cursor: pointer;
     }
-  })
-);
+  </style>
+</head>
+<body>
+  <section class="top-banner">
+    <div class="container banner-inner">
+      <img class="banner-image" src="baner.png" alt="Baner Sosnowe Chwile">
+      <div class="banner-frame">
+        <div class="banner-prices">
+          <div><strong>Standard</strong><span>1099 zł / paleta</span></div>
+          <div><strong>Economy</strong><span>999 zł / paleta</span></div>
+          <div><strong>Premium Plus</strong><span>1249 zł / paleta</span></div>
+          <div><strong>Premium A1</strong><span>1299 zł / paleta</span></div>
+        </div>
+        <div class="banner-cta">Szybka wycena • Dostawa na terenie Polski</div>
+      </div>
+    </div>
+  </section>
 
-const modalClose = document.getElementById('modalClose');
-const imageModal = document.getElementById('imageModal');
-const modalImage = document.getElementById('modalImage');
-if (modalClose && imageModal) {
-  modalClose.addEventListener('click', () => {
-    imageModal.classList.remove('open');
-    imageModal.setAttribute('aria-hidden', 'true');
-  });
-}
-if (imageModal) {
-  imageModal.addEventListener('click', e => {
-    if (e.target === imageModal) {
-      imageModal.classList.remove('open');
-      imageModal.setAttribute('aria-hidden', 'true');
-    }
-  });
-}
+  <header class="header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home"><span class="brand-text">Sosnowe Chwile</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu" type="button"><span></span><span></span><span></span></button>
+      <nav class="nav" id="navMenu">
+        <a href="#home">Start</a>
+        <a href="#oferta-premium">Oferta</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#delivery-assets">Logistyka</a>
+        <a href="#efaktura">eFaktura</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
 
-const pdfBtn = document.getElementById('generatePdf');
-if (pdfBtn) {
-  pdfBtn.addEventListener('click', () => {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Nowa marka pelletu</span>
+          <h1>Sosnowe Chwile — prosty wybór, szybkie zamówienie</h1>
+          <p>Wybierz liczbę ton, zobacz cenę i przejdź prosto do eFaktury.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#efaktura">Zobacz ofertę</a>
+            <a class="btn btn-outline" href="#efaktura">Przejdź do eFaktury</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="image-frame">
+            <img src="tir.png" alt="Dostawa pelletu Sosnowe Chwile" style="margin-bottom:12px;max-width:100%;">
+            <img src="magazyn.png" alt="Magazyn Sosnowe Chwile" style="max-width:100%;">
+          </div>
+        </div>
+      </div>
+    </section>
 
-    const name = document.getElementById('clientName')?.value || 'â';
-    const nip = document.getElementById('clientNip')?.value || 'â';
-    const email = document.getElementById('clientEmail')?.value || 'â';
-    const phone = document.getElementById('clientPhone')?.value || 'â';
-    const address = document.getElementById('clientAddress')?.value || 'â';
-    const notes = document.getElementById('clientNotes')?.value || 'â';
-    const tons = Number(document.getElementById('qtyTons')?.value) || 1;
-    const palets = Math.ceil(tons / TONS_PER_PALLET);
-    const unit = Number(product?.value) || 1099;
-    const total = unit * palets;
-    const productName = product?.options[product.selectedIndex]?.text || 'Standard';
-    const advPerc = getAdvancePercent(unit);
-    const advance = (total * advPerc) / 100;
-    const invNo = invNoEl?.textContent || 'FSZ/2026/05/001';
-    const invDate = new Date().toLocaleDateString('pl-PL');
-    if (document.getElementById('invDate')) document.getElementById('invDate').textContent = invDate;
+    <section class="section luxury-section" id="oferta-premium">
+      <div class="container">
+        <div class="section-head luxury-head">
+          <span class="section-kicker">Oferta premium</span>
+          <h2>Warianty produktu</h2>
+          <p>Elegancka prezentacja pakietów z możliwością powiększenia zdjęcia po kliknięciu.</p>
+        </div>
+        <div class="premium-grid">
+          <article class="premium-card"><img class="gallery-img premium-img" src="standard.png" alt="Pellet Standard"><div class="premium-body"><h3>Standard</h3><p>1099 zł / paleta</p></div></article>
+          <article class="premium-card"><img class="gallery-img premium-img" src="economy.png" alt="Pellet Economy"><div class="premium-body"><h3>Economy</h3><p>999 zł / paleta</p></div></article>
+          <article class="premium-card"><img class="gallery-img premium-img" src="premiumplus.png" alt="Pellet Premium Plus"><div class="premium-body"><h3>Premium Plus</h3><p>1249 zł / paleta</p></div></article>
+          <article class="premium-card"><img class="gallery-img premium-img" src="premiuma1.png" alt="Pellet Premium A1"><div class="premium-body"><h3>Premium A1</h3><p>1299 zł / paleta</p></div></article>
+        </div>
+      </div>
+    </section>
 
-    const w = doc.internal.pageSize.getWidth();
-    const h = doc.internal.pageSize.getHeight();
-    const margin = 14;
-    const right = w - margin;
+    <section class="section" id="galeria">
+      <div class="container">
+        <div class="section-head luxury-head">
+          <span class="section-kicker">Galeria premium</span>
+          <h2>Detale i realizacje</h2>
+          <p>Kliknij zdjęcie, aby je powiększyć w pełnym podglądzie.</p>
+        </div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="image-1.png" alt="Galeria 1">
+          <img class="gallery-img" src="image-2.png" alt="Galeria 2">
+          <img class="gallery-img" src="image.png" alt="Galeria 3">
+          <img class="gallery-img" src="image-3.png" alt="Galeria 4">
+        </div>
+      </div>
+    </section>
 
-    function head() {
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(18);
-      doc.text('Sosnowe Chwile', margin, 16);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8);
-      doc.text('PELLET Z NATURY, CIEPĹO NA DĹUGO', margin, 22);
-      doc.line(58, 10, 58, 30);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(18);
-      doc.text('eFaktura zaliczkowa', w / 2, 16, { align: 'center' });
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(11);
-      doc.text(invNo, w / 2, 24, { align: 'center' });
-      doc.setFontSize(9);
-      doc.text('Data wystawienia: ' + invDate, right, 12, { align: 'right' });
-      doc.text('Data sprzedaĹźy: ' + invDate, right, 18, { align: 'right' });
-      doc.text('Termin pĹatnoĹci: 06.06.2024', right, 24, { align: 'right' });
-      doc.text('Forma pĹatnoĹci: Przelew', right, 30, { align: 'right' });
-      doc.line(margin, 38, right, 38);
-    }
+    <section class="section" id="delivery-assets">
+      <div class="container">
+        <div class="section-head luxury-head">
+          <span class="section-kicker">Logistyka</span>
+          <h2>Magazyn i dostawa</h2>
+          <p>Zdjęcia w eleganckiej ramce premium, gotowe do powiększenia po kliknięciu.</p>
+        </div>
+        <div class="delivery-stack">
+          <div class="image-frame">
+            <img src="dostawa.png" alt="Dostawa pelletu Sosnowe Chwile" style="margin-bottom:12px;max-width:100%;">
+            <img src="magazyn.png" alt="Magazyn Sosnowe Chwile" style="max-width:100%;">
+          </div>
+        </div>
+      </div>
+    </section>
 
-    function drawPageNum() {
-      const pageCount = doc.internal.getNumberOfPages();
-      const page = doc.internal.getCurrentPageInfo().pageNumber;
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      doc.text(`Strona ${page} z ${pageCount}`, w / 2, h - 8, { align: 'center' });
-    }
+    <section class="section invoice-section" id="efaktura">
+      <div class="container">
+        <div class="section-head luxury-head">
+          <span class="section-kicker">eFaktura zaliczkowa</span>
+          <h2>Wypełnij dane, a eFaktura uzupełni się automatycznie</h2>
+          <p>Poniżej wpisz dane zamówienia, a oferta PDF wygeneruje przejrzysty dokument z informacjami do przelewu.</p>
+        </div>
+        <div class="quote-grid">
+          <form class="quote-form" id="quoteForm">
+            <div class="form-row">
+              <label>Imię i nazwisko / firma<input type="text" id="clientName" placeholder="Np. Jan Kowalski / Firma XYZ"></label>
+              <label>NIP do faktury<input type="text" id="clientNip" placeholder="Np. 1234567890"></label>
+            </div>
+            <div class="form-row">
+              <label>Email<input type="email" id="clientEmail" placeholder="Np. kontakt@firma.pl"></label>
+              <label>Telefon<input type="tel" id="clientPhone" placeholder="Np. +48 123 456 789"></label>
+            </div>
+            <div class="form-row">
+              <label>Ilość ton<select id="qtyTons">
+                <option value="1">1 tona</option>
+                <option value="2">2 tony</option>
+                <option value="3">3 tony</option>
+                <option value="5">5 ton</option>
+                <option value="10">10 ton</option>
+                <option value="15">15 ton</option>
+                <option value="20">20 ton</option>
+                <option value="25">25 ton</option>
+                <option value="30">30 ton</option>
+              </select></label>
+              <label>Rodzaj produktu<select id="product">
+                <option value="1099">Standard</option>
+                <option value="999">Economy</option>
+                <option value="1249">Premium Plus</option>
+                <option value="1299">Premium A1</option>
+              </select></label>
+            </div>
+            <label>Adres dostawy<textarea id="clientAddress" rows="4" placeholder="Ulica, kod pocztowy, miejscowość, kraj"></textarea></label>
+            <label>Uwagi do zamówienia<textarea id="clientNotes" rows="4" placeholder="Np. termin dostawy, rozładunek"></textarea></label>
+            <div class="calc-box"><p>Szacunkowa wartość zamówienia:</p><strong id="totalPrice">1099 zł</strong><small id="calcNoteTons">Cena orientacyjna za 1 paletę Standard.</small></div>
+          </form>
+        </div>
+        <div class="invoice-card invoice-modern">
+          <div class="invoice-parties">
+            <div class="invoice-box">
+              <h4>Sprzedawca</h4>
+              <p><strong>Nordiva Trade Sp. z o.o.</strong></p>
+              <p>ul. Rynek 17/2, 82-400 Gdańsk</p>
+              <p>NIP: 592-230-81-05</p>
+            </div>
+            <div class="invoice-box">
+              <h4>Nabywca</h4>
+              <p id="pdfClientName">—</p>
+              <p id="pdfClientAddress">—</p>
+              <p id="pdfClientNip">—</p>
+            </div>
+          </div>
+          <div class="invoice-details">
+            <h4>Pozycja zamówienia</h4>
+            <div class="invoice-table">
+              <div class="row head"><span>Lp.</span><span>Nazwa produktu</span><span>Ilość</span><span>Cena brutto</span><span>Wartość brutto</span></div>
+              <div class="row"><span>1</span><span id="pdfProduct">Standard</span><span id="pdfQty">1 paleta</span><span id="pdfUnit">1 099 zł</span><span id="pdfTotal">1 099 zł</span></div>
+            </div>
+          </div>
+          <div class="invoice-summary">
+            <div class="invoice-summary-left">
+              <p><strong>Wartość zamówienia brutto:</strong> <span id="sumTotal">1 099 zł</span></p>
+              <p><strong>Podatek VAT:</strong> <span>0%</span></p>
+              <p><strong>Wartość brutto:</strong> <span id="sumTotalBrutto">1 099 zł</span></p>
+            </div>
+          </div>
+          <div class="invoice-note">
+            <p>Dokument został wygenerowany automatycznie na podstawie danych z formularza.</p>
+            <p><strong>Zaliczka:</strong> <span id="pdfAdvancePercent">—</span>% wartości zamówienia. <span id="pdfAdvanceAmount">—</span> do zaliczki. Pozostała część do zapłaty zgodnie z warunkami umowy.</p>
+          </div>
+          <div class="hero-actions" style="margin-top:16px;">
+            <button class="btn btn-primary" id="downloadOfferPdf" type="button">Pobierz ofertę w PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    head();
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(14);
-    doc.text('WAĹťNE DANE DO PRZELEWU', margin, 48);
-    doc.setDrawColor(200, 168, 90);
-    doc.setLineWidth(0.8);
-    doc.line(margin, 51, right, 51);
+  <div class="image-modal" id="imageModal" aria-hidden="true">
+    <button class="modal-close" id="modalClose" type="button">&times;</button>
+    <img id="modalImage" alt="Powiększone zdjęcie">
+  </div>
 
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.text('TytuĹ przelewu:', margin, 60);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-    const tytul = `Zaliczka za zamĂłwienie ${invNo} - ${productName}, ${tons} ton`;
-    doc.text(doc.splitTextToSize(tytul, 180), margin, 66);
+  <footer class="footer" id="kontakt">
+    <div class="container footer-grid">
+      <div>
+        <h2>Sosnowe Chwile</h2>
+        <p>Nowa marka pelletu z prostą ofertą i uczciwą ceną.</p>
+      </div>
+      <div>
+        <p><strong>Telefon:</strong> +48 793 573 900</p>
+        <p><strong>Email:</strong> kontakt@sosnowechwile.pl</p>
+      </div>
+    </div>
+  </footer>
 
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.text('Numer konta:', margin, 83);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(18);
-    doc.text('39 11 6022 0200 0000 7130 9046 1', margin, 90);
-
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.text('Kwota zaliczki:', margin, 104);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(22);
-    doc.setTextColor(33, 56, 27);
-    doc.text(formatPLN(advance), margin, 112);
-    doc.setTextColor(20, 20, 20);
-
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(11);
-    doc.text(`Zaliczka wynosi ${advPerc}% wartoĹci zamĂłwienia.`, margin, 122);
-    doc.text(`Do zapĹaty po zaliczce: ${formatPLN(total - advance)}`, margin, 129);
-
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.text('Dane nabywcy:', margin, 143);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-    const buyer = [name, address, 'NIP: ' + nip, 'Email: ' + email, 'Tel: ' + phone].join('
-');
-    doc.text(doc.splitTextToSize(buyer, 180), margin, 149);
-
-    doc.addPage();
-    head();
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.text('Podsumowanie zamĂłwienia', margin, 48);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-
-    const summaryText = [
-      `Produkt: ${productName}`,
-      `IloĹÄ: ${tons} ton (${palets} palet)`,
-      `Cena jednostkowa: ${formatPLN(unit)}`,
-      `WartoĹÄ zamĂłwienia: ${formatPLN(total)}`,
-      `Kwota zaliczki: ${formatPLN(advance)}`,
-      `PozostaĹo do zapĹaty: ${formatPLN(total - advance)}`,
-      `Uwagi: ${notes}`
-    ].join('
-');
-    doc.text(doc.splitTextToSize(summaryText, 180), margin, 56);
-
-    const boxX = margin;
-    const boxY = 108;
-    const boxW = w - margin * 2;
-    const boxH = 44;
-    doc.setDrawColor(180, 180, 180);
-    doc.rect(boxX, boxY, boxW, boxH);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.text('WartoĹÄ netto:', boxX + 4, boxY + 10);
-    doc.text(formatPLN(total), boxX + boxW - 4, boxY + 10, { align: 'right' });
-    doc.text('WartoĹÄ VAT (0%):', boxX + 4, boxY + 20);
-    doc.text('0,00 zĹ', boxX + boxW - 4, boxY + 20, { align: 'right' });
-    doc.setFillColor(33, 56, 27);
-    doc.rect(boxX, boxY + 26, boxW, 10, 'F');
-    doc.setTextColor(255, 255, 255);
-    doc.text('WartoĹÄ brutto:', boxX + 4, boxY + 33);
-    doc.text(formatPLN(total), boxX + boxW - 4, boxY + 33, { align: 'right' });
-    doc.setTextColor(20, 20, 20);
-
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.text('SposĂłb pĹatnoĹci: Przelew bankowy', margin, 162);
-    doc.text('TytuĹ przelewu oraz numer konta znajdujÄ siÄ na stronie 1.', margin, 169);
-
-    drawPageNum();
-    const pages = doc.internal.getNumberOfPages();
-    for (let i = 1; i <= pages; i++) {
-      doc.setPage(i);
-      drawPageNum();
-    }
-
-    doc.save('efaktura-sosnowe-chwile.pdf');
-  });
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const pdfBtn2 = document.getElementById('generatePdf');
-  if (pdfBtn2) pdfBtn2.style.pointerEvents = 'auto';
-  document.querySelectorAll('button, .btn, .menu-btn, .gallery-img').forEach(el => el.style.pointerEvents = 'auto');
-});
+  <script src="script.js"></script>
+</body>
+</html>
