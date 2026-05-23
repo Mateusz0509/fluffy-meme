@@ -198,3 +198,59 @@
   </footer>
 </body>
 </html>
+<!-- Skrypt JS – minimalna walidacja formularza -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".contact__form");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // zatrzymaj domyślne wysyłanie
+
+      // Pobierz wartości
+      const imie = document.getElementById("imie").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const telefon = document.getElementById("telefon").value.trim();
+      const wiadomosc = document.getElementById("wiadomosc").value.trim();
+
+      let errors = [];
+
+      // Walidacja „Imię i nazwisko”
+      if (imie.length === 0) {
+        errors.push("Imię i nazwisko jest wymagane.");
+      }
+
+      // Walidacja e‑mail
+      const emailRegexp = /^[^s@]+@[^s@]+.[^s@]+$/;
+      if (email.length === 0) {
+        errors.push("E‑mail jest wymagany.");
+      } else if (!emailRegexp.test(email)) {
+        errors.push("Podaj poprawny adres e‑mail.");
+      }
+
+      // Telefon (opcjonalny, ale jeśli jest – musi być OK)
+      if (telefon && !/^+?d{6,}$/.test(telefon.replace(/[s-()]/g, ""))) {
+        errors.push("Numer telefonu musi zawierać co najmniej 6 cyfr.");
+      }
+
+      // Wiadomość (min. np. 10 znaków)
+      if (wiadomosc.length === 0) {
+        errors.push("Wiadomość jest wymagana.");
+      } else if (wiadomosc.length < 10) {
+        errors.push("Wiadomość powinna mieć co najmniej 10 znaków.");
+      }
+
+      // Jeśli są błędy – pokaż komunikaty
+      if (errors.length > 0) {
+        alert("Niektóre pola wymagają poprawy:
+
+- " + errors.join("
+- "));
+        return;
+      }
+
+      // Jeśli wszystko OK, możesz dodać np. symulację wysyłki lub przekierowanie
+      alert("Formularz został poprawnie wypełniony. W wersji produkcyjnej tu wysyłasz go do backendu.");
+      form.reset(); // wyczyść pola
+    });
+  });
+</script>
