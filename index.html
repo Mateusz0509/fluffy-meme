@@ -1,160 +1,199 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sosnowe Chwile | Ekologiczne domki z sosny</title>
-  <meta name="description" content="Sosnowe Chwile to ekologiczne domki z sosny, kameralny wypoczynek blisko natury i komfort w nowoczesnym stylu eco." />
-  <meta name="keywords" content="domki z sosny, ekoturystyka, wypoczynek w naturze, sosnowe chwile, domek ekologiczny" />
-  <meta name="author" content="Sosnowe Chwile" />
-  <meta name="theme-color" content="#2f5d50" />
-  <meta property="og:title" content="Sosnowe Chwile | Ekologiczne domki z sosny" />
-  <meta property="og:description" content="Nowoczesne, ekologiczne domki z sosny w otoczeniu natury." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sosnowechwile.pl" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sosnowe Chwile – domki z drewna sosnowego</title>
+  <meta name="description" content="Sosnowe Chwile – ekologiczne domki z drewna sosnowego, handlowe i rodzinne, wykonane z fachową dbałością o szczegóły." />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Przejdź do treści</a>
+  <header class="header" id="home">
+    <nav class="nav container">
+      <a href="#home" class="nav__logo">Sosnowe<span>Chwile</span></a>
+      <ul class="nav__menu">
+        <li><a href="#o-nas">O nas</a></li>
+        <li><a href="#uslugi">Usługi</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
 
-  <header class="header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Sosnowe Chwile - strona główna">
-        <span class="brand-mark">SC</span>
-        <span class="brand-text">Sosnowe Chwile</span>
-      </a>
-
-      <nav class="nav" aria-label="Główna nawigacja">
-        <a href="#onas">O nas</a>
-        <a href="#uslugi">Usługi</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-
-      <a class="btn btn-small" href="#kontakt">Rezerwuj</a>
-    </div>
+    <section class="hero">
+      <div class="hero__content">
+        <h1 class="hero__title">Domki z drewna sosnowego</h1>
+        <p class="hero__text">
+          Stworzone z natury, dla natury. Budujemy domki z sosny, które wpisują się w otoczenie i tworzą chwile, które trwają.
+        </p>
+        <a href="#kontakt" class="btn btn--primary hero__btn">Zamów konsultację</a>
+      </div>
+    </section>
   </header>
 
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <p class="eyebrow">Ekologiczny wypoczynek wśród sosen</p>
-        <h1>Sosnowe domki, cisza i nowoczesny komfort blisko natury.</h1>
-        <p class="hero-text">
-          Odpocznij w kameralnych, ekologicznych domkach z sosny. Naturalne materiały, kojąca zieleń i przestrzeń zaprojektowana do regeneracji.
-        </p>
-        <div class="hero-actions">
-          <a class="btn" href="#kontakt">Sprawdź dostępność</a>
-          <a class="btn btn-ghost" href="#galeria">Zobacz galerię</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="onas">
-      <div class="container two-col">
-        <div class="section-copy">
-          <p class="section-label">O nas</p>
-          <h2>Tworzymy miejsce, w którym natura spotyka się z wygodą.</h2>
-          <p>
-            Sosnowe Chwile to przestrzeń stworzona dla osób szukających spokojnego wypoczynku w otoczeniu lasu.
-            Nasze ekologiczne domki z sosny łączą estetykę naturalnego drewna z funkcjonalnością nowoczesnego wnętrza.
-          </p>
-          <p>
-            Stawiamy na rozwiązania przyjazne środowisku, lokalne materiały i komfortowy standard pobytu.
-            Każdy detal został zaprojektowany tak, aby wspierać relaks, prywatność i bliski kontakt z przyrodą.
-          </p>
-        </div>
-
-        <div class="about-card">
-          <div class="about-badge">100% natura</div>
-          <ul class="about-list">
-            <li>Ekologiczne materiały i ciepły klimat wnętrz.</li>
-            <li>Bliskość lasu, ścieżek spacerowych i ciszy.</li>
-            <li>Kameralny charakter idealny na odpoczynek we dwoje lub rodzinny wyjazd.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="uslugi">
+  <main>
+    <section id="o-nas" class="section">
       <div class="container">
-        <div class="section-head">
-          <p class="section-label">Usługi</p>
-          <h2>Wszystko, czego potrzeba do spokojnego pobytu.</h2>
-        </div>
+        <header class="section__header">
+          <h2 class="section__title">O nas</h2>
+          <p class="section__subtitle">
+            Sosnowe domki z sosny – od projektu po montaż
+          </p>
+        </header>
 
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="icon">🌲</div>
-            <h3>Domki z sosny</h3>
-            <p>Naturalne wnętrza z aromatem drewna i przytulnym, ekologicznym wykończeniem.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">♻️</div>
-            <h3>Eco standard</h3>
-            <p>Rozwiązania ograniczające wpływ na środowisko i wspierające zrównoważony wypoczynek.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">🔥</div>
-            <h3>Strefa relaksu</h3>
-            <p>Miejsce na wieczorny odpoczynek, rozmowy przy cieple i spokojne chwile po dniu w naturze.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">🧺</div>
-            <h3>Wygodne udogodnienia</h3>
-            <p>Praktyczne wyposażenie sprzyjające komfortowi, niezależnie od długości pobytu.</p>
-          </article>
+        <div class="about__grid">
+          <div class="about__text">
+            <p>
+              W Sosnowych Chwilach tworzymy <strong>domki z drewna sosnowego</strong>, od <em>domków letniskowych</em> po <em>strukture handlowe</em> zamontowane na terenach rekreacyjnych.
+            </p>
+            <p>
+              Wybieramy wyłącznie sosnę z zrównoważonego gospodarstwa leśnego, dbając o trwałość, estetykę i ekologiczny charakter każdego projektu.
+            </p>
+            <p>
+              Oferujemy pełen cykl realizacji: konsultacja, projekt, produkcja i montaż na miejscu. Naszym celem jest tworzenie spokojnych, naturalnych przestrzeni, w których warto spędzić chwilę.
+            </p>
+          </div>
+          <div class="about__image">
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b9bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Domki z drewna sosnowego" />
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="galeria">
+    <section id="uslugi" class="section section--alt">
       <div class="container">
-        <div class="section-head">
-          <p class="section-label">Galeria</p>
-          <h2>Odcienie drewna, zieleń i spokojna atmosfera.</h2>
-        </div>
+        <header class="section__header">
+          <h2 class="section__title">Nasze usługi</h2>
+          <p class="section__subtitle">
+            Kompleksowa obsługa budowy domków z drewna sosnowego
+          </p>
+        </header>
 
-        <div class="gallery-grid">
-          <figure class="gallery-item large">
-            <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=1200&q=80" alt="Domek wśród sosnowego lasu" />
-          </figure>
-          <figure class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" alt="Przytulne wnętrze drewnianego domku" />
-          </figure>
-          <figure class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80" alt="Leśny krajobraz i przestrzeń do odpoczynku" />
-          </figure>
-          <figure class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80" alt="Zielony las otaczający domek" />
-          </figure>
+        <ul class="services__grid">
+          <li class="service__card">
+            <div class="service__icon">
+              <i class="fas fa-house-chimney"></i>
+            </div>
+            <h3 class="service__title">Budowa domków z sosny</h3>
+            <p class="service__text">
+              Handlowe i rodzinne domki z drewna sosnowego, zaprojektowane pod Twoje potrzeby i otoczenie.
+            </p>
+          </li>
+          <li class="service__card">
+            <div class="service__icon">
+              <i class="fas fa-ruler"></i>
+            </div>
+            <h3 class="service__title">Projekt i konsultacja</h3>
+            <p class="service__text">
+              Indywidualne projekty dopasowane do terenu, stylu i funkcji domku.
+            </p>
+          </li>
+          <li class="service__card">
+            <div class="service__icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3 class="service__title">Montaż i instalacja</h3>
+            <p class="service__text">
+              Kompletny montaż na miejscu, wraz z wykończeniem i podstawowymi instalacjami.
+            </p>
+          </li>
+          <li class="service__card">
+            <div class="service__icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="service__title">Naprawa i modernizacja</h3>
+            <p class="service__text">
+              Restauracja i modernizacja istniejących domków z drewna sosnowego.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="galeria" class="section">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Galeria</h2>
+          <p class="section__subtitle">
+            Zobacz, jak wyglądają nasze sosnowe domki
+          </p>
+        </header>
+
+        <div class="gallery__grid">
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b9bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Duży domki z drewna sosnowego" />
+          </div>
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1590086011886-0f5b903b1c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mały domek z drewna sosnowego" />
+          </div>
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f61?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Domki w lesie" />
+          </div>
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Domki z patyną naturalnego drewna" />
+          </div>
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Domki z balkonem z drewna" />
+          </div>
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Domki z drewna w letnim ośrodku" />
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section cta-section" id="kontakt">
-      <div class="container cta-box">
-        <div>
-          <p class="section-label light">Kontakt i rezerwacja</p>
-          <h2>Zarezerwuj swój pobyt w Sosnowych Chwilach.</h2>
-          <p>Stwórz ofertę kontaktową lub formularz rezerwacji dopasowany do Twojego obiektu.</p>
+    <section id="kontakt" class="section section--alt">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Skontaktuj się z nami</h2>
+          <p class="section__subtitle">
+            Napisz, zadzwoń lub odwiedź nas – zaprojektujemy z Tobą idealny domek z sosny.
+          </p>
+        </header>
+
+        <div class="contact__grid">
+          <div class="contact__info">
+            <p><i class="fas fa-map-marker-alt"></i> Warszawa, Polska</p>
+            <p><i class="fas fa-phone"></i> +48 123 456 789</p>
+            <p><i class="fas fa-envelope"></i> kontakt@sosnowechwile.pl</p>
+          </div>
+          <form class="contact__form" action="#" method="post">
+            <div class="form__group">
+              <label for="imie">Imię i nazwisko</label>
+              <input type="text" id="imie" name="imie" required />
+            </div>
+            <div class="form__group">
+              <label for="email">E‑mail</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form__group">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" />
+            </div>
+            <div class="form__group">
+              <label for="wiadomosc">Wiadomość</label>
+              <textarea id="wiadomosc" name="wiadomosc" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary">Wyślij wiadomość</button>
+          </form>
         </div>
-        <a class="btn btn-dark" href="mailto:kontakt@sosnowechwile.pl">Napisz do nas</a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-wrap">
-      <p>© 2026 Sosnowe Chwile. Wszystkie prawa zastrzeżone.</p>
-      <p>Ekologiczne domki z sosny w nowoczesnym stylu nature/eco.</p>
+    <div class="container">
+      <p class="footer__text">
+        &copy; 2026 Sosnowe Chwile – domki z drewna sosnowego. Wszelkie prawa zastrzeżone.
+      </p>
+      <nav class="footer__nav">
+        <a href="#o-nas">O nas</a>
+        <a href="#uslugi">Usługi</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
     </div>
   </footer>
 </body>
